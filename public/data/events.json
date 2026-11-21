@@ -1,0 +1,717 @@
+{
+  "categories": {
+    "peuplement":    { "label": "Peuplement & sociétés kanak", "color": "#b7791f" },
+    "contact":       { "label": "Explorations & missions",     "color": "#2b6cb0" },
+    "colonisation":  { "label": "Colonisation & bagne",        "color": "#6b46c1" },
+    "conflit":       { "label": "Conflits & violences",        "color": "#c53030" },
+    "politique":     { "label": "Politique & institutions",    "color": "#d53f8c" },
+    "economie":      { "label": "Économie & nickel",           "color": "#dd6b20" },
+    "culture":       { "label": "Culture & patrimoine",        "color": "#0f9d8a" },
+    "environnement": { "label": "Environnement",               "color": "#38a169" }
+  },
+
+  "periods": [
+    { "id": "pre",       "name": "Période pré-européenne",   "from": -1100,  "to": 1774,   "color": "#b7791f" },
+    { "id": "contacts",  "name": "Premiers contacts",        "from": 1774,   "to": 1853,   "color": "#2b6cb0" },
+    { "id": "colonie",   "name": "Colonisation et bagne",    "from": 1853,   "to": 1914,   "color": "#6b46c1" },
+    { "id": "guerres",   "name": "Guerres mondiales",        "from": 1914,   "to": 1946,   "color": "#718096" },
+    { "id": "emancip",   "name": "Vers l'émancipation",      "from": 1946,   "to": 1984,   "color": "#319795" },
+    { "id": "evenements","name": "Les « Événements »",       "from": 1984,   "to": 1988.5, "color": "#c53030" },
+    { "id": "accords",   "name": "Le temps des accords",     "from": 1988.5, "to": 2018.8, "color": "#d53f8c" },
+    { "id": "referendums","name": "Référendums et après",    "from": 2018.8, "to": null,   "color": "#dd6b20" }
+  ],
+
+  "events": [
+    {
+      "id": "lapita",
+      "date": "-1100",
+      "approx": true,
+      "title": "Arrivée des premiers peuples austronésiens (culture Lapita)",
+      "place": "Site de Foué, Koné",
+      "coords": [-21.12, 164.79],
+      "category": "peuplement",
+      "description": "Vers 1100 avant notre ère, des navigateurs austronésiens venus de l'ouest du Pacifique (archipel Bismarck) atteignent l'archipel. On les identifie notamment grâce à leur céramique à décor pointillé, dite « Lapita », du nom du site de la presqu'île de Foué, à Koné, fouillé en 1952.\n\nCes premiers occupants sont les ancêtres des Kanak.",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/PortVilaLapita.jpg/960px-PortVilaLapita.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "Torbenbrinker — CC BY-SA 3.0, via Wikimedia Commons", "alt": "Poteries Lapita exposées au Centre culturel du Vanuatu", "source": "https://commons.wikimedia.org/wiki/File:PortVilaLapita.jpg"},
+      "sources": [
+        { "label": "Culture lapita (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Culture+lapita" }
+      ]
+    },
+    {
+      "id": "societes-kanak",
+      "date": "500",
+      "approx": true,
+      "dateLabel": "Ier millénaire de notre ère",
+      "title": "Les sociétés kanak s'enracinent",
+      "place": "Grande Terre et îles",
+      "coords": [-21.35, 165.45],
+      "category": "peuplement",
+      "description": "Au fil des siècles, les communautés se diversifient : nouvelles traditions céramiques, défrichements, culture de l'igname et du taro, notamment dans des tarodières irriguées en terrasses.\n\nSe mettent en place l'organisation en clans et en chefferies, la grande case et une grande diversité linguistique : on compte aujourd'hui 28 langues kanak.",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/MQBJC_1_Oc%C3%A9anie_%2874%29.jpg/960px-MQBJC_1_Oc%C3%A9anie_%2874%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "Cangadoba — CC BY-SA 4.0, via Wikimedia Commons", "alt": "Chambranles de case kanak sculptés (Grande Terre)", "source": "https://commons.wikimedia.org/wiki/File:MQBJC_1_Oc%C3%A9anie_(74).jpg"},
+      "sources": [
+        { "label": "Kanak (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Kanak" }
+      ]
+    },
+    {
+      "id": "polynesiens-ouvea",
+      "date": "1700",
+      "approx": true,
+      "dateLabel": "XVIIe – XVIIIe siècles",
+      "title": "Arrivées polynésiennes à Ouvéa",
+      "place": "Ouvéa (îles Loyauté)",
+      "coords": [-20.47, 166.58],
+      "category": "peuplement",
+      "description": "Des navigateurs venus de Wallis (Uvea) s'installent aux extrémités nord et sud d'Ouvéa. Leur langue, le fagauvea, cohabite encore aujourd'hui avec l'iaai. D'autres contacts polynésiens ont marqué les îles Loyauté et l'île des Pins.",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Ouvea_Pont_de_Mouli.jpg/960px-Ouvea_Pont_de_Mouli.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "Piard Clément — CC BY-SA 3.0, via Wikimedia Commons", "alt": "Le pont de Mouli, à Ouvéa", "source": "https://commons.wikimedia.org/wiki/File:Ouvea_Pont_de_Mouli.jpg"},
+      "sources": [
+        { "label": "Fagauvea (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Fagauvea" }
+      ]
+    },
+    {
+      "id": "cook-1774",
+      "date": "1774-09-04",
+      "title": "James Cook aborde la Grande Terre",
+      "place": "Balade (Pouébo)",
+      "coords": [-20.33, 164.47],
+      "category": "contact",
+      "description": "Lors de son deuxième voyage dans le Pacifique, le navigateur britannique James Cook aperçoit la côte nord-est le 4 septembre 1774 et mouille à Balade, où il est accueilli par les habitants. Il baptise l'île « New Caledonia ».\n\nQuelques semaines plus tard, en longeant la côte vers le sud, il aperçoit et nomme l'île des Pins.",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Captainjamescookportrait.jpg/960px-Captainjamescookportrait.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "Nathaniel Dance-Holland — domaine public, via Wikimedia Commons", "alt": "Portrait de James Cook par Nathaniel Dance-Holland", "source": "https://commons.wikimedia.org/wiki/File:Captainjamescookportrait.jpg"},
+      "sources": [
+        { "label": "James Cook (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=James+Cook" }
+      ]
+    },
+    {
+      "id": "entrecasteaux-1793",
+      "date": "1793-04",
+      "title": "Escale de Bruni d'Entrecasteaux",
+      "place": "Balade (Pouébo)",
+      "coords": [-20.33, 164.47],
+      "category": "contact",
+      "description": "Parti à la recherche de l'expédition disparue de La Pérouse, Antoine Bruni d'Entrecasteaux séjourne à Balade. Le naturaliste Jacques-Julien de Labillardière, membre de l'expédition, laisse des descriptions précieuses de la flore et de la société kanak du Nord.",
+      "image": {"url": "https://upload.wikimedia.org/wikipedia/commons/1/12/Encastreaux.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "credit": "Antoine Maurin — domaine public, via Wikimedia Commons", "alt": "Portrait d'Antoine Bruni d'Entrecasteaux", "source": "https://commons.wikimedia.org/wiki/File:Encastreaux.jpg"},
+      "sources": [
+        { "label": "Antoine Bruni d'Entrecasteaux (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Antoine+Bruni+d%27Entrecasteaux" }
+      ]
+    },
+    {
+      "id": "dumont-durville-1827",
+      "date": "1827",
+      "title": "Dumont d'Urville cartographie les îles Loyauté",
+      "place": "Lifou (îles Loyauté)",
+      "coords": [-20.92, 167.24],
+      "category": "contact",
+      "description": "À bord de l'Astrolabe, Jules Dumont d'Urville relève les côtes des îles Loyauté, complétant la connaissance européenne de l'archipel.",
+      "image": {"url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Dumont_d%27Urville.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "credit": "Jérôme Cartellier — domaine public, via Wikimedia Commons", "alt": "Portrait de Jules Dumont d'Urville", "source": "https://commons.wikimedia.org/wiki/File:Dumont_d%27Urville.jpg"},
+      "sources": [
+        { "label": "Jules Dumont d'Urville (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Jules+Dumont+d%27Urville" }
+      ]
+    },
+    {
+      "id": "santal",
+      "date": "1841",
+      "approx": true,
+      "dateLabel": "Années 1840",
+      "title": "Le commerce du santal",
+      "place": "Île des Pins",
+      "coords": [-22.62, 167.45],
+      "category": "economie",
+      "description": "Baleiniers et santaliers fréquentent l'archipel à partir des années 1840. Le bois de santal, très recherché en Chine, est exploité à l'île des Pins et aux îles Loyauté. Ce commerce s'accompagne de conflits et d'épidémies qui frappent durement les populations locales.",
+      "image": {"url": "https://upload.wikimedia.org/wikipedia/commons/9/96/Santal_austrocaledonicum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "credit": "Denis.prévôt — CC BY-SA 3.0, via Wikimedia Commons", "alt": "Jeune santal (Santalum austrocaledonicum) à l'île des Pins", "source": "https://commons.wikimedia.org/wiki/File:Santal_austrocaledonicum.jpg"},
+      "sources": [
+        { "label": "Histoire de la Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Histoire+de+la+Nouvelle-Cal%C3%A9donie" }
+      ]
+    },
+    {
+      "id": "lms-mare",
+      "date": "1841",
+      "title": "Arrivée des premiers « teachers » protestants",
+      "place": "Maré (îles Loyauté)",
+      "coords": [-21.5, 168.0],
+      "category": "contact",
+      "description": "La London Missionary Society envoie à Maré, puis à Lifou, des catéchistes polynésiens (les « teachers ») originaires notamment de Samoa et de Rarotonga. Le protestantisme s'implante durablement aux îles Loyauté.",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Nowa_Kaledonia.jpg/960px-Nowa_Kaledonia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "Msniezek — CC BY 3.0, via Wikimedia Commons", "alt": "Côte de l'île de Maré", "source": "https://commons.wikimedia.org/wiki/File:Nowa_Kaledonia.jpg"},
+      "sources": [
+        { "label": "London Missionary Society (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=London+Missionary+Society" }
+      ]
+    },
+    {
+      "id": "maristes-1843",
+      "date": "1843-12-21",
+      "title": "Fondation de la première mission catholique",
+      "place": "Balade (Pouébo)",
+      "coords": [-20.33, 164.47],
+      "category": "contact",
+      "description": "Mgr Guillaume Douarre et des pères maristes débarquent à Balade et y fondent la première mission catholique. Mal acceptée, la mission est attaquée et abandonnée en 1847, avant que les missionnaires ne reviennent quelques années plus tard.",
+      "sources": [
+        { "label": "Guillaume Douarre (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Guillaume+Douarre" }
+      ]
+    },
+    {
+      "id": "prise-possession-1853",
+      "date": "1853-09-24",
+      "title": "Prise de possession par la France",
+      "place": "Balade (Pouébo)",
+      "coords": [-20.33, 164.47],
+      "category": "colonisation",
+      "description": "Sur ordre de Napoléon III, le contre-amiral Auguste Febvrier-Despointes prend possession de la Nouvelle-Calédonie au nom de la France à Balade. Le 29 septembre, il fait de même à l'île des Pins.\n\nLe 24 septembre est aujourd'hui un jour férié en Nouvelle-Calédonie, devenu « fête de la Citoyenneté ».",
+      "image": {"url": "https://upload.wikimedia.org/wikipedia/commons/9/92/Admiral_Febvrier_des_Pointes_1796_1855.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "credit": "Auteur inconnu — domaine public, via Wikimedia Commons", "alt": "Portrait de l'amiral Febvrier-Despointes", "source": "https://commons.wikimedia.org/wiki/File:Admiral_Febvrier_des_Pointes_1796_1855.jpg"},
+      "sources": [
+        { "label": "Auguste Febvrier-Despointes (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Auguste+Febvrier-Despointes" }
+      ]
+    },
+    {
+      "id": "port-de-france-1854",
+      "date": "1854-06-25",
+      "title": "Fondation de Port-de-France, future Nouméa",
+      "place": "Nouméa",
+      "coords": [-22.276, 166.452],
+      "category": "colonisation",
+      "description": "Le capitaine de vaisseau Louis Tardy de Montravel fonde Port-de-France sur la presqu'île de Nouméa, choisie pour la qualité de sa rade. La ville prend le nom de Nouméa en 1866.",
+      "sources": [
+        { "label": "Nouméa (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Noum%C3%A9a" }
+      ]
+    },
+    {
+      "id": "bagne-1864",
+      "date": "1864-05-09",
+      "endDate": "1897",
+      "title": "Arrivée des premiers bagnards",
+      "place": "Île Nou (Nouville), Nouméa",
+      "coords": [-22.265, 166.405],
+      "category": "colonisation",
+      "description": "Le navire l'Iphigénie débarque environ 250 forçats sur l'île Nou, face à Nouméa. Jusqu'en 1897, plus de 20 000 condamnés aux travaux forcés sont envoyés en Nouvelle-Calédonie. Ils construisent routes, quais et bâtiments de la colonie ; beaucoup restent sur place à leur libération.",
+      "image": {"url": "https://upload.wikimedia.org/wikipedia/commons/1/15/Le_Surveillant_des_Condamn%C3%A9s_%28typical%29%2C_New_Caledonian_Prisons%2C_c._1906.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "credit": "Clement Lindley Wragge — domaine public, via Wikimedia Commons", "alt": "Surveillant du bagne de Nouvelle-Calédonie, vers 1906", "source": "https://commons.wikimedia.org/wiki/File:Le_Surveillant_des_Condamn%C3%A9s_(typical),_New_Caledonian_Prisons,_c._1906.jpg"},
+      "sources": [
+        { "label": "Bagne de Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Bagne+de+Nouvelle-Cal%C3%A9donie" }
+      ]
+    },
+    {
+      "id": "nickel-garnier",
+      "date": "1864",
+      "title": "Découverte du nickel",
+      "place": "Sud de la Grande Terre",
+      "coords": [-22.12, 166.55],
+      "category": "economie",
+      "description": "Lors de ses prospections dans le sud de la Grande Terre, l'ingénieur Jules Garnier identifie un minerai de nickel, la garniérite, qui porte aujourd'hui son nom. L'exploitation commence dans les années 1870 : le nickel devient le pilier de l'économie calédonienne.",
+      "image": {"url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Jules_Garnier.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "credit": "Garnierdelapierre — CC BY-SA 3.0, via Wikimedia Commons", "alt": "Portrait de Jules Garnier", "source": "https://commons.wikimedia.org/wiki/File:Jules_Garnier.jpg"},
+      "sources": [
+        { "label": "Jules Garnier (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Jules+Garnier" }
+      ]
+    },
+    {
+      "id": "reserves-1868",
+      "date": "1868",
+      "title": "Création des réserves kanak",
+      "place": "Grande Terre",
+      "coords": [-21.55, 165.6],
+      "category": "colonisation",
+      "description": "L'administration coloniale institue des réserves : les clans kanak sont cantonnés sur des terres délimitées, tandis que les terres jugées les meilleures sont attribuées à la colonisation pénale et libre. La question foncière devient centrale dans l'histoire du pays.",
+      "sources": [
+        { "label": "Histoire de la Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Histoire+de+la+Nouvelle-Cal%C3%A9donie" }
+      ]
+    },
+    {
+      "id": "communards-1872",
+      "date": "1872",
+      "endDate": "1880",
+      "title": "Déportation des communards",
+      "place": "Presqu'île Ducos et île des Pins",
+      "coords": [-22.235, 166.43],
+      "category": "colonisation",
+      "description": "Après l'écrasement de la Commune de Paris, plus de 4 000 déportés politiques sont envoyés en Nouvelle-Calédonie, sur la presqu'île Ducos et à l'île des Pins. Parmi eux, Louise Michel. Ils sont amnistiés en 1880 et la plupart rentrent en France.",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Portrait_de_Louise_Michel_%281830-1905%29%2C_pendant_la_Commune_de_Paris_1871._PH15064.jpg/960px-Portrait_de_Louise_Michel_%281830-1905%29%2C_pendant_la_Commune_de_Paris_1871._PH15064.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "Ernest Charles Appert — CC0, via Wikimedia Commons", "alt": "Portrait de Louise Michel en 1871", "source": "https://commons.wikimedia.org/wiki/File:Portrait_de_Louise_Michel_(1830-1905),_pendant_la_Commune_de_Paris_1871._PH15064.jpg"},
+      "sources": [
+        { "label": "Louise Michel (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Louise+Michel" }
+      ]
+    },
+    {
+      "id": "kabyles-1872",
+      "date": "1872",
+      "title": "Les « Kabyles du Pacifique »",
+      "place": "Nessadiou, Bourail",
+      "coords": [-21.6, 165.47],
+      "category": "colonisation",
+      "description": "Des insurgés de la révolte de 1871 en Algérie (insurrection d'El Mokrani) sont déportés en Nouvelle-Calédonie. Beaucoup y font souche, notamment à Bourail (Nessadiou), où leurs descendants entretiennent cette mémoire.",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Vers_la_pointe_Bellenguez_%C3%A0_Nessadiou_-_panoramio.jpg/960px-Vers_la_pointe_Bellenguez_%C3%A0_Nessadiou_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "Roman Barthe — CC BY 3.0, via Wikimedia Commons", "alt": "Paysage de Nessadiou, près de Bourail", "source": "https://commons.wikimedia.org/wiki/File:Vers_la_pointe_Bellenguez_%C3%A0_Nessadiou_-_panoramio.jpg"},
+      "sources": [
+        { "label": "Kabyles du Pacifique (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Kabyles+du+Pacifique" }
+      ]
+    },
+    {
+      "id": "insurrection-1878",
+      "date": "1878-06-25",
+      "endDate": "1879",
+      "title": "Insurrection kanak menée par le grand chef Ataï",
+      "place": "La Foa – Boulouparis",
+      "coords": [-21.71, 165.83],
+      "category": "conflit",
+      "description": "Face à la spoliation des terres et aux ravages du bétail des colons dans les cultures, le grand chef Ataï déclenche une insurrection dans la région de La Foa et de Boulouparis. Ataï est tué le 1er septembre 1878.\n\nLa répression est très dure : on estime à environ un millier le nombre de Kanak tués, et à environ 200 celui des Européens. Le crâne d'Ataï, conservé à Paris, a été restitué en 2014.",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Altai_grand_chef_Kanak_1878.jpg/960px-Altai_grand_chef_Kanak_1878.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "Gravure parue dans Le Voleur — domaine public, via Wikimedia Commons", "alt": "Gravure représentant le grand chef Ataï (Le Voleur, 1878)", "source": "https://commons.wikimedia.org/wiki/File:Altai_grand_chef_Kanak_1878.jpg"},
+      "videos": [
+        {"label": "Histoire de la colonisation, dont la révolte de 1878 — Antenne 2, 1988 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/cab88026167/historique-nouvelle-caledonie"}
+      ],
+      "sources": [
+        { "label": "Insurrection kanak de 1878 (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Insurrection+kanak+de+1878" },
+        { "label": "Ataï (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Ata%C3%AF" }
+      ]
+    },
+    {
+      "id": "sln-1880",
+      "date": "1880",
+      "title": "Création de la Société Le Nickel (SLN)",
+      "place": "Thio",
+      "coords": [-21.61, 166.21],
+      "category": "economie",
+      "description": "La Société Le Nickel est fondée pour exploiter les gisements calédoniens. Thio devient le premier grand centre minier de l'archipel. La SLN reste aujourd'hui l'un des principaux acteurs du nickel.",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Thio_-_dans_le_tas_de_nickel_-_Ch._B._Nething_-_btv1b101213399.jpg/960px-Thio_-_dans_le_tas_de_nickel_-_Ch._B._Nething_-_btv1b101213399.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "Charles Nething — domaine public, via Wikimedia Commons", "alt": "Mine de nickel de Thio, photographie ancienne", "source": "https://commons.wikimedia.org/wiki/File:Thio_-_dans_le_tas_de_nickel_-_Ch._B._Nething_-_btv1b101213399.jpg"},
+      "sources": [
+        { "label": "Société Le Nickel (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Soci%C3%A9t%C3%A9+Le+Nickel" }
+      ]
+    },
+    {
+      "id": "indigenat-1887",
+      "date": "1887",
+      "endDate": "1946",
+      "title": "Application du régime de l'indigénat",
+      "place": "Nouméa",
+      "coords": [-22.276, 166.452],
+      "category": "colonisation",
+      "description": "Le régime de l'indigénat est appliqué aux Kanak : sanctions administratives sans jugement, travail obligatoire, impôt de capitation, interdiction de quitter les réserves sans autorisation. Il reste en vigueur jusqu'en 1946.",
+      "sources": [
+        { "label": "Code de l'indigénat (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Code+de+l%27indig%C3%A9nat" }
+      ]
+    },
+    {
+      "id": "japonais-1892",
+      "date": "1892",
+      "title": "Arrivée des premiers travailleurs japonais",
+      "place": "Thio",
+      "coords": [-21.61, 166.21],
+      "category": "economie",
+      "description": "Les premiers travailleurs japonais sous contrat arrivent pour les mines de Thio. Ils sont suivis par des engagés venus d'Indochine et de Java, qui contribuent à la diversité de la population calédonienne.",
+      "sources": [
+        { "label": "Japonais de Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Japonais+en+Nouvelle-Cal%C3%A9donie" }
+      ]
+    },
+    {
+      "id": "feillet-1897",
+      "date": "1897",
+      "title": "Fin des convois de forçats",
+      "place": "Nouméa",
+      "coords": [-22.276, 166.452],
+      "category": "colonisation",
+      "description": "Le gouverneur Paul Feillet obtient l'arrêt de la « transportation » des forçats (le « robinet d'eau sale ») et encourage une colonisation libre, notamment caféière. Le bagne s'éteint progressivement au cours des décennies suivantes.",
+      "image": {"url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Paul_feillet.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "credit": "Auteur inconnu — CC BY-SA 4.0, via Wikimedia Commons", "alt": "Portrait officiel du gouverneur Paul Feillet", "source": "https://commons.wikimedia.org/wiki/File:Paul_feillet.jpg"},
+      "sources": [
+        { "label": "Paul Feillet (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Paul+Feillet" }
+      ]
+    },
+    {
+      "id": "grande-guerre",
+      "date": "1916",
+      "endDate": "1918-11",
+      "title": "Les Calédoniens dans la Grande Guerre",
+      "place": "Nouméa (départ des contingents)",
+      "coords": [-22.276, 166.452],
+      "category": "conflit",
+      "description": "Plus d'un millier de tirailleurs kanak et de nombreux Calédoniens d'origine européenne partent combattre en Europe, notamment au sein du Bataillon mixte du Pacifique. Plusieurs centaines d'entre eux n'en reviendront pas.",
+      "sources": [
+        { "label": "Bataillon mixte du Pacifique (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Bataillon+mixte+du+Pacifique" }
+      ]
+    },
+    {
+      "id": "revolte-1917",
+      "date": "1917",
+      "endDate": "1918",
+      "title": "Révolte kanak de 1917",
+      "place": "Région de Koné et Hienghène",
+      "coords": [-20.95, 164.95],
+      "category": "conflit",
+      "description": "Dans le nord de la Grande Terre, une révolte éclate, en partie liée au recrutement pour la guerre. Menée notamment par le chef Noël de Tiamou, elle est durement réprimée.",
+      "sources": [
+        { "label": "Révolte kanak de 1917 (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=R%C3%A9volte+kanak+de+1917" }
+      ]
+    },
+    {
+      "id": "expo-1931",
+      "date": "1931",
+      "title": "Des Kanak exhibés à l'Exposition coloniale",
+      "place": "Paris",
+      "coords": null,
+      "category": "colonisation",
+      "description": "Une centaine de Kanak sont exhibés à Paris, présentés comme des « cannibales » dans un véritable « zoo humain ». Cet épisode longtemps occulté a été popularisé par le roman de Didier Daeninckx « Cannibale » (1998).",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Chemins_de_Fer_Fran%C3%A7ais._Visitez_l%27Exposition_coloniale_internationale_-_Paris%2C_mai-novembre_1931._Billets_%C3%A0_prix_r%C3%A9duits_-_Trains_directs_affiche%2C_Dransy.jpg/960px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "Dransy — CC0, via Wikimedia Commons", "alt": "Affiche de l'Exposition coloniale internationale de 1931", "source": "https://commons.wikimedia.org/wiki/File:Chemins_de_Fer_Fran%C3%A7ais._Visitez_l%27Exposition_coloniale_internationale_-_Paris,_mai-novembre_1931._Billets_%C3%A0_prix_r%C3%A9duits_-_Trains_directs_affiche,_Dransy.jpg"},
+      "sources": [
+        { "label": "Exposition coloniale internationale de 1931 (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Exposition+coloniale+internationale+de+1931" }
+      ]
+    },
+    {
+      "id": "france-libre-1940",
+      "date": "1940-09-19",
+      "title": "Ralliement à la France libre",
+      "place": "Nouméa",
+      "coords": [-22.276, 166.452],
+      "category": "politique",
+      "description": "Sous la pression d'une partie de la population, la colonie rejoint le général de Gaulle. Henri Sautot arrive à Nouméa et prend la tête du territoire au nom de la France libre.",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Henri_Sautot_arriving_in_New_Caledonia%2C_1940.jpg/960px-Henri_Sautot_arriving_in_New_Caledonia%2C_1940.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "Auteur inconnu — domaine public, via Wikimedia Commons", "alt": "Le gouverneur Henri Sautot débarquant à Nouméa en 1940", "source": "https://commons.wikimedia.org/wiki/File:Henri_Sautot_arriving_in_New_Caledonia,_1940.jpg"},
+      "sources": [
+        { "label": "Henri Sautot (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Henri+Sautot" }
+      ]
+    },
+    {
+      "id": "americains-1942",
+      "date": "1942-03-12",
+      "endDate": "1945-09",
+      "title": "Arrivée des troupes américaines",
+      "place": "Nouméa",
+      "coords": [-22.276, 166.452],
+      "category": "conflit",
+      "description": "Nouméa devient l'une des principales bases alliées du Pacifique Sud. Des dizaines de milliers de soldats américains stationnent dans l'archipel : routes, aérodromes et hôpitaux transforment le territoire, ainsi que les mentalités.",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/USS_Enterprise_%28CV-6%29_at_Noumea%2C_New_Caledonia%2C_10_November_1942%2C_while_the_Big_E_was_undergoing_repairs_after_the_Battle_of_Santa_Cruz.jpg/960px-USS_Enterprise_%28CV-6%29_at_Noumea%2C_New_Caledonia%2C_10_November_1942%2C_while_the_Big_E_was_undergoing_repairs_after_the_Battle_of_Santa_Cruz.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "U.S. Navy — domaine public, via Wikimedia Commons", "alt": "Le porte-avions USS Enterprise en rade de Nouméa, novembre 1942", "source": "https://commons.wikimedia.org/wiki/File:USS_Enterprise_(CV-6)_at_Noumea,_New_Caledonia,_10_November_1942,_while_the_Big_E_was_undergoing_repairs_after_the_Battle_of_Santa_Cruz.jpg"},
+      "sources": [
+        { "label": "Nouvelle-Calédonie pendant la Seconde Guerre mondiale (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Nouvelle-Cal%C3%A9donie+Seconde+Guerre+mondiale" }
+      ]
+    },
+    {
+      "id": "tom-1946",
+      "date": "1946",
+      "title": "Territoire d'outre-mer et abolition de l'indigénat",
+      "place": "Nouméa",
+      "coords": [-22.276, 166.452],
+      "category": "politique",
+      "description": "La Nouvelle-Calédonie devient un territoire d'outre-mer. Le régime de l'indigénat est aboli : les Kanak obtiennent la liberté de circulation et accèdent progressivement au droit de vote, étendu jusqu'au suffrage universel en 1957.",
+      "sources": [
+        { "label": "Histoire de la Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Histoire+de+la+Nouvelle-Cal%C3%A9donie" }
+      ]
+    },
+    {
+      "id": "uc-1953",
+      "date": "1953",
+      "title": "Fondation de l'Union calédonienne",
+      "place": "Nouméa",
+      "coords": [-22.276, 166.452],
+      "category": "politique",
+      "description": "Maurice Lenormand fonde l'Union calédonienne (UC), premier grand parti multiethnique, avec la devise « Deux couleurs, un seul peuple ». L'UC domine la vie politique calédonienne pendant deux décennies.",
+      "sources": [
+        { "label": "Union calédonienne (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Union+cal%C3%A9donienne" }
+      ]
+    },
+    {
+      "id": "boom-nickel",
+      "date": "1967",
+      "endDate": "1972",
+      "title": "Le « boom du nickel »",
+      "place": "Usine de Doniambo, Nouméa",
+      "coords": [-22.25, 166.44],
+      "category": "economie",
+      "description": "La flambée des cours du nickel attire capitaux et main-d'œuvre. De nombreux migrants arrivent de Wallis-et-Futuna, de Polynésie et de métropole, et Nouméa s'étend rapidement. L'usine de Doniambo tourne à plein régime.",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Usine_SLN_%28Doniambo%29.JPG/960px-Usine_SLN_%28Doniambo%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "Roman.b — FAL, via Wikimedia Commons", "alt": "L'usine de nickel de la SLN à Doniambo", "source": "https://commons.wikimedia.org/wiki/File:Usine_SLN_(Doniambo).JPG"},
+      "sources": [
+        { "label": "Boom du nickel (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Boom+du+nickel" }
+      ]
+    },
+    {
+      "id": "melanesia-2000",
+      "date": "1975-09",
+      "title": "Festival Mélanésia 2000",
+      "place": "Nouméa",
+      "coords": [-22.276, 166.452],
+      "category": "culture",
+      "description": "Sous l'impulsion de Jean-Marie Tjibaou, ce grand festival rassemble les cultures kanak et affirme leur vitalité. Il marque un moment fondateur du renouveau culturel, puis politique, kanak.",
+      "sources": [
+        { "label": "Mélanésia 2000 (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=M%C3%A9lan%C3%A9sia+2000" }
+      ]
+    },
+    {
+      "id": "flnks-1984",
+      "date": "1984-09-24",
+      "title": "Création du FLNKS",
+      "place": "Nouméa",
+      "coords": [-22.276, 166.452],
+      "category": "politique",
+      "description": "Les principaux partis indépendantistes se regroupent au sein du Front de libération nationale kanak et socialiste (FLNKS), présidé par Jean-Marie Tjibaou. Le mouvement prône le boycott actif des institutions.",
+      "videos": [
+        {"label": "Congrès du FLNKS — 1984 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/vdo11004484/congres-du-flnks"}
+      ],
+      "sources": [
+        { "label": "Front de libération nationale kanak et socialiste (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Front+de+lib%C3%A9ration+nationale+kanak+et+socialiste" }
+      ]
+    },
+    {
+      "id": "canala-1984",
+      "date": "1984-11-18",
+      "title": "Boycott actif : l'urne brisée de Canala",
+      "place": "Canala",
+      "coords": [-21.52, 165.96],
+      "category": "conflit",
+      "description": "Lors du boycott actif des élections territoriales, Éloi Machoro brise une urne à coups de hache à Canala. L'image devient le symbole du début des « Événements », période de violences qui durera jusqu'en 1988.",
+      "sources": [
+        { "label": "Éloi Machoro (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=%C3%89loi+Machoro" }
+      ]
+    },
+    {
+      "id": "tiendanite-1984",
+      "date": "1984-12-05",
+      "title": "Embuscade de Tiendanite",
+      "place": "Tiendanite, Hienghène",
+      "coords": [-20.75, 164.87],
+      "category": "conflit",
+      "description": "Dix militants indépendantistes kanak, dont deux frères de Jean-Marie Tjibaou, sont tués dans une embuscade tendue par des habitants anti-indépendantistes, au retour d'une réunion. Les auteurs seront acquittés en 1987 au nom de la légitime défense.",
+      "sources": [
+        { "label": "Embuscade de Tiendanite (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Embuscade+de+Tiendanite" }
+      ]
+    },
+    {
+      "id": "machoro-1985",
+      "date": "1985-01-12",
+      "title": "Mort d'Éloi Machoro",
+      "place": "Près de La Foa",
+      "coords": [-21.68, 165.8],
+      "category": "conflit",
+      "description": "Éloi Machoro, figure du FLNKS, et Marcel Nonnaro sont abattus par des tireurs d'élite du GIGN près de La Foa, alors qu'ils occupaient une propriété avec des militants indépendantistes.",
+      "image": {"url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Machoro.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "credit": "Tux-Man — CC0, via Wikimedia Commons", "alt": "Graffiti représentant Éloi Machoro à Thio", "source": "https://commons.wikimedia.org/wiki/File:Machoro.jpg"},
+      "sources": [
+        { "label": "Éloi Machoro (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=%C3%89loi+Machoro" }
+      ]
+    },
+    {
+      "id": "referendum-1987",
+      "date": "1987-09-13",
+      "title": "Référendum d'autodétermination boycotté",
+      "place": "Nouvelle-Calédonie",
+      "coords": [-22.276, 166.452],
+      "category": "politique",
+      "description": "Lors d'un référendum boycotté par le FLNKS, plus de 98 % des votants se prononcent pour le maintien dans la République française. Le scrutin ne règle rien et les tensions restent vives.",
+      "sources": [
+        { "label": "Référendum de 1987 en Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=R%C3%A9f%C3%A9rendum+de+1987+en+Nouvelle-Cal%C3%A9donie" }
+      ]
+    },
+    {
+      "id": "ouvea-1988",
+      "date": "1988-04-22",
+      "endDate": "1988-05-05",
+      "title": "Prise d'otages et assaut de la grotte d'Ouvéa",
+      "place": "Fayaoué et Gossanah, Ouvéa",
+      "coords": [-20.5, 166.58],
+      "category": "conflit",
+      "description": "Le 22 avril 1988, des militants indépendantistes attaquent la gendarmerie de Fayaoué : quatre gendarmes sont tués et d'autres pris en otage, puis retenus dans une grotte près de Gossanah.\n\nL'assaut militaire du 5 mai, entre les deux tours de l'élection présidentielle, libère les otages mais fait 21 morts : 19 Kanak et 2 militaires.",
+      "videos": [
+        {"label": "Opération militaire à Ouvéa pour la libération des otages — Antenne 2, 5 mai 1988 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/cab88017292/nouvelle-caledonie"}
+      ],
+      "sources": [
+        { "label": "Prise d'otages d'Ouvéa (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Prise+d%27otages+d%27Ouv%C3%A9a" }
+      ]
+    },
+    {
+      "id": "matignon-1988",
+      "date": "1988-06-26",
+      "title": "Accords de Matignon-Oudinot",
+      "place": "Paris (hôtel Matignon)",
+      "coords": null,
+      "category": "politique",
+      "description": "Sous l'égide du Premier ministre Michel Rocard, Jean-Marie Tjibaou (FLNKS) et Jacques Lafleur (RPCR) signent les accords de Matignon, complétés en août par ceux de la rue Oudinot. Ils prévoient dix ans de développement et de rééquilibrage, la création de trois provinces et un scrutin d'autodétermination en 1998.\n\nLa poignée de main entre les deux hommes reste une image forte de la réconciliation.",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/H%C3%B4tel_de_Matignon_2017.jpg/960px-H%C3%B4tel_de_Matignon_2017.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "ScareCriterion12 — CC BY-SA 4.0, via Wikimedia Commons", "alt": "L'hôtel de Matignon, à Paris", "source": "https://commons.wikimedia.org/wiki/File:H%C3%B4tel_de_Matignon_2017.jpg"},
+      "videos": [
+        {"label": "Poignée de main Lafleur – Tjibaou — TF1, 27 juin 1988 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/caa88024133/nouvelle-caledonie-poignee-de-main-lafleur-tjibaou-phrase-rocard"}
+      ],
+      "sources": [
+        { "label": "Accords de Matignon (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Accords+de+Matignon+1988" }
+      ]
+    },
+    {
+      "id": "tjibaou-1989",
+      "date": "1989-05-04",
+      "title": "Assassinat de Jean-Marie Tjibaou et Yeiwéné Yeiwéné",
+      "place": "Wadrilla, Ouvéa",
+      "coords": [-20.62, 166.55],
+      "category": "conflit",
+      "description": "Lors de la cérémonie de levée de deuil des victimes de la grotte, Jean-Marie Tjibaou et Yeiwéné Yeiwéné, dirigeants du FLNKS, sont assassinés par Djubelly Wéa, militant indépendantiste opposé aux accords, lui-même tué aussitôt.",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/WadrillaMonument.jpg/960px-WadrillaMonument.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "Torbenbrinker — CC BY-SA 3.0, via Wikimedia Commons", "alt": "Monument devant l'église de Wadrilla, à Ouvéa", "source": "https://commons.wikimedia.org/wiki/File:WadrillaMonument.jpg"},
+      "videos": [
+        {"label": "Mort de Jean-Marie Tjibaou — Antenne 2, 4 mai 1989 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/cab89017500/mort-tjibaou-factuel"}
+      ],
+      "sources": [
+        { "label": "Jean-Marie Tjibaou (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Jean-Marie+Tjibaou" }
+      ]
+    },
+    {
+      "id": "centre-tjibaou-1998",
+      "date": "1998-05",
+      "title": "Inauguration du centre culturel Tjibaou",
+      "place": "Presqu'île de Tina, Nouméa",
+      "coords": [-22.255, 166.49],
+      "category": "culture",
+      "description": "Conçu par l'architecte Renzo Piano, le centre culturel Tjibaou ouvre sur la presqu'île de Tina. Ses grandes « cases » inspirées de l'architecture kanak en font un lieu emblématique de la culture kanak et océanienne.",
+      "image": {"url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Egrant-190-91.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "credit": "JOOZLy — CC BY-SA 4.0, via Wikimedia Commons", "alt": "Les cases du centre culturel Tjibaou, conçu par Renzo Piano", "source": "https://commons.wikimedia.org/wiki/File:Egrant-190-91.jpg"},
+      "videos": [
+        {"label": "Le centre culturel Tjibaou de Renzo Piano — France 2, mai 1998 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/cab98017636/le-centre-culturel-tjibaou-de-renzo-piano"}
+      ],
+      "sources": [
+        { "label": "Centre culturel Tjibaou (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Centre+culturel+Tjibaou" }
+      ]
+    },
+    {
+      "id": "accord-noumea-1998",
+      "date": "1998-05-05",
+      "title": "Signature de l'accord de Nouméa",
+      "place": "Nouméa",
+      "coords": [-22.276, 166.452],
+      "category": "politique",
+      "description": "Signé par l'État, le FLNKS et le RPCR, l'accord de Nouméa affirme que « le moment est venu de reconnaître les ombres de la période coloniale, même si elle ne fut pas dépourvue de lumière ».\n\nIl organise une décolonisation progressive : transferts de compétences, citoyenneté calédonienne, corps électoral restreint pour les élections provinciales et jusqu'à trois consultations sur l'accession à la pleine souveraineté.",
+      "videos": [
+        {"label": "Signature de l'accord de Nouméa — RFO, 5 mai 1998 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/vdo16009466/signature-des-accords-de-noumea"}
+      ],
+      "sources": [
+        { "label": "Accord de Nouméa (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Accord+de+Noum%C3%A9a" }
+      ]
+    },
+    {
+      "id": "unesco-2008",
+      "date": "2008-07",
+      "title": "Les lagons inscrits au patrimoine mondial",
+      "place": "Lagons de Nouvelle-Calédonie",
+      "coords": [-22.45, 166.78],
+      "category": "environnement",
+      "description": "Les lagons de Nouvelle-Calédonie, qui abritent l'un des plus vastes ensembles récifaux du monde, sont inscrits au patrimoine mondial de l'UNESCO pour leur diversité récifale et les écosystèmes associés.",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Le_lagon_de_Nouvelle_Cal%C3%A9donie.jpg/960px-Le_lagon_de_Nouvelle_Cal%C3%A9donie.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "RECAGUILBOT — CC BY-SA 4.0, via Wikimedia Commons", "alt": "Le lagon vu du phare Amédée", "source": "https://commons.wikimedia.org/wiki/File:Le_lagon_de_Nouvelle_Cal%C3%A9donie.jpg"},
+      "sources": [
+        { "label": "Lagons de Nouvelle-Calédonie (UNESCO)", "url": "https://whc.unesco.org/fr/list/1115" }
+      ]
+    },
+    {
+      "id": "usine-sud-2010",
+      "date": "2010",
+      "title": "Mise en service de l'usine du Sud",
+      "place": "Goro, Yaté",
+      "coords": [-22.3, 166.95],
+      "category": "economie",
+      "description": "L'usine hydrométallurgique de Goro, exploitée par le groupe Vale, entre en production dans le Grand Sud, non sans contestation environnementale et coutumière. Elle est reprise en 2021 sous le nom de Prony Resources.",
+      "sources": [
+        { "label": "Usine du Sud (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Usine+du+Sud+Goro" }
+      ]
+    },
+    {
+      "id": "drapeaux-2010",
+      "date": "2010-07",
+      "title": "Le drapeau kanak hissé aux côtés du drapeau français",
+      "place": "Nouméa",
+      "coords": [-22.276, 166.452],
+      "category": "politique",
+      "description": "Le drapeau du FLNKS, dit « drapeau kanak », est hissé aux côtés du drapeau tricolore, en reconnaissance des deux identités. La question des signes identitaires communs reste débattue.",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Two_official_flags_of_New_Caledonia_on_same_flagpole.png/960px-Two_official_flags_of_New_Caledonia_on_same_flagpole.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "GeorgeLouis — CC BY 3.0, via Wikimedia Commons", "alt": "Le drapeau tricolore et le drapeau kanak sur le même mât à Nouméa", "source": "https://commons.wikimedia.org/wiki/File:Two_official_flags_of_New_Caledonia_on_same_flagpole.png"},
+      "sources": [
+        { "label": "Drapeau de la Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Drapeau+de+la+Nouvelle-Cal%C3%A9donie" }
+      ]
+    },
+    {
+      "id": "usine-nord-2013",
+      "date": "2013",
+      "title": "Démarrage de l'usine du Nord (Koniambo)",
+      "place": "Vavouto, Voh",
+      "coords": [-21.01, 164.72],
+      "category": "economie",
+      "description": "L'usine métallurgique de Koniambo, détenue majoritairement par la province Nord via la SMSP, en partenariat avec Glencore, produit ses premières tonnes de ferronickel. Elle incarne le « rééquilibrage » économique voulu par les accords.",
+      "sources": [
+        { "label": "Koniambo Nickel (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Koniambo+Nickel" }
+      ]
+    },
+    {
+      "id": "referendum-2018",
+      "date": "2018-11-04",
+      "title": "Premier référendum sur l'indépendance",
+      "place": "Nouvelle-Calédonie",
+      "coords": [-22.276, 166.452],
+      "category": "politique",
+      "description": "Lors de la première consultation prévue par l'accord de Nouméa, le « non » à l'indépendance l'emporte avec 56,7 % des suffrages exprimés, avec une participation de 81 %.",
+      "image": {"url": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Bulletins_de_vote_r%C3%A9f%C3%A9rendum_Nouvelle_Cal%C3%A9donie_2018_2020_2021.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "credit": "sudd.ch — CC BY-SA 4.0, via Wikimedia Commons", "alt": "Bulletins de vote des référendums de 2018, 2020 et 2021", "source": "https://commons.wikimedia.org/wiki/File:Bulletins_de_vote_r%C3%A9f%C3%A9rendum_Nouvelle_Cal%C3%A9donie_2018_2020_2021.png"},
+      "videos": [
+        {"label": "Référendum : le vote kanak — France 2, novembre 2018 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/6320170_001_014/referendum-en-nouvelle-caledonie-le-vote-kanak"}
+      ],
+      "sources": [
+        { "label": "Référendum de 2018 en Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=R%C3%A9f%C3%A9rendum+de+2018+sur+l%27ind%C3%A9pendance+de+la+Nouvelle-Cal%C3%A9donie" }
+      ]
+    },
+    {
+      "id": "referendum-2020",
+      "date": "2020-10-04",
+      "title": "Deuxième référendum sur l'indépendance",
+      "place": "Nouvelle-Calédonie",
+      "coords": [-22.276, 166.452],
+      "category": "politique",
+      "description": "Le « non » l'emporte à nouveau, avec 53,3 % des suffrages exprimés. L'écart se resserre et la participation atteint près de 86 %.",
+      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/R%C3%A9sultats_par_commune_r%C3%A9f%C3%A9rendum_Nouvelle_Cal%C3%A9donie_2020.png/960px-R%C3%A9sultats_par_commune_r%C3%A9f%C3%A9rendum_Nouvelle_Cal%C3%A9donie_2020.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "Tpe.g5.stan — CC BY-SA 4.0, via Wikimedia Commons", "alt": "Carte des résultats du référendum de 2020 par commune", "source": "https://commons.wikimedia.org/wiki/File:R%C3%A9sultats_par_commune_r%C3%A9f%C3%A9rendum_Nouvelle_Cal%C3%A9donie_2020.png"},
+      "videos": [
+        {"label": "Le « non » à l'indépendance l'emporte — 4 octobre 2020 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/7418885_001_027/le-non-a-l-independance-l-emporte-en-nouvelle-caledonie"}
+      ],
+      "sources": [
+        { "label": "Référendum de 2020 en Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=R%C3%A9f%C3%A9rendum+de+2020+sur+l%27ind%C3%A9pendance+de+la+Nouvelle-Cal%C3%A9donie" }
+      ]
+    },
+    {
+      "id": "referendum-2021",
+      "date": "2021-12-12",
+      "title": "Troisième référendum, boycotté par les indépendantistes",
+      "place": "Nouvelle-Calédonie",
+      "coords": [-22.276, 166.452],
+      "category": "politique",
+      "description": "Les indépendantistes, qui demandaient un report en raison de l'épidémie de Covid-19 et du deuil coutumier, appellent à la non-participation. Le « non » obtient 96,5 % des voix avec une participation d'environ 44 %. La légitimité du résultat est contestée par le FLNKS.",
+      "videos": [
+        {"label": "Les enjeux du dernier référendum — décembre 2021 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/7695309_001_131/les-enjeux-du-dernier-referendum-en-nouvelle-caledonie"}
+      ],
+      "sources": [
+        { "label": "Référendum de 2021 en Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=R%C3%A9f%C3%A9rendum+de+2021+sur+l%27ind%C3%A9pendance+de+la+Nouvelle-Cal%C3%A9donie" }
+      ]
+    },
+    {
+      "id": "kns-2024",
+      "date": "2024-02",
+      "title": "Crise du nickel : l'usine du Nord mise en sommeil",
+      "place": "Vavouto, Voh",
+      "coords": [-21.01, 164.72],
+      "category": "economie",
+      "description": "Glencore annonce son retrait et l'usine du Nord est placée en sommeil ; ses salariés sont licenciés au cours de l'été 2024. Avec les difficultés de la SLN et de Prony Resources, toute la filière nickel traverse une crise profonde.",
+      "sources": [
+        { "label": "Koniambo Nickel (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Koniambo+Nickel" }
+      ]
+    },
+    {
+      "id": "emeutes-2024",
+      "date": "2024-05-13",
+      "title": "Émeutes contre la réforme du corps électoral",
+      "place": "Grand Nouméa",
+      "coords": [-22.22, 166.47],
+      "category": "conflit",
+      "description": "Alors que le Parlement examine une réforme constitutionnelle élargissant le corps électoral provincial (le « dégel »), de violentes émeutes éclatent dans l'agglomération de Nouméa. L'état d'urgence et un couvre-feu sont décrétés. Les violences font 14 morts et des dégâts économiques considérables ; la réforme est finalement suspendue.",
+      "image": {"url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Blocage_Koutio-Koueta_mai_2024.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "credit": "Siciliathisma — CC0, via Wikimedia Commons", "alt": "Barricade à Koutio-Koueta, le 14 mai 2024", "source": "https://commons.wikimedia.org/wiki/File:Blocage_Koutio-Koueta_mai_2024.jpg"},
+      "videos": [
+        {"label": "Nouvelle-Calédonie : d'où vient la colère ? — archives vidéo (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/nouvelle-caledonie-emeutes-independantistes-loi-constitutionnelle-corps-electoral-elections"}
+      ],
+      "sources": [
+        { "label": "Émeutes de 2024 en Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=%C3%89meutes+de+2024+en+Nouvelle-Cal%C3%A9donie" }
+      ]
+    },
+    {
+      "id": "bougival-2025",
+      "date": "2025-07-12",
+      "title": "Projet d'accord de Bougival",
+      "place": "Bougival (Yvelines)",
+      "coords": null,
+      "category": "politique",
+      "description": "Au terme de dix jours de négociations, les délégations calédoniennes et l'État signent un projet d'accord prévoyant un « État de la Nouvelle-Calédonie » inscrit dans la Constitution, une nationalité calédonienne et un report des élections provinciales.",
+      "sources": [
+        { "label": "Accord de Bougival (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Accord+de+Bougival" }
+      ]
+    },
+    {
+      "id": "flnks-rejet-bougival-2025",
+      "date": "2025-08",
+      "title": "Le FLNKS rejette le projet de Bougival",
+      "place": "Nouvelle-Calédonie",
+      "coords": null,
+      "category": "politique",
+      "description": "Réuni en congrès, le FLNKS rejette le projet d'accord de Bougival, estimant qu'il ne répond pas à l'aspiration à la pleine souveraineté. L'avenir institutionnel du pays reste en discussion.",
+      "sources": [
+        { "label": "Accord de Bougival (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Accord+de+Bougival" }
+      ]
+    }
+  ]
+}
