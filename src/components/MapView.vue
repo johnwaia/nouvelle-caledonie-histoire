@@ -83,15 +83,54 @@ const tribuIcon = L.divIcon({
   iconAnchor: [13, 19],
 })
 
+/*
+ * Crédits de la carte : un petit bouton « i » qui affiche les mentions obligatoires
+ * (conditions d'Esri, licence ODbL d'OpenStreetMap, source DITTT pour les tribus).
+ */
+const CREDITS =
+  'Fond de carte © <a href="https://www.esri.com" target="_blank" rel="noopener">Esri</a>, HERE, Garmin' +
+  ' · © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">contributeurs OpenStreetMap</a>' +
+  ' · Tribus : Gouvernement de la Nouvelle-Calédonie / D.I.T.T.T.' +
+  ' · <a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a>'
+function addCreditsControl() {
+  const Credits = L.Control.extend({
+    options: { position: 'bottomleft' },
+    onAdd() {
+      const box = L.DomUtil.create('div', 'map-credits')
+      box.innerHTML =
+        '<button type="button" class="map-credits-btn" aria-expanded="false" aria-label="Crédits de la carte" title="Crédits de la carte">i</button>' +
+        `<div class="map-credits-text" hidden>${CREDITS}</div>`
+      const btn = box.querySelector('button')
+      const text = box.querySelector('div')
+      const toggle = (open) => {
+        text.hidden = !open
+        btn.setAttribute('aria-expanded', String(open))
+      }
+      btn.addEventListener('click', () => toggle(text.hidden))
+      map.on('click movestart', () => toggle(false)) // se referme dès qu'on touche la carte
+      L.DomEvent.disableClickPropagation(box)
+      L.DomEvent.disableScrollPropagation(box)
+      return box
+    },
+  })
+  new Credits().addTo(map)
+}
+
 const ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ESCAPES[c])
 
 onMounted(() => {
-  map = L.map(el.value, { zoomSnap: 0.25, minZoom: 6, maxZoom: 16, maxBounds: NC_BOUNDS.pad(1.5) })
+  map = L.map(el.value, {
+    zoomSnap: 0.25,
+    minZoom: 6,
+    maxZoom: 16,
+    maxBounds: NC_BOUNDS.pad(1.5),
+    attributionControl: false, // remplacée par le bouton « i » des crédits (obligatoires : Esri, OSM, DITTT)
+  })
+  addCreditsControl()
 
   // Fond de carte épuré (Esri « Light Gray Canvas », terres recolorées en vert) + principaux noms de lieux.
   new GreenLandLayer({
-    attribution: 'Fond de carte &copy; Esri, HERE, Garmin, &copy; contributeurs OpenStreetMap · Tribus : Gouvernement de la Nouvelle-Calédonie / DITTT',
     maxZoom: 16,
   }).addTo(map)
   L.tileLayer(ESRI + 'World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16 }).addTo(map)
