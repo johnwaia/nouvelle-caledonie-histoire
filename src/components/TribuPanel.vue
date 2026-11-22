@@ -9,7 +9,7 @@ const emit = defineEmits(['close'])
 const closeBtn = ref(null)
 onMounted(() => closeBtn.value?.focus())
 
-const CASE_IMG = import.meta.env.BASE_URL + 'case_kanak_icone.png'
+const CASE_IMG = import.meta.env.BASE_URL + 'images/case_kanak_icone.png'
 // « Ouvéa — Ouvéa (îles Loyauté) » → « Ouvéa (îles Loyauté) »
 const localisation = computed(() => {
   const { commune = '', ile } = props.tribu

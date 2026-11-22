@@ -75,7 +75,7 @@ const GreenLandLayer = L.GridLayer.extend({
 })
 
 /* Icône de tribu : une case. */
-const CASE_IMG = import.meta.env.BASE_URL + 'case_kanak_icone.png'
+const CASE_IMG = import.meta.env.BASE_URL + 'images/case_kanak_icone.png'
 const tribuIcon = L.divIcon({
   className: 'tribu-icon',
   html: `<span class="tribu"><img class="tribu-case" src="${CASE_IMG}" alt=""></span>`,

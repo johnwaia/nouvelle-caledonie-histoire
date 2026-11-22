@@ -141,6 +141,7 @@
       "coords": [-20.33, 164.47],
       "category": "contact",
       "description": "Mgr Guillaume Douarre et des pères maristes débarquent à Balade et y fondent la première mission catholique. Mal acceptée, la mission est attaquée et abandonnée en 1847, avant que les missionnaires ne reviennent quelques années plus tard.",
+      "image": {"url": "images/evenements/Guillaume_Douare.jpg", "alt": "Mgr Guillaume Douarre, fondateur de la mission de Balade"},
       "sources": [
         { "label": "Guillaume Douarre (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Guillaume+Douarre" }
       ]
@@ -166,6 +167,7 @@
       "coords": [-22.276, 166.452],
       "category": "colonisation",
       "description": "Le capitaine de vaisseau Louis Tardy de Montravel fonde Port-de-France sur la presqu'île de Nouméa, choisie pour la qualité de sa rade. La ville prend le nom de Nouméa en 1866.",
+      "image": {"url": "images/evenements/Louis_Tardy_de_Montravel.jpg", "alt": "Portrait de Louis Tardy de Montravel, fondateur de Port-de-France"},
       "sources": [
         { "label": "Nouméa (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Noum%C3%A9a" }
       ]
@@ -205,6 +207,7 @@
       "coords": [-21.55, 165.6],
       "category": "colonisation",
       "description": "L'administration coloniale institue des réserves : les clans kanak sont cantonnés sur des terres délimitées, tandis que les terres jugées les meilleures sont attribuées à la colonisation pénale et libre. La question foncière devient centrale dans l'histoire du pays.",
+      "image": {"url": "images/evenements/reserve_kanak.png", "alt": "Réserve kanak"},
       "sources": [
         { "label": "Histoire de la Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Histoire+de+la+Nouvelle-Cal%C3%A9donie" }
       ]
@@ -276,6 +279,7 @@
       "coords": [-22.276, 166.452],
       "category": "colonisation",
       "description": "Le régime de l'indigénat est appliqué aux Kanak : sanctions administratives sans jugement, travail obligatoire, impôt de capitation, interdiction de quitter les réserves sans autorisation. Il reste en vigueur jusqu'en 1946.",
+      "image": {"url": "images/evenements/code_indigenat.jpg", "alt": "Le code de l'indigénat"},
       "sources": [
         { "label": "Code de l'indigénat (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Code+de+l%27indig%C3%A9nat" }
       ]
@@ -288,6 +292,7 @@
       "coords": [-21.61, 166.21],
       "category": "economie",
       "description": "Les premiers travailleurs japonais sous contrat arrivent pour les mines de Thio. Ils sont suivis par des engagés venus d'Indochine et de Java, qui contribuent à la diversité de la population calédonienne.",
+      "image": {"url": "images/evenements/arriver_japonnais.jpg", "alt": "Arrivée des travailleurs japonais"},
       "sources": [
         { "label": "Japonais de Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Japonais+en+Nouvelle-Cal%C3%A9donie" }
       ]
@@ -314,6 +319,7 @@
       "coords": [-22.276, 166.452],
       "category": "conflit",
       "description": "Plus d'un millier de tirailleurs kanak et de nombreux Calédoniens d'origine européenne partent combattre en Europe, notamment au sein du Bataillon mixte du Pacifique. Plusieurs centaines d'entre eux n'en reviendront pas.",
+      "image": {"url": "images/evenements/caserne_de_noumea.jpg", "alt": "La caserne de Nouméa"},
       "sources": [
         { "label": "Bataillon mixte du Pacifique (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Bataillon+mixte+du+Pacifique" }
       ]
@@ -327,6 +333,7 @@
       "coords": [-20.95, 164.95],
       "category": "conflit",
       "description": "Dans le nord de la Grande Terre, une révolte éclate, en partie liée au recrutement pour la guerre. Menée notamment par le chef Noël de Tiamou, elle est durement réprimée.",
+      "image": {"url": "images/evenements/guerre_1917.jpg", "alt": "La guerre de 1917"},
       "sources": [
         { "label": "Révolte kanak de 1917 (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=R%C3%A9volte+kanak+de+1917" }
       ]
@@ -379,6 +386,7 @@
       "coords": [-22.276, 166.452],
       "category": "politique",
       "description": "La Nouvelle-Calédonie devient un territoire d'outre-mer. Le régime de l'indigénat est aboli : les Kanak obtiennent la liberté de circulation et accèdent progressivement au droit de vote, étendu jusqu'au suffrage universel en 1957.",
+      "image": {"url": "images/evenements/abolition_indigenat.jpg", "alt": "Abolition de l'indigénat"},
       "sources": [
         { "label": "Histoire de la Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Histoire+de+la+Nouvelle-Cal%C3%A9donie" }
       ]
@@ -391,6 +399,7 @@
       "coords": [-22.276, 166.452],
       "category": "politique",
       "description": "Maurice Lenormand fonde l'Union calédonienne (UC), premier grand parti multiethnique, avec la devise « Deux couleurs, un seul peuple ». L'UC domine la vie politique calédonienne pendant deux décennies.",
+      "image": {"url": "images/evenements/creation_uc.webp", "alt": "Création de l'Union calédonienne"},
       "sources": [
         { "label": "Union calédonienne (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Union+cal%C3%A9donienne" }
       ]
@@ -417,6 +426,7 @@
       "coords": [-22.276, 166.452],
       "category": "culture",
       "description": "Sous l'impulsion de Jean-Marie Tjibaou, ce grand festival rassemble les cultures kanak et affirme leur vitalité. Il marque un moment fondateur du renouveau culturel, puis politique, kanak.",
+      "image": {"url": "images/evenements/melanesia_2000.jpg", "alt": "Le festival Mélanésia 2000"},
       "sources": [
         { "label": "Mélanésia 2000 (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=M%C3%A9lan%C3%A9sia+2000" }
       ]
@@ -432,6 +442,7 @@
       "videos": [
         {"label": "Congrès du FLNKS — 1984 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/vdo11004484/congres-du-flnks"}
       ],
+      "image": {"url": "images/evenements/creation_flnks.jpg", "alt": "Création du FLNKS"},
       "sources": [
         { "label": "Front de libération nationale kanak et socialiste (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Front+de+lib%C3%A9ration+nationale+kanak+et+socialiste" }
       ]
@@ -444,6 +455,7 @@
       "coords": [-21.52, 165.96],
       "category": "conflit",
       "description": "Lors du boycott actif des élections territoriales, Éloi Machoro brise une urne à coups de hache à Canala. L'image devient le symbole du début des « Événements », période de violences qui durera jusqu'en 1988.",
+      "image": {"url": "images/evenements/urne_brisee_1984.jpg", "alt": "L'urne brisée de Canala"},
       "sources": [
         { "label": "Éloi Machoro (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=%C3%89loi+Machoro" }
       ]
@@ -456,6 +468,7 @@
       "coords": [-20.75, 164.87],
       "category": "conflit",
       "description": "Dix militants indépendantistes kanak, dont deux frères de Jean-Marie Tjibaou, sont tués dans une embuscade tendue par des habitants anti-indépendantistes, au retour d'une réunion. Les auteurs seront acquittés en 1987 au nom de la légitime défense.",
+      "image": {"url": "images/evenements/embuscade_tiendanite.jpg", "alt": "Embuscade de Tiendanite"},
       "sources": [
         { "label": "Embuscade de Tiendanite (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Embuscade+de+Tiendanite" }
       ]
@@ -481,6 +494,7 @@
       "coords": [-22.276, 166.452],
       "category": "politique",
       "description": "Lors d'un référendum boycotté par le FLNKS, plus de 98 % des votants se prononcent pour le maintien dans la République française. Le scrutin ne règle rien et les tensions restent vives.",
+      "image": {"url": "images/evenements/boycotte_referendum_1987.avif", "alt": "Le référendum de 1987, boycotté par les indépendantistes"},
       "sources": [
         { "label": "Référendum de 1987 en Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=R%C3%A9f%C3%A9rendum+de+1987+en+Nouvelle-Cal%C3%A9donie" }
       ]
@@ -497,6 +511,7 @@
       "videos": [
         {"label": "Opération militaire à Ouvéa pour la libération des otages — Antenne 2, 5 mai 1988 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/cab88017292/nouvelle-caledonie"}
       ],
+      "image": {"url": "images/evenements/prise_otage_ouvea.avif", "alt": "La prise d'otages d'Ouvéa"},
       "sources": [
         { "label": "Prise d'otages d'Ouvéa (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Prise+d%27otages+d%27Ouv%C3%A9a" }
       ]
@@ -560,6 +575,7 @@
       "videos": [
         {"label": "Signature de l'accord de Nouméa — RFO, 5 mai 1998 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/vdo16009466/signature-des-accords-de-noumea"}
       ],
+      "image": {"url": "images/evenements/accord_de_noumea.jpg", "alt": "Signature de l'accord de Nouméa"},
       "sources": [
         { "label": "Accord de Nouméa (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Accord+de+Noum%C3%A9a" }
       ]
@@ -585,6 +601,7 @@
       "coords": [-22.3, 166.95],
       "category": "economie",
       "description": "L'usine hydrométallurgique de Goro, exploitée par le groupe Vale, entre en production dans le Grand Sud, non sans contestation environnementale et coutumière. Elle est reprise en 2021 sous le nom de Prony Resources.",
+      "image": {"url": "images/evenements/mise_service_usine_sud.png", "alt": "L'usine du Sud"},
       "sources": [
         { "label": "Usine du Sud (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Usine+du+Sud+Goro" }
       ]
@@ -610,6 +627,7 @@
       "coords": [-21.01, 164.72],
       "category": "economie",
       "description": "L'usine métallurgique de Koniambo, détenue majoritairement par la province Nord via la SMSP, en partenariat avec Glencore, produit ses premières tonnes de ferronickel. Elle incarne le « rééquilibrage » économique voulu par les accords.",
+      "image": {"url": "images/evenements/demarrage_usine_nord.avif", "alt": "L'usine du Nord (Koniambo)"},
       "sources": [
         { "label": "Koniambo Nickel (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Koniambo+Nickel" }
       ]
@@ -657,6 +675,7 @@
       "videos": [
         {"label": "Les enjeux du dernier référendum — décembre 2021 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/7695309_001_131/les-enjeux-du-dernier-referendum-en-nouvelle-caledonie"}
       ],
+      "image": {"url": "images/evenements/boycotte_referendum_2021.webp", "alt": "Le référendum de 2021, boycotté par les indépendantistes"},
       "sources": [
         { "label": "Référendum de 2021 en Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=R%C3%A9f%C3%A9rendum+de+2021+sur+l%27ind%C3%A9pendance+de+la+Nouvelle-Cal%C3%A9donie" }
       ]

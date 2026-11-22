@@ -55,7 +55,7 @@ Ajoutez un objet dans la liste `events` (l'ordre n'a pas d'importance, le tri se
 | `coords` | oui | `[latitude, longitude]` (latitude négative, ex. `[-22.27, 166.45]`), ou `null` si hors de l'archipel |
 | `category` | oui | une clé de `categories` (voir en haut du fichier) |
 | `description` | oui | texte de la fiche |
-| `image` | non | `url`, `credit`, `alt`, `source` (page de l'image, liée depuis le crédit) — privilégier Wikimedia Commons ou des images libres de droits |
+| `image` | non | `url` (image distante `https://…` ou locale `images/evenements/mon-image.jpg`), `credit`, `alt`, `source` (page de l'image, liée depuis le crédit) — privilégier des images libres de droits et toujours indiquer l'auteur |
 | `videos` | non | liste de `{ "label", "url" }` (archives INA, etc.), affichée dans la fiche |
 | `sources` | conseillé | liste de `{ "label", "url" }` |
 
@@ -71,7 +71,7 @@ Le script signale les erreurs (date mal écrite, id en double, catégorie inconn
 
 ### Tribus
 
-Les **345 tribus** sont dans **`public/data/tribus.json`** : les 344 tribus de la liste officielle (Gouvernement de la Nouvelle-Calédonie / DITTT, couche « Localités et zones bâties ») + Hnathalo. Elles s'affichent toutes ensemble avec le bouton **« Afficher les tribus »** de l'en-tête (indépendamment de l'année choisie) ; chacune est représentée par une case (`public/case_kanak_icone.png`). Un clic ouvre un panneau (fermeture : croix, clic à l'extérieur ou Échap) ; lien partageable `#tribu=<id>`.
+Les **345 tribus** sont dans **`public/data/tribus.json`** : les 344 tribus de la liste officielle (Gouvernement de la Nouvelle-Calédonie / DITTT, couche « Localités et zones bâties ») + Hnathalo. Elles s'affichent toutes ensemble avec le bouton **« Afficher les tribus »** de l'en-tête (indépendamment de l'année choisie) ; chacune est représentée par une case (`public/images/case_kanak_icone.png`). Un clic ouvre un panneau (fermeture : croix, clic à l'extérieur ou Échap) ; lien partageable `#tribu=<id>`.
 
 Pour mettre à jour la liste depuis la source officielle (les fiches rédigées sont conservées) :
 
@@ -120,6 +120,8 @@ Un événement portant le même `id` dans un fichier suivant remplace le précé
 ```
 public/data/events.json     contenu (événements, catégories, périodes)
 public/data/tribus.json     tribus affichées sur la carte
+public/images/              images du site (cases, pirogue)
+public/images/evenements/   images des fiches d'événements
 scripts/check-data.mjs      validation du contenu
 scripts/import-tribus.mjs   import de la liste officielle des tribus (DITTT)
 src/App.vue                 chargement des données, filtres, sélection

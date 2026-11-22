@@ -25,7 +25,7 @@ const periods = ref([])
 const events = ref([])
 
 const selectedYear = ref(null)
-const caseIcon = import.meta.env.BASE_URL + 'case_kanak_icone.png'
+const caseIcon = import.meta.env.BASE_URL + 'images/case_kanak_icone.png'
 const showPast = ref(false)
 const selectedId = ref(null)
 const tribus = ref([])
@@ -60,6 +60,8 @@ function normalize(raw) {
     dateText: formatEventDate(raw),
     sources: (raw.sources || []).map((s) => (typeof s === 'string' ? { label: s } : s)),
     videos: (raw.videos || []).map((v) => (typeof v === 'string' ? { url: v } : v)),
+    // Image locale (« images/evenements/… ») ou distante (https://…)
+    image: raw.image?.url ? { ...raw.image, url: resolveUrl(raw.image.url) } : raw.image,
   }
 }
 
