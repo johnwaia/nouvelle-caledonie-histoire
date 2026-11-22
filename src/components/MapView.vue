@@ -10,8 +10,11 @@ const props = defineProps({
   year: { type: Number, default: null },
   tribus: { type: Array, default: () => [] },       // tribus visibles pour l'année choisie (une case chacune)
   selectedTribuId: { type: String, default: null },
+  communes: { type: Array, default: () => [] },     // communes à afficher
+  selectedCommuneId: { type: String, default: null },
+  focusTarget: { type: Object, default: null },     // { coords, zoom, key } : résultat de recherche à montrer
 })
-const emit = defineEmits(['select', 'select-tribu'])
+const emit = defineEmits(['select', 'select-tribu', 'select-commune'])
 
 const el = ref(null)
 // L'objet Leaflet ne doit pas être réactif : variables simples.
@@ -19,6 +22,8 @@ let map = null
 let layer = null
 let tribusLayer = null
 const tribuMarkers = new Map()
+let communesLayer = null
+const communeMarkers = new Map()
 let resizeObserver = null
 let prevIds = new Set()
 let lastSignature = ''
@@ -139,6 +144,11 @@ onMounted(() => {
   map.createPane('tribus').style.zIndex = 580
   tribusLayer = L.layerGroup().addTo(map)
   syncTribus()
+
+  // Communes : étiquettes au-dessus des tribus, sous les points d'événements.
+  map.createPane('communes').style.zIndex = 590
+  communesLayer = L.layerGroup().addTo(map)
+  syncCommunes()
 
   map.fitBounds(NC_BOUNDS)
   layer = L.layerGroup().addTo(map)
@@ -268,6 +278,57 @@ function highlightTribu() {
 }
 watch(() => props.tribus, syncTribus)
 watch(() => props.selectedTribuId, highlightTribu)
+
+/* ---------- Communes ---------- */
+function syncCommunes() {
+  if (!map) return
+  const wanted = new Map(props.communes.filter((c) => Array.isArray(c.coords)).map((c) => [c.id, c]))
+  for (const [id, m] of communeMarkers) {
+    if (!wanted.has(id)) {
+      communesLayer.removeLayer(m)
+      communeMarkers.delete(id)
+    }
+  }
+  for (const [id, c] of wanted) {
+    if (communeMarkers.has(id)) continue
+    const marker = L.marker(c.coords, {
+      pane: 'communes',
+      icon: L.divIcon({
+        className: 'commune-icon',
+        html: `<span class="commune-pin"></span><span class="commune-label">${esc(c.nom)}</span>`,
+        iconSize: [12, 12],
+        iconAnchor: [6, 6],
+      }),
+      keyboard: true,
+      alt: `Commune de ${c.nom}`,
+    })
+    marker.on('click', () => emit('select-commune', id))
+    marker.addTo(communesLayer)
+    communeMarkers.set(id, marker)
+  }
+  highlightCommune()
+}
+function highlightCommune() {
+  for (const [id, m] of communeMarkers) m.getElement()?.classList.toggle('active', id === props.selectedCommuneId)
+}
+watch(() => props.communes, syncCommunes)
+watch(() => props.selectedCommuneId, highlightCommune)
+
+// Résultat du moteur de recherche : on centre la carte dessus.
+watch(
+  () => props.focusTarget?.key,
+  () => {
+    const t = props.focusTarget
+    if (!map || !t?.coords) return
+    map.flyTo(t.coords, t.zoom, { duration: 0.9 })
+    // Le panneau d'information couvre la droite (ordinateur) ou le bas (mobile) : on décale la vue.
+    map.once('moveend', () => {
+      const size = map.getSize()
+      if (window.innerWidth > 760) map.panBy([Math.min(210, size.x / 4), 0])
+      else map.panBy([0, Math.round(size.y * 0.3)])
+    })
+  },
+)
 
 // Recentre la carte si l'événement choisi est hors champ.
 watch(

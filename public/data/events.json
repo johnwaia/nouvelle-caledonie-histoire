@@ -7,7 +7,8 @@
     "politique":     { "label": "Politique & institutions",    "color": "#d53f8c" },
     "economie":      { "label": "Économie & nickel",           "color": "#dd6b20" },
     "culture":       { "label": "Culture & patrimoine",        "color": "#0f9d8a" },
-    "environnement": { "label": "Environnement",               "color": "#38a169" }
+    "environnement": { "label": "Environnement",               "color": "#38a169" },
+    "sante":         { "label": "Santé",                       "color": "#0284c7" }
   },
 
   "periods": [
@@ -688,6 +689,7 @@
       "coords": [-21.01, 164.72],
       "category": "economie",
       "description": "Glencore annonce son retrait et l'usine du Nord est placée en sommeil ; ses salariés sont licenciés au cours de l'été 2024. Avec les difficultés de la SLN et de Prony Resources, toute la filière nickel traverse une crise profonde.",
+      "image": {"url": "images/evenements/usine_du_nord_sommeil.jpg", "alt": "L'usine du Nord mise en sommeil"},
       "sources": [
         { "label": "Koniambo Nickel (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Koniambo+Nickel" }
       ]
@@ -716,6 +718,7 @@
       "coords": null,
       "category": "politique",
       "description": "Au terme de dix jours de négociations, les délégations calédoniennes et l'État signent un projet d'accord prévoyant un « État de la Nouvelle-Calédonie » inscrit dans la Constitution, une nationalité calédonienne et un report des élections provinciales.",
+      "image": {"url": "images/evenements/accord_bougival.jpg", "alt": "Le projet d'accord de Bougival"},
       "sources": [
         { "label": "Accord de Bougival (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Accord+de+Bougival" }
       ]
@@ -728,8 +731,315 @@
       "coords": null,
       "category": "politique",
       "description": "Réuni en congrès, le FLNKS rejette le projet d'accord de Bougival, estimant qu'il ne répond pas à l'aspiration à la pleine souveraineté. L'avenir institutionnel du pays reste en discussion.",
+      "image": {"url": "images/evenements/non_bougival.jpg", "alt": "Le FLNKS rejette le projet de Bougival"},
       "sources": [
         { "label": "Accord de Bougival (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Accord+de+Bougival" }
+      ]
+    },
+    {
+      "id": "uicalo-aiclf-1946",
+      "date": "1946-05",
+      "title": "Premières associations politiques kanak : UICALO et AICLF",
+      "place": "Nouméa",
+      "coords": [-22.276,166.452],
+      "category": "politique",
+      "description": "Au lendemain de l'abolition de l'indigénat, les Kanak s'organisent. En mai 1946 naît l'UICALO (Union des indigènes calédoniens amis de la liberté dans l'ordre), d'origine catholique, puis en février 1947 l'AICLF (Association des indigènes calédoniens et loyaltiens français), d'origine protestante, dont le programme est fixé lors de l'assemblée de Tibarama.\n\nCes deux mouvements soutiennent Maurice Lenormand aux élections de 1951 et préfigurent l'Union calédonienne, fondée en 1953.",
+      "sources": [
+        {"label":"Association des indigènes calédoniens et loyaltiens français (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Association+des+indig%C3%A8nes+cal%C3%A9doniens+et+loyaltiens+fran%C3%A7ais"},
+        {"label":"Chronologie de la Nouvelle-Calédonie (Journal de la Société des Océanistes)","url":"https://presencekanak.com/wp-content/uploads/2024/05/jso-chronologie-dates-knc.pdf"}
+      ]
+    },
+    {
+      "id": "foulards-rouges-1969",
+      "date": "1969-09-02",
+      "title": "Le réveil kanak : les « Foulards rouges »",
+      "place": "Nouméa",
+      "coords": [-22.276,166.452],
+      "category": "politique",
+      "description": "De retour d'études en France, marqué par Mai 68, Nidoïsh Naisseline, fils du grand chef du Guahma (Maré), fonde les « Foulards rouges ». Tracts, graffitis, revues anticoloniales, réunions et manifestations pacifiques : le mouvement dénonce le racisme colonial et revendique la dignité et l'identité kanak.\n\nAprès une manifestation, son leader est emprisonné avec plusieurs camarades. C'est le point de départ du « réveil kanak » des années 1969-1976.",
+      "image": {"url": "images/evenements/foulard_rouge.jpg", "alt": "Les Foulards rouges"},
+      "sources": [
+        {"label":"Nidoïsh Naisseline (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Nido%C3%AFsh+Naisseline"},
+        {"label":"D. Chappell, « The Kanak Awakening » (UBC Press)","url":"https://ubcpress.ca/the-kanak-awakening"}
+      ]
+    },
+    {
+      "id": "groupe-1878",
+      "date": "1971",
+      "approx": true,
+      "title": "Le « Groupe 1878 » et la revendication foncière",
+      "place": "Grande Terre",
+      "coords": [-21.12,164.86],
+      "category": "politique",
+      "description": "De jeunes Kanak de la Grande Terre, dont Élie Poigoune, fondent le « Groupe 1878 », en référence à la grande insurrection d'Ataï. Proche des Foulards rouges mais plus implanté sur la Grande Terre, il met au cœur de son action la revendication des terres spoliées par la colonisation.\n\nLes sources datent sa création de 1968 ou de 1971.",
+      "image": {"url": "images/evenements/groupe_1878.jpg", "alt": "Le Groupe 1878"},
+      "sources": [
+        {"label":"Nationalisme kanak (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Nationalisme+kanak"},
+        {"label":"Enquête sur les débuts du Palika à Koné (Présence kanak)","url":"https://presencekanak.com/wp-content/uploads/2024/09/les-echos-du-passe.-enquete-sur-les-debuts-du-palika-a-kone-nouvelle-caledonie-annees-1970.pdf"}
+      ]
+    },
+    {
+      "id": "palika-1975",
+      "date": "1975",
+      "title": "Création du Parti de libération kanak (Palika)",
+      "place": "Nouméa",
+      "coords": [-22.276,166.452],
+      "category": "politique",
+      "description": "Les Foulards rouges et le Groupe 1878 fusionnent pour former le Palika, premier parti à revendiquer ouvertement l'indépendance kanak et socialiste. Il est aujourd'hui l'une des deux grandes composantes historiques du mouvement indépendantiste.\n\nEn 1981, un désaccord sur la stratégie électorale entraîne le départ de Nidoïsh Naisseline, qui fonde la Libération kanak socialiste (LKS).",
+      "image": {"url": "images/evenements/creation_palika.png", "alt": "Le Parti de libération kanak (Palika)"},
+      "sources": [
+        {"label":"Parti de libération kanak (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Parti+de+lib%C3%A9ration+kanak"},
+        {"label":"Libération kanak socialiste (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Lib%C3%A9ration+kanak+socialiste"}
+      ]
+    },
+    {
+      "id": "uc-bourail-1977",
+      "date": "1977-05",
+      "title": "Congrès de Bourail : l'Union calédonienne choisit l'indépendance",
+      "place": "Bourail",
+      "coords": [-21.568,165.497],
+      "category": "politique",
+      "description": "Lors de son congrès de Bourail, l'Union calédonienne, jusque-là autonomiste, se prononce pour l'indépendance sous l'impulsion de dirigeants kanak, dont Jean-Marie Tjibaou. Le parti fondé par Maurice Lenormand devient le pilier du mouvement indépendantiste.",
+      "image": {"url": "images/evenements/Union-caledonienne.png", "alt": "L'Union calédonienne"},
+      "sources": [
+        {"label":"Union calédonienne (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Union+cal%C3%A9donienne"}
+      ]
+    },
+    {
+      "id": "front-independantiste-1979",
+      "date": "1979",
+      "title": "Naissance du Front indépendantiste",
+      "place": "Nouméa",
+      "coords": [-22.276,166.452],
+      "category": "politique",
+      "description": "L'Union calédonienne, le Palika, le FULK (Front uni de libération kanak), l'UPM (Union progressiste mélanésienne) et une partie du PSC s'allient au sein du Front indépendantiste. Cette coalition est l'ancêtre du FLNKS, créé en 1984.\n\nCertaines sources datent sa création de 1981.",
+      "image": {"url": "images/evenements/naissance_front_independantiste.jpg", "alt": "Le Front indépendantiste"},
+      "sources": [
+        {"label":"Front indépendantiste (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Front+ind%C3%A9pendantiste+Nouvelle-Cal%C3%A9donie"},
+        {"label":"Union calédonienne (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Union+cal%C3%A9donienne"}
+      ]
+    },
+    {
+      "id": "declercq-1981",
+      "date": "1981-09-19",
+      "title": "Assassinat de Pierre Declercq",
+      "place": "Mont-Dore, près de Nouméa",
+      "coords": [-22.24,166.52],
+      "category": "conflit",
+      "description": "Secrétaire général de l'Union calédonienne, Pierre Declercq est assassiné à son domicile. L'émotion est immense : barrages routiers et manifestations se multiplient, et le 24 septembre, jour de ses obsèques suivies par une foule considérable, les militants bloquent la circulation dans tout le territoire. Les auteurs du crime n'ont jamais été condamnés.",
+      "image": {"url": "images/evenements/pierre_declerq.jpg", "alt": "Pierre Declercq"},
+      "sources": [
+        {"label":"Pierre Declercq (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Pierre+Declercq"},
+        {"label":"19-24 septembre 1981 (Encyclopædia Universalis)","url":"https://www.universalis.fr/evenement/19-24-septembre-1981-meurtre-de-l-independantiste-pierre-declercq-en-nouvelle-caledonie/"}
+      ]
+    },
+    {
+      "id": "ustke-1981",
+      "date": "1981-12-05",
+      "title": "Création de l'USTKE, syndicat indépendantiste",
+      "place": "Nouméa",
+      "coords": [-22.276,166.452],
+      "category": "politique",
+      "description": "Louis Kotra Uregei, originaire de Tiga, fonde le premier syndicat indépendantiste, qui devient l'USTKE (Union syndicale des travailleurs kanak et des exploités). Sa devise, « Usines, tribus, même combat », lie la lutte sociale à la lutte pour l'indépendance. L'USTKE devient le deuxième syndicat du pays.",
+      "image": {"url": "images/evenements/drapeau_ustke.jpg", "alt": "Le drapeau de l'USTKE"},
+      "sources": [
+        {"label":"« L'USTKE, 30 ans de lutte » (Les Nouvelles Calédoniennes)","url":"https://www.lnc.nc/article/pays/social/l-ustke-30-ans-de-lutte"},
+        {"label":"USTKE (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=USTKE"}
+      ]
+    },
+    {
+      "id": "nainville-1983",
+      "date": "1983-07-08",
+      "endDate": "1983-07-12",
+      "title": "Table ronde de Nainville-les-Roches",
+      "place": "Nainville-les-Roches (Essonne)",
+      "coords": null,
+      "category": "politique",
+      "description": "Réunis par le gouvernement français, indépendantistes, RPCR et FNSC discutent de l'avenir du territoire. La déclaration finale reconnaît pour la première fois le fait colonial et le droit à l'indépendance du peuple kanak, premier occupant, et envisage un référendum d'autodétermination. Le RPCR refuse de la signer.",
+      "image": {"url": "images/evenements/nainville_les_roches.jpg", "alt": "La table ronde de Nainville-les-Roches"},
+      "sources": [
+        {"label":"Table ronde de Nainville-les-Roches (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Nainville-les-Roches+1983"},
+        {"label":"40 ans de Nainville-les-Roches (gouvernement de la Nouvelle-Calédonie)","url":"https://gouv.nc/sites/default/files/atoms/files/2023.07.12_ip_conference_40_ans_nlroches.pdf"}
+      ]
+    },
+    {
+      "id": "gpk-1984",
+      "date": "1984-12-01",
+      "title": "Proclamation du Gouvernement provisoire de Kanaky",
+      "place": "Nouvelle-Calédonie",
+      "coords": [-22.276,166.452],
+      "category": "politique",
+      "description": "Après le boycott actif des élections territoriales du 18 novembre, le FLNKS proclame un « Gouvernement provisoire de Kanaky », présidé par Jean-Marie Tjibaou, et hisse le drapeau de Kanaky. Le pays entre dans la période des « Événements ».",
+      "image": {"url": "images/evenements/gouvernement_provisoire_kanaky.jpg", "alt": "Le Gouvernement provisoire de Kanaky"},
+      "sources": [
+        {"label":"18-30 novembre 1984 (Encyclopædia Universalis)","url":"https://www.universalis.fr/evenement/18-30-novembre-1984-revendications-independantistes-en-nouvelle-caledonie-apres-les-elections-territoriales/"},
+        {"label":"FLNKS (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Front+de+lib%C3%A9ration+nationale+kanak+et+socialiste"}
+      ]
+    },
+    {
+      "id": "tein-flnks-2024",
+      "date": "2024-08-31",
+      "title": "Christian Tein, leader de la CCAT, à la tête du FLNKS",
+      "place": "Koumac",
+      "coords": [-20.564,164.283],
+      "category": "politique",
+      "description": "Lors de son 43e congrès, le FLNKS désigne comme président Christian Tein, leader de la Cellule de coordination des actions de terrain (CCAT) mise en place par l'Union calédonienne pour mobiliser contre le dégel du corps électoral. Il est alors en détention provisoire en métropole, mis en examen à la suite des émeutes de mai.\n\nLe Palika et l'UPM ne participent pas au congrès : cette désignation divise le camp indépendantiste.",
+      "image": {"url": "images/evenements/christian_tein.jpg", "alt": "Christian Tein"},
+      "sources": [
+        {"label":"« Christian Tein désigné président du FLNKS » (Les Nouvelles Calédoniennes)","url":"https://www.lnc.nc/article/nouvelle-caledonie/politique/christian-tein-leader-de-la-ccat-detenu-en-metropole-designe-president-du-flnks"}
+      ]
+    },
+    {
+      "id": "covid-2020",
+      "date": "2020-03-18",
+      "title": "Covid-19 : premiers cas et stratégie « covid free »",
+      "place": "Nouvelle-Calédonie",
+      "coords": [-22.276, 166.452],
+      "category": "sante",
+      "description": "Le 18 mars 2020, deux premiers cas importés sont détectés après un vol en provenance de Sydney. Les vols sont suspendus dès le 19 mars et un confinement strict est imposé du 24 mars au 20 avril.\n\nGrâce au contrôle des frontières et à un protocole sanitaire très strict, le pays reste « covid free » : aucun décès en 2020 et moins de 40 cas sur l'année. Une nouvelle introduction du virus entraîne un second confinement du 8 mars au 4 avril 2021, toujours sans décès.",
+      "image": {"url": "images/evenements/covid_nc.jpg", "alt": "Covid-19 en Nouvelle-Calédonie : les premiers cas"},
+      "sources": [
+        {"label": "Pandémie de Covid-19 en Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Pand%C3%A9mie+de+Covid-19+en+Nouvelle-Cal%C3%A9donie"},
+        {"label": "Rapport annuel 2020 de l'IEOM Nouvelle-Calédonie", "url": "https://www.ieom.fr/IMG/rapport_annuel_ieom_nouvelle-caledonie_2020/index-34.html"}
+      ]
+    },
+    {
+      "id": "covid-delta-2021",
+      "date": "2021-09-06",
+      "title": "Vague Delta : plus de 300 morts du Covid-19",
+      "place": "Nouvelle-Calédonie",
+      "coords": [-22.276, 166.452],
+      "category": "sante",
+      "description": "Début septembre 2021, le variant Delta se propage dans le pays, jusque-là épargné. Un confinement général est décrété et le premier décès est annoncé le 10 septembre. L'épidémie est fulgurante : 142 morts au 2 octobre, 261 au 25 octobre, 281 à la fin de l'année. L'âge moyen des victimes est de 71 ans.\n\nAu 25 juin 2022, la Nouvelle-Calédonie compte 313 décès dus au Covid-19 et plus de 63 000 cas confirmés. La crise frappe durement les familles et les tribus, en pleine période de deuil coutumier, et pèse sur le troisième référendum de décembre 2021.",
+      "image": {"url": "images/evenements/covid_nc2.jpg", "alt": "Covid-19 en Nouvelle-Calédonie : la vague Delta"},
+      "sources": [
+        {"label": "Pandémie de Covid-19 en Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Pand%C3%A9mie+de+Covid-19+en+Nouvelle-Cal%C3%A9donie"},
+        {"label": "Point presse de la DASS, 31 mars 2022 (gouvernement de la Nouvelle-Calédonie)", "url": "https://gouv.nc/sites/default/files/atoms/files/2022.03.31_pp_point_presse_dass.pdf"},
+        {"label": "Contaminations et décès en Nouvelle-Calédonie (Statista)", "url": "https://fr.statista.com/statistiques/1108410/contaminations-guerisons-morts-coronavirusnouvelle-caledonie"}
+      ]
+    },
+    {
+      "id": "degel-darmanin-2022",
+      "date": "2022-11-28",
+      "endDate": "2022-12-04",
+      "title": "Dégel du corps électoral : l'État relance les discussions",
+      "place": "Nouméa",
+      "coords": [-22.276, 166.452],
+      "category": "politique",
+      "description": "Après le troisième référendum, l'État veut tourner la page de l'accord de Nouméa. Gérald Darmanin, ministre de l'Intérieur et des Outre-mer, estime qu'une révision de la Constitution sera nécessaire pour adapter le corps électoral des élections provinciales, « gelé » depuis 2007 aux électeurs installés avant 1998 et à leurs descendants.\n\nDu 28 novembre au 4 décembre 2022, il se rend dans l'archipel avec Jean-François Carenco pour lancer un nouveau cycle de discussions sur l'avenir institutionnel. Les indépendantistes du FLNKS restent réservés.",
+      "image": {"url": "images/evenements/negociation_degel.jpg", "alt": "Négociations sur le dégel du corps électoral"},
+      "sources": [
+        {"label": "« Gérald Darmanin et Jean-François Carenco en Calédonie du 28 novembre au 4 décembre » (Les Nouvelles Calédoniennes)", "url": "https://www.lnc.nc/article-direct/nouvelle-caledonie/politique/gerald-darmanin-et-jean-francois-carenco-en-caledonie-du-28-novembre-au-4-decembre"},
+        {"label": "Pourquoi l'élargissement du corps électoral est un sujet si sensible (Public Sénat)", "url": "https://www.publicsenat.fr/actualites/institutions/nouvelle-caledonie-pourquoi-lelargissement-du-corps-electoral-aux-elections-provinciales-est-il-un-sujet-aussi-sensible"}
+      ]
+    },
+    {
+      "id": "macron-cocotiers-2023",
+      "date": "2023-07-26",
+      "title": "Discours d'Emmanuel Macron place des Cocotiers",
+      "place": "Nouméa (place des Cocotiers)",
+      "coords": [-22.2735, 166.4425],
+      "category": "politique",
+      "description": "Devant plusieurs milliers de personnes, le président de la République appelle à avancer sur le dégel du corps électoral avant les élections provinciales de 2024 et annonce une révision de la Constitution pour le début de l'année 2024. Il présente ce dégel comme une première étape vers un nouveau statut, à négocier avec les indépendantistes et les loyalistes.",
+      "image": {"url": "images/evenements/discours_macron.webp", "alt": "Discours d'Emmanuel Macron place des Cocotiers"},
+      "sources": [
+        {"label": "Discours de Nouméa, 26 juillet 2023 (Élysée)", "url": "https://www.elysee.fr/emmanuel-macron/2023/07/26/discours-de-noumea"},
+        {"label": "Macron plans a new political statute for New Caledonia (PINA)", "url": "https://pina.com.fj/2023/07/31/macron-plans-a-new-political-statute-for-new-caledonia/"}
+      ]
+    },
+    {
+      "id": "degel-conseil-etat-2023",
+      "date": "2023-12-07",
+      "title": "Le Conseil d'État ouvre la voie à une révision constitutionnelle",
+      "place": "Paris (Conseil d'État)",
+      "coords": null,
+      "category": "politique",
+      "description": "Fin novembre 2023, une nouvelle visite de Gérald Darmanin ne convainc pas l'Union calédonienne de participer à des discussions à trois ; le corps électoral reste le principal point de blocage. Le ministre annonce qu'à défaut d'accord, l'État avancera seul.\n\nLe 7 décembre, le Conseil d'État rend son avis : ouvrir le corps électoral provincial aux nouveaux arrivants suppose de réviser la Constitution.",
+      "image": {"url": "images/evenements/conseil_etat.jpg", "alt": "Le Conseil d'État"},
+      "sources": [
+        {"label": "« Dégel du corps électoral : le Conseil d'État recommande une révision constitutionnelle » (Les Nouvelles Calédoniennes)", "url": "https://www.lnc.nc/article/politique/nouvelle-caledonie/degel-du-corps-electoral-le-conseil-d-etat-recommande-une-revision-constitutionnelle"},
+        {"label": "Commentaire de l'avis du Conseil d'État du 7 décembre 2023 (Université de la Nouvelle-Calédonie)", "url": "https://larje.unc.nc/wp-content/uploads/sites/2/2024/04/Commentaire-avis-CE-7-12-2023-public.pdf"}
+      ]
+    },
+    {
+      "id": "degel-senat-2024",
+      "date": "2024-01-29",
+      "endDate": "2024-04-02",
+      "title": "Le projet de loi constitutionnelle adopté par le Sénat",
+      "place": "Paris (Sénat)",
+      "coords": null,
+      "category": "politique",
+      "description": "Le gouvernement dépose au Sénat le 29 janvier 2024 un projet de loi constitutionnelle qui met fin au gel : pourraient voter aux élections provinciales les natifs et les personnes résidant en Nouvelle-Calédonie depuis au moins dix ans, soit environ 25 000 électeurs supplémentaires selon le gouvernement.\n\nLe Sénat l'adopte le 2 avril 2024, en ajoutant un mécanisme qui suspendrait la réforme si un accord local était trouvé. Les indépendantistes y voient une menace de marginalisation du peuple kanak et multiplient les mobilisations, coordonnées par la CCAT.",
+      "sources": [
+        {"label": "Projet de loi constitutionnelle, texte adopté par le Sénat (n° 102)", "url": "https://www.senat.fr/leg/tas23-102.html"},
+        {"label": "Le dégel du corps électoral : autopsie d'une réforme incendiaire (Fondation Jean-Jaurès)", "url": "https://www.jean-jaures.org/publication/le-degel-du-corps-electoral-en-nouvelle-caledonie-autopsie-dune-reforme-incendiaire/"}
+      ]
+    },
+    {
+      "id": "degel-assemblee-2024",
+      "date": "2024-05-15",
+      "title": "L'Assemblée nationale vote le dégel",
+      "place": "Paris (Assemblée nationale)",
+      "coords": null,
+      "category": "politique",
+      "description": "Alors que les émeutes ont éclaté à Nouméa le 13 mai, au premier jour de l'examen du texte, les députés adoptent le projet de loi constitutionnelle dans la nuit du 14 au 15 mai 2024, par 351 voix contre 153, sans le modifier. Pour entrer en vigueur, la révision doit encore être approuvée par le Parlement réuni en Congrès à Versailles.",
+      "sources": [
+        {"label": "« Le projet de loi constitutionnelle sur le dégel du corps électoral adopté par l'Assemblée nationale » (LCP)", "url": "https://lcp.fr/actualites/nouvelle-caledonie-le-projet-de-loi-constitutionnelle-sur-le-degel-du-corps-electoral"},
+        {"label": "Texte adopté n° 298 (Assemblée nationale)", "url": "https://www.assemblee-nationale.fr/dyn/16/textes/l16t0298_texte-adopte-provisoire"}
+      ]
+    },
+    {
+      "id": "etat-urgence-2024",
+      "date": "2024-05-15",
+      "endDate": "2024-05-28",
+      "title": "L'état d'urgence décrété",
+      "place": "Grand Nouméa",
+      "coords": [-22.23, 166.47],
+      "category": "conflit",
+      "description": "Face aux émeutes, le président de la République décrète l'état d'urgence sur tout le territoire : rassemblements interdits dans le Grand Nouméa, couvre-feu, interdiction de la vente d'alcool et du port d'armes, réseau social TikTok bloqué. Des renforts de gendarmerie et de police sont envoyés depuis la métropole.\n\nL'état d'urgence est levé le 28 mai 2024 ; le couvre-feu est maintenu.",
+      "sources": [
+        {"label": "L'état d'urgence décrété en Nouvelle-Calédonie (info.gouv.fr)", "url": "https://www.info.gouv.fr/actualite/letat-durgence-decrete-en-nouvelle-caledonie"},
+        {"label": "Levée de l'état d'urgence (ministère de l'Intérieur)", "url": "https://www.interieur.gouv.fr/actualites/actualites-du-ministere/levee-de-letat-durgence-en-nouvelle-caledonie-forces-de-securite"}
+      ]
+    },
+    {
+      "id": "macron-visite-2024",
+      "date": "2024-05-22",
+      "title": "Visite express d'Emmanuel Macron en pleine crise",
+      "place": "Nouméa",
+      "coords": [-22.276, 166.452],
+      "category": "politique",
+      "description": "En pleine crise, le président de la République se rend à Nouméa pour rencontrer les responsables indépendantistes et loyalistes. Il promet le retour de l'ordre et des aides pour les entreprises touchées par les violences.",
+      "image": {"url": "images/evenements/visite_express_macron.webp", "alt": "Visite d'Emmanuel Macron à Nouméa en mai 2024"},
+      "sources": [
+        {"label": "13-31 mai 2024 : émeutes en Nouvelle-Calédonie (Encyclopædia Universalis)", "url": "https://www.universalis.fr/evenement/13-31-mai-2024-emeutes-en-nouvelle-caledonie/"}
+      ]
+    },
+    {
+      "id": "degel-abandon-2024",
+      "date": "2024-10-01",
+      "title": "Abandon du dégel et report des élections provinciales",
+      "place": "Paris",
+      "coords": null,
+      "category": "politique",
+      "description": "Dans sa déclaration de politique générale, le Premier ministre Michel Barnier annonce que le projet de loi constitutionnelle ne sera pas soumis au Congrès de Versailles. Les élections provinciales, prévues le 15 décembre 2024, sont reportées à la fin de l'année 2025 pour laisser place à la négociation d'un accord global.",
+      "sources": [
+        {"label": "« Les élections provinciales reportées et le dégel du corps électoral abandonné » (Les Nouvelles Calédoniennes)", "url": "https://www.lnc.nc/article/nouvelle-caledonie/politique/les-elections-provinciales-reportees-et-le-degel-du-corps-electoral-abandonne"},
+        {"label": "Michel Barnier annonce le report des élections provinciales (Public Sénat)", "url": "https://www.publicsenat.fr/actualites/politique/nouvelle-caledonie-michel-barnier-annonce-le-report-jusque-fin-2025-des-elections-provinciales"}
+      ]
+    },
+    {
+      "id": "degel-natifs-2026",
+      "date": "2026-05-28",
+      "title": "Un dégel partiel : les natifs entrent dans le corps électoral",
+      "place": "Paris (Conseil constitutionnel)",
+      "coords": null,
+      "category": "politique",
+      "description": "Faute d'accord global, une loi organique ouvre le corps électoral provincial aux personnes nées en Nouvelle-Calédonie qui n'y figuraient pas, soit environ 10 500 électeurs. Le Congrès de la Nouvelle-Calédonie avait rendu un avis favorable le 18 mai (25 voix contre 14) ; les non-indépendantistes rompent alors les négociations.\n\nLe Conseil constitutionnel valide la loi le 28 mai 2026, estimant que le corps électoral garde son caractère restreint. Elle s'applique aux élections provinciales du 28 juin 2026. En septembre 2025, il avait déjà jugé le gel du corps électoral conforme à la Constitution.",
+      "image": {"url": "images/evenements/degel_pour_natif.webp", "alt": "Dégel partiel du corps électoral pour les natifs"},
+      "sources": [
+        {"label": "« Le Conseil constitutionnel valide le dégel partiel du corps électoral » (Maire-info)", "url": "https://maire-info.com/le-conseil-constitutionnel-valide-le-degel-partiel-du-corps-electoral-en-nouvelle-caledonie-la-loi-publiee-article2-30830"},
+        {"label": "Nouvelle-Calédonie : la loi élargissant le corps électoral est publiée (Banque des territoires)", "url": "https://www.banquedesterritoires.fr/nouvelle-caledonie-la-loi-elargissant-le-corps-electoral-est-publiee"}
       ]
     }
   ]

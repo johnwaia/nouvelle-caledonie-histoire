@@ -4,6 +4,8 @@ import MapView from './components/MapView.vue'
 import TimelineBar from './components/TimelineBar.vue'
 import EventModal from './components/EventModal.vue'
 import TribuPanel from './components/TribuPanel.vue'
+import CommunePanel from './components/CommunePanel.vue'
+import SearchBox from './components/SearchBox.vue'
 import { parseDate, toDecimal, formatEventDate } from './utils/dates'
 
 /*
@@ -31,6 +33,11 @@ const selectedId = ref(null)
 const tribus = ref([])
 const selectedTribuId = ref(null)
 const showTribus = ref(false) // affichage des tribus : bouton dans l'en-tête, indépendant des années
+const communes = ref([])
+const selectedCommuneId = ref(null)
+const showCommunes = ref(false)
+// Résultat choisi dans le moteur de recherche : la carte n'affiche alors que lui.
+const focus = ref(null) // { type: 'tribu' | 'commune', id }
 
 // Tribus (public/data/tribus.json) : facultatives, une erreur de chargement ne bloque pas le site.
 async function loadTribus() {
@@ -40,6 +47,17 @@ async function loadTribus() {
     tribus.value = ((await res.json()).tribus || []).filter((t) => t.id && Array.isArray(t.coords))
   } catch (e) {
     console.warn('Tribus non chargées :', e.message)
+  }
+}
+
+// Communes (public/data/communes.json) : facultatives elles aussi.
+async function loadCommunes() {
+  try {
+    const res = await fetch(resolveUrl('data/communes.json'), { cache: 'no-cache' })
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    communes.value = ((await res.json()).communes || []).filter((c) => c.id && Array.isArray(c.coords))
+  } catch (e) {
+    console.warn('Communes non chargées :', e.message)
   }
 }
 
@@ -116,15 +134,59 @@ function stepYear(delta) {
   if (y) selectedYear.value = y.year
 }
 
-// Toutes les tribus s'affichent (ou se masquent) d'un coup avec le bouton « Tribus ».
-const visibleTribus = computed(() => (showTribus.value ? tribus.value : []))
+/* ---------- Tribus, communes et recherche ---------- */
+// Sans recherche : les boutons de l'en-tête affichent toutes les tribus / communes.
+// Avec un résultat de recherche : seul cet élément est affiché.
+const visibleTribus = computed(() => {
+  if (focus.value) return focus.value.type === 'tribu' ? tribus.value.filter((t) => t.id === focus.value.id) : []
+  return showTribus.value ? tribus.value : []
+})
+const visibleCommunes = computed(() => {
+  if (focus.value) return focus.value.type === 'commune' ? communes.value.filter((c) => c.id === focus.value.id) : []
+  return showCommunes.value ? communes.value : []
+})
 const selectedTribu = computed(() => visibleTribus.value.find((t) => t.id === selectedTribuId.value) || null)
-watch(showTribus, (v) => {
-  if (!v) selectedTribuId.value = null
+const selectedCommune = computed(() => visibleCommunes.value.find((c) => c.id === selectedCommuneId.value) || null)
+const plainName = (s) => String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+const tribuCountOf = (commune) => tribus.value.filter((t) => plainName(t.commune) === plainName(commune.nom)).length
+const focusTarget = computed(() => {
+  if (!focus.value) return null
+  const list = focus.value.type === 'tribu' ? tribus.value : communes.value
+  const item = list.find((x) => x.id === focus.value.id)
+  return item ? { coords: item.coords, zoom: focus.value.type === 'tribu' ? 11 : 9.5, key: focus.value.type + item.id } : null
+})
+watch([visibleTribus, visibleCommunes], () => {
+  if (selectedTribuId.value && !selectedTribu.value) selectedTribuId.value = null
+  if (selectedCommuneId.value && !selectedCommune.value) selectedCommuneId.value = null
 })
 function selectTribu(id) {
   selectedId.value = null
+  selectedCommuneId.value = null
   selectedTribuId.value = id
+}
+function selectCommune(id) {
+  selectedId.value = null
+  selectedTribuId.value = null
+  selectedCommuneId.value = id
+}
+function chooseFromSearch(f) {
+  focus.value = f
+  if (f.type === 'tribu') selectTribu(f.id)
+  else selectCommune(f.id)
+}
+function clearFocus() {
+  focus.value = null
+  selectedTribuId.value = null
+  selectedCommuneId.value = null
+}
+// Les boutons de l'en-tête quittent le mode « un seul résultat ».
+function toggleTribus() {
+  focus.value = null
+  showTribus.value = !showTribus.value
+}
+function toggleCommunes() {
+  focus.value = null
+  showCommunes.value = !showCommunes.value
 }
 
 /* ---------- Sélection & navigation ---------- */
@@ -132,6 +194,7 @@ const selected = computed(() => events.value.find((e) => e.id === selectedId.val
 const selectedIndex = computed(() => events.value.findIndex((e) => e.id === selectedId.value))
 const select = (id) => {
   selectedTribuId.value = null
+  selectedCommuneId.value = null
   selectedId.value = id
 }
 // L'année suit l'événement ouvert (lien partagé, Précédent/Suivant, encart hors archipel…).
@@ -144,29 +207,40 @@ function go(delta) {
   if (next) selectedId.value = next.id
 }
 
-// Liens partageables : #evenement=<id> ou #tribu=<id>
+// Liens partageables : #evenement=<id>, #tribu=<id> ou #commune=<id>
 function readHash() {
   const ev = location.hash.match(/evenement=([^&]+)/)
   const tr = location.hash.match(/tribu=([^&]+)/)
+  const co = location.hash.match(/commune=([^&]+)/)
   selectedId.value = ev ? decodeURIComponent(ev[1]) : null
   if (tr) {
-    const id = decodeURIComponent(tr[1])
     showTribus.value = true // un lien vers une tribu active l'affichage des tribus
-    selectedTribuId.value = id
-  } else selectedTribuId.value = null
+    selectTribu(decodeURIComponent(tr[1]))
+  } else if (co) {
+    showCommunes.value = true
+    selectCommune(decodeURIComponent(co[1]))
+  } else if (!ev) {
+    selectedTribuId.value = null
+    selectedCommuneId.value = null
+  }
 }
-watch([selectedId, selectedTribuId], ([id, tribuId]) => {
+watch([selectedId, selectedTribuId, selectedCommuneId], ([id, tribuId, communeId]) => {
   const url = id
     ? `#evenement=${encodeURIComponent(id)}`
     : tribuId
       ? `#tribu=${encodeURIComponent(tribuId)}`
-      : location.pathname + location.search
+      : communeId
+        ? `#commune=${encodeURIComponent(communeId)}`
+        : location.pathname + location.search
   if (url.startsWith('#') ? location.hash !== url : location.hash) history.replaceState(null, '', url)
 })
 
 function onKey(e) {
-  if (selectedTribu.value) {
-    if (e.key === 'Escape') selectedTribuId.value = null
+  if (selectedTribu.value || selectedCommune.value) {
+    if (e.key === 'Escape') {
+      selectedTribuId.value = null
+      selectedCommuneId.value = null
+    }
     return
   }
   if (!selected.value) {
@@ -186,7 +260,7 @@ function onKey(e) {
 }
 
 onMounted(async () => {
-  await Promise.all([load(), loadTribus()])
+  await Promise.all([load(), loadTribus(), loadCommunes()])
   selectedYear.value = years.value[0]?.year ?? null
   readHash()
   window.addEventListener('hashchange', readHash)
@@ -211,10 +285,20 @@ onBeforeUnmount(() => {
           :class="{ on: showTribus }"
           :aria-pressed="showTribus"
           :disabled="!tribus.length"
-          @click="showTribus = !showTribus"
+          @click="toggleTribus"
         >
           <img :src="caseIcon" alt="" />
           {{ showTribus ? 'Masquer les tribus' : 'Afficher les tribus' }}
+        </button>
+        <button
+          class="tribus-toggle"
+          :class="{ on: showCommunes }"
+          :aria-pressed="showCommunes"
+          :disabled="!communes.length"
+          @click="toggleCommunes"
+        >
+          <span class="commune-dot" aria-hidden="true"></span>
+          {{ showCommunes ? 'Masquer les communes' : 'Afficher les communes' }}
         </button>
         <label class="toggle">
           <input v-model="showPast" type="checkbox" />
@@ -232,8 +316,20 @@ onBeforeUnmount(() => {
         :year="selectedYear"
         :tribus="visibleTribus"
         :selected-tribu-id="selectedTribuId"
+        :communes="visibleCommunes"
+        :selected-commune-id="selectedCommuneId"
+        :focus-target="focusTarget"
         @select="select"
         @select-tribu="selectTribu"
+        @select-commune="selectCommune"
+      />
+      <SearchBox
+        v-if="!loading && !error"
+        :tribus="tribus"
+        :communes="communes"
+        :focus="focus"
+        @choose="chooseFromSearch"
+        @clear="clearFocus"
       />
       <div v-if="loading" class="app-status">Chargement de la chronologie…</div>
       <div v-else-if="error" class="app-status error">{{ error }}</div>
@@ -258,6 +354,14 @@ onBeforeUnmount(() => {
       :key="selectedTribu.id"
       :tribu="selectedTribu"
       @close="selectedTribuId = null"
+    />
+
+    <CommunePanel
+      v-if="selectedCommune"
+      :key="selectedCommune.id"
+      :commune="selectedCommune"
+      :tribu-count="tribuCountOf(selectedCommune)"
+      @close="selectedCommuneId = null"
     />
   </div>
 </template>

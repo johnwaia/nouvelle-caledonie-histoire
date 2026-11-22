@@ -98,6 +98,20 @@ Fiche détaillée (champs facultatifs, à ajouter à une tribu existante) :
 
 Les images d'origine (avant détourage) sont conservées dans `assets-sources/`.
 
+### Communes et moteur de recherche
+
+Les **33 communes** sont dans **`public/data/communes.json`** (position, province, aire coutumière, présentation et histoire). Le bouton **« Afficher les communes »** de l'en-tête les place sur la carte ; un clic ouvre leur fiche (lien partageable `#commune=<id>`).
+
+Les textes de présentation et d'histoire sont des **extraits de Wikipédia** (licence CC BY-SA 4.0, lien vers l'article dans chaque fiche). Pour les mettre à jour :
+
+```bash
+node scripts/import-communes.mjs
+```
+
+Pour remplacer l'histoire d'une commune par un texte rédigé à la main, ajouter un champ `histoireManuelle` (et éventuellement `sources`) : il est prioritaire et conservé lors des mises à jour.
+
+Le **moteur de recherche** (en haut à gauche de la carte) cherche au choix parmi les **tribus** ou les **communes** (sans tenir compte des accents). Choisir un résultat n'affiche plus que lui sur la carte, centre la vue dessus et ouvre sa fiche ; la croix du bandeau « Affiché : … » réaffiche tout.
+
 ### Catégories et périodes
 
 - `categories` : couleur des points sur la carte.
@@ -120,15 +134,19 @@ Un événement portant le même `id` dans un fichier suivant remplace le précé
 ```
 public/data/events.json     contenu (événements, catégories, périodes)
 public/data/tribus.json     tribus affichées sur la carte
+public/data/communes.json   communes (position, histoire)
 public/images/              images du site (cases, pirogue)
 public/images/evenements/   images des fiches d'événements
 scripts/check-data.mjs      validation du contenu
 scripts/import-tribus.mjs   import de la liste officielle des tribus (DITTT)
+scripts/import-communes.mjs import des communes et de leur histoire (Wikipédia)
 src/App.vue                 chargement des données, filtres, sélection
 src/components/MapView.vue  carte Leaflet et marqueurs
 src/components/TimelineBar.vue  frise chronologique
 src/components/EventModal.vue   fiche d'un événement
 src/components/TribuPanel.vue   panneau d'une tribu
+src/components/CommunePanel.vue panneau d'une commune
+src/components/SearchBox.vue    moteur de recherche (tribus / communes)
 src/utils/dates.js          dates (format français)
 ```
 

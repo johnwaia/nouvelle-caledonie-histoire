@@ -1,0 +1,434 @@
+{
+ "_info": "Communes de Nouvelle-Calédonie. Résumé et histoire : extraits de Wikipédia (CC BY-SA 4.0), lien dans le champ « wikipedia ». Régénérer avec : node scripts/import-communes.mjs",
+ "communes": [
+  {
+   "id": "belep",
+   "nom": "Bélep",
+   "province": "Nord",
+   "aire": "Hoot ma Whaap",
+   "coords": [
+    -19.75,
+    163.66667
+   ],
+   "resume": "L'archipel des Bélep (prononcé [belɛp] ; Dau Ar en langue nyelâyu, soit littéralement « îles du Soleil ») est un petit archipel situé en Nouvelle-Calédonie dont il constitue l'extrémité nord. Il fait partie de la province Nord et de l'aire coutumière Hoot Ma Waap. Il constitue aussi une commune de Nouvelle-Calédonie, Bélep.",
+   "histoire": "Époque précoloniale.\nMission mariste et autres premiers contacts. Une mission mariste fut fondée en 1856 par le père Pierre Lambert à Waala, mais elle n'a qu'une existence éphémère, du fait du manque de missionnaires notamment, et quitte l'archipel des Bélep en 1875[réf. nécessaire].\n1878. À la suite de la révolte d'Ataï en 1878, les autorités coloniales en font un lieu de déportation de plusieurs centaines des insurgés, et les pères maristes reviennent à cette occasion[réf. nécessaire].\n1892-1898. L'administration ne commence à s'intéresser réellement à l'archipel des Bélep, éloignées, isolées et de tailles réduites, que lorsqu'elle doit faire face au développement de la lèpre. Elle décide ainsi d'installer à Waala, dans la réduction mariste, une léproserie en 1892, tandis qu'un décret du président de la République Sadi Carnot le 22 septembre 1893 prévoit d'y envoyer à terme toutes les personnes atteintes de cette maladie. L'installation de ce centre implique de vider les îles Art et Pott de leurs populations mélanésiennes, celle-ci étant alors exilée à la mission de Balade, située au nord-ouest de la Grande Terre, contre la promesse d'une indemnité de 15 000 F (ils n'en toucheront qu'un tiers, réclamant par la suite en vain le reste de la somme).",
+   "wikipedia": "https://fr.wikipedia.org/wiki/B%C3%A9lep"
+  },
+  {
+   "id": "boulouparis",
+   "nom": "Boulouparis",
+   "province": "Sud",
+   "aire": "Xârâcùù",
+   "coords": [
+    -21.86715,
+    166.04418
+   ],
+   "resume": "Boulouparis (prononcé [bulupaʁi] ; Berepwari en xârâcùù) est une commune française de Nouvelle-Calédonie, située sur la côte ouest de la Grande Terre, en Province sud, sur la RT1.\nLa commune fait partie de l'aire coutumière Xaracuu.",
+   "histoire": "1857-1881. Le gouverneur Eugène du Bouzet, qui reconnaît la région de la baie de St-Vincent lors d'une exploration à bord du Styx en octobre 1857, la déclare propice à la colonisation: \"Il y a là et à Ouitoé beaucoup de terrains qui sont propres à la culture. Loin d'être occupés par les indigènes, le temps viendra où l'on pourra y placer des colons, mais nous devons rayonner d'abord autour de notre établissement [Port-de-France]\" (Rapport du 23 octobre 1857, Archives d'outremer, ncl 42). Un des tout premiers Européens à s'établir dans cette région est James Paddon (1812-1861) qui, en 1857 place 200 têtes de bétail et 400 moutons sur l'île Ducos gardés par deux Chinois, et monte une laiterie pour fabriquer beurre et fromage.\nÀ la fin des années 1860, la région de Bouloupari se peuple d'Européens, notamment d'éleveurs et de gérants de station anglo-saxons. Le 20 octobre 1867, un nommé Stuart demande un permis d'occupation pour un terrain non délimité de 500 ha dans la région de la Ouaménie à Bouloupari.\nPuis, un négociant en vins néo-zélandais James Cruickshank, attiré par l'affairiste John Higginson, occupe à partir 22 octobre 1867, une surface de 800 ha non délimitée du périmètre de Boulouparis en bordure de la Oua Ya.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Boulouparis"
+  },
+  {
+   "id": "bourail",
+   "nom": "Bourail",
+   "province": "Sud",
+   "aire": "Ajië-Arhö",
+   "coords": [
+    -21.568,
+    165.49749
+   ],
+   "resume": "Bourail (prononcé [buʁaj] ; en ajië : Bu Rhaï) est une commune française de Nouvelle-Calédonie sur la côte ouest de la Grande Terre, au nord de la Province Sud, côté ouest, à environ 160 km au nord-ouest de Nouméa, sur la RT1, au nord de La Foa, Farino, Moindou et Sarraméa, au sud de Poya, Pouembout, Koné et Voh.\nBourail est une vaste commune à l'intersection de trois vallées.",
+   "histoire": "Naissance puis début de l'Administration pénitentiaire. En 1850, les tribus kanakes sont nombreuses et dispersées de Table Unio à la Daoui. Deux grandes lignées vivent dans le bassin : les Orowë (ceux de la montagne) et les Nekou (ceux du bord de mer). La vie est rythmée par les guerres, les coutumes, les plantations, la pêche, la chasse, les fêtes, les échanges et les mariages.\nEn juin 1867, une commission est désignée par le Gouverneur Guillain pour explorer les terrains environnant le petit port de « Bouraye ». Elle a pour mission de vérifier si un essai de colonisation pénale est envisageable et elle se rend sur place à bord de la goélette La Fine qui jette l’ancre à l’embouchure de la Néra. L’entreprise s’avère positive et les premiers transportés s’attellent à la construction des bâtiments nécessaires à l’établissement pénal. En 1868, le massacre d'un libéré et de 30 Nekou par les Orowë déclenche des mesures de répression. Les tribus des Orowë sont incendiées ; avec l'aide des Nekou et des tribus de Canala, l'armée française soumet les Orowë.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Bourail"
+  },
+  {
+   "id": "canala",
+   "nom": "Canala",
+   "province": "Nord",
+   "aire": "Xârâcùù",
+   "coords": [
+    -21.52032,
+    165.95309
+   ],
+   "resume": "Canala (Xârâcùù dans la langue éponyme) est une commune de Nouvelle-Calédonie située sur la côte Est de la Grande Terre en Province Nord, entre Thio (46 km au sud-est) et Kouaoua (40 km au nord-ouest), et à 166 km de Nouméa.\nLa commune fait partie de l'aire coutumière Xaracuu. La langue régionale kanake y est le nââ Xârâcùù. Le nââ Xârâgurè est parlée dans la région de Nakéty.",
+   "histoire": "Époque précoloniale.\nPremiers contacts et colonisation au XIXe siècle. Le 15 mai 1854, Tardy de Montravel reçoit la soumission (ou l'acceptation forcée) du chef de Kanala, Aliki Kai.\nDès janvier 1855, lors de son inspection, le gouverneur Eugène du Bouzet apprécie le site, le port, le mouillage, l'abri côtier, la situation des cultures, l'eau douce en quantité, la population. Il envisage d'y créer un établissement militaire français. Le chef de Kanala, Kay, ou Aliki Kai, ou Apupia, reconnaît la domination française, mais reste sous l'influence des santaliers. Sa tribu dispose d'un millier de fusils (dont 300 fournis par l'auxiliaire Oliver), qui lui ont permis de soumettre Nakety, Kouaoua, et diverses tribus de l'intérieur.\nCanala a d'abord été nommée Napoléonville. Montravel, séduit par cette localité au potentiel de développement économique important, voulait en faire la capitale de la Nouvelle-Calédonie.\nLes mines d'antimoine de Nakety sont découvertes dans la région en 1876 et exploitées dès 1879 mais à plus grande échelle seulement en 1882.\nLors de la grande révolte kanak de 1878, le lieutenant-de-vaisseau Senan parvient à rallier le chef Gélima, le chef politique Kaké (fils de Aliki-Kai) et son chef de guerre Nondo. La participation des Canaliens a été essentielle pour la résolution militaire du conflit.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Canala"
+  },
+  {
+   "id": "dumbea",
+   "nom": "Dumbéa",
+   "province": "Sud",
+   "aire": "Drubea-Kapumë",
+   "coords": [
+    -22.17718,
+    166.43851
+   ],
+   "resume": "Dumbéa [dœ̃bea] est une commune française de Nouvelle-Calédonie. Elle fait partie de l'agglomération du Grand Nouméa, de la Province Sud et de l'aire coutumière Djubéa-Kaponé.",
+   "histoire": "Le premier acte constitutif d’une identité pour Dumbéa est un arrêté de 1868 qui fixe le périmètre de Dombéa portant la signature du gouverneur Guillain.\nPuis le 3 avril et le 16 novembre 1875, deux arrêtés portent sur la création d’un bureau d’état civil et la désignation des officiers d’état civil. MM. Joubert et Maillot sont rapidement remplacés par MM. de Greslan et Malan.\nC’est à la même époque qu’est constituée la Commission municipale de Dumbéa.\nDumbéa devient une mairie de plein exercice en mai 1961. Victor Fayard, alors président de la Commission municipale, est le premier à porter le titre de maire de Dumbéa de 1961 à 1967. Municipalité de statut local, elle devient une commune de droit commun français en 1969.\nVers 1900 la première mairie est construite à côté de l’école primaire, peu avant que le service des postes s’installe en 1904.\nAujourd'hui, Dumbéa fait partie de l'agglomération nouméenne, ou Grand Nouméa.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Dumb%C3%A9a"
+  },
+  {
+   "id": "farino",
+   "nom": "Farino",
+   "province": "Sud",
+   "aire": "Xârâcùù",
+   "coords": [
+    -21.66816,
+    165.76531
+   ],
+   "resume": "Farino est une commune française de Nouvelle-Calédonie située dans la Province sud, côté ouest, la plus petite du territoire, à environ 120 km au nord-ouest de Nouméa, à proximité de La Foa, Sarraméa, Moindou et Bourail.\nBien que n'abritant, aujourd'hui, aucune tribu, la région était, jusqu'à la révolte kanak de 1878 peuplée de plusieurs villages kanak éparpillés entre les secteurs de Bas-Farino, Farino, Tendéa (sources de Houé) et Moindou.",
+   "histoire": "Tertre (chefferie) du clan Pè mê Boxeï établi avant l'arrivée de la colonisation entre les régions de Farino, Tendéa et Moindou. le grand chef Baptiste Pè a été tué lors de la répression militaire de 1878, le 1er septembre 1878 (le même jour qu'Ataï). Après l'insurrection de 1878, l'Administration pénitentiaire s'est emparé de ces régions (Farino et Tendéa), débarrassée de ses habitants originels par la répression militaire, et y a installé des concessionnaires pénaux dès 1888. Le nom Farino vient, ainsi, de la francisation du terme Xwéréro, nom d'un tertre kanak, lignage du clan Pè mê Boxeï, établi là avant la colonisation (francisé en \"Holéro\"). L'assertion selon laquelle le nom de \"Farino\" aurait été donné par des concessionnaires pénaux corses en mémoire du village de \"Farinole\" (situé en Haute-Corse) relève plus du fantasme que de la réalité historique. Le nom de \"Farino\" étant déjà mentionné sur les premières cartes de la région datant de 1873-1874, réalisées par les géomètres Neigre et Gallet, alors que les premiers concessionnaires pénaux y ont été installés à partir de 1888.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Farino"
+  },
+  {
+   "id": "hienghene",
+   "nom": "Hienghène",
+   "province": "Nord",
+   "aire": "Hoot ma Whaap",
+   "coords": [
+    -20.69412,
+    164.92219
+   ],
+   "resume": "Hienghène (Hyehen en fwâi) est une commune de Nouvelle-Calédonie, en Province Nord, située au nord-est de la Grande Terre.\nC'est un des endroits les plus touristiques de la province Nord, avec un port de plaisance.\nLa commune fait partie de l'aire coutumière Hoot ma Waap.",
+   "histoire": "Époque précoloniale.\nPremiers contacts et colonisation au XIXe siècle. 1841 : jeune chef Bouarate, environ 25 ans,\n1843 : commerce anglo-saxon : santal (avec installation plus ou moins durable de santaliers, notamment Richards, puis James Paddon et Towns, jusqu'à extinction du santal), holothuries (biches de mer, trépangs),\n1843 : premier séjour de Bouarat (Bwaxat) offert à Sydney,\n1844 : premières tentatives des missionnaires maristes, probable responsabilité de Bouarate dans l'attitude anti-chrétienne à Balade et Pouébo, probablement pour non réciprocité d'un don (offrir une récolte d'ignames pour les missionnaires affamés, ne rien recevoir au premier arrivage de bateau) et épisode du bouledogue Rhin,\n1846 : premier fusil pour Bouarate,\n1846 : second séjour de Bouarate à Sydney : cheval, porcs, accordéon pour le King of New-Caledonia,\n1849 : seconde tentative, infructueuse, d'installation d'une mission mariste par le vicaire apostolique Guillaume Douarre,\n1849 : tournée de l'évêque anglican George Augustus Selwyn, à qui Bouarate demande une mission, et qui rencontre Guillaume Douarre,\n1853 : débuts de la présence française dans cette tribu redoutée, soumise, puis délaissée,\n1854-1863 : oppositions entre l'administration coloniale et les populations mélanésiennes.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Hiengh%C3%A8ne"
+  },
+  {
+   "id": "houailou",
+   "nom": "Houaïlou",
+   "province": "Nord",
+   "aire": "Ajië-Arhö",
+   "coords": [
+    -21.29094,
+    165.6217
+   ],
+   "resume": "Houaïlou (en ajië : Waa Wi Lûû) est une commune française de Nouvelle-Calédonie dans la province Nord, sur la côte est, à 234 km de Nouméa, à 45 km de Ponerihouen (nord-ouest), à 55 km de Kouaoua, à 75 km de Poindimié, et à 71 km de Bourail (sud-ouest, côte ouest).\nElle est éponyme de la vallée.\nLa commune fait partie de l'aire coutumière Ajië-Aro.",
+   "histoire": "Époque précoloniale.\nPremiers contacts et colonisation au XIXe siècle.\n1849-1895 : désintérêt catholique (mariste) prolongé, par absence de port d'abord,\n1856 (mars) : meurtre et manducation de 6 chercheurs d'or venus de Canala\n1856 (juillet) : expédition punitive par le capitaine de frégate Le Bris,\n1867 : Les colons présents à Houaïlou se réfugient à Canala, du fait de guerres kanak,\n1878 : grande révolte kanak de 1878, chef Dimagué, chef de guerre Peuh-Peuh, participation prévue, puis retournement, auxiliaires des Français, même avec l'accueil des résistants de Poya,\n1884 ou 1888 : le pasteur Mathaïa ou Maphaia est le premier pasteur répertorié (précurseur loyaltien ouvéen) à débarquer à Haouaïlou, avec 13 natas, évangélistes indigènes (le catéchumène kanak), formés à Lifou. Parcours : Ouassé (Nakéty), Poro, Paraouyé. L'administration coloniale cantonne l'évangélisation aux seules îles Loyauté : blocages administratifs, dénonciations, expulsions.\n1889 : création de quatre léproseries, dont Cap Bocage, à Houaïlou,\n1890 (?) : le nata Haxen, originaire de Lifou, anime le poste missionnaire de Bâ.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Houa%C3%AFlou"
+  },
+  {
+   "id": "ile-des-pins",
+   "nom": "Île des Pins",
+   "province": "Sud",
+   "aire": "Drubea-Kapumë",
+   "coords": [
+    -22.61111,
+    167.48804
+   ],
+   "resume": "L'île des Pins, habitée par les Kwényï (Kuniés en langue Nââ numèè), aussi surnommée l'« île la plus proche du paradis » (concurremment avec Ouvéa), est un petit système insulaire français au sud-est de la Grande Terre en Nouvelle-Calédonie. Il s'agit également d'une commune et d'un district coutumier. Elle est située en mer de Corail à environ un degré au-dessus du tropique du Capricorne par 167º de longitude est et 22º de latitude sud.",
+   "histoire": "Avant les Européens.\nRéseau commercial polynésien. L'île des Pins est également connue pour ses vestiges préhistoriques : des poteries Lapita, antérieures à l'ère chrétienne, et des peintures rupestres ont été découvertes au lieu-dit « Vatcha » dans le village de Vao. Les fouilles archéologiques menées entre 2006 et 2010 permettent d'identifier des vestiges significatifs attestant de contacts anciens avec la Polynésie occidentale, en particulier Tonga. Plus de 400 tumulus situés dans le centre de l'île ont toujours une origine inconnue.\nLes preuves archéologiques montrent que l'Île des Pins entretenait des liens étroits avec la Polynésie occidentale, comme en témoignent les influences stylistiques sur les sculptures et motifs décoratifs. Ces relations ont enrichi la culture matérielle locale, notamment par des échanges de techniques de navigation et d'objets en poterie.\nLes Kunié, population d'origine, sont confrontés, vers 1700-1750, à l'arrivée de révoltés mélanéso-polynésiens de Lifou, qui prennent progressivement le pouvoir sur l'île.\nHypothèse naturelle des tumuli. La découverte d'un oiseau géant, de la famille du mégapode, aurait pu permettre d'éclairer le mystère de ces tumulus.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/%C3%8Ele_des_Pins"
+  },
+  {
+   "id": "kaala-gomen",
+   "nom": "Kaala-Gomen",
+   "province": "Nord",
+   "aire": "Hoot ma Whaap",
+   "coords": [
+    -20.67209,
+    164.3828
+   ],
+   "resume": "Kaala-Gomen ([kala ɡɔmɛn] ; en yuanga Bwapanu) est une commune française de Nouvelle-Calédonie, sur la RT1, à 18 km au sud de Koumac, à 50 km au nord de Voh, et à 356 km de Nouméa.\nLe nom de cette commune est tiré de celui d'une montagne et de la tribu de Gomen.",
+   "histoire": "XIXe siècle. Les expéditions militaires conduites par le gouverneur Charles Guillain en 1865 accompagnent l'installation des colons européens dans le Nord de la Grande Terre et la constitution de grands domaines fonciers, dont celui de Ouaco, aux dépens des terres kanak, provoquant expulsions et déplacements de populations entre Voh et Koumac. Une conserverie de viande destinée à l'approvisionnement militaire est créée à Ouaco en 1886.\nComme dans le reste du nord de la Grande Terre, la question foncière — expropriations, attributions de terres infertiles aux réserves kanak, extension des concessions d'élevage bovin extensif — constitue l'une des causes profondes de la guerre kanak de 1917, qui touche également la région de Gomen. L'historien Adrian Muckle, dans ses recherches doctorales consacrées à cette guerre coloniale, a montré le rôle central de la dépossession foncière et de l'élevage extensif dans le déclenchement du conflit. Cet ouvrage renouvelle l'historiographie de cet événement en croisant sources coloniales écrites et mémoire orale kanak.\nLa tradition orale, rapportée notamment par l'ethnologue Jean Guiart, garde le souvenir d'un suicide rituel du chef de la pointe Paagoumène, à Gomen, vers 1900, sous le gouvernorat de Paul Feillet.\nXXe siècle.\nÉmile Kutu est assassiné (1981).\nXXIe siècle.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Kaala-Gomen"
+  },
+  {
+   "id": "kone",
+   "nom": "Koné",
+   "province": "Nord",
+   "aire": "Paicî-Cèmuhî",
+   "resume": "Koné (en haeke : Koohnê) est une commune de Nouvelle-Calédonie, sur la côte Ouest de la Grande Terre, sur la RT1, à 265 km au nord-ouest de Nouméa, à 10 km au nord de Pouembout et à 30 km au sud de Voh.\nLa côte est (Touho et Poindimié) est à une centaine de kilomètres, par les vallées de la Koné et de la Tiwaka, qui permettent le franchissement de la chaîne centrale.",
+   "histoire": "Époque précoloniale.\nTradition de Koné. Les plus anciennes traces de peuplement de la Nouvelle-Calédonie retrouvées à ce jour remonteraient à la fin du IIe millénaire avant l'ère actuelle, soit il y a environ 3 200 à 3 300 ans, avec une présence attestée dans la région de Koné. Il s'agirait de populations de langues austronésiennes dont l'autre caractéristique était de maîtriser l'art de la céramique. En 1917, le géologue Maurice Piroutet découvre des fragments de poteries sur la plage de Foué près de Koné, dans une localité appelée Lapita. Ce nom a été par la suite retenu par les archéologues pour désigner l'ensemble de ces poteries et le complexe culturel qui y est associé non seulement pour la Nouvelle-Calédonie mais également l'ensemble du Pacifique. En effet durant tout le XXe siècle divers chantiers de fouilles révèlent d'autres exemplaires de ces poteries. Pour la Nouvelle-Calédonie, la première grande campagne de fouilles est menée en 1952 par E. W. Gifford et D. Shutler. Depuis cette date et jusqu'à nos jours, les archéologues se succèdent sur le terrain, faisant d'autant progresser la connaissance du passé pré européen de la Nouvelle-Calédonie. Citons, Golson en 1962, Smart en 1969, Frimigacci (ORSTOM) dans les années 1970 et 1980, et plus récemment Galipaud (IRD) ou encore Christophe Sand (Université de la Nouvelle-Calédonie).",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Kon%C3%A9_(Nouvelle-Cal%C3%A9donie)",
+   "coords": [
+    -21.05902,
+    164.85182
+   ]
+  },
+  {
+   "id": "kouaoua",
+   "nom": "Kouaoua",
+   "province": "Nord",
+   "aire": "Xârâcùù",
+   "coords": [
+    -21.398,
+    165.81799
+   ],
+   "resume": "Kouaoua (Kaa Wi Paa en langue ajië et mèa) est une commune française de Nouvelle-Calédonie, qui se situe sur la côte Est de l'île de la Grande Terre en Province Nord, à 175 km de Nouméa, entre Houaïlou (50 km au nors-ouest) et Canala (45 km au sud-est).\nLa commune fait partie de l'aire coutumière Xaracuu[réf. nécessaire].",
+   "histoire": "Époque précoloniale. La région de Kouaoua est originellement appelée pays Mèa (du nom de la langue qui y est parlée) ou des Kaawipaa (reprenant le nom du fils aîné de l'ancêtre fondateur mythique, Pè Arshii)[réf. nécessaire].\nPremiers contacts et colonisation au XIXe siècle. En février 1855, lors de son inspection, le gouverneur Eugène du Rouzet estime qu'un établissement (militaire) est possible, à cause du port, du mouillage, de l'abri, de la géologie, de l'agriculture, et de la population[réf. nécessaire].\nLe nom de Kaawipaa a été francisé en Kouaoua et désigne tout aussi bien la vallée centrale du territoire de la commune actuelle et son fleuve, le district coutumier organisé (comme les autres) en 1898) par les autorités coloniales et au village chef-lieu.\nLe village est créé à partir du début de l'exploitation minière du nickel dans les années 1890[réf. nécessaire].\nXXe siècle. Le district de Kouaoua comprend 6 des 7 tribus de la commune, mais n'a plus de grand-chef depuis les années 1950[réf. nécessaire].\nL'exploitation connaît un second souffle à partir de 1977 avec le développement du gisement de saprolite de Méa, l'un des plus gros du territoire (avec une capacité de production estimée à environ 1 million de tonnes de minerai trié par an).",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Kouaoua"
+  },
+  {
+   "id": "koumac",
+   "nom": "Koumac",
+   "province": "Nord",
+   "aire": "Hoot ma Whaap",
+   "coords": [
+    -20.56206,
+    164.2619
+   ],
+   "resume": "Koumac est une commune française de Nouvelle-Calédonie, située dans la Province Nord.\n« Koumac » signifie en langue Pwaxumak : « Têtes dures ou têtus ». Kou ou Khû veut dire : dur, résistant. Mac ou Mwak signifie : ensemble, environnement ou groupe.\nTrois communes limitrophes la bordent : Kaala-Gomen au sud, Poum au nord et Ouégoa à l'est, tandis que le lagon et sa barrière de corail et ses îlots lui donnent une façade maritime.",
+   "histoire": "Peuplement mélanésien : - 1100 av. J.-C.. Arrivés vers 1100 ans av. J.-C., les premiers hommes connus débarquent à bord de leurs pirogues sur les côtes de l'extrême nord de la Grande Terre. Ces Mélanésiens venus d'Asie du Sud-Est, s'implantent aux embouchures des rivières avec leurs traditions : céramique (poteries Lapita), culture de l'igname et du taro, confection d'armes, d'outils de pêche et de parures à base de coquillages, fabrication de pirogues à balancier[réf. nécessaire].\nAu fil des siècles, ces hommes s'organisent et se structurent, en chefferies et en clans, autour de l'igname et de la terre.\nLes Mélanésiens de Nouvelle-Calédonie se différencient et constituent ainsi une civilisation singulière, la civilisation kanak.\nLes momies de la rivière Fwaténawé n'ont pu être étudiées avant destruction (Jean Guiart 2002).\nPremiers contacts avec les Européens : XVIIIe siècle. À la fin du XVIIIe siècle, les premiers Européens arrivent : ce sont les premiers contacts.\nTout au long du XIXe siècle, navigateurs (James Cook en septembre 1774), aventuriers (baleiniers, santaliers, marchands de concombres de mer ou d'holothuries), scientifiques (ornithologues, botanistes, géologues dont Jules Garnier) et missionnaires (catholiques et protestants) sillonnent l'archipel de la Nouvelle-Calédonie dont le nord de la Grande Terre y compris dans la région de Koumac.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Koumac"
+  },
+  {
+   "id": "la-foa",
+   "nom": "La Foa",
+   "province": "Sud",
+   "aire": "Xârâcùù",
+   "coords": [
+    -21.7115,
+    165.81821
+   ],
+   "resume": "La Foa (prononcé [la fwa]) est une commune française de Nouvelle-Calédonie de la Province Sud. Elle est formée de plusieurs petits regroupements d'habitations, dont le plus important est celui de La Foa (1 437 habitants), situé sur la côte ouest de la Grande Terre, sur la RT1, à 115 km au nord-ouest de Nouméa.\nLa commune fait partie de l'aire coutumière Xaracuu.",
+   "histoire": "Époque précoloniale.\nPremiers contacts et colonisation au XIXe siècle. L'histoire de La Foa commence avec l'arrivée de la colonisation française à Téremba, en 1871. Des explorations menées à partir de ce poste de Téremba, vers le Sud-Ouest, vers les rivières Fonwhary et, plus au sud, celle de La Foa incitèrent le gouvernement colonial, face aux potentialités agricoles de la région, à y fonder un centre de colonisation. Particularité de cette région : une partie du foncier sera occupé par l'Administration pénitentiaire, une autre par la colonisation libre. D'où le terme de \"centre de colonisation mixte\".\nÀ partir du poste de Téremba, l'Administration pénitentiaire implantera un premier pénitencier agricole, en 1873, dans la petite vallée de Fo Gacheu, à mi distance entre Téremba et La Foa. Neuf sections de concessions pénales seront ensuite créées dans la région : Fonwhary, La Foa urbain (le village) et rural, Méaré, Thia urbain et rural, Pierrat puis à partir de 1888, celle de Farino et en 1891 celle de Tendéa. De 1875 à 1928, la Pénitentiaire installera ainsi près de 750 forçats en cours de peine ou libérés sur ces différents morcellements.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/La_Foa"
+  },
+  {
+   "id": "lifou",
+   "nom": "Lifou",
+   "province": "Îles Loyauté",
+   "aire": "Drehu",
+   "coords": [
+    -20.96667,
+    167.23333
+   ],
+   "resume": "Lifou (en drehu : Drehu) est une île de la mer de Corail qui fait partie des îles Loyauté, dont elle est la plus importante. C'est une commune française ainsi qu'une aire coutumière de la Nouvelle-Calédonie.\nSitué au bord de la baie de Châteaubriand, Wé en est le centre administratif. Elle regroupe les principales infrastructures commerciales et administratives de l'île.\nLa commune fait partie de l'aire coutumière Drehu.",
+   "histoire": "Avant les Européens. Des poteries de type Lapita (dont les dates d'utilisation, d'après les sources archéologiques découvertes, vont du IIe millénaire av. J.C. au Ier siècle) ont été trouvées sur deux sites des îles Loyauté, dont un à Lifou, à Luecilla. C'est vraisemblablement par la suite, à partir du début de notre ère, que la culture kanak a commencé à se développer. Elle est probablement issue d'une différenciation régionale de plus en plus poussée au sein des populations austronésiennes de tradition Lapita, et de nouveaux apports de populations venant des îles Salomon ou du Vanuatu et issues de la première vague de peuplement de l'Océanie (dite du Sahul).\nPlusieurs récits issus de la tradition orale kanak font état de migrations polynésiennes vers les îles Loyauté et l'île des Pins, peut-être entre le XVIe siècle et le tout début du XIXe siècle. Pour Lifou, il s'agit essentiellement de populations samoanes et tonguiennes – d'après Jacques Izoulet, l'appellation de « Lifou » serait d'origine samoane. S'y ajoutent les Xetiwan ou Xetriwaan, originaires selon Jean Guiart d'Anatom dans l'actuel Vanuatu et de souche certainement polynésienne, surtout concentrés en 1858 dans la grande-chefferie de Loessi au sud (surtout Inagod mais aussi Traput et Dozip, anciennement à Luengöni), ainsi qu'à Tingeting dans le Wet au nord.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Lifou"
+  },
+  {
+   "id": "mare",
+   "nom": "Maré",
+   "province": "Îles Loyauté",
+   "aire": "Nengone",
+   "coords": [
+    -21.51667,
+    167.98333
+   ],
+   "resume": "Maré (dans la langue kanak nengone) est la deuxième île et commune des îles Loyauté (Nouvelle-Calédonie) pour ce qui est de la superficie et de la population, venant juste après Lifou.\nLa commune fait partie de l'aire coutumière Nengone comprenant huit districts et vingt-neuf tribus.",
+   "histoire": "La population, d'origine mélanésienne, s'est mêlée du XIe siècle au XVIIIe siècle à d'autres mélanésiens et polynésiens : Salomon, Tonga, Vanuatu, Wallis, Fidji, Lifou, île des Pins, Ouvéa, Grande-Terre, etc.\nLes mythes parlent de chefferies Eletok, Tête(s)-Prince(s), d'origine polynésienne, qui auraient été détruites peu avant 1800.\nLe grand refuge de guerre de Hnaened est à ce jour le site lithique connu le plus volumineux du Pacifique sud, mélanésien et polynésien : défense ou exhibition de puissance ?\nLe mot beti-co, île qui marche, désigne tout bateau complexe, de Samoa, de Tonga, ou d'occident. Ainsi s'appelle donc la compagnie de ferries qui assure la liaison régulière entre les îles Loyauté et Nouméa.\nMythes. Quelles qu'aient été les populations des origines, l'île de Maré a connu de nombreuses vagues migratoires, principalement à l'est et d'origine polynésienne (Wallis, Tonga, Fidji, Vanuatu, etc), mais aussi de Lifou, de l'Île des Pins et de la Grande-Terre, par des populations de tailles et de colorations variées. Les mémoires de Maré s'appuient sur une multitude de récits mythiques concurrents, complémentaires, contradictoires. Ces mythes sont récités, chantés, dansés, mimés.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Mar%C3%A9"
+  },
+  {
+   "id": "moindou",
+   "nom": "Moindou",
+   "province": "Sud",
+   "aire": "Ajië-Arhö",
+   "coords": [
+    -21.69794,
+    165.67821
+   ],
+   "resume": "Moindou (prononcé [mwɛ̃du] ; également Mwâârhûû en langue kanak) est une commune française de Nouvelle-Calédonie, située sur la côte Ouest de la Grande Terre en Province Sud, côté ouest, à proximité de La Foa, Farino et Sarraméa, au sud de Bourail, sur la RT1, à 128 km de Nouméa.",
+   "histoire": "Moindou est situé à environ 130 kilomètres au nord de la ville de Nouméa. La région d'Uaraï-Moindou a fait l'objet d'une première reconnaissance à la mi-octobre 1857 par le gouverneur Du Bouzet à bord du Styx. Dans son rapport du 23 octobre 1857, il écrivait : « Uaraï est certainement une des positions les plus belles de la Nouvelle-Calédonie… Ce point a de l'avenir et sera inévitablement choisi un jour pour être un des principaux centres de la colonisation; quand on voudra, on pourra y établir un blockhaus pour surveiller le pays, sur le littoral même… » (Archives d'outremer, ncl 42). Cette région a été hydrographiée vers 1859 par le lieutenant de vaisseau Léon Chambeyron qui a reconnu qu'elle possédait une rade bien abritée pour les navires.\nLes origines de Moindou sont étroitement liées à celles du centre pénitentiaire agricole de Bourail ouvert dès 1867. Il semble que les mauvaises conditions d'ancrage des navires à l'embouchure de la Néra, ouvert aux coups d'Ouest de la saison fraîche, aient conduit l'administration à chercher un port mieux abrité.\nEn novembre 1870, le gouverneur Louis Eugène Gaultier de La Richerie (arrivé fin août 1870) effectue une première visite à Bourail et s'arrête à Uaraï afin de reconnaître cette région où devait passer la route coloniale, qui longeant la côte, desservirait cette région.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Moindou"
+  },
+  {
+   "id": "mont-dore",
+   "nom": "Mont-Dore",
+   "province": "Sud",
+   "aire": "Drubea-Kapumë",
+   "resume": "Le Mont-Dore est la quatrième commune de Nouvelle-Calédonie en nombre d'habitants (après Nouméa, Dumbéa et Païta).\nSituée en province Sud, sur la côte ouest et à l'extrémité sud de la Grande Terre, elle fait partie du Grand Nouméa.\nLa commune s'inscrit dans l'aire coutumière Djubéa-Kaponé.",
+   "histoire": "Premiers peuplements. Plusieurs sites se trouvant sur la commune du Mont-Dore sont peuplés depuis de longue date. Les premières zones de peuplement ont été localisées notamment à Boulari et à Saint-Louis dès l'époque de la période de Koné remontant au début du Ier millénaire av. J.-C. Un autre site, celui de Plum, a donné son nom à un style de poterie (dont un exemplaire entier a été découvert dans cette localité) développé entre le IIe siècle av. J.-C. et le début du IIe millénaire apr. J.-C.\nArrivée des Européens. Lorsque les premiers contacts se font avec des Européens au début du XIXe siècle (notamment des santaliers anglais), le territoire actuel du Mont-Dore est alors occupé par deux clans de langue drubéa : les Boularis (ou Morari) et les Okoniés, de part et d'autre du fleuve de La Coulée. La déclaration du Bouzet en 1855 reconnaît aux Kanak la propriété des terres occupées par eux (propriété rendue inaliénable par l'arrêté du gouverneur Charles Guillain de 1868) et place dans le domaine de l'État les autres.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Le_Mont-Dore_(Nouvelle-Cal%C3%A9donie)",
+   "coords": [
+    -22.22955,
+    166.52372
+   ]
+  },
+  {
+   "id": "noumea",
+   "nom": "Nouméa",
+   "province": "Sud",
+   "aire": "Drubea-Kapumë",
+   "coords": [
+    -22.2758,
+    166.458
+   ],
+   "resume": "Nouméa (prononcé /nu.me.a/), la principale ville portuaire de Nouvelle-Calédonie, est le chef-lieu de cette collectivité d'outre-mer française au statut spécifique et de la Province Sud, située sur une presqu'île du sud de la côte ouest de la Grande Terre.",
+   "histoire": "Si la presqu'île nouméenne a pu être occupée dès le Ier millénaire, son histoire connue commence avec la colonisation française au milieu du XIXe siècle. Devenue la capitale d'un Territoire d'outre-mer puis d'une collectivité sui generis française après 1946, elle a connu de profonds bouleversements économiques, sociaux et politiques.\nAvant les Français. La préhistoire de Nouméa reste encore peu connue, transmise par quelques découvertes archéologiques, les récits faits par les premiers Européens ayant pris contact avec les populations locales et une tradition orale construite autour de conflits coutumiers et politiques qui divisent les clans kanaks de l'aire Djubéa-Kaponé.\nLes traces archéologiques des premiers peuplements. Plusieurs campagnes de fouilles archéologiques ont été entreprises dans la presqu'île de Nouméa, révélant des peuplements ponctuels sur certains sites avant l'installation des Européens.\nPlusieurs sites d'habitats ainsi que des vestiges de différentes natures (four ou autres traces de feux, restes humains correspondant peut-être à des sépultures) ont été mis à jour en 1955 par les Américains Edward W. Gifford et Richard Shutler Jr. de l’université de Californie à Berkeley dans le sud (Anse Vata, site de l'hippodrome, Ouen Toro, Baie de l'Orphelinat). De tels vestiges ont également été retrouvés à Nouville, mais aucun n'a été daté avec précision.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Noum%C3%A9a"
+  },
+  {
+   "id": "ouegoa",
+   "nom": "Ouégoa",
+   "province": "Nord",
+   "aire": "Hoot ma Whaap",
+   "coords": [
+    -20.35058,
+    164.4326
+   ],
+   "resume": "Ouégoa (Wégoa)  est une commune française de Nouvelle-Calédonie, au nord de la Grande Terre en Province Nord, côte est, à environ 35 km au nord-ouest de Pouébo, à 40 km à l'est de Koumac (côte ouest) et à 409 km de Nouméa.\nLa commune fait partie de l'aire coutumière Hoot ma Waap.",
+   "histoire": "Époque précoloniale.\nLa découverte de l'or et de son compagnon, le cuivre. L’histoire de Ouégoa, est intimement liée à celles des mines de cuivre et d'or qui ont fait la fortune de cette région sur une période de vingt ans de 1870 à 1890.\nLa recherche de l'or en Nouvelle-Calédonie débute avant la prise de possession de 1853. Le commissaire Louis Bérard à bord de l’Alcmène en 1850 affirme avoir découvert du quartz aurifère dans la région de Hienghène. En juin 1863, l'or sous forme de paillettes est signalé dans une couche d'argile à Pouébo par un groupe de prospecteurs dirigés par Émile Lozeron. En août 1869, le gouverneur Charles Guillain, pour motiver les recherches, promet une licence gratuite de 25 ha de terrain aurifère plus une prime de 50 000 francs à qui pourrait produire 20 000 onces d'or dans les douze mois suivants la découverte d'un gisement payant. Le 10 septembre 1870, un groupe de quatre mineurs, Victor Hook, John Borgnis, George Piper et Élisée Bailly annoncent par une déclaration officielle la découverte d'un gisement au lieu-dit « Moindine » (Manghine) sur la rive gauche du Diahot, site de la future mine de Fern-Hill. Dès la confirmation de la richesse du gisement connue, la nouvelle se propage jusqu'à Sydney, attirant dans la région dès mars 1871 quantité de prospecteurs anglo-saxons qui ne trouvent rien et quittent les lieux quelques mois plus tard.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Ou%C3%A9goa"
+  },
+  {
+   "id": "ouvea",
+   "nom": "Ouvéa",
+   "province": "Îles Loyauté",
+   "aire": "Iaai",
+   "coords": [
+    -20.65222,
+    166.56194
+   ],
+   "resume": "Ouvéa (en iaai : Iaai ; en fagauvea : Uvea) est un atoll de la mer de Corail, le plus septentrional de l'archipel des îles Loyauté, au nord-est de la Grande Terre de la Nouvelle-Calédonie. Ouvéa est également une commune française dont le centre administratif et démographique est Fayaoué au centre de l'île.",
+   "histoire": "Avant les Européens. Des échanges anciens, que la tradition orale permet de faire remonter au XVIe siècle voire au-delà, avec l'île de Wallis et d'autres archipels polynésiens a permis de développer aux îles Loyauté une organisation clanique légèrement différente de celle de la Grande Terre. De plus, la présence à Ouvéa d'une langue polynésienne, le faga uvea, variante du wallisien, témoigne de ces mouvements de population.\nÀ l'origine, les clans constituent une fédération plus ou moins lâche au sein d'une entité plus large organisée sur le plan politique, des chefferies d'importances variables dont les plus complexes se rencontrent à Gomen, Koumac, Pouébo et Canala sur la Grande Terre et surtout aux îles Loyautés et à l'île des Pins. Ces chefferies complexes le sont autant que les chefferies fidjiennes, auxquelles elles s'apparentent. Mais, à la suite des échanges de population entre les îles Loyauté et les archipels polynésiens, une hiérarchisation et une spécialisation des clans en fonction des attributions qui leur sont confiées au sein de la chefferie commencent à apparaître : il existe ainsi des clans des propriétaires fonciers, de la mer (regroupant les pêcheurs), de guerriers, notamment. Le chef assure la cohésion sociale entre ces clans et à ce titre, il est respecté et adulé par la population qui se réclame de lui.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Ouv%C3%A9a"
+  },
+  {
+   "id": "paita",
+   "nom": "Païta",
+   "province": "Sud",
+   "aire": "Drubea-Kapumë",
+   "coords": [
+    -22.13371,
+    166.35049
+   ],
+   "resume": "Païta (Pweyta en nââ drubéa) est une commune française de Nouvelle-Calédonie, située dans la province Sud, sur la côte ouest de la Grande Terre. Elle fait partie du Grand Nouméa dont elle constitue la périphérie restée la plus rurale. L'aéroport international de Nouméa - La Tontouta est situé sur son territoire.\nLa commune fait partie de l'aire coutumière Djubéa-Kaponé.",
+   "histoire": "La période pré-coloniale. La présence de pétroglyphes (sculptures rupestres dont les formes géométriques, cruciformes ou animales stéréotypées restent un mystère pour les archéologues quant à leur signification) au col de Katiramona et de tumuli (vaste dômes de terre d'origine entourant une colonne de calcaire semblable à une sorte de « chaux », datés entre 3 000 et 10 000 ans avant nos jours et dont l'origine humaine suscite le débat au sein de la communauté scientifique), ainsi que les traces de tarodières au col de la Pirogue et à Bangou ou de billons d'ignames à l'entrée de l'actuel village-centre de Païta semblent témoigner d'un peuplement pré-colonial assez ancien. Le site de Naïa, situé sur le littoral de la commune, a donné son nom à deux types de poteries développées entre le début du Ier siècle av. J.-C. et l'arrivée des Européens aux XVIIIe et XIXe siècles (appelée d'ailleurs période de « Naïa Oundjo » par les historiens), dites 'Naïa I (poteries à anses retrouvées essentiellement dans le sud de la côte ouest entre Bourail et l'île Ouen dans des zones exclusivement littorales) et Naïa II (poteries de petite taille et à pustules localisées elles aussi essentiellement dans le sud, sur le littoral mais également à l'intérieur des terres).",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Pa%C3%AFta"
+  },
+  {
+   "id": "poindimie",
+   "nom": "Poindimié",
+   "province": "Nord",
+   "aire": "Paicî-Cèmuhî",
+   "coords": [
+    -20.94961,
+    165.3293
+   ],
+   "resume": "Poindimié (prononcé [pwɛ̃dimje] ; en langue paicî : Pwêêdi Wiimîâ et anciennement dénommé Ti Ouaka avant l'arrivée des premiers colons), est une commune française de Nouvelle-Calédonie, située sur la côte Est de la Grande Terre en Province Nord, à 309 km de Nouméa, et à environ 30 km de Touho (nord-ouest) et de Ponérihouen (sud-est). La côte ouest (Koné) est à une centaine de kilomètres par la route transversale.",
+   "histoire": "Époque précoloniale. Des fouilles archéologiques effectuées en 1956 dans un dépôt de coquillages de la tribu de Bayes, au sud-est de le commune, ont révélé des preuves d'une occupation humaine vieille de près de deux millénaires.\n1856. La première mission est fondée dans la région par les pères maristes à Wagap en 1856. Elle est plus tard, en 1877, déplacée sur la rive droite de l'Amoa, à Tyé. Le Vicariat de l'époque a été établi sur la-dite mission de Tyé par la grande chefferie Waka Amô, dirigée à l'époque par le grand chef Amô Apengou Emmanuel, sur un terrain appartenant au clan Waka Amô (dont fait partie la grande chefferie[réf. nécessaire]. Wagap accueille à la place des frères de l'Ordre cistercien de la stricte observance (« trappistes »), qui sont déplacés à la tribu de Tiwaka en 1889. Ce monastère est cependant fermé fin 1889. La Mission Catholique, sous les ordres de Mgr Emmanuel Vitte, évêque de Nouvelle-Calédonie, recherche un asile pour recueillir et isoler les prêtres condamnés et libérés. Elle achète les terrains (650 hectares, élargis à 800 hectares)[réf. nécessaire].\nLes trappistes sont immédiatement relayés à Tiwaka par d'autres maristes, dont le père Stéphane Marie Berne (1856-1923), pour fonder l'« Œuvre (ou Asile) de Saint-Léonard » chargée de venir en aide aux forçats libérés.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Poindimi%C3%A9"
+  },
+  {
+   "id": "ponerihouen",
+   "nom": "Ponérihouen",
+   "province": "Nord",
+   "aire": "Paicî-Cèmuhî",
+   "coords": [
+    -21.07723,
+    165.396
+   ],
+   "resume": "Ponerihouen (prononcé [pɔneʁiwɛ̃] ; en paicî : Pwäräiriwa, littéralement « l'embouchure du fleuve ») est une commune française de Nouvelle-Calédonie de la Province Nord, sur la côte est, à 280 km de Nouméa, à 30 km de Poindimié (nord-ouest) et à 45 km de Houaïlou.\nAu recensement de 2019, elle compte 2 420 habitants.\nLa commune fait partie de l'aire coutumière Paici-Camuki.",
+   "histoire": "Époque précoloniale.\nPremiers contacts et colonisation au XIXe siècle. Vers 1860, un poste de gendarmerie est installé à l'emplacement de l'actuel village[réf. souhaitée].\nUn village se développe autour à partir de 1879 avec les premiers colons installés (notamment des Réunionnais comme Philippe Douyère). Les missionnaires sont d'abord protestants, avec de fortes implantations dans les tribus de Mou ou de L'Embouchure[réf. souhaitée].\nLe père mariste Yves-Marie Hily, qui a fondé la mission de Houaïlou à Méomo en 1896, qui permet également d'y introduire la religion catholique, avec les premiers baptêmes de Kanak de Néavin en 1898, y crée en 1905 la mission de Téouty, près de la tribu de Grochain dans la moyenne vallée de la Nérihouen. Une rivalité entre les deux cultes va aboutir à des tribus mixtes, en partie catholiques et en partie protestantes[réf. souhaitée].\nÀ partir de 1894, des « colons Feillet » sont installés pour cultiver le café essentiellement dans la moyenne et la haute vallée de la Nérihouen-Nimbayes (Armand Devillers, Antonin Clavel, François Thonon, par exemple)[réf. souhaitée].\nXXe siècle. La production de café se développe par la suite, avec les premières usines créées entre les années 1930 et 1945 sur deux sites de la commune.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Pon%C3%A9rihouen"
+  },
+  {
+   "id": "pouebo",
+   "nom": "Pouébo",
+   "province": "Nord",
+   "aire": "Hoot ma Whaap",
+   "coords": [
+    -20.39747,
+    164.56889
+   ],
+   "resume": "Pouébo (en langue Caac : Pweevo) est une commune française de Nouvelle-Calédonie, au nord-est de la Grande Terre en province Nord, à environ 35 km de Ouégoa, à 440 km de Nouméa par Koumac, et 40 km au nord de Hienghène.",
+   "histoire": "Époque précoloniale et Premier contact.\nLe premier contact entre des Européens et des Kanak a lieu à environ 13 km au nord, à Balade : James Cook accoste en 1774[réf. nécessaire].\n1847-1853. Au même endroit commence l'évangélisation catholique de la Nouvelle-Calédonie, avec le débarquement (du navire Le Bucéphale) de la mission d'Amata (nom d'un évêché antique disparu) le 20 décembre 1843. Guillaume Douarre est nommé en 1843 coadjuteur de Pierre Bataillon, responsable du vicariat apostolique d'Océanie centrale. Guillaume Douarre, entouré du père Rougeyron et des frères Blaise Marmoiton, Gilbert Roudaire et Jean Taragnat, célèbre sa première messe le 25 décembre 1843 en tant qu'évêque d'Amata sur la plage de Mahamate sous un banian qui existe encore actuellement. Blaise Marmoiton y connaît une fin tragique le 19 juillet 1847. L'église de Balade retrace à travers ses vitraux la vie de cette mission mariste, qui va jouer un rôle primordial de régulation sociale dans tout le Grand Nord et jusqu'aux îles Belep. La tombe de Blaise Marmoiton est visible à deux pas de l'église. La cause de sa béatification a été introduite en 1919. Le vicariat de Nouvelle-Calédonie devient indépendant en 1847. Un procès-verbal des événements de 1847, à Balade et à Pouébo, se trouve dans l'ouvrage du religieux Verguet (1854)[réf. nécessaire].",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Pou%C3%A9bo"
+  },
+  {
+   "id": "pouembout",
+   "nom": "Pouembout",
+   "province": "Nord",
+   "aire": "Paicî-Cèmuhî",
+   "coords": [
+    -21.12789,
+    164.88831
+   ],
+   "resume": "Pouembout (prononcé [pwɛ̃but] ; en paicî : Pwëbuu) est une commune française de Nouvelle-Calédonie, au nord-ouest de la Grande Terre, la plus grande des îles de Nouvelle-Calédonie, en Province Nord, sur la RT1, approximativement à 260 km de Nouméa, à 100 km au nord de Bourail, à 60 km au nord de Poya, à 10 km au sud de Koné et à 30 de Voh.\nDeux tribus sont présentes sur le territoire de la commune: Paouta et Ouaté.",
+   "histoire": "Époque précoloniale.\nArrivée du peuplement européen. Le centre de colonisation pénale de Pouembout est créé en 1883. L'autorité pénitentiaire y possède déjà un domaine important de plus de 3500 hectares. La vallée de Pouembout est particulièrement fertile avec les meilleurs sols du territoire (terre noire). De plus, le fort militaire et le village libre de Koné qui comptent plusieurs bureaux administratifs sont proches.\nEn février 1883, un premier groupe de forçats accompagné de surveillants-militaire et de géomètre de la pénitentiaire sont utilisés pour les délimitations des lots de concessions urbaines (qui deviendra l'actuel village) et des lots ruraux sur les rives de la rivière Pouembout. En mai 1884, ils sont installés sur ces concessions et un autre groupe de forçats les remplacent sur les travaux d'installation. Bien d'autres suivront: 418 condamnés de 1883 à 1895.\nEn 1885, la société coopérative de Pouembout voit le jour sous l'impulsion des concessionnaires. Ses buts sont de trouver des débouchés à la production locale et de stabiliser les prix des produits de consommation.\nVingt ans plus tard, la situation isolée de Pouembout s'est améliorée. Le chemin de muletier reliant le centre au village de Koné a été transformé en route carrossable et le ravitaillement par mer se fait maintenant à l'embouchure de la rivière grâce à un débarcadère.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Pouembout"
+  },
+  {
+   "id": "poum",
+   "nom": "Poum",
+   "province": "Nord",
+   "aire": "Hoot ma Whaap",
+   "resume": "Poum (en langue puma : Pum) est une commune française de Nouvelle-Calédonie, constituant l'extrémité nord-ouest de la Grande Terre en Province Nord, côte ouest, sur la Route provinciale Nord 1 (RPN 1), à 430 km de Nouméa, à 60 km au nord-ouest de Koumac, et à plus de 100 km à l'ouest de Ouégoa ou Pouébo (côte est).\nLa commune, forte d'environ 1 500 habitants, fait partie de l'aire coutumière Hoot ma Waap. La langue est le nêlêmwa-nixumwak.",
+   "histoire": "Époque précoloniale. Plusieurs versions du peuplement de la commune existent. Dans toutes les versions, la notion de migration est importante. Poum était un lieu de passage maritime, accueillant les différents clans venant et allant vers les îles ou la Grande Terre. D’après différentes sources, les clans des îles se seraient installés sur la Grande Terre afin de limiter l’arrivée d’autres clans venant du sud. Certains conflits coutumiers seraient nés de cette époque pré-coloniale.\nColonisation. En 1852, Mgr Douarre acquiert du \"premier chef d'Arama, Buéone et de son frère Tobuitma\" un terrain, où construire l'église catholique d'Arama, contre « étoffes, haches, bêches, pioches, couvertures, hameçons, tabac et verroterie » (Rozier 1990:243).\nXXIe siècle. En 2010, la deuxième édition spéciale de Koh-Lanta, Le Choc des héros, se déroula près de Poum dans l'archipel de Malabou.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Poum_(Nouvelle-Cal%C3%A9donie)",
+   "coords": [
+    -20.2415,
+    164.01691
+   ]
+  },
+  {
+   "id": "poya",
+   "nom": "Poya",
+   "province": "Nord",
+   "aire": "Ajië-Arhö",
+   "resume": "Poya (prononcé [pɔja] ; Nèkö) est une commune française de Nouvelle-Calédonie, la seule de cette collectivité à être à cheval sur deux provinces : celles du Nord et du Sud, sur la RT1, à 210 km de Nouméa, et à 47 de Bourail au sud, et de 56 km de Pouembout au nord.\nLa commune fait partie de l'aire coutumière Paici-Camuky au nord et de l'aire coutumière Ajië-Aro au sud.",
+   "histoire": "Époque précoloniale.\n1857.\nCette région fait l'objet d'une première reconnaissance en octobre 1857, lors d'une tournée de la côte Ouest effectuée par le gouverneur Du Bouzet à bord du Styx. Toutefois, ne pouvant examiner le site de Poya, encombré par la mangrove, il se rabat sur celui de Muéo, d'un accès – une passe – plus aisé pour son navire.\n1870. Au début des années 1870, et notablement grâce aux dispositions de l'arrêté 26 janvier 1871 sur les permis d'occupation sans limites de superficie, le front d'occupation se déplace rapidement vers le Nord de la côte ouest, atteignant alors la région de Poya, avec l'installation d'éleveurs comme le Réunionnais Routhier de Granval dès avril 1871. En 1872, on compte une dizaine d'éleveurs dans la région s'étendant du Cap Goulvain à Poya. En 1873, un ancien gendarme, Henri Houdaille, s'établit à côté de la tribu de Nékliaï. Puis en 1876, le géomètre Neigre délimite les propriétés des éleveurs Chardar, Français (à l'origine du lieu-dit Forêt Français), Escande et Brun. À la veille de l'insurrection kanake de 1878, vingt-trois propriétaires occupent diverses superficies s'étendant de la rivière du Cap à celle de Népoui.\nLa région est durement touchée par l'insurrection. Le 11 septembre, la station Houdaille est attaquée et son propriétaire, Henri Houdaille, est assassiné par les Kanaks.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Poya_(Nouvelle-Cal%C3%A9donie)",
+   "coords": [
+    -21.34874,
+    165.151
+   ]
+  },
+  {
+   "id": "sarramea",
+   "nom": "Sarraméa",
+   "province": "Sud",
+   "aire": "Xârâcùù",
+   "coords": [
+    -21.6412,
+    165.84599
+   ],
+   "resume": "Sarraméa (Xûâ Chârâmèa) est une commune française de Nouvelle-Calédonie de la Province Sud, côté ouest, à environ 130 km au nord-ouest de Nouméa, à proximité de La Foa, Farino, Moindou et Bourail.\nAvec la commune voisine de Farino, elle est l'une des deux seules municipalités de l'archipel néo-calédonien à n'avoir aucun accès à la mer.\nElle regroupe les tribus de Sarraméa, Grand-Couli et Petit-Couli.",
+   "histoire": "Au temps des premiers colons, Sarraméa était réputé pour ses plantations de café. Les colons « Feillet » y cultivaient les précieuses cerises nécessaires à la production du célèbre café « Leroy » consommé, dit-on, par Winston Churchill en personne. Au fil du siècle, cette culture fut peu à peu abandonnée au profit de l’élevage et de l'agriculture.\nMais aujourd’hui encore, quelques irréductibles continuent malgré tout à cultiver ce café sur les pentes de Sarraméa. Regroupé au sein du G.I.E Heuke, ils perpétuent ainsi une tradition centenaire. Perchée sur les hauteurs, au beau milieu d’une luxuriante forêt tropicale, la commune de Sarraméa est devenue un haut lieu du tourisme, elle propose plusieurs randonnées à thème (à pied ou à cheval).",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Sarram%C3%A9a"
+  },
+  {
+   "id": "thio",
+   "nom": "Thio",
+   "province": "Sud",
+   "aire": "Xârâcùù",
+   "coords": [
+    -21.62,
+    166.22
+   ],
+   "resume": "Thio (en langue Xârâcùù ou Xâragùrè (Borendy) : Tchô ou Cöö) est une commune française de Nouvelle-Calédonie située sur la côte Est de la Grande Terre, dans la Province Sud, à 120 km de Nouméa, entre Canala (46 km au nord-ouest) et Boulouparis (côte ouest, 47 km)\nL'agglomération centrale comporte deux parties séparées par le fleuve Thio à son embouchure, Thio-Village (rive gauche, 677 habitants) et Thio-Mission (rive droite, 343 habitants).",
+   "histoire": "Époque précoloniale.\n1868-1874 : Arrivée de la mission catholique. Benjamin Balansa loue une partie de la vallée de Dothio.\nUne mission catholique est créée sur la rive droite de l'embouchure de la Thio en 1868, par le père mariste Dominique Moris (1834-1907). Le premier chrétien originaire de Thio serait François Kamondi. La construction d'une église est lancée par le père Simonin en 1880, sur les plans du R.P. Vigouroux, et inaugurée en 1913.\n1874-1885 : Premières mines et insurrections. Mais l'histoire contemporaine de Thio est avant tout liée à celle de la mine, d'abord la mine Rose, sur le Plateau de Thio. Capitale du nickel à partir de 1875, elle est le premier site d'extraction de ce métal au monde, année de la découverte, (homologuée en 1876), de la garniérite (par Jules Garnier).\nLa Société Le Nickel (SLN) y est créée en 1880 par John Higginson et Jules Garnier notamment. Le port minéralier est installé à côté de la mission. Deux fonderies sont exploitées sur le territoire de la commune (avant que toutes les activités de transformation du nickel ne soient regroupés à l'usine de Doniambo à Nouméa) : Ouroué (1889-1891), Thio-Mission (1912-1930). Le siège social de la SLN est même, de manière éphémère, situé à Thio-Village de 1921 à 1923. En 1893, un chemin de fer de 8km relie le Pont du Père et le premier pont sur la Thio.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Thio"
+  },
+  {
+   "id": "touho",
+   "nom": "Touho",
+   "province": "Nord",
+   "aire": "Paicî-Cèmuhî",
+   "coords": [
+    -20.792,
+    165.2303
+   ],
+   "resume": "Touho (en langue cèmuhî : Tuo Cèmuhî) est une commune française de Nouvelle-Calédonie, située en Province Nord, sur la  côte est.\nLa commune fait partie de l'aire coutumière Paici-Camuki.",
+   "histoire": "Époque précoloniale.\nPremiers contacts et colonisation au XIXe siècle. La mission de Touho est fondée entre 1853 et 1860 par le Père Benoît Forestier.\nEn 1862, en réponse à des spoliations foncières, la tribu de Wagap, sous la direction du chef Kaoua, dévaste la Mission catholique de Touho. En résulte une répression des indigènes de la vallée de la Tiwaka, avec incendies et destructions. Un nouveau chef est installé à Wagap, Pouchambou[réf. nécessaire].\nUn peu avant 1870, un chef de tribu de la Tiwaka plante à l'entrée du port un pin colonnaire, pour marquer la première union mixte dans la région.\nXXe siècle. En 1901 est signée la paix de Pamalé avec les autorités coloniales (Paul Feillet). Le but est de faire cesser les attaques de la tribu de Poyès (chef Amane), futurs protestants, à l'encontre les tribus catholiques des rivages de Touho, sur des questions de spoliations foncières et de capitation, avec des fusils vendus par le colon Petitjean, jamais inquiété. Mais la réserve de Pamalé est supprimée en 1903, au profit d'un éleveur belge, M. Metzdorf, puis reprise par la société Ouaco. En 1905, le chef Amane est arrêté et condamné à être déporté à Tahiti[réf. nécessaire].\nEn 1916, le fort militaire cesse ses activités[réf. nécessaire].\nXXIe siècle.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Touho"
+  },
+  {
+   "id": "voh",
+   "nom": "Voh",
+   "province": "Nord",
+   "aire": "Hoot ma Whaap",
+   "coords": [
+    -20.95934,
+    164.688
+   ],
+   "resume": "Voh (en langue locale[Laquelle ?] : Vook) est une commune française de Nouvelle-Calédonie qui fait partie de la Province Nord, sur la côte Ouest de la Grande Terre, à environ 300 km au nord-ouest de Nouméa, à 30 km au nord de Koné et à 70 km au sud-est de Koumac.\nOn y compte 2 856 habitants en 2019.",
+   "histoire": "1865.\nLa région entre dans l'histoire en 1865 avec le massacre par les Kanak, après enlèvement de femmes kanakes, des équipages de la Reine-des-Îles et du cotre le Secret à Pouangué (Gatope). Sous le commandement du Gouverneur Charles Guillain, une expédition de représailles est menée, avec l'aide des chefs de Koné (Mango), Voh (Tiph) et Pouaco, contre le Grand Chef N'Endé Gondou, dans les régions de Pouangé, Koné Gathé, Témala et Pouanloatche (détruit).\nLa situation entraîne l'érection du fort à Gatope, abandonné dès 1869, à une époque où la région est pacifiée.\n1891. En juin 1891, l'administration décide d'allotir la petite vallée de Voh, pressentant qu'il n'y aurait bientôt plus de place pour les immigrants à Koné ou à la Ouaménie (centre de Gilliès). L’Avenir de la Nouvelle-Calédonie du 25 juin 1891 écrit : « L’administration se dispose, dit-on à envoyer des immigrants à Voh… ». Fin juillet, la décision est prise de créer un centre agricole sur la rive droite de la rivière de Voh, sur des terrains renoncés volontairement, moyennant rétribution, par les Kanak de la région. L’Avenir du 1er août l’annonce d’une manière très critique, dénonçant le manque de voies de communication dans cette région : « À Voh. — Lorsque l’administration est en disposition de commettre une gaffe, rien ne peut l’en empêcher.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Voh"
+  },
+  {
+   "id": "yate",
+   "nom": "Yaté",
+   "province": "Sud",
+   "aire": "Drubea-Kapumë",
+   "coords": [
+    -22.1676,
+    166.92661
+   ],
+   "resume": "Yaté est une commune française de Nouvelle-Calédonie située au sud de l'île, à 80 km de Nouméa, petite par la population, mais grande par la superficie (15e commune la plus vaste de France). Le territoire de la commune de Yaté, qui comprend aussi Goro, se caractérise par la beauté sauvage et souvent rouge (en raison des latérites) de ses paysages, par sa richesse écologique, protégée au sein de nombreuses réserves et d'un parc provincial, par…",
+   "histoire": "Le premier contact avec les Européens. En 1774, l'explorateur anglais James Cook aborde l'îlot Améré au large de la baie de Goro.\nLes débuts de la présence européenne et les guerres tribales (1774-1863). Avant les débuts de la colonisation, le territoire est l'objet d'affrontements entre les Européens et les tribus de l'île des Pins.\nToutes les tentatives d'évangélisation de la région de Yaté échouent :\nmissions protestantes, en 1841,\nEn 1845, le teacher tongien Ta'unga est évacué de Touaourou (où il est arrivé en juillet 1842), par le Camden, sur l'île de Maré,\nmissions catholiques : en 1849, la mission de Pouébo et Balade se replie sur l'île des Pins, tente Yaté (28 septembre), Ouvéa (Halgan), puis Hienghène, et finalement choisit Yaté, pour y « aller fonder une réduction composée de tous les chrétiens de l'île; vingt-trois néophytes l'accompagnent » (Verguet, p. 272), le 28 novembre. La population locale apprécie modérément, les plantations sont ravagées. Le site est définitivement abandonné le 2 janvier 1850.",
+   "wikipedia": "https://fr.wikipedia.org/wiki/Yat%C3%A9"
+  }
+ ]
+}
