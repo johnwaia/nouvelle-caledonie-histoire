@@ -15,7 +15,7 @@ onMounted(() => closeBtn.value?.focus())
 
 <template>
   <!-- Fermeture : croix, clic à l'extérieur du panneau ou touche Échap -->
-  <div class="tribu-backdrop" @click.self="emit('close')">
+  <div class="tribu-backdrop" @click.self="emit('close')" @keydown.esc="emit('close')">
     <dialog open class="tribu-panel" aria-modal="true" aria-labelledby="province-title">
       <button ref="closeBtn" class="tribu-close" aria-label="Fermer" @click="emit('close')">×</button>
 

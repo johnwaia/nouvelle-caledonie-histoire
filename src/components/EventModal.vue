@@ -17,7 +17,7 @@ const videos = computed(() => (props.event.videos || []).filter((v) => v?.url))
 
 <template>
   <!-- Fermeture : bouton ×, clic à côté de la fiche ou touche Échap -->
-  <div class="modal-backdrop" @click.self="emit('close')">
+  <div class="modal-backdrop" @click.self="emit('close')" @keydown.esc="emit('close')">
     <dialog open ref="dialog" class="modal" aria-modal="true" aria-labelledby="ev-title" tabindex="-1">
       <button class="modal-close" aria-label="Fermer" title="Fermer (Échap)" @click="emit('close')">×</button>
 
