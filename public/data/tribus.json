@@ -10,7 +10,13 @@
     -19.71488,
     163.64768
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-joachin-belep.jpg",
+    "alt": "Maison commune de la tribu de St Joachin",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-joseph-belep",
@@ -21,7 +27,13 @@
     -19.71615,
     163.64634
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-joseph-belep.jpg",
+    "alt": "Maison commune de la tribu de St Joseph",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-louis-belep",
@@ -31,7 +43,13 @@
     -19.70911,
     163.64131
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-louis-belep.jpg",
+    "alt": "Maison commune de la tribu de St Louis",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-pierre-belep",
@@ -42,7 +60,13 @@
     -19.71021,
     163.64261
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-pierre-belep.jpg",
+    "alt": "Maison commune de la tribu de St Pierre",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ste-anne-belep",
@@ -53,7 +77,13 @@
     -19.71374,
     163.64957
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ste-anne-belep.jpg",
+    "alt": "Maison commune de la tribu de Ste Anne",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ste-marie-belep",
@@ -63,7 +93,13 @@
     -19.71057,
     163.64743
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ste-marie-belep.jpg",
+    "alt": "Maison commune de la tribu de Ste Marie",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ste-therese-belep",
@@ -73,7 +109,13 @@
     -19.71739,
     163.64496
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ste-therese-belep.jpg",
+    "alt": "Maison commune de la tribu de Ste Thérèse",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "kouergoa-boulouparis",
@@ -194,7 +236,13 @@
     -21.55963,
     165.90608
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/ema-canala.jpg",
+    "alt": "Maison commune de la tribu de Ema",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 09-2011, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "gelima-canala",
@@ -205,7 +253,13 @@
     -21.53439,
     165.98152
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/gelima-canala.jpg",
+    "alt": "Maison commune de la tribu de Gélima",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "haouli-canala",
@@ -216,7 +270,13 @@
     -21.52917,
     165.86912
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/haouli-canala.jpg",
+    "alt": "Maison commune de la tribu de Haouli",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 09-2011, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "kuine-canala",
@@ -227,7 +287,13 @@
     -21.53645,
     165.97352
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/kuine-canala.jpg",
+    "alt": "Maison commune de la tribu de Kuine",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "mehoue-canala",
@@ -238,7 +304,13 @@
     -21.51958,
     165.94942
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/mehoue-canala.jpg",
+    "alt": "Maison commune de la tribu de Méhoué",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "mereneme-canala",
@@ -248,7 +320,13 @@
     -21.51486,
     165.92819
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/mereneme-canala.jpg",
+    "alt": "Maison commune de la tribu de Mérénémé",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "mia-canala",
@@ -258,7 +336,13 @@
     -21.55541,
     165.98278
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/mia-canala.jpg",
+    "alt": "Maison commune de la tribu de Miâ",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "nakety",
@@ -291,7 +375,13 @@
      "label": "« Nakéty célèbre les 150 ans de l'évangélisation » (Les Nouvelles Calédoniennes)",
      "url": "https://www.lnc.nc/article/nord/canala/nakety-celebre-les-150-ans-de-l-evangelisation"
     }
-   ]
+   ],
+   "image": {
+    "url": "images/tribus/nakety.jpg",
+    "alt": "Maison commune de la tribu de Nakéty",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "nanon-kenerou-canala",
@@ -302,7 +392,13 @@
     -21.5467,
     165.88481
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/nanon-kenerou-canala.jpg",
+    "alt": "Maison commune de la tribu de Nanon-Kénérou",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "nonhoue-boakaine-canala",
@@ -313,7 +409,13 @@
     -21.51519,
     165.94682
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/nonhoue-boakaine-canala.jpg",
+    "alt": "Maison commune de la tribu de Nonhoué - Boakaine",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouasse-canala",
@@ -324,7 +426,13 @@
     -21.46853,
     166.03676
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/ouasse-canala.jpg",
+    "alt": "Maison commune de la tribu de Ouassé",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-paul-canala",
@@ -346,7 +454,13 @@
     -21.54565,
     166.03563
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/tenda-canala.jpg",
+    "alt": "Maison commune de la tribu de Tenda",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "bas-coulna-hienghene",
@@ -357,7 +471,13 @@
     -20.68784,
     164.78261
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/bas-coulna-hienghene.jpg",
+    "alt": "Maison commune de la tribu de Bas-Coulna",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ganem-hienghene",
@@ -367,7 +487,13 @@
     -20.69731,
     164.93209
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ganem-hienghene.jpg",
+    "alt": "Maison commune de la tribu de Ganem",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "haut-coulna-hienghene",
@@ -378,7 +504,13 @@
     -20.63481,
     164.73586
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/haut-coulna-hienghene.jpg",
+    "alt": "Maison commune de la tribu de Haut-Coulna",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2011, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "kavatch-hienghene",
@@ -389,7 +521,13 @@
     -20.71359,
     164.82254
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/kavatch-hienghene.jpg",
+    "alt": "Maison commune de la tribu de Kavatch",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "koulnoue-hienghene",
@@ -400,7 +538,13 @@
     -20.68754,
     164.98493
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/koulnoue-hienghene.jpg",
+    "alt": "Maison commune de la tribu de Koulnoué",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "lewarap-hienghene",
@@ -411,7 +555,13 @@
     -20.72239,
     164.92838
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/lewarap-hienghene.jpg",
+    "alt": "Maison commune de la tribu de Lewarap",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "linderalique-hienghene",
@@ -421,7 +571,13 @@
     -20.68157,
     164.96709
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/linderalique-hienghene.jpg",
+    "alt": "Maison commune de la tribu de Lindéralique",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouaieme-hienghene",
@@ -432,7 +588,13 @@
     -20.61488,
     164.84911
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ouaieme-hienghene.jpg",
+    "alt": "Maison commune de la tribu de Ouaïème",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouare-hienghene",
@@ -443,7 +605,13 @@
     -20.67302,
     164.93523
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ouare-hienghene.jpg",
+    "alt": "Maison commune de la tribu de Ouaré",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouayaguette-hienghene",
@@ -465,7 +633,13 @@
     -20.76597,
     165.03459
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/oue-hava-hienghene.jpg",
+    "alt": "Maison commune de la tribu de Oué-Hava",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouen-kout-hienghene",
@@ -476,7 +650,13 @@
     -20.77992,
     164.99422
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ouen-kout-hienghene.jpg",
+    "alt": "Maison commune de la tribu de Ouen-Kout",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouenghip-hienghene",
@@ -487,7 +667,13 @@
     -20.63631,
     164.89525
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ouenghip-hienghene.jpg",
+    "alt": "Maison commune de la tribu de Ouenghip",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "panie-hienghene",
@@ -498,7 +684,13 @@
     -20.59874,
     164.8386
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/panie-hienghene.jpg",
+    "alt": "Maison commune de la tribu de Panié",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "pindache-hienghene",
@@ -520,7 +712,13 @@
     -20.71805,
     164.90816
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/poindjap-hienghene.jpg",
+    "alt": "Maison commune de la tribu de Poindjap",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "pouyemben-hienghene",
@@ -531,7 +729,13 @@
     -20.68456,
     164.88006
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/pouyemben-hienghene.jpg",
+    "alt": "Maison commune de la tribu de Pouyemben",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "tendo-hienghene",
@@ -542,7 +746,13 @@
     -20.71273,
     164.81628
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/tendo-hienghene.jpg",
+    "alt": "Maison commune de la tribu de Tendo",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "tiendanite",
@@ -587,7 +797,13 @@
      "label": "Jean-Marie Tjibaou (Wikipédia)",
      "url": "https://fr.wikipedia.org/w/index.php?search=Jean-Marie+Tjibaou"
     }
-   ]
+   ],
+   "image": {
+    "url": "images/tribus/tiendanite.jpg",
+    "alt": "Maison commune de la tribu de Tiendanite",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "tiwamack-hienghene",
@@ -597,7 +813,13 @@
     -20.72469,
     164.92423
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/tiwamack-hienghene.jpg",
+    "alt": "Maison commune de la tribu de Tiwamack",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ba-houailou",
@@ -608,7 +830,13 @@
     -21.19828,
     165.55843
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/ba-houailou.jpg",
+    "alt": "Maison commune de la tribu de Bâ",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "boeareu-houailou",
@@ -619,7 +847,13 @@
     -21.30751,
     165.57541
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/boeareu-houailou.jpg",
+    "alt": "Maison commune de la tribu de Boéareu",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "boreare-houailou",
@@ -630,7 +864,13 @@
     -21.35206,
     165.46776
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/boreare-houailou.jpg",
+    "alt": "Maison commune de la tribu de Boréaré",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "coula-houailou",
@@ -641,7 +881,13 @@
     -21.33685,
     165.44899
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/coula-houailou.jpg",
+    "alt": "Maison commune de la tribu de Coula",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "gonde-houailou",
@@ -652,7 +898,13 @@
     -21.29693,
     165.46118
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/gonde-houailou.jpg",
+    "alt": "Maison commune de la tribu de Gondé",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "gouaraoui-houailou",
@@ -663,7 +915,13 @@
     -21.31768,
     165.57449
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/gouaraoui-houailou.jpg",
+    "alt": "Maison commune de la tribu de Gouaraoui",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "gouareu-houailou",
@@ -674,7 +932,13 @@
     -21.30776,
     165.64408
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/gouareu-houailou.jpg",
+    "alt": "Maison commune de la tribu de Gouareu",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "gouareu-houailou-2",
@@ -696,7 +960,13 @@
     -21.33588,
     165.65614
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/kamoui-houailou.jpg",
+    "alt": "Maison commune de la tribu de Kamoui",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "kaora-houailou",
@@ -707,7 +977,13 @@
     -21.21376,
     165.58275
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/kaora-houailou.jpg",
+    "alt": "Maison commune de la tribu de Kaora",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "kapoue-houailou",
@@ -718,7 +994,13 @@
     -21.2897,
     165.63922
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/kapoue-houailou.jpg",
+    "alt": "Maison commune de la tribu de Kapoué",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "karagreu-houailou",
@@ -729,7 +1011,13 @@
     -21.37205,
     165.42055
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/karagreu-houailou.jpg",
+    "alt": "Maison commune de la tribu de Karagreu",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "kua-houailou",
@@ -740,7 +1028,13 @@
     -21.33125,
     165.7699
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/kua-houailou.jpg",
+    "alt": "Maison commune de la tribu de Kua",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "me-houailou",
@@ -751,7 +1045,13 @@
     -21.31225,
     165.57553
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/me-houailou.jpg",
+    "alt": "Maison commune de la tribu de Mé",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "meareu-houailou",
@@ -762,7 +1062,13 @@
     -21.30073,
     165.5873
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/meareu-houailou.jpg",
+    "alt": "Maison commune de la tribu de Méareu",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "medaouya-houailou",
@@ -773,7 +1079,13 @@
     -21.29222,
     165.51157
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/medaouya-houailou.jpg",
+    "alt": "Maison commune de la tribu de Médaouya",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "meomo-houailou",
@@ -784,7 +1096,13 @@
     -21.22276,
     165.59795
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/meomo-houailou.jpg",
+    "alt": "Maison commune de la tribu de Méomo",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "neaoua-houailou",
@@ -795,7 +1113,13 @@
     -21.32553,
     165.6455
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/neaoua-houailou.jpg",
+    "alt": "Maison commune de la tribu de Néaoua",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "nearia-houailou",
@@ -806,7 +1130,13 @@
     -21.26568,
     165.61002
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/nearia-houailou.jpg",
+    "alt": "Maison commune de la tribu de Néaria",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "nediouen-houailou",
@@ -817,7 +1147,13 @@
     -21.26723,
     165.61709
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/nediouen-houailou.jpg",
+    "alt": "Maison commune de la tribu de Nédiouen",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "nedivin-houailou",
@@ -828,7 +1164,13 @@
     -21.28974,
     165.57082
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/nedivin-houailou.jpg",
+    "alt": "Maison commune de la tribu de Nédivin",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "nekoue-houailou",
@@ -839,7 +1181,13 @@
     -21.25373,
     165.60451
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/nekoue-houailou.jpg",
+    "alt": "Maison commune de la tribu de Nékoué",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "neoua-houailou",
@@ -850,7 +1198,13 @@
     -21.42937,
     165.63914
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/neoua-houailou.jpg",
+    "alt": "Maison commune de la tribu de Néoua",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "neouyo-houailou",
@@ -861,7 +1215,13 @@
     -21.27691,
     165.63212
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/neouyo-houailou.jpg",
+    "alt": "Maison commune de la tribu de Néouyo",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "nerin-houailou",
@@ -872,7 +1232,13 @@
     -21.33061,
     165.36167
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/nerin-houailou.jpg",
+    "alt": "Maison commune de la tribu de Nérin",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "nessa-kouya-houailou",
@@ -883,7 +1249,13 @@
     -21.28422,
     165.52675
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/nessa-kouya-houailou.jpg",
+    "alt": "Maison commune de la tribu de Nessa Kouya",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "neya-houailou",
@@ -894,7 +1266,13 @@
     -21.21883,
     165.59213
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/neya-houailou.jpg",
+    "alt": "Maison commune de la tribu de Néya",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "nindiah-houailou",
@@ -905,7 +1283,13 @@
     -21.29611,
     165.58425
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/nindiah-houailou.jpg",
+    "alt": "Maison commune de la tribu de Nindiah",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouakaya-houailou",
@@ -916,7 +1300,13 @@
     -21.32328,
     165.63322
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/ouakaya-houailou.jpg",
+    "alt": "Maison commune de la tribu de Ouakaya",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouessoin-houailou",
@@ -927,7 +1317,13 @@
     -21.31207,
     165.57016
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/ouessoin-houailou.jpg",
+    "alt": "Maison commune de la tribu de Ouessoin",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouingo-houailou",
@@ -938,7 +1334,13 @@
     -21.29005,
     165.51812
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/ouingo-houailou.jpg",
+    "alt": "Maison commune de la tribu de Ouingo",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "paraouye-houailou",
@@ -949,7 +1351,13 @@
     -21.27314,
     165.64498
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/paraouye-houailou.jpg",
+    "alt": "Maison commune de la tribu de Paraouyé",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "poet-houailou",
@@ -971,7 +1379,13 @@
     -21.29296,
     165.57949
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/roibahon-houailou.jpg",
+    "alt": "Maison commune de la tribu de Roibahon",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "thu-houailou",
@@ -982,7 +1396,13 @@
     -21.26362,
     165.58209
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/thu-houailou.jpg",
+    "alt": "Maison commune de la tribu de Thu",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "gadji-ile-des-pins",
@@ -1104,7 +1524,13 @@
     -20.68985,
     164.4641
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/baoui-kaala-gomen.jpg",
+    "alt": "Maison commune de la tribu de Baoui",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "gamai-kaala-gomen",
@@ -1114,7 +1540,13 @@
     -20.69335,
     164.48754
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/gamai-kaala-gomen.jpg",
+    "alt": "Maison commune de la tribu de Gamaï",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "kourou-kaala-gomen",
@@ -1124,7 +1556,13 @@
     -20.59321,
     164.57808
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/kourou-kaala-gomen.jpg",
+    "alt": "Maison commune de la tribu de Kourou",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 06-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouamba-kaala-gomen",
@@ -1135,7 +1573,13 @@
     -20.67902,
     164.43982
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ouamba-kaala-gomen.jpg",
+    "alt": "Maison commune de la tribu de Ouamba",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "oueholle-kaala-gomen",
@@ -1145,7 +1589,13 @@
     -20.59618,
     164.5291
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/oueholle-kaala-gomen.jpg",
+    "alt": "Maison commune de la tribu de Ouéholle",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 06-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouemou-kaala-gomen",
@@ -1155,7 +1605,13 @@
     -20.59982,
     164.57926
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ouemou-kaala-gomen.jpg",
+    "alt": "Maison commune de la tribu de Ouémou",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 06-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "paita-kaala-gomen",
@@ -1165,7 +1621,13 @@
     -20.6479,
     164.42544
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/paita-kaala-gomen.jpg",
+    "alt": "Maison commune de la tribu de Païta",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "pangou-kaala-gomen",
@@ -1187,7 +1649,13 @@
     -20.65335,
     164.40802
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-pierre-kaala-gomen.jpg",
+    "alt": "Maison commune de la tribu de St Pierre",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "tegon-kaala-gomen",
@@ -1197,7 +1665,13 @@
     -20.67093,
     164.38805
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/tegon-kaala-gomen.jpg",
+    "alt": "Maison commune de la tribu de Tégon",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ateou-kone",
@@ -1208,7 +1682,13 @@
     -20.9467,
     164.90823
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/ateou-kone.jpg",
+    "alt": "Maison commune de la tribu de Atéou",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "baco-kone",
@@ -1219,7 +1699,13 @@
     -21.06129,
     164.89604
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/baco-kone.jpg",
+    "alt": "Maison commune de la tribu de Baco",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "koniambo-kone",
@@ -1230,7 +1716,13 @@
     -21.02984,
     164.87364
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/koniambo-kone.jpg",
+    "alt": "Maison commune de la tribu de Koniambo",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "neami-kone",
@@ -1241,7 +1733,13 @@
     -20.98091,
     164.97594
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/neami-kone.jpg",
+    "alt": "Maison commune de la tribu de Néami",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "netchaot-kone",
@@ -1252,7 +1750,13 @@
     -21.00663,
     165.01468
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/netchaot-kone.jpg",
+    "alt": "Maison commune de la tribu de Netchaot",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "noeli-kone",
@@ -1263,7 +1767,13 @@
     -21.00852,
     164.94967
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/noeli-kone.jpg",
+    "alt": "Maison commune de la tribu de Noéli",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "paouta-kone",
@@ -1274,7 +1784,13 @@
     -21.06156,
     165.00539
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/paouta-kone.jpg",
+    "alt": "Maison commune de la tribu de Paouta",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 10-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "poindah-kone",
@@ -1285,7 +1801,13 @@
     -21.03782,
     164.96225
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/poindah-kone.jpg",
+    "alt": "Maison commune de la tribu de Poindah",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "tiaoue-kone",
@@ -1296,7 +1818,13 @@
     -21.00074,
     164.91757
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/tiaoue-kone.jpg",
+    "alt": "Maison commune de la tribu de Tiaoué",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "amon-kasiori-kouaoua",
@@ -1307,7 +1835,13 @@
     -21.41117,
     165.83143
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/amon-kasiori-kouaoua.jpg",
+    "alt": "Maison commune de la tribu de Amon-Kasiori",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ceynon-kouaoua",
@@ -1318,7 +1852,13 @@
     -21.48738,
     165.80286
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/ceynon-kouaoua.jpg",
+    "alt": "Maison commune de la tribu de Ceynon",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "koh-kouaoua",
@@ -1328,7 +1868,13 @@
     -21.53618,
     165.83543
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/koh-kouaoua.jpg",
+    "alt": "Maison commune de la tribu de Koh",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "konoe-chaoue-kouaoua",
@@ -1338,7 +1884,13 @@
     -21.50156,
     165.7098
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/konoe-chaoue-kouaoua.jpg",
+    "alt": "Maison commune de la tribu de Konoé Chaoué",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "mea-mebara-kouaoua",
@@ -1348,7 +1900,13 @@
     -21.46913,
     165.78859
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/mea-mebara-kouaoua.jpg",
+    "alt": "Maison commune de la tribu de Méa Mébara",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "mechin-kouaoua",
@@ -1359,7 +1917,13 @@
     -21.49248,
     165.74298
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/mechin-kouaoua.jpg",
+    "alt": "Maison commune de la tribu de Méchin",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "oueroupime-kouaoua",
@@ -1370,7 +1934,13 @@
     -21.49791,
     165.72221
    ],
-   "aire": "Xârâcùù"
+   "aire": "Xârâcùù",
+   "image": {
+    "url": "images/tribus/oueroupime-kouaoua.jpg",
+    "alt": "Maison commune de la tribu de Ouéroupimé",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "galagaoui-koumac",
@@ -1380,7 +1950,13 @@
     -20.5562,
     164.26784
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/galagaoui-koumac.jpg",
+    "alt": "Maison commune de la tribu de Galagaoui",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouanac-i-koumac",
@@ -1391,7 +1967,13 @@
     -20.5591,
     164.26659
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ouanac-i-koumac.jpg",
+    "alt": "Maison commune de la tribu de Ouanac I",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 06-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouanac-ii-koumac",
@@ -1402,7 +1984,13 @@
     -20.56451,
     164.26919
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ouanac-ii-koumac.jpg",
+    "alt": "Maison commune de la tribu de Ouanac II",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "pagou-koumac",
@@ -1412,7 +2000,13 @@
     -20.54276,
     164.28045
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/pagou-koumac.jpg",
+    "alt": "Maison commune de la tribu de Pagou",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 06-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "paop-koumac",
@@ -1422,7 +2016,13 @@
     -20.55247,
     164.27549
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/paop-koumac.jpg",
+    "alt": "Maison commune de la tribu de Paop",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 06-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "koinde-la-foa",
@@ -2262,7 +2862,13 @@
     -20.35449,
     164.41142
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/balagam-ouegoa.jpg",
+    "alt": "Maison commune de la tribu de Balagam",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "bouelas-ouegoa",
@@ -2273,7 +2879,13 @@
     -20.52783,
     164.55284
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/bouelas-ouegoa.jpg",
+    "alt": "Maison commune de la tribu de Bouélas",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive oui, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "manguine-st-ferdinand-ouegoa",
@@ -2284,7 +2896,13 @@
     -20.38573,
     164.41777
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/manguine-st-ferdinand-ouegoa.jpg",
+    "alt": "Maison commune de la tribu de Manguine-St. Ferdinand",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouene-ouegoa",
@@ -2294,7 +2912,13 @@
     -20.53428,
     164.52432
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ouene-ouegoa.jpg",
+    "alt": "Maison commune de la tribu de Ouéné",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 03-2014, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouenia-ouegoa",
@@ -2305,7 +2929,13 @@
     -20.5217,
     164.52279
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ouenia-ouegoa.jpg",
+    "alt": "Maison commune de la tribu de Ouénia",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive oui, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "paraoua-ouegoa",
@@ -2315,7 +2945,13 @@
     -20.36214,
     164.44096
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/paraoua-ouegoa.jpg",
+    "alt": "Maison commune de la tribu de Paraoua",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "pouembanou-ouegoa",
@@ -2326,7 +2962,13 @@
     -20.51956,
     164.55034
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/pouembanou-ouegoa.jpg",
+    "alt": "Maison commune de la tribu de Pouembanou",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 30-2014, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-jean-baptiste-ouegoa",
@@ -2336,7 +2978,13 @@
     -20.42011,
     164.43765
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-jean-baptiste-ouegoa.jpg",
+    "alt": "Maison commune de la tribu de St Jean Baptiste",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-joseph-ouegoa",
@@ -2346,7 +2994,13 @@
     -20.44994,
     164.43603
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-joseph-ouegoa.jpg",
+    "alt": "Maison commune de la tribu de St Joseph",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-michel-ouegoa",
@@ -2356,7 +3010,13 @@
     -20.44381,
     164.43492
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-michel-ouegoa.jpg",
+    "alt": "Maison commune de la tribu de St Michel",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-paul-ouegoa",
@@ -2367,7 +3027,13 @@
     -20.43101,
     164.43861
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-paul-ouegoa.jpg",
+    "alt": "Maison commune de la tribu de St Paul",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-pierre-ouegoa",
@@ -2378,7 +3044,13 @@
     -20.42649,
     164.43043
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-pierre-ouegoa.jpg",
+    "alt": "Maison commune de la tribu de St Pierre",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-thimothee-ouegoa",
@@ -2388,7 +3060,13 @@
     -20.4355,
     164.42746
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-thimothee-ouegoa.jpg",
+    "alt": "Maison commune de la tribu de St Thimothée",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ste-anne-ouegoa",
@@ -2398,7 +3076,13 @@
     -20.42891,
     164.44663
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ste-anne-ouegoa.jpg",
+    "alt": "Maison commune de la tribu de Ste Anne",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "temeline-ouegoa",
@@ -2409,7 +3093,13 @@
     -20.52711,
     164.57106
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/temeline-ouegoa.jpg",
+    "alt": "Maison commune de la tribu de Téméline",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 03-2014, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "tiari-ouegoa",
@@ -2420,7 +3110,13 @@
     -20.24582,
     164.34682
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/tiari-ouegoa.jpg",
+    "alt": "Maison commune de la tribu de Tiari",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "banout-ouvea",
@@ -2735,7 +3431,13 @@
     -20.95109,
     165.41027
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/bayes-poindimie.jpg",
+    "alt": "Maison commune de la tribu de Bayes",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "bopope-poindimie",
@@ -2746,7 +3448,13 @@
     -20.91697,
     165.07532
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/bopope-poindimie.jpg",
+    "alt": "Maison commune de la tribu de Bopope",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "galilee-poindimie",
@@ -2757,7 +3465,13 @@
     -20.92655,
     165.27844
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/galilee-poindimie.jpg",
+    "alt": "Maison commune de la tribu de Galilée",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ina-poindimie",
@@ -2768,7 +3482,13 @@
     -20.93897,
     165.35986
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/ina-poindimie.jpg",
+    "alt": "Maison commune de la tribu de Ina",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "napoemien-poindimie",
@@ -2779,7 +3499,13 @@
     -20.96822,
     165.34121
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/napoemien-poindimie.jpg",
+    "alt": "Maison commune de la tribu de Napoémien",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 03-2012, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "nessapoue-poindimie",
@@ -2790,7 +3516,13 @@
     -20.95609,
     165.3704
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/nessapoue-poindimie.jpg",
+    "alt": "Maison commune de la tribu de Nessapoué",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ometteux-poindimie",
@@ -2801,7 +3533,13 @@
     -21.00614,
     165.40487
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/ometteux-poindimie.jpg",
+    "alt": "Maison commune de la tribu de Ometteux",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouindo-poindimie",
@@ -2812,7 +3550,13 @@
     -20.98625,
     165.39929
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/ouindo-poindimie.jpg",
+    "alt": "Maison commune de la tribu de Ouindo",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "paama-poindimie",
@@ -2823,7 +3567,13 @@
     -20.94109,
     165.3981
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/paama-poindimie.jpg",
+    "alt": "Maison commune de la tribu de Paama",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 03-2012, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "pambou-poindimie",
@@ -2834,7 +3584,13 @@
     -20.96963,
     165.40825
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/pambou-poindimie.jpg",
+    "alt": "Maison commune de la tribu de Pambou",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "poindimie-poindimie",
@@ -2845,7 +3601,13 @@
     -20.93717,
     165.33436
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/poindimie-poindimie.jpg",
+    "alt": "Maison commune de la tribu de Poindimié",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 03-2012, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-denis-poindimie",
@@ -2856,7 +3618,13 @@
     -20.89261,
     165.28009
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/st-denis-poindimie.jpg",
+    "alt": "Maison commune de la tribu de St Denis",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-michel-poindimie",
@@ -2867,7 +3635,13 @@
     -20.94617,
     165.24042
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/st-michel-poindimie.jpg",
+    "alt": "Maison commune de la tribu de St Michel",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 03-2012, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-paul-poindimie",
@@ -2878,7 +3652,13 @@
     -20.94719,
     165.26133
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/st-paul-poindimie.jpg",
+    "alt": "Maison commune de la tribu de St Paul",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 03-2012, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-therese-poindimie",
@@ -2899,7 +3679,13 @@
     -20.95827,
     165.23155
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/st-thomas-poindimie.jpg",
+    "alt": "Maison commune de la tribu de St Thomas",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 03-2012, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ti-ouano-poindimie",
@@ -2910,7 +3696,13 @@
     -20.91075,
     165.23776
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/ti-ouano-poindimie.jpg",
+    "alt": "Maison commune de la tribu de Ti - Ouano",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 03-2012, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "tibarama-poindimie",
@@ -2921,7 +3713,13 @@
     -20.93889,
     165.38513
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/tibarama-poindimie.jpg",
+    "alt": "Maison commune de la tribu de Tibarama",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "tie-poindimie",
@@ -2932,7 +3730,13 @@
     -20.90077,
     165.29804
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/tie-poindimie.jpg",
+    "alt": "Maison commune de la tribu de Tié",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 03-2012, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "tieti-poindimie",
@@ -2943,7 +3747,13 @@
     -20.91956,
     165.31102
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/tieti-poindimie.jpg",
+    "alt": "Maison commune de la tribu de Tiéti",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 03-2012, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "tieti-poindimie-2",
@@ -2963,7 +3773,13 @@
     -20.89513,
     165.223
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/tiwaka-poindimie.jpg",
+    "alt": "Maison commune de la tribu de Tiwaka",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "wagap-poindimie",
@@ -2974,7 +3790,13 @@
     -20.87703,
     165.2728
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/wagap-poindimie.jpg",
+    "alt": "Maison commune de la tribu de Wagap",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 02-2012, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "embouchure-ponerihouen",
@@ -2985,7 +3807,13 @@
     -21.05996,
     165.39686
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/embouchure-ponerihouen.jpg",
+    "alt": "Maison commune de la tribu de Embouchure",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive oui, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "goa-ponerihouen",
@@ -2996,7 +3824,13 @@
     -21.1063,
     165.30972
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/goa-ponerihouen.jpg",
+    "alt": "Maison commune de la tribu de Goa",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "goyeta-ponerihouen",
@@ -3007,7 +3841,13 @@
     -21.09575,
     165.3537
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/goyeta-ponerihouen.jpg",
+    "alt": "Maison commune de la tribu de Göyéta",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 08-2010, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "grochain-ponerihouen",
@@ -3018,7 +3858,13 @@
     -21.07493,
     165.39508
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/grochain-ponerihouen.jpg",
+    "alt": "Maison commune de la tribu de Grochain",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 03-2012, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "grondu-ponerihouen",
@@ -3029,7 +3875,13 @@
     -21.07661,
     165.38977
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/grondu-ponerihouen.jpg",
+    "alt": "Maison commune de la tribu de Grondu",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "moneo-ponerihouen",
@@ -3040,7 +3892,13 @@
     -21.15045,
     165.47846
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/moneo-ponerihouen.jpg",
+    "alt": "Maison commune de la tribu de Monéo",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive oui, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "mou-ponerihouen",
@@ -3051,7 +3909,13 @@
     -21.09696,
     165.44259
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/mou-ponerihouen.jpg",
+    "alt": "Maison commune de la tribu de Mou",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "neavin-ponerihouen",
@@ -3062,7 +3926,13 @@
     -21.1621,
     165.48758
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/neavin-ponerihouen.jpg",
+    "alt": "Maison commune de la tribu de Néavin",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive oui, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "neboueba-ponerihouen",
@@ -3073,7 +3943,13 @@
     -21.0877,
     165.30163
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/neboueba-ponerihouen.jpg",
+    "alt": "Maison commune de la tribu de Nébouéba",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "neouta-ponerihouen",
@@ -3084,7 +3960,13 @@
     -21.06567,
     165.38396
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/neouta-ponerihouen.jpg",
+    "alt": "Maison commune de la tribu de Néouta",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "poo-ponerihouen",
@@ -3095,7 +3977,13 @@
     -21.1721,
     165.3815
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/poo-ponerihouen.jpg",
+    "alt": "Maison commune de la tribu de Pöö",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive oui, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-yves-ponerihouen",
@@ -3106,7 +3994,13 @@
     -21.1017,
     165.29967
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/st-yves-ponerihouen.jpg",
+    "alt": "Maison commune de la tribu de St Yves",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "tchamba-ponerihouen",
@@ -3117,7 +4011,13 @@
     -21.03859,
     165.29302
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/tchamba-ponerihouen.jpg",
+    "alt": "Maison commune de la tribu de Tchamba",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "colnett-pouebo",
@@ -3127,7 +4027,13 @@
     -20.4757,
     164.73003
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/colnett-pouebo.jpg",
+    "alt": "Maison commune de la tribu de Colnett",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "diahoue-pouebo",
@@ -3138,7 +4044,13 @@
     -20.45687,
     164.67949
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/diahoue-pouebo.jpg",
+    "alt": "Maison commune de la tribu de Diahoué",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "paalo-pouebo",
@@ -3148,7 +4060,13 @@
     -20.46771,
     164.69697
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/paalo-pouebo.jpg",
+    "alt": "Maison commune de la tribu de Paalo",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 06-2014, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-adolphe-pouebo",
@@ -3158,7 +4076,13 @@
     -20.3828,
     164.57511
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-adolphe-pouebo.jpg",
+    "alt": "Maison commune de la tribu de St Adolphe",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-denis-pouebo",
@@ -3168,7 +4092,13 @@
     -20.39751,
     164.56916
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-denis-pouebo.jpg",
+    "alt": "Maison commune de la tribu de St Denis",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-denis-pouebo-2",
@@ -3189,7 +4119,13 @@
     -20.45323,
     164.67112
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-ferdinand-pouebo.jpg",
+    "alt": "Maison commune de la tribu de St Ferdinand",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-gabriel-pouebo",
@@ -3199,7 +4135,13 @@
     -20.38558,
     164.57325
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-gabriel-pouebo.jpg",
+    "alt": "Maison commune de la tribu de St Gabriel",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-gabriel-pouebo-2",
@@ -3220,7 +4162,13 @@
     -20.39225,
     164.56947
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-joseph-pouebo.jpg",
+    "alt": "Maison commune de la tribu de St Joseph",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-louis-pouebo",
@@ -3230,7 +4178,13 @@
     -20.37062,
     164.56476
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-louis-pouebo.jpg",
+    "alt": "Maison commune de la tribu de St Louis",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "st-paul-pouebo",
@@ -3241,7 +4195,13 @@
     -20.33548,
     164.53481
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/st-paul-pouebo.jpg",
+    "alt": "Maison commune de la tribu de St Paul",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ste-marie-pouebo",
@@ -3251,7 +4211,13 @@
     -20.3207,
     164.51702
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ste-marie-pouebo.jpg",
+    "alt": "Maison commune de la tribu de Ste Marie",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ste-marie-pouebo-2",
@@ -3261,7 +4227,13 @@
     -20.37834,
     164.56978
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ste-marie-pouebo-2.jpg",
+    "alt": "Maison commune de la tribu de Ste Marie",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "tchambouenne-pouebo",
@@ -3272,7 +4244,13 @@
     -20.41544,
     164.61052
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/tchambouenne-pouebo.jpg",
+    "alt": "Maison commune de la tribu de Tchambouenne",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "yambe-pouebo",
@@ -3283,7 +4261,13 @@
     -20.43946,
     164.65877
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/yambe-pouebo.jpg",
+    "alt": "Maison commune de la tribu de Yambé",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouate-pouembout",
@@ -3294,7 +4278,13 @@
     -21.18505,
     165.12578
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/ouate-pouembout.jpg",
+    "alt": "Maison commune de la tribu de Ouate",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 06-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "baaba-poum",
@@ -3316,7 +4306,13 @@
     -20.25729,
     164.20737
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/bouarou-poum.jpg",
+    "alt": "Maison commune de la tribu de Bouarou",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 06-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "narai-poum",
@@ -3327,7 +4323,13 @@
     -20.21538,
     164.15316
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/narai-poum.jpg",
+    "alt": "Maison commune de la tribu de Naraï",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 06-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "pangai-poum",
@@ -3338,7 +4340,13 @@
     -20.22991,
     164.16029
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/pangai-poum.jpg",
+    "alt": "Maison commune de la tribu de Pangaï",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 06-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "taanlo-poum",
@@ -3360,7 +4368,13 @@
     -20.12714,
     164.02594
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/tiabet-poum.jpg",
+    "alt": "Maison commune de la tribu de Tiabet",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 12-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "tie-poum",
@@ -3382,7 +4396,13 @@
     -20.23382,
     164.02154
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/titch-poum.jpg",
+    "alt": "Maison commune de la tribu de Titch",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 06-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "yande-poum",
@@ -3393,7 +4413,13 @@
     -20.05595,
     163.7994
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/yande-poum.jpg",
+    "alt": "Maison commune de la tribu de Yandé",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive non02-2012, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "yenghebane-poum",
@@ -3414,7 +4440,13 @@
     -21.22506,
     165.2739
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/goipin-poya.jpg",
+    "alt": "Maison commune de la tribu de Goipin",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "montfaoue-poya",
@@ -3424,7 +4456,13 @@
     -21.27796,
     165.29331
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/montfaoue-poya.jpg",
+    "alt": "Maison commune de la tribu de Montfaoué",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2011, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "nekliai-poya",
@@ -3435,7 +4473,13 @@
     -21.29494,
     165.1863
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/nekliai-poya.jpg",
+    "alt": "Maison commune de la tribu de Nekliaï",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "nepou-poya",
@@ -3446,7 +4490,13 @@
     -21.35635,
     165.09728
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/nepou-poya.jpg",
+    "alt": "Maison commune de la tribu de Népou",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 06-2009, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "netea-poya",
@@ -3456,7 +4506,13 @@
     -21.23262,
     165.19936
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/netea-poya.jpg",
+    "alt": "Maison commune de la tribu de Nétéa",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouendji-poya",
@@ -3467,7 +4523,13 @@
     -21.32699,
     165.31045
    ],
-   "aire": "Ajië-Arhö"
+   "aire": "Ajië-Arhö",
+   "image": {
+    "url": "images/tribus/ouendji-poya.jpg",
+    "alt": "Maison commune de la tribu de Ouendji",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "grand-couli-sarramea",
@@ -3677,7 +4739,13 @@
     -20.80228,
     165.26185
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/koe-touho.jpg",
+    "alt": "Maison commune de la tribu de Koé",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "kokingone-touho",
@@ -3688,7 +4756,13 @@
     -20.85523,
     165.25552
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/kokingone-touho.jpg",
+    "alt": "Maison commune de la tribu de Kokingone",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "kongouma-touho",
@@ -3699,7 +4773,13 @@
     -20.74614,
     165.09152
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/kongouma-touho.jpg",
+    "alt": "Maison commune de la tribu de Kongouma",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouanache-touho",
@@ -3710,7 +4790,13 @@
     -20.74717,
     165.0561
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/ouanache-touho.jpg",
+    "alt": "Maison commune de la tribu de Ouanache",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "paola-touho",
@@ -3721,7 +4807,13 @@
     -20.77393,
     165.11036
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/paola-touho.jpg",
+    "alt": "Maison commune de la tribu de Paola",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 02-2012, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "pombei-touho",
@@ -3732,7 +4824,13 @@
     -20.88719,
     165.1813
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/pombei-touho.jpg",
+    "alt": "Maison commune de la tribu de Pombeï",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "tiaoue-touho",
@@ -3743,7 +4841,13 @@
     -20.7935,
     165.14108
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/tiaoue-touho.jpg",
+    "alt": "Maison commune de la tribu de Tiaoué",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "tiouande-touho",
@@ -3754,7 +4858,13 @@
     -20.74219,
     165.04707
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/tiouande-touho.jpg",
+    "alt": "Maison commune de la tribu de Tiouandé",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 11-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "touho-mission-touho",
@@ -3765,7 +4875,13 @@
     -20.77795,
     165.22236
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/touho-mission-touho.jpg",
+    "alt": "Maison commune de la tribu de Touho Mission",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "vieux-touho-touho",
@@ -3776,7 +4892,13 @@
     -20.77064,
     165.16452
    ],
-   "aire": "Paicî-Cèmuhî"
+   "aire": "Paicî-Cèmuhî",
+   "image": {
+    "url": "images/tribus/vieux-touho-touho.jpg",
+    "alt": "Maison commune de la tribu de Vieux-Touho",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 07-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "boyen-voh",
@@ -3787,7 +4909,13 @@
     -20.82401,
     164.61922
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/boyen-voh.jpg",
+    "alt": "Maison commune de la tribu de Boyen",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "gatope-voh",
@@ -3798,7 +4926,13 @@
     -20.96583,
     164.66949
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/gatope-voh.jpg",
+    "alt": "Maison commune de la tribu de Gatope",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouahat-voh",
@@ -3809,7 +4943,13 @@
     -20.72979,
     164.69555
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ouahat-voh.jpg",
+    "alt": "Maison commune de la tribu de Ouahat",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouango-pouepai-voh",
@@ -3820,7 +4960,13 @@
     -20.78445,
     164.74217
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ouango-pouepai-voh.jpg",
+    "alt": "Maison commune de la tribu de Ouango - Pouépaï",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "ouelis-voh",
@@ -3831,7 +4977,13 @@
     -20.87253,
     164.68963
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/ouelis-voh.jpg",
+    "alt": "Maison commune de la tribu de Ouélis",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "oundjo-voh",
@@ -3842,7 +4994,13 @@
     -21.03652,
     164.6985
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/oundjo-voh.jpg",
+    "alt": "Maison commune de la tribu de Oundjo",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 03-2012, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "temala-voh",
@@ -3853,7 +5011,13 @@
     -20.88993,
     164.68304
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/temala-voh.jpg",
+    "alt": "Maison commune de la tribu de Témala",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "tieta-voh",
@@ -3864,7 +5028,13 @@
     -20.92008,
     164.73857
    ],
-   "aire": "Hoot ma Whaap"
+   "aire": "Hoot ma Whaap",
+   "image": {
+    "url": "images/tribus/tieta-voh.jpg",
+    "alt": "Maison commune de la tribu de Tiéta",
+    "credit": "Province Nord — Licence Ouverte v2.0 (photo d'archive 05-2008, le bâtiment a pu être reconstruit depuis)",
+    "source": "https://data.gouv.nc/explore/dataset/tribus-en-province-nord/"
+   }
   },
   {
    "id": "goro-yate",

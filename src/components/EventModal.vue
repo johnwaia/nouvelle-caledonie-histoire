@@ -1,8 +1,10 @@
 <script setup>
 import { computed, ref, onMounted } from 'vue'
+import CategoryIcon from './CategoryIcon.vue'
 
 const props = defineProps({
   event: { type: Object, required: true },
+  color: { type: String, default: '#555' }, // couleur de la catégorie (logo)
 })
 const emit = defineEmits(['close'])
 
@@ -16,7 +18,7 @@ const videos = computed(() => (props.event.videos || []).filter((v) => v?.url))
 <template>
   <!-- Fermeture : bouton ×, clic à côté de la fiche ou touche Échap -->
   <div class="modal-backdrop" @click.self="emit('close')">
-    <article ref="dialog" class="modal" role="dialog" aria-modal="true" aria-labelledby="ev-title" tabindex="-1">
+    <dialog open ref="dialog" class="modal" aria-modal="true" aria-labelledby="ev-title" tabindex="-1">
       <button class="modal-close" aria-label="Fermer" title="Fermer (Échap)" @click="emit('close')">×</button>
 
       <figure v-if="event.image?.url" class="modal-figure">
@@ -30,7 +32,11 @@ const videos = computed(() => (props.event.videos || []).filter((v) => v?.url))
       </figure>
 
       <div class="modal-body">
-        <h2 id="ev-title">{{ event.title }}</h2>
+        <div class="ev-head">
+          <img v-if="event.logo" class="ev-logo ev-logo-img" :src="event.logo" alt="" />
+          <span v-else class="ev-logo" :style="{ '--c': color }"><CategoryIcon :category="event.category" /></span>
+          <h2 id="ev-title">{{ event.title }}</h2>
+        </div>
         <dl class="meta">
           <div><dt>Date</dt><dd class="cap">{{ event.dateText }}</dd></div>
           <div><dt>Lieu</dt><dd>{{ event.place }}</dd></div>
@@ -56,6 +62,6 @@ const videos = computed(() => (props.event.videos || []).filter((v) => v?.url))
           </ul>
         </section>
       </div>
-    </article>
+    </dialog>
   </div>
 </template>

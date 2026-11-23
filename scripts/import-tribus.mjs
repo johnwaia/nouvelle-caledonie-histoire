@@ -44,6 +44,7 @@ const documented = new Map(
     .filter((t) => t.origines || t.evenements?.length)
     .map(({ apparition, apparitionSource, ...t }) => [t.id, t]),
 )
+const previousImages = new Map((old.tribus || []).filter((t) => t.image).map((t) => [t.id, t.image]))
 
 const url = SERVICE + '?' + new URLSearchParams({ where: "type='TRIBU'", outFields: '*', outSR: '4326', resultRecordCount: '2000', f: 'json' })
 const res = await fetch(url)
@@ -61,7 +62,8 @@ for (const f of features) {
   const commune = COMMUNE_LABEL[plain(communeRaw)] || communeRaw
   const docId = Object.keys(MATCH).find((id) => plain(MATCH[id][0]) === plain(nom) && plain(MATCH[id][1]) === plain(communeRaw))
   let id = docId || slug(`${nom}-${commune}`)
-  for (let i = 2; usedIds.has(id); i++) id = slug(`${nom}-${commune}-${i}`)
+  let n = 2
+  while (usedIds.has(id)) id = slug(`${nom}-${commune}-${n++}`) // identifiant unique en cas d'homonymes
   usedIds.add(id)
   const base = {
     id,
@@ -73,7 +75,10 @@ for (const f of features) {
   }
   const doc = documented.get(id)
   // Les champs rédigés à la main sont prioritaires (sauf la position officielle).
-  list.push(doc ? { ...base, ...doc, nom: doc.nom, coords: base.coords } : base)
+  const entry = doc ? { ...base, ...doc, nom: doc.nom, coords: base.coords } : base
+  // L'image (photo de maison commune, etc.) est conservée pour toutes les tribus.
+  if (!entry.image && previousImages.has(id)) entry.image = previousImages.get(id)
+  list.push(entry)
   documented.delete(id)
 }
 // Fiches rédigées sans point officiel correspondant (ex. Hnathalo) : conservées telles quelles.

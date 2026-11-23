@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import PhotoFigure from './PhotoFigure.vue'
 
 const props = defineProps({
   commune: { type: Object, required: true },
@@ -24,8 +25,10 @@ const resume = computed(() => paragraphs(props.commune.resume))
 <template>
   <!-- Fermeture : croix, clic à l'extérieur du panneau ou touche Échap -->
   <div class="tribu-backdrop" @click.self="emit('close')">
-    <aside class="tribu-panel" role="dialog" aria-modal="true" aria-labelledby="commune-title">
+    <dialog open class="tribu-panel" aria-modal="true" aria-labelledby="commune-title">
       <button ref="closeBtn" class="tribu-close" aria-label="Fermer" @click="emit('close')">×</button>
+
+      <PhotoFigure :image="commune.image" :alt="commune.nom" />
 
       <header class="tribu-head">
         <span class="commune-badge" aria-hidden="true">{{ commune.nom.slice(0, 1) }}</span>
@@ -69,6 +72,6 @@ const resume = computed(() => paragraphs(props.commune.resume))
           </li>
         </ul>
       </section>
-    </aside>
+    </dialog>
   </div>
 </template>

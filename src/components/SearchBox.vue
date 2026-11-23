@@ -37,14 +37,16 @@ const results = computed(() => {
     else if (it.keys.includes(q)) contains.push(it)
   }
   const byLabel = (a, b) => a.label.localeCompare(b.label, 'fr')
-  return [...starts.sort(byLabel), ...contains.sort(byLabel)].slice(0, 30)
+  return [...starts.toSorted(byLabel), ...contains.toSorted(byLabel)].slice(0, 30)
 })
 
 const focusLabel = computed(() => {
   if (!props.focus) return ''
   const list = props.focus.type === 'tribu' ? props.tribus : props.communes
   const item = list.find((x) => x.id === props.focus.id)
-  return item ? `${props.focus.type === 'tribu' ? 'Tribu' : 'Commune'} : ${item.nom}` : ''
+  if (!item) return ''
+  const kind = props.focus.type === 'tribu' ? 'Tribu' : 'Commune'
+  return `${kind} : ${item.nom}`
 })
 
 watch([query, mode], () => (active.value = 0))
@@ -82,19 +84,14 @@ const onBlur = () => setTimeout(() => (open.value = false), 150)
 
 <template>
   <div class="search" role="search" @keydown.stop>
-    <div class="search-modes" role="radiogroup" aria-label="Rechercher parmi">
-      <button
-        v-for="m in [{ v: 'tribu', l: 'Tribus' }, { v: 'commune', l: 'Communes' }]"
-        :key="m.v"
-        type="button"
-        role="radio"
-        :aria-checked="mode === m.v"
-        :class="{ on: mode === m.v }"
-        @click="mode = m.v"
-      >
+    <!-- Choix du type de recherche : vrais boutons radio, présentés comme deux onglets -->
+    <fieldset class="search-modes">
+      <legend class="visually-hidden">Rechercher parmi</legend>
+      <label v-for="m in [{ v: 'tribu', l: 'Tribus' }, { v: 'commune', l: 'Communes' }]" :key="m.v" :class="{ on: mode === m.v }">
+        <input v-model="mode" type="radio" name="search-mode" :value="m.v" />
         {{ m.l }}
-      </button>
-    </div>
+      </label>
+    </fieldset>
 
     <div class="search-field">
       <span class="search-icon" aria-hidden="true">⌕</span>
@@ -104,8 +101,6 @@ const onBlur = () => setTimeout(() => (open.value = false), 150)
         type="search"
         :placeholder="mode === 'tribu' ? `Rechercher une tribu (${tribus.length})…` : 'Rechercher une commune…'"
         :aria-label="mode === 'tribu' ? 'Rechercher une tribu' : 'Rechercher une commune'"
-        aria-autocomplete="list"
-        :aria-expanded="open && results.length > 0"
         aria-controls="search-results"
         autocomplete="off"
         @focus="open = true"
@@ -115,18 +110,20 @@ const onBlur = () => setTimeout(() => (open.value = false), 150)
       />
     </div>
 
-    <ul v-if="open && results.length" id="search-results" class="search-results" role="listbox">
-      <li
-        v-for="(it, i) in results"
-        :key="it.id"
-        role="option"
-        :aria-selected="i === active"
-        :class="{ active: i === active }"
-        @mousedown.prevent="choose(it)"
-        @mouseenter="active = i"
-      >
-        <strong>{{ it.label }}</strong>
-        <small v-if="it.sub">{{ it.sub }}</small>
+    <!-- Résultats : une liste de boutons (flèches + Entrée depuis le champ, ou clic) -->
+    <ul v-if="open && results.length" id="search-results" class="search-results">
+      <li v-for="(it, i) in results" :key="it.id">
+        <button
+          type="button"
+          tabindex="-1"
+          :class="{ active: i === active }"
+          :aria-current="i === active ? 'true' : undefined"
+          @mousedown.prevent="choose(it)"
+          @mouseenter="active = i"
+        >
+          <strong>{{ it.label }}</strong>
+          <small v-if="it.sub">{{ it.sub }}</small>
+        </button>
       </li>
     </ul>
     <p v-else-if="open && query && !results.length" class="search-empty">Aucun résultat</p>

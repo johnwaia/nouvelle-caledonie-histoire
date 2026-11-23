@@ -4,7 +4,7 @@ Site interactif (Vue 3 + Leaflet) qui retrace l'histoire de la Nouvelle-Calédon
 
 - **Carte** (plein écran) : fond épuré (Esri Light Gray Canvas) dont les terres sont recolorées en vert ; la mer garde sa couleur.
 - **Frise chronologique** en bas, en carrousel d'années (en grand) : seules les années qui comptent au moins un événement y figurent. On la fait défiler à la souris (molette, glisser), au doigt ou avec les flèches ← → du clavier (Début/Fin pour les extrémités).
-- **Synchronisation** : une seule année est sélectionnée à la fois, centrée et mise en avant ; la carte n'affiche que ses événements, avec un fondu enchaîné au changement d'année. L'option « Afficher les années précédentes » laisse les événements antérieurs en transparence.
+- **Synchronisation** : une seule année est sélectionnée à la fois, centrée et mise en avant ; la carte n'affiche que ses événements, avec un fondu enchaîné au changement d'année.
 - **Fiche détaillée** au clic sur un point : image (avec crédit), titre, date, lieu, description, liens vidéo, sources. Elle se ferme en cliquant à côté ou avec Échap ; ← → passent à l'événement précédent/suivant. Lien partageable : `#evenement=<id>`.
 - Les événements qui se sont déroulés hors de l'archipel (Paris, Bougival…) sont listés dans un encart sur la carte.
 
@@ -112,6 +112,28 @@ Pour remplacer l'histoire d'une commune par un texte rédigé à la main, ajoute
 
 Le **moteur de recherche** (en haut à gauche de la carte) cherche au choix parmi les **tribus** ou les **communes** (sans tenir compte des accents). Choisir un résultat n'affiche plus que lui sur la carte, centre la vue dessus et ouvre sa fiche ; la croix du bandeau « Affiché : … » réaffiche tout.
 
+### Aires coutumières
+
+Le bouton **« Afficher les aires coutumières »** colore les 8 aires sur la carte (contours : Gouvernement de la Nouvelle-Calédonie / Géorep, Licence Ouverte, simplifiés dans **`public/data/aires.json`**). Un clic sur une aire ouvre sa fiche : présentation, langues, nombre de tribus et liste des communes (cliquables).
+
+### Provinces
+
+Le bouton **« Afficher les provinces »** colore les 3 provinces (Nord, Sud, îles Loyauté). Contours : Gouvernement de la Nouvelle-Calédonie / Géorep (« Limites administratives simplifiées »), Licence Ouverte, simplifiés dans **`public/data/provinces.json`** ; le champ `cle` y correspond au champ `province` de `communes.json`. Un clic sur une province ouvre sa fiche : chef-lieu, nombre de communes et de tribus, aires coutumières et liste des communes (cliquables). Aires et provinces ne s'affichent pas en même temps, pour rester lisibles.
+
+### Images des communes et des tribus
+
+- **Communes** : image principale (libre de droits) de l'article Wikipédia, avec auteur et licence, dans le champ `image` de `communes.json`.
+- **Tribus** : photos des maisons communes de la Province Nord (jeu de données « Tribus en Province Nord », Licence Ouverte v2.0, photos d'archive 2008-2013), réduites dans **`public/images/tribus/`**. Les tribus des provinces Sud et des îles n'ont pas encore d'image : ajouter un champ `image` (`url`, `credit`, `alt`, `source`) dans `tribus.json`. Les images sont conservées lors d'un nouvel import.
+
+### Logos des événements
+
+Chaque point de la carte et chaque fiche affiche un logo selon la catégorie de l'événement (pirogue, boussole, drapeau, lances, urne, usine, case, feuille, croix de santé). Les logos sont définis dans `src/utils/icons.js`.
+
+Un événement peut aussi avoir un **logo illustré** qui remplace celui de sa catégorie, avec le champ `"logo"` (image ronde à fond transparent, dans `public/images/logos/`) :
+
+- `images/logos/bateau_colon.png` : arrivées de colons et de bagnards (1853, 1854, 1864, 1872, 1897) ;
+- `images/logos/casse_tete.png` : conflits armés (1878, 1916, 1917, 1984, 1985, 1988, 2024).
+
 ### Catégories et périodes
 
 - `categories` : couleur des points sur la carte.
@@ -134,7 +156,9 @@ Un événement portant le même `id` dans un fichier suivant remplace le précé
 ```
 public/data/events.json     contenu (événements, catégories, périodes)
 public/data/tribus.json     tribus affichées sur la carte
-public/data/communes.json   communes (position, histoire)
+public/data/communes.json   communes (position, histoire, image)
+public/data/aires.json      contours des aires coutumières (GeoJSON)
+public/images/tribus/       photos des maisons communes (Province Nord)
 public/images/              images du site (cases, pirogue)
 public/images/evenements/   images des fiches d'événements
 scripts/check-data.mjs      validation du contenu
@@ -147,6 +171,8 @@ src/components/EventModal.vue   fiche d'un événement
 src/components/TribuPanel.vue   panneau d'une tribu
 src/components/CommunePanel.vue panneau d'une commune
 src/components/SearchBox.vue    moteur de recherche (tribus / communes)
+src/components/AirePanel.vue    panneau d'une aire coutumière
+src/utils/icons.js          logos des catégories d'événements
 src/utils/dates.js          dates (format français)
 ```
 

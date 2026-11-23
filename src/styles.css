@@ -20,8 +20,11 @@ button { font: inherit; cursor: pointer; }
   grid-template-rows: auto 1fr auto;
   grid-template-columns: minmax(0, 1fr);
   height: 100vh;
-  height: 100dvh;
   background: var(--sand);
+}
+/* Hauteur réelle de l'écran sur mobile (barre d'adresse comprise) quand le navigateur la connaît */
+@supports (height: 100dvh) {
+  .app { height: 100dvh; }
 }
 
 .app-header {
@@ -36,20 +39,18 @@ button { font: inherit; cursor: pointer; }
 }
 .brand h1 { margin: 0; font-size: 1.2rem; letter-spacing: 0.02em; }
 .brand p { margin: 0; font-size: 0.82rem; opacity: 0.8; }
-.header-actions { display: flex; align-items: center; gap: 1rem; }
+.header-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 0.5rem; }
 .tribus-toggle {
   display: inline-flex; align-items: center; gap: 0.45rem;
   padding: 0.35rem 0.8rem 0.35rem 0.5rem; border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.5); background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5); background: var(--primary-2); /* fond plein : contraste mesurable */
   color: #fff; font-size: 0.85rem; font-weight: 600; white-space: nowrap;
   transition: background 0.2s, color 0.2s;
 }
 .tribus-toggle img { width: 26px; height: auto; }
-.tribus-toggle:hover { background: rgba(255, 255, 255, 0.22); }
+.tribus-toggle:hover { background: #3c7a4a; }
 .tribus-toggle.on { background: #fff; color: var(--primary); border-color: #fff; }
 .tribus-toggle:disabled { opacity: 0.5; cursor: default; }
-.toggle { display: flex; align-items: center; gap: 0.45rem; font-size: 0.85rem; cursor: pointer; }
-.toggle input { accent-color: var(--accent); width: 1rem; height: 1rem; }
 
 .app-map { position: relative; min-height: 0; }
 .app-status {
@@ -113,19 +114,22 @@ button { font: inherit; cursor: pointer; }
 .pin-icon { background: none; border: 0; }
 .pin {
   position: relative;
-  display: block; width: 20px; height: 20px; border-radius: 50%;
-  background: var(--c); border: 3px solid #fff;
+  display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--c); border: 2px solid #fff; color: #fff;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
   transition: transform 0.2s, opacity 0.2s;
 }
+.pin svg { width: 16px; height: 16px; }
+/* Logo illustré (bateau des colons, casse-tête…) : l'image remplace le rond coloré */
+.pin.pin-logo { width: 34px; height: 34px; background: none; border: 0; box-shadow: none; }
+.pin.pin-logo img { width: 34px; height: 34px; display: block; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5)); }
+.pin.pin-logo::after { inset: -4px; }
 .pin:hover { transform: scale(1.25); }
 .pin::after {
   content: ''; position: absolute; inset: -6px; border-radius: 50%;
   border: 2px solid var(--c); opacity: 0; animation: pulse 2.4s ease-out infinite;
 }
-.pin.past { opacity: 0.4; transform: scale(0.7); }
-.pin.past::after { display: none; }
-.pin.selected { transform: scale(1.4); box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.7), 0 2px 8px rgba(0, 0, 0, 0.5); }
+.pin.selected { transform: scale(1.3); box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.7), 0 2px 8px rgba(0, 0, 0, 0.5); }
 .pin.fresh { animation: pop 0.45s cubic-bezier(0.2, 1.6, 0.4, 1); }
 /* Changement d'année : fondu enchaîné entre les points */
 .pin.entering { animation: pin-in 0.35s ease-out 0.12s both; }
@@ -170,7 +174,7 @@ button { font: inherit; cursor: pointer; }
   animation: slide-in 0.25s ease-out;
 }
 @keyframes slide-in { from { transform: translateX(40px); opacity: 0; } }
-.tribu-close {
+.tribu-close { z-index: 3;
   position: absolute; top: 0.7rem; right: 0.7rem;
   width: 2.2rem; height: 2.2rem; border-radius: 50%; border: 1px solid var(--line);
   background: #fff; font-size: 1.4rem; line-height: 1; color: var(--ink);
@@ -229,12 +233,18 @@ button { font: inherit; cursor: pointer; }
   background: rgba(255, 255, 255, 0.97); border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2); padding: 0.45rem;
 }
-.search-modes { display: flex; gap: 0.25rem; margin-bottom: 0.4rem; }
-.search-modes button {
-  flex: 1; padding: 0.3rem 0.5rem; border-radius: 8px; border: 1px solid var(--line);
+.search-modes { display: flex; gap: 0.25rem; margin: 0 0 0.4rem; padding: 0; border: 0; min-width: 0; }
+.search-modes label {
+  flex: 1; text-align: center; cursor: pointer; padding: 0.3rem 0.5rem; border-radius: 8px; border: 1px solid var(--line);
   background: var(--sand); color: var(--muted); font-size: 0.8rem; font-weight: 600;
 }
-.search-modes button.on { background: var(--primary); border-color: var(--primary); color: #fff; }
+.search-modes label.on { background: var(--primary); border-color: var(--primary); color: #fff; }
+.search-modes label:focus-within { outline: 2px solid var(--accent); outline-offset: 1px; }
+.search-modes input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
 .search-field { position: relative; }
 .search-icon { position: absolute; left: 0.55rem; top: 50%; transform: translateY(-52%); font-size: 1.1rem; color: var(--muted); }
 .search-field input {
@@ -246,8 +256,11 @@ button { font: inherit; cursor: pointer; }
   list-style: none; margin: 0.35rem 0 0; padding: 0; max-height: 45vh; overflow: auto;
   border-top: 1px solid #eee7da;
 }
-.search-results li { padding: 0.4rem 0.5rem; border-radius: 6px; cursor: pointer; }
-.search-results li.active { background: var(--sand); }
+.search-results button {
+  display: block; width: 100%; text-align: left; padding: 0.4rem 0.5rem; border: 0; border-radius: 6px;
+  background: none; color: inherit;
+}
+.search-results button.active { background: var(--sand); }
 .search-results strong { display: block; font-size: 0.9rem; color: var(--ink); }
 .search-results small { display: block; font-size: 0.75rem; color: var(--muted); }
 .search-empty { margin: 0.4rem 0.3rem 0.1rem; font-size: 0.85rem; color: var(--muted); }
@@ -318,6 +331,12 @@ button { font: inherit; cursor: pointer; }
 .yc-year { font-size: 1.9rem; font-weight: 800; white-space: nowrap; line-height: 1; letter-spacing: 0.01em; }
 .yc-year small { display: block; font-size: 0.8rem; font-weight: 600; line-height: 1.2; text-align: center; }
 
+/* Fenêtres (fiches, panneaux, formulaire) : élément <dialog> natif, styles du navigateur neutralisés */
+:where(dialog.modal, dialog.tribu-panel) {
+  position: relative; inset: auto; margin: 0; padding: 0; border: 0;
+  color: inherit; max-width: none; max-height: none;
+}
+
 /* ---------- Fiche événement ---------- */
 .modal-backdrop {
   position: fixed; inset: 0; z-index: 2000;
@@ -374,10 +393,54 @@ button { font: inherit; cursor: pointer; }
 .videos { border-top: 0; padding-top: 0; margin-bottom: 0.8rem; }
 .videos li { margin-bottom: 0.2rem; }
 
+
+/* Logo de l'événement dans la fiche */
+.ev-head { display: flex; align-items: flex-start; gap: 0.7rem; margin-right: 2.4rem; }
+.ev-head h2 { margin-right: 0 !important; }
+.ev-logo {
+  flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
+  background: var(--c); color: #fff; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+.ev-logo svg { width: 22px; height: 22px; }
+.ev-logo-img { width: 48px; height: 48px; background: none; box-shadow: none; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35)); }
+
+/* Photo en tête des panneaux (tribu, commune) */
+.panel-figure { margin: -1.3rem -1.4rem 1rem; }
+.panel-figure .modal-frame { height: 220px; }
+.panel-figure figcaption { font-size: 0.7rem; color: var(--muted); padding: 0.3rem 1.4rem 0; line-height: 1.35; }
+.panel-figure figcaption a { color: inherit; }
+
+/* Aires coutumières */
+.aire-dot {
+  width: 16px; height: 12px; border-radius: 3px;
+  background: linear-gradient(90deg, #c2410c 0 33%, #0f766e 33% 66%, #7c3aed 66%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+/* Pastille du bouton « Provinces » : les couleurs des trois provinces */
+.province-dot {
+  width: 16px; height: 12px; border-radius: 3px;
+  background: linear-gradient(90deg, #b45309 0 33%, #0e7490 33% 66%, #7c3aed 66%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+.leaflet-tooltip.aire-label {
+  background: none; border: 0; box-shadow: none; padding: 0;
+  font-size: 0.8rem; font-weight: 800; letter-spacing: 0.02em; color: #1f2a22;
+  text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 2px #fff;
+}
+.leaflet-tooltip.aire-label::before { display: none; }
+.aire-communes { list-style: none; margin: 0 0 1rem; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.aire-communes button {
+  border: 1px solid var(--line); background: var(--sand); color: var(--primary);
+  border-radius: 999px; padding: 0.25rem 0.7rem; font-size: 0.85rem; font-weight: 600;
+}
+.aire-communes button:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+/* Libellés courts des boutons de l'en-tête (mobile) */
+.header-actions .short { display: none; }
+
 /* ---------- Mobile ---------- */
 @media (max-width: 760px) {
   .brand p { display: none; }
-  .toggle span { font-size: 0.75rem; line-height: 1.2; text-align: right; }
   .app-header { padding: 0.45rem 0.8rem; }
   .brand { flex: none; }
   .map-offmap { max-width: 170px; }
@@ -389,15 +452,16 @@ button { font: inherit; cursor: pointer; }
   .yc-pick select { font-size: 0.95rem; padding: 0.3rem; }
   .yc-year { font-size: 1.5rem; }
   .yc-track > .yc-spacer { width: calc(50% - 3.1rem); }
-  .header-actions { flex-direction: column; align-items: flex-end; gap: 0.3rem; }
+  .header-actions { gap: 0.3rem; max-width: 70%; }
+  .header-actions .long { display: none; }
+  .header-actions .short { display: inline; }
   .tribus-toggle { font-size: 0.75rem; padding: 0.2rem 0.6rem 0.2rem 0.4rem; }
   .tribus-toggle img { width: 20px; }
   .search { left: 50px; width: calc(100% - 60px); }
   .search-results { max-height: 35vh; }
-  .map-empty { top: 130px; }
   .tribu-panel { height: auto; max-height: 82%; border-radius: 16px 16px 0 0; animation-name: sheet-in; }
   @keyframes sheet-in { from { transform: translateY(40px); opacity: 0; } }
-  .map-empty { white-space: normal; width: 85%; text-align: center; border-radius: 12px; }
+  .map-empty { top: 130px; white-space: normal; width: 85%; text-align: center; border-radius: 12px; }
 }
 
 /* ---------- Mouvements réduits ---------- */

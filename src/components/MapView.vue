@@ -1,10 +1,10 @@
 <script setup>
 import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import L from 'leaflet'
+import { iconFor } from '../utils/icons'
 
 const props = defineProps({
   events: { type: Array, default: () => [] },       // événements de l'année sélectionnée
-  pastEvents: { type: Array, default: () => [] },   // événements des années précédentes (estompés)
   categories: { type: Object, default: () => ({}) },
   selectedEvent: { type: Object, default: null },
   year: { type: Number, default: null },
@@ -13,8 +13,12 @@ const props = defineProps({
   communes: { type: Array, default: () => [] },     // communes à afficher
   selectedCommuneId: { type: String, default: null },
   focusTarget: { type: Object, default: null },     // { coords, zoom, key } : résultat de recherche à montrer
+  aires: { type: Object, default: null },            // GeoJSON des aires coutumières à afficher (ou null)
+  selectedAireId: { type: String, default: null },
+  provinces: { type: Object, default: null },        // GeoJSON des provinces à afficher (ou null)
+  selectedProvinceId: { type: String, default: null },
 })
-const emit = defineEmits(['select', 'select-tribu', 'select-commune'])
+const emit = defineEmits(['select', 'select-tribu', 'select-commune', 'select-aire', 'select-province'])
 
 const el = ref(null)
 // L'objet Leaflet ne doit pas être réactif : variables simples.
@@ -145,6 +149,13 @@ onMounted(() => {
   tribusLayer = L.layerGroup().addTo(map)
   syncTribus()
 
+  // Aires coutumières : sous tous les marqueurs, au-dessus du fond de carte.
+  map.createPane('aires').style.zIndex = 350
+  map.createPane('aires-labels').style.zIndex = 560
+  map.getPane('aires-labels').style.pointerEvents = 'none'
+  syncAires()
+  syncProvinces()
+
   // Communes : étiquettes au-dessus des tribus, sous les points d'événements.
   map.createPane('communes').style.zIndex = 590
   communesLayer = L.layerGroup().addTo(map)
@@ -174,12 +185,9 @@ onBeforeUnmount(() => {
 
 function render() {
   if (!map) return
-  const items = [
-    ...props.pastEvents.filter((e) => e.coords).map((e) => ({ e, past: true })),
-    ...props.events.filter((e) => e.coords).map((e) => ({ e, past: false })),
-  ]
+  const items = props.events.filter((e) => e.coords).map((e) => ({ e }))
   const selId = props.selectedEvent?.id
-  const signature = items.map((i) => i.e.id + (i.past ? '~' : '')).join('|') + '#' + selId
+  const signature = items.map((i) => i.e.id).join('|') + '#' + selId
   if (signature === lastSignature) return
   lastSignature = signature
 
@@ -211,42 +219,102 @@ function render() {
   for (const group of groups.values()) {
     const n = group.length
     group.forEach((it, i) => {
-      const radius = n > 1 ? 10 + n * 1.5 : 0
+      const radius = n > 1 ? 14 + n * 4 : 0
       const angle = -Math.PI / 2 + (2 * Math.PI * i) / n
       const dx = radius * Math.cos(angle)
       const dy = radius * Math.sin(angle)
       const selected = it.e.id === selId
-      const fresh = !it.past && !prevIds.has(it.e.id)
-      const cls = ['pin', it.past && 'past', selected && 'selected', fresh && (yearChanged ? 'entering' : 'fresh')]
+      const fresh = !prevIds.has(it.e.id)
+      const cls = ['pin', it.e.logo && 'pin-logo', selected && 'selected', fresh && (yearChanged ? 'entering' : 'fresh')]
         .filter(Boolean)
         .join(' ')
       const color = props.categories[it.e.category]?.color || '#555'
+      const size = it.e.logo ? 34 : 28
 
       const icon = L.divIcon({
         className: 'pin-icon',
-        html: `<span class="${cls}" style="--c:${color}"></span>`,
-        iconSize: [20, 20],
-        iconAnchor: [10 - dx, 10 - dy],
+        // Logo de l'événement (selon sa catégorie) dans un rond de la couleur de la catégorie
+        html: `<span class="${cls}" style="--c:${color}">${
+          it.e.logo ? `<img src="${esc(it.e.logo)}" alt="">` : iconFor(it.e.category)
+        }</span>`,
+        iconSize: [size, size],
+        iconAnchor: [size / 2 - dx, size / 2 - dy],
       })
       const marker = L.marker(it.e.coords, {
         icon,
         keyboard: true,
         alt: it.e.title,
-        zIndexOffset: selected ? 1000 : it.past ? -500 : 0,
+        zIndexOffset: selected ? 1000 : 0,
       })
       marker.bindTooltip(
         `<strong>${esc(it.e.title)}</strong><br><span>${esc(it.e.dateText)} · ${esc(it.e.place)}</span>`,
-        { direction: 'top', offset: [dx, dy - 10], className: 'pin-tooltip' },
+        { direction: 'top', offset: [dx, dy - 14], className: 'pin-tooltip' },
       )
       marker.on('click', () => emit('select', it.e.id))
       marker.addTo(layer)
-      if (!it.past) nextIds.add(it.e.id)
+      nextIds.add(it.e.id)
     })
   }
   prevIds = nextIds
 }
 
-watch(() => [props.events, props.pastEvents, props.selectedEvent, props.categories, props.year], render)
+watch(() => [props.events, props.selectedEvent, props.categories, props.year], render)
+
+/* ---------- Zones colorées : aires coutumières et provinces ---------- */
+// Point où écrire le nom d'une zone : centre de sa plus grande partie (et non du rectangle
+// englobant toutes ses îles, qui tombe souvent en mer).
+function labelPoint(lyr) {
+  const parts = lyr.feature.geometry.type === 'MultiPolygon' ? lyr.getLatLngs() : [lyr.getLatLngs()]
+  let best = null
+  let bestArea = -1
+  for (const part of parts) {
+    const bounds = L.latLngBounds(part[0] || part)
+    const area = (bounds.getNorth() - bounds.getSouth()) * (bounds.getEast() - bounds.getWest())
+    if (area > bestArea) [best, bestArea] = [bounds, area]
+  }
+  return best ? best.getCenter() : lyr.getBounds().getCenter()
+}
+
+// Dessine un découpage (GeoJSON) : polygones colorés, nom au centre, clic → fiche.
+function zoneLayer(geojson, selectedId, eventName) {
+  const group = L.layerGroup()
+  const shapes = L.geoJSON(geojson, {
+    pane: 'aires',
+    style: (f) => ({
+      color: f.properties.couleur,
+      weight: f.properties.id === selectedId ? 3 : 1.5,
+      fillColor: f.properties.couleur,
+      fillOpacity: f.properties.id === selectedId ? 0.45 : 0.25,
+    }),
+    onEachFeature: (f, lyr) => {
+      lyr.on('click', () => emit(eventName, f.properties.id))
+      lyr.on('mouseover', () => lyr.setStyle({ fillOpacity: 0.4 }))
+      lyr.on('mouseout', () => shapes.resetStyle(lyr))
+      L.tooltip({ permanent: true, direction: 'center', className: 'aire-label', pane: 'aires-labels' })
+        .setLatLng(labelPoint(lyr))
+        .setContent(esc(f.properties.nom))
+        .addTo(group)
+    },
+  })
+  shapes.addTo(group)
+  return group.addTo(map)
+}
+
+let airesLayer = null
+function syncAires() {
+  if (!map) return
+  if (airesLayer) map.removeLayer(airesLayer)
+  airesLayer = props.aires ? zoneLayer(props.aires, props.selectedAireId, 'select-aire') : null
+}
+watch(() => [props.aires, props.selectedAireId], syncAires)
+
+let provincesLayer = null
+function syncProvinces() {
+  if (!map) return
+  if (provincesLayer) map.removeLayer(provincesLayer)
+  provincesLayer = props.provinces ? zoneLayer(props.provinces, props.selectedProvinceId, 'select-province') : null
+}
+watch(() => [props.provinces, props.selectedProvinceId], syncProvinces)
 
 /* ---------- Tribus ---------- */
 // Ajoute / retire les cases selon l'année : les nouvelles tribus apparaissent avec une petite animation.

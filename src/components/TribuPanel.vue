@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import PhotoFigure from './PhotoFigure.vue'
 
 const props = defineProps({
   tribu: { type: Object, required: true },
@@ -21,8 +22,10 @@ const localisation = computed(() => {
 <template>
   <!-- Fermeture : croix, clic à l'extérieur du panneau ou touche Échap -->
   <div class="tribu-backdrop" @click.self="emit('close')">
-    <aside class="tribu-panel" role="dialog" aria-modal="true" aria-labelledby="tribu-title">
+    <dialog open class="tribu-panel" aria-modal="true" aria-labelledby="tribu-title">
       <button ref="closeBtn" class="tribu-close" aria-label="Fermer" @click="emit('close')">×</button>
+
+      <PhotoFigure :image="tribu.image" :alt="`Tribu de ${tribu.nom}`" />
 
       <header class="tribu-head">
         <img :src="CASE_IMG" alt="" />
@@ -67,6 +70,6 @@ const localisation = computed(() => {
           </li>
         </ul>
       </section>
-    </aside>
+    </dialog>
   </div>
 </template>

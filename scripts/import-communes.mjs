@@ -68,21 +68,39 @@ async function wiki(params) {
 
 // Coupe proprement un texte à ~max caractères, en fin de phrase.
 function trim(text, max) {
-  const t = text.replace(/\s+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim()
+  // Espaces de fin de ligne retirés ligne par ligne (pas d'expression régulière à retour arrière)
+  const t = text
+    .split('\n')
+    .map((line) => line.trimEnd())
+    .join('\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()
   if (t.length <= max) return t
   const cut = t.slice(0, max)
   const end = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('.\n'))
-  return (end > max * 0.5 ? cut.slice(0, end + 1) : cut.replace(/\s+\S*$/, '') + '…').trim()
+  if (end > max * 0.5) return cut.slice(0, end + 1).trim()
+  // Sinon : coupe au dernier espace pour ne pas couper un mot
+  const space = Math.max(cut.lastIndexOf(' '), cut.lastIndexOf('\n'))
+  return (space > 0 ? cut.slice(0, space) : cut).trim() + '…'
 }
 
 // Extrait la section « Histoire » (sous-sections comprises) du texte brut de l'article.
 function histoireSection(extract) {
-  const m = extract.match(/\n== *Histoire *==\n([\s\S]*?)(?=\n== [^=]|$)/)
-  if (!m) return ''
-  return m[1]
-    .replace(/\n(={3,}) *(.+?) *\1\n/g, '\n\n$2. ') // sous-titres (tous niveaux) → « Titre. »
-    .replace(/[ \t]+/g, ' ')
-    .trim()
+  // Découpage ligne par ligne plutôt qu'une grande expression régulière (temps d'exécution garanti)
+  const lines = extract.split('\n')
+  const start = lines.findIndex((l) => ['== Histoire ==', '==Histoire=='].includes(l.trim()))
+  if (start === -1) return ''
+  const out = []
+  for (const line of lines.slice(start + 1)) {
+    const l = line.trim()
+    if (l.startsWith('== ') && !l.startsWith('===')) break // section suivante
+    if (l.startsWith('===') && l.endsWith('===')) {
+      out.push(`\n${l.replaceAll('=', '').trim()}.`) // sous-titre (tous niveaux) → « Titre. »
+    } else {
+      out.push(l.replaceAll('\t', ' '))
+    }
+  }
+  return out.join('\n').trim()
 }
 
 const old = existsSync(FILE) ? JSON.parse(readFileSync(FILE, 'utf8')) : { communes: [] }

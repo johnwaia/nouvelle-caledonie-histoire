@@ -149,6 +149,7 @@
     },
     {
       "id": "prise-possession-1853",
+      "logo": "images/logos/bateau_colon.png",
       "date": "1853-09-24",
       "title": "Prise de possession par la France",
       "place": "Balade (Pouébo)",
@@ -162,6 +163,7 @@
     },
     {
       "id": "port-de-france-1854",
+      "logo": "images/logos/bateau_colon.png",
       "date": "1854-06-25",
       "title": "Fondation de Port-de-France, future Nouméa",
       "place": "Nouméa",
@@ -175,6 +177,7 @@
     },
     {
       "id": "bagne-1864",
+      "logo": "images/logos/bateau_colon.png",
       "date": "1864-05-09",
       "endDate": "1897",
       "title": "Arrivée des premiers bagnards",
@@ -215,6 +218,7 @@
     },
     {
       "id": "communards-1872",
+      "logo": "images/logos/bateau_colon.png",
       "date": "1872",
       "endDate": "1880",
       "title": "Déportation des communards",
@@ -229,6 +233,7 @@
     },
     {
       "id": "kabyles-1872",
+      "logo": "images/logos/bateau_colon.png",
       "date": "1872",
       "title": "Les « Kabyles du Pacifique »",
       "place": "Nessadiou, Bourail",
@@ -242,6 +247,7 @@
     },
     {
       "id": "insurrection-1878",
+      "logo": "images/logos/casse_tete.png",
       "date": "1878-06-25",
       "endDate": "1879",
       "title": "Insurrection kanak menée par le grand chef Ataï",
@@ -300,6 +306,7 @@
     },
     {
       "id": "feillet-1897",
+      "logo": "images/logos/bateau_colon.png",
       "date": "1897",
       "title": "Fin des convois de forçats",
       "place": "Nouméa",
@@ -313,6 +320,7 @@
     },
     {
       "id": "grande-guerre",
+      "logo": "images/logos/casse_tete.png",
       "date": "1916",
       "endDate": "1918-11",
       "title": "Les Calédoniens dans la Grande Guerre",
@@ -327,6 +335,7 @@
     },
     {
       "id": "revolte-1917",
+      "logo": "images/logos/casse_tete.png",
       "date": "1917",
       "endDate": "1918",
       "title": "Révolte kanak de 1917",
@@ -463,6 +472,7 @@
     },
     {
       "id": "tiendanite-1984",
+      "logo": "images/logos/casse_tete.png",
       "date": "1984-12-05",
       "title": "Embuscade de Tiendanite",
       "place": "Tiendanite, Hienghène",
@@ -476,6 +486,7 @@
     },
     {
       "id": "machoro-1985",
+      "logo": "images/logos/casse_tete.png",
       "date": "1985-01-12",
       "title": "Mort d'Éloi Machoro",
       "place": "Près de La Foa",
@@ -502,6 +513,7 @@
     },
     {
       "id": "ouvea-1988",
+      "logo": "images/logos/casse_tete.png",
       "date": "1988-04-22",
       "endDate": "1988-05-05",
       "title": "Prise d'otages et assaut de la grotte d'Ouvéa",
@@ -696,6 +708,7 @@
     },
     {
       "id": "emeutes-2024",
+      "logo": "images/logos/casse_tete.png",
       "date": "2024-05-13",
       "title": "Émeutes contre la réforme du corps électoral",
       "place": "Grand Nouméa",

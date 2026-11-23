@@ -6,6 +6,8 @@ import EventModal from './components/EventModal.vue'
 import TribuPanel from './components/TribuPanel.vue'
 import CommunePanel from './components/CommunePanel.vue'
 import SearchBox from './components/SearchBox.vue'
+import AirePanel from './components/AirePanel.vue'
+import ProvincePanel from './components/ProvincePanel.vue'
 import { parseDate, toDecimal, formatEventDate } from './utils/dates'
 
 /*
@@ -28,7 +30,6 @@ const events = ref([])
 
 const selectedYear = ref(null)
 const caseIcon = import.meta.env.BASE_URL + 'images/case_kanak_icone.png'
-const showPast = ref(false)
 const selectedId = ref(null)
 const tribus = ref([])
 const selectedTribuId = ref(null)
@@ -38,15 +39,45 @@ const selectedCommuneId = ref(null)
 const showCommunes = ref(false)
 // Résultat choisi dans le moteur de recherche : la carte n'affiche alors que lui.
 const focus = ref(null) // { type: 'tribu' | 'commune', id }
+const aires = ref(null) // GeoJSON des aires coutumières
+const showAires = ref(false)
+const selectedAireId = ref(null)
+const provinces = ref(null) // GeoJSON des provinces
+const showProvinces = ref(false)
+const selectedProvinceId = ref(null)
 
 // Tribus (public/data/tribus.json) : facultatives, une erreur de chargement ne bloque pas le site.
 async function loadTribus() {
   try {
     const res = await fetch(resolveUrl('data/tribus.json'), { cache: 'no-cache' })
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    tribus.value = ((await res.json()).tribus || []).filter((t) => t.id && Array.isArray(t.coords))
+    tribus.value = ((await res.json()).tribus || [])
+      .filter((t) => t.id && Array.isArray(t.coords))
+      .map((t) => (t.image?.url ? { ...t, image: { ...t.image, url: resolveUrl(t.image.url) } } : t))
   } catch (e) {
     console.warn('Tribus non chargées :', e.message)
+  }
+}
+
+// Provinces (public/data/provinces.json, GeoJSON) : facultatives.
+async function loadProvinces() {
+  try {
+    const res = await fetch(resolveUrl('data/provinces.json'), { cache: 'no-cache' })
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    provinces.value = await res.json()
+  } catch (e) {
+    console.warn('Provinces non chargées :', e.message)
+  }
+}
+
+// Aires coutumières (public/data/aires.json, GeoJSON) : facultatives.
+async function loadAires() {
+  try {
+    const res = await fetch(resolveUrl('data/aires.json'), { cache: 'no-cache' })
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    aires.value = await res.json()
+  } catch (e) {
+    console.warn('Aires coutumières non chargées :', e.message)
   }
 }
 
@@ -80,6 +111,8 @@ function normalize(raw) {
     videos: (raw.videos || []).map((v) => (typeof v === 'string' ? { url: v } : v)),
     // Image locale (« images/evenements/… ») ou distante (https://…)
     image: raw.image?.url ? { ...raw.image, url: resolveUrl(raw.image.url) } : raw.image,
+    // Logo illustré propre à l'événement (sinon, logo de sa catégorie)
+    logo: raw.logo ? resolveUrl(raw.logo) : null,
   }
 }
 
@@ -116,16 +149,14 @@ const years = computed(() => {
   return [...counts].map(([year, count]) => ({ year, count })).sort((a, b) => a.year - b.year)
 })
 const visibleEvents = computed(() => events.value.filter((e) => e.year === selectedYear.value))
-const pastEvents = computed(() =>
-  showPast.value ? events.value.filter((e) => e.year < selectedYear.value) : [],
-)
 
 // Si l'année choisie n'existe plus (données rechargées), on passe à la plus proche.
 watch(years, (list) => {
   if (!list.length || list.some((y) => y.year === selectedYear.value)) return
   const target = selectedYear.value ?? -Infinity
-  selectedYear.value = list.reduce((best, y) =>
-    Math.abs(y.year - target) < Math.abs(best.year - target) ? y : best,
+  selectedYear.value = list.reduce(
+    (best, y) => (Math.abs(y.year - target) < Math.abs(best.year - target) ? y : best),
+    list[0],
   ).year
 })
 const yearIndex = computed(() => years.value.findIndex((y) => y.year === selectedYear.value))
@@ -159,15 +190,67 @@ watch([visibleTribus, visibleCommunes], () => {
   if (selectedTribuId.value && !selectedTribu.value) selectedTribuId.value = null
   if (selectedCommuneId.value && !selectedCommune.value) selectedCommuneId.value = null
 })
-function selectTribu(id) {
+// Ferme toutes les fiches (événement, tribu, commune, aire, province) avant d'en ouvrir une autre.
+function clearSelections() {
   selectedId.value = null
+  selectedTribuId.value = null
   selectedCommuneId.value = null
+  selectedAireId.value = null
+  selectedProvinceId.value = null
+}
+function selectTribu(id) {
+  clearSelections()
   selectedTribuId.value = id
 }
 function selectCommune(id) {
-  selectedId.value = null
-  selectedTribuId.value = null
+  clearSelections()
   selectedCommuneId.value = id
+}
+
+/* ---------- Aires coutumières ---------- */
+const aireList = computed(() => (aires.value?.features || []).map((f) => f.properties))
+const selectedAire = computed(() => (showAires.value ? aireList.value.find((a) => a.id === selectedAireId.value) : null) || null)
+const communesOfAire = (aire) => communes.value.filter((c) => plainName(c.aire) === plainName(aire.nom))
+const tribusInAire = (aire) => tribus.value.filter((t) => plainName(t.aire) === plainName(aire.nom)).length
+function selectAire(id) {
+  clearSelections()
+  selectedAireId.value = id
+}
+// Aires et provinces se superposeraient : afficher l'une masque l'autre.
+function toggleAires() {
+  showAires.value = !showAires.value
+  if (showAires.value) showProvinces.value = false
+}
+
+/* ---------- Provinces ---------- */
+const provinceList = computed(() => (provinces.value?.features || []).map((f) => f.properties))
+const selectedProvince = computed(
+  () => (showProvinces.value ? provinceList.value.find((p) => p.id === selectedProvinceId.value) : null) || null,
+)
+const communesOfProvince = (prov) => communes.value.filter((c) => c.province === prov.cle)
+const tribusInProvince = (prov) => {
+  const names = new Set(communesOfProvince(prov).map((c) => plainName(c.nom)))
+  return tribus.value.filter((t) => names.has(plainName(t.commune))).length
+}
+const airesOfProvince = (prov) => [...new Set(communesOfProvince(prov).map((c) => c.aire).filter(Boolean))]
+function selectProvince(id) {
+  clearSelections()
+  selectedProvinceId.value = id
+}
+function toggleProvinces() {
+  showProvinces.value = !showProvinces.value
+  if (showProvinces.value) showAires.value = false
+}
+watch(showAires, (v) => {
+  if (!v) selectedAireId.value = null
+})
+watch(showProvinces, (v) => {
+  if (!v) selectedProvinceId.value = null
+})
+
+// Depuis la fiche d'une aire ou d'une province : on montre la commune choisie (comme une recherche).
+function openCommuneFromZone(id) {
+  chooseFromSearch({ type: 'commune', id })
 }
 function chooseFromSearch(f) {
   focus.value = f
@@ -193,8 +276,7 @@ function toggleCommunes() {
 const selected = computed(() => events.value.find((e) => e.id === selectedId.value) || null)
 const selectedIndex = computed(() => events.value.findIndex((e) => e.id === selectedId.value))
 const select = (id) => {
-  selectedTribuId.value = null
-  selectedCommuneId.value = null
+  clearSelections()
   selectedId.value = id
 }
 // L'année suit l'événement ouvert (lien partagé, Précédent/Suivant, encart hors archipel…).
@@ -209,10 +291,11 @@ function go(delta) {
 
 // Liens partageables : #evenement=<id>, #tribu=<id> ou #commune=<id>
 function readHash() {
-  const ev = location.hash.match(/evenement=([^&]+)/)
-  const tr = location.hash.match(/tribu=([^&]+)/)
-  const co = location.hash.match(/commune=([^&]+)/)
+  const ev = /evenement=([^&]+)/.exec(location.hash)
+  const tr = /tribu=([^&]+)/.exec(location.hash)
+  const co = /commune=([^&]+)/.exec(location.hash)
   selectedId.value = ev ? decodeURIComponent(ev[1]) : null
+  if (tr || co) focus.value = null // un lien partagé réaffiche tout (quitte le mode « un seul résultat »)
   if (tr) {
     showTribus.value = true // un lien vers une tribu active l'affichage des tribus
     selectTribu(decodeURIComponent(tr[1]))
@@ -224,43 +307,53 @@ function readHash() {
     selectedCommuneId.value = null
   }
 }
+// Adresse partageable correspondant à ce qui est ouvert (événement, tribu ou commune).
+function shareHash(id, tribuId, communeId) {
+  if (id) return `#evenement=${encodeURIComponent(id)}`
+  if (tribuId) return `#tribu=${encodeURIComponent(tribuId)}`
+  if (communeId) return `#commune=${encodeURIComponent(communeId)}`
+  return ''
+}
 watch([selectedId, selectedTribuId, selectedCommuneId], ([id, tribuId, communeId]) => {
-  const url = id
-    ? `#evenement=${encodeURIComponent(id)}`
-    : tribuId
-      ? `#tribu=${encodeURIComponent(tribuId)}`
-      : communeId
-        ? `#commune=${encodeURIComponent(communeId)}`
-        : location.pathname + location.search
-  if (url.startsWith('#') ? location.hash !== url : location.hash) history.replaceState(null, '', url)
+  const hash = shareHash(id, tribuId, communeId)
+  if (hash && location.hash !== hash) history.replaceState(null, '', hash)
+  else if (!hash && location.hash) history.replaceState(null, '', location.pathname + location.search)
 })
 
+/* ---------- Clavier ---------- */
+function closePanels() {
+  selectedTribuId.value = null
+  selectedCommuneId.value = null
+  selectedAireId.value = null
+  selectedProvinceId.value = null
+}
+const placePanelOpen = computed(
+  () => !!(selectedTribu.value || selectedCommune.value || selectedAire.value || selectedProvince.value),
+)
+// Flèches : année précédente / suivante (sauf dans un champ ou sur la carte, où Leaflet les utilise).
+const YEAR_KEYS = { ArrowLeft: -1, ArrowRight: 1, Home: -Infinity, End: Infinity }
+function onYearKey(e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.target.closest?.('input, textarea, select, .map')) return
+  const delta = YEAR_KEYS[e.key]
+  if (!delta) return
+  e.preventDefault()
+  stepYear(Number.isFinite(delta) ? delta : Math.sign(delta) * years.value.length)
+}
+// Dans une fiche d'événement : Échap ferme, les flèches passent à l'événement voisin.
+const EVENT_KEYS = { Escape: () => close(), ArrowLeft: () => go(-1), ArrowRight: () => go(1) }
+
 function onKey(e) {
-  if (selectedTribu.value || selectedCommune.value) {
-    if (e.key === 'Escape') {
-      selectedTribuId.value = null
-      selectedCommuneId.value = null
-    }
-    return
+  if (placePanelOpen.value) {
+    if (e.key === 'Escape') closePanels()
+  } else if (selected.value) {
+    EVENT_KEYS[e.key]?.()
+  } else {
+    onYearKey(e)
   }
-  if (!selected.value) {
-    // Flèches du clavier : année précédente / suivante (sauf dans un champ ou sur la carte,
-    // où Leaflet les utilise pour se déplacer).
-    if (e.altKey || e.ctrlKey || e.metaKey || e.target.closest?.('input, textarea, select, .map')) return
-    const delta = { ArrowLeft: -1, ArrowRight: 1, Home: -Infinity, End: Infinity }[e.key]
-    if (!delta) return
-    e.preventDefault()
-    if (Number.isFinite(delta)) stepYear(delta)
-    else stepYear(delta < 0 ? -years.value.length : years.value.length)
-    return
-  }
-  if (e.key === 'Escape') close()
-  else if (e.key === 'ArrowLeft') go(-1)
-  else if (e.key === 'ArrowRight') go(1)
 }
 
 onMounted(async () => {
-  await Promise.all([load(), loadTribus(), loadCommunes()])
+  await Promise.all([load(), loadTribus(), loadCommunes(), loadAires(), loadProvinces()])
   selectedYear.value = years.value[0]?.year ?? null
   readHash()
   window.addEventListener('hashchange', readHash)
@@ -288,7 +381,8 @@ onBeforeUnmount(() => {
           @click="toggleTribus"
         >
           <img :src="caseIcon" alt="" />
-          {{ showTribus ? 'Masquer les tribus' : 'Afficher les tribus' }}
+          <span class="long">{{ showTribus ? 'Masquer les tribus' : 'Afficher les tribus' }}</span>
+          <span class="short">Tribus</span>
         </button>
         <button
           class="tribus-toggle"
@@ -298,19 +392,37 @@ onBeforeUnmount(() => {
           @click="toggleCommunes"
         >
           <span class="commune-dot" aria-hidden="true"></span>
-          {{ showCommunes ? 'Masquer les communes' : 'Afficher les communes' }}
+          <span class="long">{{ showCommunes ? 'Masquer les communes' : 'Afficher les communes' }}</span>
+          <span class="short">Communes</span>
         </button>
-        <label class="toggle">
-          <input v-model="showPast" type="checkbox" />
-          <span>Afficher les années précédentes</span>
-        </label>
+        <button
+          class="tribus-toggle"
+          :class="{ on: showAires }"
+          :aria-pressed="showAires"
+          :disabled="!aires"
+          @click="toggleAires"
+        >
+          <span class="aire-dot" aria-hidden="true"></span>
+          <span class="long">{{ showAires ? 'Masquer les aires' : 'Afficher les aires coutumières' }}</span>
+          <span class="short">Aires</span>
+        </button>
+        <button
+          class="tribus-toggle"
+          :class="{ on: showProvinces }"
+          :aria-pressed="showProvinces"
+          :disabled="!provinces"
+          @click="toggleProvinces"
+        >
+          <span class="province-dot" aria-hidden="true"></span>
+          <span class="long">{{ showProvinces ? 'Masquer les provinces' : 'Afficher les provinces' }}</span>
+          <span class="short">Provinces</span>
+        </button>
       </div>
     </header>
 
     <main class="app-map">
       <MapView
         :events="visibleEvents"
-        :past-events="pastEvents"
         :categories="categories"
         :selected-event="selected"
         :year="selectedYear"
@@ -319,9 +431,15 @@ onBeforeUnmount(() => {
         :communes="visibleCommunes"
         :selected-commune-id="selectedCommuneId"
         :focus-target="focusTarget"
+        :aires="showAires ? aires : null"
+        :selected-aire-id="selectedAireId"
+        :provinces="showProvinces ? provinces : null"
+        :selected-province-id="selectedProvinceId"
         @select="select"
         @select-tribu="selectTribu"
         @select-commune="selectCommune"
+        @select-aire="selectAire"
+        @select-province="selectProvince"
       />
       <SearchBox
         v-if="!loading && !error"
@@ -346,6 +464,7 @@ onBeforeUnmount(() => {
       v-if="selected"
       :key="selected.id"
       :event="selected"
+      :color="categories[selected.category]?.color"
       @close="close"
     />
 
@@ -363,5 +482,27 @@ onBeforeUnmount(() => {
       :tribu-count="tribuCountOf(selectedCommune)"
       @close="selectedCommuneId = null"
     />
+
+    <AirePanel
+      v-if="selectedAire"
+      :key="selectedAire.id"
+      :aire="selectedAire"
+      :communes="communesOfAire(selectedAire)"
+      :tribu-count="tribusInAire(selectedAire)"
+      @close="selectedAireId = null"
+      @select-commune="openCommuneFromZone"
+    />
+
+    <ProvincePanel
+      v-if="selectedProvince"
+      :key="selectedProvince.id"
+      :province="selectedProvince"
+      :communes="communesOfProvince(selectedProvince)"
+      :aires="airesOfProvince(selectedProvince)"
+      :tribu-count="tribusInProvince(selectedProvince)"
+      @close="selectedProvinceId = null"
+      @select-commune="openCommuneFromZone"
+    />
+
   </div>
 </template>
