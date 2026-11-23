@@ -434,6 +434,7 @@ onBeforeUnmount(() => {
         :aires="showAires ? aires : null"
         :selected-aire-id="selectedAireId"
         :provinces="showProvinces ? provinces : null"
+        :land="provinces"
         :selected-province-id="selectedProvinceId"
         @select="select"
         @select-tribu="selectTribu"

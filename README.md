@@ -133,6 +133,8 @@ Un événement peut aussi avoir un **logo illustré** qui remplace celui de sa c
 
 - `images/logos/bateau_colon.png` : arrivées de colons et de bagnards (1853, 1854, 1864, 1872, 1897) ;
 - `images/logos/casse_tete.png` : conflits armés (1878, 1916, 1917, 1984, 1985, 1988, 2024).
+- `images/logos/bible.png` : événements religieux (missions protestante de 1841 et catholique de 1843).
+- `images/logos/drapeau_kanaky.svg` : drapeau de Kanaky qui flotte (animation SVG) — création du FLNKS et Gouvernement provisoire de Kanaky (1984). Généré par dessin vectoriel, sans image externe.
 
 ### Catégories et périodes
 

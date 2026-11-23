@@ -123,6 +123,7 @@
     },
     {
       "id": "lms-mare",
+      "logo": "images/logos/bible.png",
       "date": "1841",
       "title": "Arrivée des premiers « teachers » protestants",
       "place": "Maré (îles Loyauté)",
@@ -136,6 +137,7 @@
     },
     {
       "id": "maristes-1843",
+      "logo": "images/logos/bible.png",
       "date": "1843-12-21",
       "title": "Fondation de la première mission catholique",
       "place": "Balade (Pouébo)",
@@ -356,7 +358,7 @@
       "coords": null,
       "category": "colonisation",
       "description": "Une centaine de Kanak sont exhibés à Paris, présentés comme des « cannibales » dans un véritable « zoo humain ». Cet épisode longtemps occulté a été popularisé par le roman de Didier Daeninckx « Cannibale » (1998).",
-      "image": {"url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Chemins_de_Fer_Fran%C3%A7ais._Visitez_l%27Exposition_coloniale_internationale_-_Paris%2C_mai-novembre_1931._Billets_%C3%A0_prix_r%C3%A9duits_-_Trains_directs_affiche%2C_Dransy.jpg/960px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail", "credit": "Dransy — CC0, via Wikimedia Commons", "alt": "Affiche de l'Exposition coloniale internationale de 1931", "source": "https://commons.wikimedia.org/wiki/File:Chemins_de_Fer_Fran%C3%A7ais._Visitez_l%27Exposition_coloniale_internationale_-_Paris,_mai-novembre_1931._Billets_%C3%A0_prix_r%C3%A9duits_-_Trains_directs_affiche,_Dransy.jpg"},
+      "image": {"url": "images/evenements/zoo_humain.webp", "alt": "Kanak exhibés à l'Exposition coloniale de 1931"},
       "sources": [
         { "label": "Exposition coloniale internationale de 1931 (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Exposition+coloniale+internationale+de+1931" }
       ]
@@ -443,6 +445,7 @@
     },
     {
       "id": "flnks-1984",
+      "logo": "images/logos/drapeau_kanaky.svg",
       "date": "1984-09-24",
       "title": "Création du FLNKS",
       "place": "Nouméa",
@@ -877,6 +880,7 @@
     },
     {
       "id": "gpk-1984",
+      "logo": "images/logos/drapeau_kanaky.svg",
       "date": "1984-12-01",
       "title": "Proclamation du Gouvernement provisoire de Kanaky",
       "place": "Nouvelle-Calédonie",

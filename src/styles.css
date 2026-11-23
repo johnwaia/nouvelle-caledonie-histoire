@@ -124,6 +124,11 @@ button { font: inherit; cursor: pointer; }
 .pin.pin-logo { width: 34px; height: 34px; background: none; border: 0; box-shadow: none; }
 .pin.pin-logo img { width: 34px; height: 34px; display: block; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5)); }
 .pin.pin-logo::after { inset: -4px; }
+/* Drapeau : planté par le pied de sa hampe, sans halo rond */
+.pin.pin-flag, .pin.pin-flag img { width: 42px; height: 42px; }
+.pin.pin-flag { transform-origin: 20% 93%; }
+.pin.pin-flag img { filter: none; }
+.pin.pin-flag::after { display: none; }
 .pin:hover { transform: scale(1.25); }
 .pin::after {
   content: ''; position: absolute; inset: -6px; border-radius: 50%;

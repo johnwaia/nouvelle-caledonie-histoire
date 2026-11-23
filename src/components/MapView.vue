@@ -16,6 +16,7 @@ const props = defineProps({
   aires: { type: Object, default: null },            // GeoJSON des aires coutumières à afficher (ou null)
   selectedAireId: { type: String, default: null },
   provinces: { type: Object, default: null },        // GeoJSON des provinces à afficher (ou null)
+  land: { type: Object, default: null },             // GeoJSON de la terre ferme (pour garder les points hors de la mer)
   selectedProvinceId: { type: String, default: null },
 })
 const emit = defineEmits(['select', 'select-tribu', 'select-commune', 'select-aire', 'select-province'])
@@ -164,6 +165,7 @@ onMounted(() => {
   map.fitBounds(NC_BOUNDS)
   layer = L.layerGroup().addTo(map)
   render()
+  map.on('zoomend', replacePins)
 
   // Tant que l'utilisateur n'a pas manipulé la carte, on recadre l'archipel entier
   // à chaque redimensionnement (apparition de la frise, rotation d'écran…).
@@ -182,6 +184,102 @@ onBeforeUnmount(() => {
   resizeObserver?.disconnect()
   map?.remove()
 })
+
+/* ---------- Placement des points sur la terre ferme ---------- */
+// Drapeaux : logo planté par le pied de sa hampe (position du pied dans l'image, en fraction de sa taille).
+const FLAG_FOOT = [0.2, 0.93]
+const isFlag = (e) => !!e.logo && e.logo.includes('drapeau')
+const pinSize = (e) => {
+  if (isFlag(e)) return 42
+  return e.logo ? 34 : 28
+}
+
+// Point dans un polygone GeoJSON (anneaux [lon, lat]), par la méthode du rayon.
+function inRing(lon, lat, ring) {
+  let inside = false
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i]
+    const [xj, yj] = ring[j]
+    if (yi > lat !== yj > lat && lon < ((xj - xi) * (lat - yi)) / (yj - yi) + xi) inside = !inside
+  }
+  return inside
+}
+function inPolygon(lon, lat, rings) {
+  return inRing(lon, lat, rings[0]) && !rings.slice(1).some((hole) => inRing(lon, lat, hole))
+}
+// Terre ferme = intérieur des provinces (contours qui suivent le littoral).
+// Index calculé une seule fois : chaque polygone avec son rectangle englobant, pour n'examiner
+// en détail que les quelques polygones autour du point (plus de 2 000 îles et îlots au total).
+let landIndex = null
+function buildLandIndex(geojson) {
+  const index = []
+  for (const f of geojson?.features || []) {
+    const g = f.geometry
+    for (const rings of g.type === 'MultiPolygon' ? g.coordinates : [g.coordinates]) {
+      let minX = Infinity
+      let minY = Infinity
+      let maxX = -Infinity
+      let maxY = -Infinity
+      for (const [x, y] of rings[0]) {
+        if (x < minX) minX = x
+        if (x > maxX) maxX = x
+        if (y < minY) minY = y
+        if (y > maxY) maxY = y
+      }
+      index.push({ minX, minY, maxX, maxY, rings })
+    }
+  }
+  return index
+}
+const landCache = new Map() // résultats déjà calculés (point arrondi à ~10 m)
+function isOnLand(latlng) {
+  if (!props.land) return true // contours pas encore chargés : on ne bloque rien
+  landIndex ??= buildLandIndex(props.land)
+  const key = `${latlng.lat.toFixed(4)},${latlng.lng.toFixed(4)}`
+  if (landCache.has(key)) return landCache.get(key)
+  const { lat, lng } = latlng
+  const result = landIndex.some(
+    (p) => lng >= p.minX && lng <= p.maxX && lat >= p.minY && lat <= p.maxY && inPolygon(lng, lat, p.rings),
+  )
+  if (landCache.size > 20000) landCache.clear()
+  landCache.set(key, result)
+  return result
+}
+
+// Décalages (en pixels) des n points d'un même lieu : en couronne, sans tomber dans la mer.
+function placeOnLand(coords, n) {
+  const center = map.latLngToContainerPoint(coords)
+  const onLand = ([dx, dy]) => isOnLand(map.containerPointToLatLng(center.add([dx, dy])))
+  const radius = n > 1 ? 14 + n * 4 : 0
+  const wanted = Array.from({ length: n }, (_, i) => {
+    const a = -Math.PI / 2 + (2 * Math.PI * i) / n
+    return [radius * Math.cos(a), radius * Math.sin(a)]
+  })
+  if (!props.land || wanted.every(onLand)) return wanted
+
+  // Positions de repli sur la terre : couronnes successives autour du lieu, puis le lieu lui-même.
+  const candidates = [[0, 0]]
+  for (const r of [radius || 16, (radius || 16) + 16, (radius || 16) + 32, (radius || 16) + 50]) {
+    for (let k = 0; k < 24; k++) {
+      const a = (2 * Math.PI * k) / 24
+      candidates.push([r * Math.cos(a), r * Math.sin(a)])
+    }
+  }
+  const land = candidates.filter(onLand)
+  const taken = []
+  return wanted.map((w) => {
+    if (onLand(w) && taken.every((t) => Math.hypot(t[0] - w[0], t[1] - w[1]) > 22)) {
+      taken.push(w)
+      return w
+    }
+    const free = land
+      .filter((c) => taken.every((t) => Math.hypot(t[0] - c[0], t[1] - c[1]) > 22))
+      .sort((a, b) => Math.hypot(a[0] - w[0], a[1] - w[1]) - Math.hypot(b[0] - w[0], b[1] - w[1]))
+    const pick = free[0] || w // aucune place libre à terre : position d'origine
+    taken.push(pick)
+    return pick
+  })
+}
 
 function render() {
   if (!map) return
@@ -207,7 +305,8 @@ function render() {
     layer.clearLayers()
   }
 
-  // Les événements situés au même endroit sont disposés en couronne autour du point.
+  // Les événements situés au même endroit sont disposés en couronne autour du point,
+  // en restant sur la terre ferme.
   const groups = new Map()
   for (const it of items) {
     const key = it.e.coords.map((n) => n.toFixed(3)).join(',')
@@ -217,19 +316,25 @@ function render() {
 
   const nextIds = new Set()
   for (const group of groups.values()) {
-    const n = group.length
+    const offsets = placeOnLand(group[0].e.coords, group.length)
     group.forEach((it, i) => {
-      const radius = n > 1 ? 14 + n * 4 : 0
-      const angle = -Math.PI / 2 + (2 * Math.PI * i) / n
-      const dx = radius * Math.cos(angle)
-      const dy = radius * Math.sin(angle)
+      const [dx, dy] = offsets[i]
       const selected = it.e.id === selId
       const fresh = !prevIds.has(it.e.id)
-      const cls = ['pin', it.e.logo && 'pin-logo', selected && 'selected', fresh && (yearChanged ? 'entering' : 'fresh')]
+      const flag = isFlag(it.e)
+      const cls = [
+        'pin',
+        it.e.logo && 'pin-logo',
+        flag && 'pin-flag',
+        selected && 'selected',
+        fresh && (yearChanged ? 'entering' : 'fresh'),
+      ]
         .filter(Boolean)
         .join(' ')
       const color = props.categories[it.e.category]?.color || '#555'
-      const size = it.e.logo ? 34 : 28
+      const size = pinSize(it.e)
+      // Point d'ancrage : centre du rond, ou pied de la hampe pour un drapeau (planté dans le sol)
+      const [ax, ay] = flag ? [size * FLAG_FOOT[0], size * FLAG_FOOT[1]] : [size / 2, size / 2]
 
       const icon = L.divIcon({
         className: 'pin-icon',
@@ -238,7 +343,7 @@ function render() {
           it.e.logo ? `<img src="${esc(it.e.logo)}" alt="">` : iconFor(it.e.category)
         }</span>`,
         iconSize: [size, size],
-        iconAnchor: [size / 2 - dx, size / 2 - dy],
+        iconAnchor: [ax - dx, ay - dy],
       })
       const marker = L.marker(it.e.coords, {
         icon,
@@ -248,7 +353,7 @@ function render() {
       })
       marker.bindTooltip(
         `<strong>${esc(it.e.title)}</strong><br><span>${esc(it.e.dateText)} · ${esc(it.e.place)}</span>`,
-        { direction: 'top', offset: [dx, dy - 14], className: 'pin-tooltip' },
+        { direction: 'top', offset: [dx, dy - (flag ? size * 0.85 : 14)], className: 'pin-tooltip' },
       )
       marker.on('click', () => emit('select', it.e.id))
       marker.addTo(layer)
@@ -259,7 +364,19 @@ function render() {
 }
 
 watch(() => [props.events, props.selectedEvent, props.categories, props.year], render)
-
+// Le décalage en pixels change de sens géographique avec le zoom : on replace les points.
+function replacePins() {
+  lastSignature = ''
+  render()
+}
+watch(
+  () => props.land,
+  () => {
+    landIndex = null // nouveaux contours : index et cache à refaire
+    landCache.clear()
+    replacePins()
+  },
+)
 /* ---------- Zones colorées : aires coutumières et provinces ---------- */
 // Point où écrire le nom d'une zone : centre de sa plus grande partie (et non du rectangle
 // englobant toutes ses îles, qui tombe souvent en mer).
