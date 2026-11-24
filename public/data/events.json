@@ -69,6 +69,7 @@
     },
     {
       "id": "cook-1774",
+      "logo": "images/logos/drapeau_britannique.svg",
       "date": "1774-09-04",
       "title": "James Cook aborde la Grande Terre",
       "place": "Balade (Pouébo)",
@@ -151,7 +152,7 @@
     },
     {
       "id": "prise-possession-1853",
-      "logo": "images/logos/bateau_colon.png",
+      "logo": "images/logos/drapeau_france.svg",
       "date": "1853-09-24",
       "title": "Prise de possession par la France",
       "place": "Balade (Pouébo)",
@@ -194,6 +195,7 @@
     },
     {
       "id": "nickel-garnier",
+      "logo": "images/logos/usine_nickel.svg",
       "date": "1864",
       "title": "Découverte du nickel",
       "place": "Sud de la Grande Terre",
@@ -268,6 +270,7 @@
     },
     {
       "id": "sln-1880",
+      "logo": "images/logos/usine_nickel.svg",
       "date": "1880",
       "title": "Création de la Société Le Nickel (SLN)",
       "place": "Thio",
@@ -295,6 +298,7 @@
     },
     {
       "id": "japonais-1892",
+      "logo": "images/logos/drapeau_japon.svg",
       "date": "1892",
       "title": "Arrivée des premiers travailleurs japonais",
       "place": "Thio",
@@ -365,6 +369,7 @@
     },
     {
       "id": "france-libre-1940",
+      "logo": "images/logos/drapeau_france_libre.svg",
       "date": "1940-09-19",
       "title": "Ralliement à la France libre",
       "place": "Nouméa",
@@ -378,6 +383,7 @@
     },
     {
       "id": "americains-1942",
+      "logo": "images/logos/drapeau_americain.svg",
       "date": "1942-03-12",
       "endDate": "1945-09",
       "title": "Arrivée des troupes américaines",
@@ -405,6 +411,7 @@
     },
     {
       "id": "uc-1953",
+      "logo": "images/logos/union_caledonienne.png",
       "date": "1953",
       "title": "Fondation de l'Union calédonienne",
       "place": "Nouméa",
@@ -418,6 +425,7 @@
     },
     {
       "id": "boom-nickel",
+      "logo": "images/logos/usine_nickel.svg",
       "date": "1967",
       "endDate": "1972",
       "title": "Le « boom du nickel »",
@@ -432,6 +440,7 @@
     },
     {
       "id": "melanesia-2000",
+      "logo": "images/logos/melanesia_2000.png",
       "date": "1975-09",
       "title": "Festival Mélanésia 2000",
       "place": "Nouméa",
@@ -611,6 +620,7 @@
     },
     {
       "id": "usine-sud-2010",
+      "logo": "images/logos/usine_nickel.svg",
       "date": "2010",
       "title": "Mise en service de l'usine du Sud",
       "place": "Goro, Yaté",
@@ -637,6 +647,7 @@
     },
     {
       "id": "usine-nord-2013",
+      "logo": "images/logos/usine_nickel.svg",
       "date": "2013",
       "title": "Démarrage de l'usine du Nord (Koniambo)",
       "place": "Vavouto, Voh",
@@ -698,6 +709,7 @@
     },
     {
       "id": "kns-2024",
+      "logo": "images/logos/usine_nickel.svg",
       "date": "2024-02",
       "title": "Crise du nickel : l'usine du Nord mise en sommeil",
       "place": "Vavouto, Voh",
@@ -767,6 +779,7 @@
     },
     {
       "id": "foulards-rouges-1969",
+      "logo": "images/logos/foulard_rouge.svg",
       "date": "1969-09-02",
       "title": "Le réveil kanak : les « Foulards rouges »",
       "place": "Nouméa",
@@ -781,6 +794,7 @@
     },
     {
       "id": "groupe-1878",
+      "logo": "images/logos/atai.png",
       "date": "1971",
       "approx": true,
       "title": "Le « Groupe 1878 » et la revendication foncière",
@@ -796,6 +810,7 @@
     },
     {
       "id": "palika-1975",
+      "logo": "images/logos/palika.png",
       "date": "1975",
       "title": "Création du Parti de libération kanak (Palika)",
       "place": "Nouméa",
@@ -810,6 +825,7 @@
     },
     {
       "id": "uc-bourail-1977",
+      "logo": "images/logos/union_caledonienne.png",
       "date": "1977-05",
       "title": "Congrès de Bourail : l'Union calédonienne choisit l'indépendance",
       "place": "Bourail",
@@ -851,6 +867,7 @@
     },
     {
       "id": "ustke-1981",
+      "logo": "images/logos/ustke.png",
       "date": "1981-12-05",
       "title": "Création de l'USTKE, syndicat indépendantiste",
       "place": "Nouméa",
@@ -895,6 +912,7 @@
     },
     {
       "id": "tein-flnks-2024",
+      "logo": "images/logos/drapeau_kanaky.svg",
       "date": "2024-08-31",
       "title": "Christian Tein, leader de la CCAT, à la tête du FLNKS",
       "place": "Koumac",
@@ -1057,6 +1075,20 @@
       "sources": [
         {"label": "« Le Conseil constitutionnel valide le dégel partiel du corps électoral » (Maire-info)", "url": "https://maire-info.com/le-conseil-constitutionnel-valide-le-degel-partiel-du-corps-electoral-en-nouvelle-caledonie-la-loi-publiee-article2-30830"},
         {"label": "Nouvelle-Calédonie : la loi élargissant le corps électoral est publiée (Banque des territoires)", "url": "https://www.banquedesterritoires.fr/nouvelle-caledonie-la-loi-elargissant-le-corps-electoral-est-publiee"}
+      ]
+    },
+    {
+      "id": "wallisiens-1967",
+      "logo": "images/logos/drapeau_wallis.svg",
+      "date": "1967",
+      "dateLabel": "Années 1960-1970",
+      "title": "L'immigration wallisienne et futunienne",
+      "place": "Grand Nouméa",
+      "coords": [-22.25, 166.44],
+      "category": "economie",
+      "description": "Les premiers départs de Wallis-et-Futuna ont lieu en 1947, avec 109 personnes, et le mouvement devient durable à partir de 1951 : l'archipel manque d'emplois et sa production de coprah a été ruinée par un insecte, l'oryctes.\n\nLe « boom du nickel » et l'essor économique de la Nouvelle-Calédonie amplifient cette migration : la communauté passe d'environ 2 500 personnes en 1963 à 6 200 en 1969, puis 9 571 en 1976, soit 7,2 % de la population. Installée surtout en province Sud, elle comptait 22 520 personnes en 2019.",
+      "sources": [
+        {"label": "Wallisiens et Futuniens de Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/wiki/Wallisiens_et_Futuniens_de_Nouvelle-Cal%C3%A9donie"}
       ]
     }
   ]

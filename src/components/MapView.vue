@@ -186,11 +186,12 @@ onBeforeUnmount(() => {
 })
 
 /* ---------- Placement des points sur la terre ferme ---------- */
-// Drapeaux : logo planté par le pied de sa hampe (position du pied dans l'image, en fraction de sa taille).
-const FLAG_FOOT = [0.2, 0.93]
-const isFlag = (e) => !!e.logo && e.logo.includes('drapeau')
+// Logos plantés dans le sol (drapeau, poing levé) : position de leur pied dans l'image, en fraction de sa taille.
+const FEET = { drapeau_: [0.2, 0.93], foulard_rouge: [0.44, 1], usine_nickel: [0.5, 1] }
+const footOf = (e) => Object.entries(FEET).find(([name]) => e.logo?.includes(name))?.[1]
 const pinSize = (e) => {
-  if (isFlag(e)) return 42
+  if (e.logo?.includes('usine_nickel')) return 56 // la fumée occupe le haut de l'image
+  if (footOf(e)) return 42
   return e.logo ? 34 : 28
 }
 
@@ -246,38 +247,41 @@ function isOnLand(latlng) {
   return result
 }
 
-// Décalages (en pixels) des n points d'un même lieu : en couronne, sans tomber dans la mer.
-function placeOnLand(coords, n) {
-  const center = map.latLngToContainerPoint(coords)
-  const onLand = ([dx, dy]) => isOnLand(map.containerPointToLatLng(center.add([dx, dy])))
-  const radius = n > 1 ? 14 + n * 4 : 0
-  const wanted = Array.from({ length: n }, (_, i) => {
-    const a = -Math.PI / 2 + (2 * Math.PI * i) / n
-    return [radius * Math.cos(a), radius * Math.sin(a)]
-  })
-  if (!props.land || wanted.every(onLand)) return wanted
-
-  // Positions de repli sur la terre : couronnes successives autour du lieu, puis le lieu lui-même.
-  const candidates = [[0, 0]]
-  for (const r of [radius || 16, (radius || 16) + 16, (radius || 16) + 32, (radius || 16) + 50]) {
-    for (let k = 0; k < 24; k++) {
-      const a = (2 * Math.PI * k) / 24
-      candidates.push([r * Math.cos(a), r * Math.sin(a)])
-    }
+// Positions d'essai autour d'un lieu, de la plus proche à la plus éloignée (en pixels).
+const SPOTS = [[0, 0]]
+for (let r = 5; r <= 150; r += 5) {
+  const steps = Math.max(8, Math.round(r / 2.5))
+  for (let k = 0; k < steps; k++) {
+    const a = -Math.PI / 2 + (2 * Math.PI * k) / steps
+    SPOTS.push([r * Math.cos(a), r * Math.sin(a)])
   }
-  const land = candidates.filter(onLand)
-  const taken = []
-  return wanted.map((w) => {
-    if (onLand(w) && taken.every((t) => Math.hypot(t[0] - w[0], t[1] - w[1]) > 22)) {
-      taken.push(w)
-      return w
+}
+const PIN_GAP = 3 // espace minimal entre deux points
+const FOOT_MARGIN = 7 // largeur de terre exigée autour du pied d'un logo planté
+
+// Décalage de chaque point (en pixels) : au plus près de son lieu, sans recouvrir un autre point
+// de la carte et, autant que possible, sur la terre ferme.
+function layoutPins(list) {
+  const placed = [] // centres et tailles des points déjà posés
+  return list.map((e) => {
+    const base = map.latLngToContainerPoint(e.coords)
+    const size = pinSize(e)
+    const [fx, fy] = footOf(e) || [0.5, 0.5]
+    const center = ([dx, dy]) => ({ x: base.x + dx + size * (0.5 - fx), y: base.y + dy + size * (0.5 - fy), size })
+    const isFree = (spot) => {
+      const c = center(spot)
+      return placed.every((q) => {
+        const min = (c.size + q.size) / 2 + PIN_GAP
+        return Math.abs(c.x - q.x) >= min || Math.abs(c.y - q.y) >= min
+      })
     }
-    const free = land
-      .filter((c) => taken.every((t) => Math.hypot(t[0] - c[0], t[1] - c[1]) > 22))
-      .sort((a, b) => Math.hypot(a[0] - w[0], a[1] - w[1]) - Math.hypot(b[0] - w[0], b[1] - w[1]))
-    const pick = free[0] || w // aucune place libre à terre : position d'origine
-    taken.push(pick)
-    return pick
+    const m = footOf(e) ? FOOT_MARGIN : 0
+    const around = m ? [[0, 0], [m, 0], [-m, 0], [0, m], [0, -m]] : [[0, 0]]
+    const onLand = ([dx, dy]) =>
+      around.every(([mx, my]) => isOnLand(map.containerPointToLatLng(base.add([dx + mx, dy + my]))))
+    const spot = SPOTS.find((o) => isFree(o) && onLand(o)) || SPOTS.find(isFree) || SPOTS[0]
+    placed.push(center(spot))
+    return spot
   })
 }
 
@@ -305,61 +309,52 @@ function render() {
     layer.clearLayers()
   }
 
-  // Les événements situés au même endroit sont disposés en couronne autour du point,
-  // en restant sur la terre ferme.
-  const groups = new Map()
-  for (const it of items) {
-    const key = it.e.coords.map((n) => n.toFixed(3)).join(',')
-    if (!groups.has(key)) groups.set(key, [])
-    groups.get(key).push(it)
-  }
-
+  // Les points trop proches sont écartés les uns des autres, en restant sur la terre ferme.
+  const offsets = layoutPins(items.map((it) => it.e))
   const nextIds = new Set()
-  for (const group of groups.values()) {
-    const offsets = placeOnLand(group[0].e.coords, group.length)
-    group.forEach((it, i) => {
-      const [dx, dy] = offsets[i]
-      const selected = it.e.id === selId
-      const fresh = !prevIds.has(it.e.id)
-      const flag = isFlag(it.e)
-      const cls = [
-        'pin',
-        it.e.logo && 'pin-logo',
-        flag && 'pin-flag',
-        selected && 'selected',
-        fresh && (yearChanged ? 'entering' : 'fresh'),
-      ]
-        .filter(Boolean)
-        .join(' ')
-      const color = props.categories[it.e.category]?.color || '#555'
-      const size = pinSize(it.e)
-      // Point d'ancrage : centre du rond, ou pied de la hampe pour un drapeau (planté dans le sol)
-      const [ax, ay] = flag ? [size * FLAG_FOOT[0], size * FLAG_FOOT[1]] : [size / 2, size / 2]
+  items.forEach((it, i) => {
+    const [dx, dy] = offsets[i]
+    const selected = it.e.id === selId
+    const fresh = !prevIds.has(it.e.id)
+    const foot = footOf(it.e)
+    const cls = [
+      'pin',
+      it.e.logo && 'pin-logo',
+      foot && 'pin-flag',
+      selected && 'selected',
+      fresh && (yearChanged ? 'entering' : 'fresh'),
+    ]
+      .filter(Boolean)
+      .join(' ')
+    const color = props.categories[it.e.category]?.color || '#555'
+    const size = pinSize(it.e)
+    // Point d'ancrage : centre du rond, ou pied d'un logo planté dans le sol
+    const [fx, fy] = foot || [0.5, 0.5]
+    const [ax, ay] = [size * fx, size * fy]
 
-      const icon = L.divIcon({
-        className: 'pin-icon',
-        // Logo de l'événement (selon sa catégorie) dans un rond de la couleur de la catégorie
-        html: `<span class="${cls}" style="--c:${color}">${
-          it.e.logo ? `<img src="${esc(it.e.logo)}" alt="">` : iconFor(it.e.category)
-        }</span>`,
-        iconSize: [size, size],
-        iconAnchor: [ax - dx, ay - dy],
-      })
-      const marker = L.marker(it.e.coords, {
-        icon,
-        keyboard: true,
-        alt: it.e.title,
-        zIndexOffset: selected ? 1000 : 0,
-      })
-      marker.bindTooltip(
-        `<strong>${esc(it.e.title)}</strong><br><span>${esc(it.e.dateText)} · ${esc(it.e.place)}</span>`,
-        { direction: 'top', offset: [dx, dy - (flag ? size * 0.85 : 14)], className: 'pin-tooltip' },
-      )
-      marker.on('click', () => emit('select', it.e.id))
-      marker.addTo(layer)
-      nextIds.add(it.e.id)
+    const icon = L.divIcon({
+      className: 'pin-icon',
+      // Logo de l'événement (selon sa catégorie) dans un rond de la couleur de la catégorie
+      html: `<span class="${cls}" style="--c:${color};--size:${size}px;--foot:${fx * 100}% ${fy * 100}%">${
+        it.e.logo ? `<img src="${esc(it.e.logo)}" alt="">` : iconFor(it.e.category)
+      }</span>`,
+      iconSize: [size, size],
+      iconAnchor: [ax - dx, ay - dy],
     })
-  }
+    const marker = L.marker(it.e.coords, {
+      icon,
+      keyboard: true,
+      alt: it.e.title,
+      zIndexOffset: selected ? 1000 : 0,
+    })
+    marker.bindTooltip(
+      `<strong>${esc(it.e.title)}</strong><br><span>${esc(it.e.dateText)} · ${esc(it.e.place)}</span>`,
+      { direction: 'top', offset: [dx, dy - (foot ? size * 0.85 : 14)], className: 'pin-tooltip' },
+    )
+    marker.on('click', () => emit('select', it.e.id))
+    marker.addTo(layer)
+    nextIds.add(it.e.id)
+  })
   prevIds = nextIds
 }
 
