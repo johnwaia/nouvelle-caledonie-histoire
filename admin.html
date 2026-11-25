@@ -21,8 +21,8 @@
     <form id="login">
       <h2>Connexion</h2>
       <p>
-        Collez un jeton d'accès GitHub autorisé à modifier le dépôt. Il n'est ni enregistré ni envoyé ailleurs qu'à GitHub,
-        et il est oublié quand vous fermez la page.
+        Collez un jeton d'accès GitHub autorisé à modifier le dépôt. Il n'est pas enregistré et il est oublié
+        quand vous fermez la page. Il est envoyé seulement à GitHub, et au service des demandes qui le fait vérifier par GitHub.
       </p>
       <p class="hint">Dépôt modifié : <strong class="target"></strong></p>
       <label>Jeton GitHub <input id="token" type="password" autocomplete="current-password" required /></label>
@@ -47,6 +47,7 @@
       </section>
       <section id="editor" aria-live="polite"></section>
     </main>
+    <div id="progress" role="alert" hidden><span></span><progress max="100"></progress></div>
     <output id="toast" hidden></output>
     <script type="module" src="/admin/online.js"></script>
   </body>

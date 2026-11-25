@@ -1,8 +1,14 @@
 /*
  * Interface d'administration, commune à la version locale (local.js) et à la version en ligne (online.js).
  * backend.call(method, path, body) exécute une action ; backend.imageUrl(id) donne l'adresse d'une image de la base ;
- * backend.onChange() (facultatif) est appelé après chaque modification enregistrée.
+ * backend.onChange() (facultatif) est appelé après chaque modification enregistrée ;
+ * backend.publish() (facultatif) publie le site ; backend.demandes : { list, setStatus, remove } ; backend.L : Leaflet.
  */
+
+import { $, attempt, attemptWithProgress, el, norm, slug, toast } from './dom.js'
+import { demandeNode, demandeSummary, demandeTitle } from './demandes.js'
+import { placeField } from './place.js'
+import { applyProposal } from '../src/db/proposals.js'
 
 /* ---------- Description des formulaires ---------- */
 const LINKS = { kind: 'rows', cols: [['label', 'Libellé'], ['url', 'https://…']] }
@@ -22,8 +28,7 @@ const TYPES = {
       ['category', 'Catégorie', { half: true, kind: 'select', options: () => state.categories.map((c) => [c.id, c.label]) }],
       ['approx', 'Date approximative', { kind: 'check', half: true }],
       ['auSud', 'Placer sous les autres points de l’année', { kind: 'check', half: true }],
-      ['place', 'Lieu'],
-      ['coords', 'Coordonnées', { kind: 'coords', hint: 'vides si hors de l’archipel' }],
+      ['lieu', 'Lieu', { kind: 'place', whole: true }],
       ['description', 'Description', { kind: 'text', long: true, hint: 'une ligne vide sépare les paragraphes' }],
       ['logo', 'Logo sur la carte', { kind: 'select', empty: 'Icône de la catégorie', options: () => state.images.filter((i) => i.id.startsWith('images/logos/')).map((i) => [i.id, i.id.slice(13)]) }],
       ['image', 'Image', { kind: 'image', folder: 'evenements' }],
@@ -89,54 +94,51 @@ const TYPES = {
     label: 'Images', title: (i) => i.id.split('/').pop().split('?')[0],
     sub: (i) => [storageOf(i), usageOf(i)].join(' · '),
   },
+  demandes: { label: 'Demande de modifications', fixed: true, title: demandeTitle, sub: demandeSummary, count: () => state.demandes.filter((d) => d.status === 'en_attente').length },
 }
 
 /* ---------- Outils ---------- */
 let backend
-let state = {}
+let state = { demandes: [] }
+let demandesError = ''
+const applied = new Set() // demandes déjà appliquées à la base, pas encore publiées
 let type = 'events'
 let currentId = null
 let dirty = false
 
-const $ = (id) => document.getElementById(id)
-function el(tag, props = {}, ...children) {
-  const node = Object.assign(document.createElement(tag), props)
-  node.append(...children.filter((c) => c !== null && c !== undefined))
-  return node
-}
-const norm = (s) => String(s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
-const slug = (s) => norm(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 // Un lien est affiché tel quel.
 const src = (id) => (/^https?:\/\//.test(id) ? id : backend.imageUrl(id))
 
-let toastTimer
-export function toast(message, error = false) {
-  const t = $('toast')
-  t.textContent = message
-  t.className = error ? 'error' : ''
-  t.hidden = false
-  clearTimeout(toastTimer)
-  toastTimer = setTimeout(() => (t.hidden = true), error ? 9000 : 4000)
-}
 async function call(method, path, body) {
   const data = await backend.call(method, path, body)
   if (method !== 'GET') backend.onChange?.()
   return data
 }
-// Lance une action asynchrone ; en cas d'échec, affiche le message d'erreur.
-export function attempt(action) {
-  action().catch((e) => toast(e.message, true))
+async function refresh() {
+  state = { ...state, ...(await call('GET', 'state')) }
 }
-const refresh = async () => (state = await call('GET', 'state'))
+// Les demandes viennent d'un autre service : s'il ne répond pas, le reste de l'administration fonctionne.
+async function refreshDemandes() {
+  demandesError = ''
+  try {
+    state.demandes = await backend.demandes.list()
+  } catch (e) {
+    demandesError = e.message
+  }
+}
 const mayLeave = () => !dirty || confirm('Abandonner les modifications non enregistrées ?')
 
 /* ---------- Liste ---------- */
 function renderTabs() {
   $('tabs').replaceChildren(
     ...Object.entries(TYPES).map(([key, t]) => {
-      const b = el('button', { type: 'button', textContent: `${t.label} (${state[key].length})` })
+      const b = el('button', { type: 'button', textContent: `${t.label} (${t.count ? t.count() : state[key].length})` })
       b.setAttribute('aria-current', key === type)
-      b.onclick = () => mayLeave() && show(key)
+      b.onclick = () => {
+        if (!mayLeave()) return
+        if (key === 'demandes') attempt(showDemandes)
+        else show(key)
+      }
       return b
     }),
   )
@@ -165,13 +167,24 @@ function show(key) {
 function close() {
   currentId = null
   dirty = false
-  $('editor').replaceChildren(el('p', { className: 'hint', textContent: 'Choisissez un élément dans la liste.' }))
+  $('editor').replaceChildren(el('p', { className: 'hint', textContent: emptyMessage() }))
   renderList()
+}
+function emptyMessage() {
+  if (type !== 'demandes') return 'Choisissez un élément dans la liste.'
+  if (demandesError) return `Demandes indisponibles : ${demandesError}`
+  return state.demandes.length ? 'Choisissez une demande dans la liste.' : 'Aucune demande reçue.'
+}
+// Ouvre l'onglet des demandes avec la liste à jour
+async function showDemandes() {
+  await refreshDemandes()
+  show('demandes')
 }
 function open(item) {
   currentId = item?.id ?? null
   dirty = false
   if (type === 'images') renderImage(item)
+  else if (type === 'demandes') renderDemande(item)
   else renderForm(item)
   renderList()
   $('editor').scrollTop = 0
@@ -182,6 +195,7 @@ const labelled = (label, hint, control) => el('label', {}, label, hint && el('sm
 const trimmed = (control) => control.value.trim() || undefined
 
 const FIELDS = {
+  place: (value, label, o) => placeField(value, { L: backend.L, state, isNew: o.isNew }),
   input(value, label, o) {
     const c = el('input', { value: value ?? '' })
     return { node: labelled(label, o.hint, c), get: () => trimmed(c) }
@@ -287,6 +301,7 @@ async function upload(file, folder, id) {
 }
 
 /* ---------- Formulaire ---------- */
+const SAVED = () => (backend.publish ? 'Enregistré — cliquez sur « Publier » pour mettre le site à jour' : 'Enregistré')
 function renderForm(item) {
   const t = TYPES[type]
   const value = item || t.defaults || {}
@@ -297,9 +312,9 @@ function renderForm(item) {
 
   const getters = {}
   t.fields.forEach(([key, label, o = {}], i) => {
-    const f = FIELDS[o.kind || 'input'](value[key], label, o)
+    const f = FIELDS[o.kind || 'input'](o.whole ? value : value[key], label, { ...o, isNew: !item })
     if (o.half) f.node.classList.add('half')
-    getters[key] = f.get
+    getters[key] = o.whole ? f.get : () => ({ [key]: f.get() })
     form.append(f.node)
     // Identifiant proposé à partir du premier champ (titre, nom…)
     if (!item && i === 0) {
@@ -316,13 +331,14 @@ function renderForm(item) {
   form.addEventListener('input', () => (dirty = true))
   form.onsubmit = (e) => {
     e.preventDefault()
-    attempt(async () => {
-      const data = { id: idInput.value.trim(), ...Object.fromEntries(Object.entries(getters).map(([k, get]) => [k, get()])) }
+    attemptWithProgress('Enregistrement…', async () => {
+      const data = Object.assign({ id: idInput.value.trim() }, ...Object.values(getters).map((get) => get()))
       const { warnings } = await call(item ? 'PUT' : 'POST', `${type}/${encodeURIComponent(data.id)}`, data)
       await refresh()
       renderTabs()
       open(state[type].find((x) => x.id === data.id))
-      toast(['Enregistré.', ...warnings.map((w) => `Attention : ${w}`)].join('\n'))
+      if (warnings.length) toast(warnings.map((w) => `Attention : ${w}`).join('\n'))
+      return SAVED()
     })
   }
   $('editor').replaceChildren(form)
@@ -351,10 +367,10 @@ function renderImage(image) {
     form.append(el('h2', { textContent: 'Nouvelle image' }), labelled('Dossier', null, folder), labelled('Fichier', '8 Mo au maximum', file), el('div', { className: 'actions' }, el('button', { className: 'primary', textContent: 'Envoyer' })))
     form.onsubmit = (e) => {
       e.preventDefault()
-      attempt(async () => {
+      attemptWithProgress('Envoi de l’image…', async () => {
         const id = await upload(file.files[0], folder.value)
         if (!id) throw new Error('Choisissez un fichier')
-        await done(id, 'Image ajoutée.')
+        return done(id, 'Image ajoutée')
       })
     }
     return $('editor').replaceChildren(form)
@@ -369,13 +385,13 @@ function renderImage(image) {
   form.addEventListener('input', () => (dirty = true))
   form.onsubmit = (e) => {
     e.preventDefault()
-    attempt(async () => {
+    attemptWithProgress('Enregistrement…', async () => {
       if (file.files[0]) {
         if (file.files[0].name.split('.').pop().toLowerCase() !== image.id.split('.').pop().toLowerCase()) throw new Error('Le nouveau fichier doit avoir le même format')
         await upload(file.files[0], null, image.id)
       }
       await call('PUT', `images/${encodeURIComponent(image.id)}`, { id: image.id, credit: credit.value.trim(), source: source.value.trim() })
-      await done(image.id, 'Enregistré.')
+      return done(image.id, SAVED())
     })
   }
   $('editor').replaceChildren(form)
@@ -384,7 +400,44 @@ async function done(id, message) {
   await refresh()
   renderTabs()
   open(state.images.find((i) => i.id === id))
-  toast(message)
+  return message
+}
+
+/* ---------- Demandes de modification ---------- */
+const targetOf = (d) => state[d.type].find((x) => x.id === d.targetId)
+
+function renderDemande(d) {
+  $('editor').replaceChildren(
+    demandeNode(d, targetOf(d), {
+      onPublish: () => publishDemande(d),
+      onDelete: () => deleteDemande(d),
+    }),
+  )
+}
+function publishDemande(d) {
+  const others = backend.pending?.() && !applied.has(d.id)
+  const question = others ? 'Publier cette demande ? Vos autres modifications en attente seront publiées avec elle.' : 'Publier cette demande ?'
+  if (!confirm(question)) return
+  attemptWithProgress('Application de la demande…', async () => {
+    // Si une publication a échoué après l'application, on ne l'applique pas une seconde fois.
+    if (!applied.has(d.id)) {
+      await call('PUT', `${d.type}/${encodeURIComponent(d.targetId)}`, applyProposal(targetOf(d), d))
+      applied.add(d.id)
+      await refresh()
+    }
+    await backend.publish?.()
+    await backend.demandes.setStatus(d.id, 'publiee')
+    await showDemandes()
+    return backend.publish ? 'Demande publiée — le site sera à jour dans une à deux minutes' : 'Demande appliquée à la base — committez et poussez pour publier'
+  })
+}
+function deleteDemande(d) {
+  if (!confirm('Supprimer définitivement cette demande ?')) return
+  attemptWithProgress('Suppression…', async () => {
+    await backend.demandes.remove(d.id)
+    await showDemandes()
+    return 'Demande supprimée'
+  })
 }
 
 /* ---------- Démarrage ---------- */
@@ -395,5 +448,6 @@ export const isDirty = () => dirty
 export async function startAdmin(chosenBackend) {
   backend = chosenBackend
   await refresh()
+  await refreshDemandes()
   show('events')
 }

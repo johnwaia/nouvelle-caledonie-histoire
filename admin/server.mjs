@@ -4,6 +4,7 @@
  * Pour publier : committer database/kanaky.sqlite puis pousser sur main.
  */
 import { createServer } from 'node:http'
+import { execFileSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import { openDb } from '../database/db.mjs'
 import { handle, ApiError, MAX_UPLOAD } from '../src/db/api.js'
@@ -12,12 +13,22 @@ const PORT = Number(process.env.PORT) || 5180
 const HOSTS = new Set([`127.0.0.1:${PORT}`, `localhost:${PORT}`])
 const db = openDb()
 
+// Adresse du service des demandes
+try {
+  process.loadEnvFile(new URL('../.env.production', import.meta.url))
+} catch {
+  // fichier absent : les demandes seront signalées comme indisponibles
+}
+const DEMANDES_URL = process.env.VITE_DEMANDES_URL
+
 const STATIC = {
   '/': ['index.html', 'text/html'],
-  '/local.js': ['local.js', 'text/javascript'],
-  '/ui.js': ['ui.js', 'text/javascript'],
   '/admin.css': ['admin.css', 'text/css'],
+  '/leaflet.js': ['../node_modules/leaflet/dist/leaflet-src.esm.js', 'text/javascript'],
+  '/leaflet.css': ['../node_modules/leaflet/dist/leaflet.css', 'text/css'],
+  '/src/db/proposals.js': ['../src/db/proposals.js', 'text/javascript'],
 }
+for (const name of ['local', 'ui', 'dom', 'place', 'demandes']) STATIC[`/admin/${name}.js`] = [`${name}.js`, 'text/javascript']
 
 function readBody(req) {
   return new Promise((resolve, reject) => {
@@ -48,8 +59,32 @@ async function readPayload(req, path) {
   if (req.method === 'POST' || req.method === 'PUT') return readJson(req)
   return undefined
 }
+
+// Demandes de modification : relayées au service, avec l'identité GitHub de cet ordinateur (commande « gh »).
+function githubToken() {
+  if (process.env.GITHUB_TOKEN) return process.env.GITHUB_TOKEN
+  try {
+    return execFileSync('gh', ['auth', 'token'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim()
+  } catch {
+    throw new ApiError(401, 'connectez-vous à GitHub avec « gh auth login ».')
+  }
+}
+async function relayDemandes(req, path) {
+  if (!DEMANDES_URL) throw new ApiError(503, "le service n'est pas configuré (VITE_DEMANDES_URL dans .env.production).")
+  const body = req.method === 'PATCH' ? await readBody(req) : undefined
+  const res = await fetch(`${DEMANDES_URL}/${path}`, {
+    method: req.method,
+    headers: { Authorization: `Bearer ${githubToken()}`, 'Content-Type': 'application/json' },
+    body,
+  })
+  const data = await res.json()
+  if (!res.ok) throw new ApiError(res.status, data.error)
+  return data
+}
+
 async function api(req, url) {
   const path = url.pathname.slice('/api/'.length) + url.search
+  if (/^demandes(\/[\w-]+)?$/.test(path)) return relayDemandes(req, path)
   return handle(db, req.method, path, await readPayload(req, path))
 }
 

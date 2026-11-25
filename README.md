@@ -52,6 +52,26 @@ La page modifie le dépôt et la branche qui ont publié le site (affichés à l
 
 Git ne sait pas fusionner deux versions de la base : éviter de la modifier sur deux branches en même temps, et faire `git pull` avant une modification locale. Chaque publication ajoute environ 6 Mo à l'historique : mieux vaut regrouper les modifications.
 
+## Demandes de modification
+
+Chaque fiche (événement, tribu, commune) a un bouton « Proposer un ajout ou une modification ». La demande n'est pas publiée : elle arrive dans l'onglet « Demande de modifications » de l'administration, où elle peut être publiée ou supprimée.
+
+Les demandes sont reçues par un service Cloudflare (`worker/`) et gardées dans sa base D1, privée et séparée de la base du site. Le visiteur n'a pas besoin de compte (5 envois par heure au maximum). L'administration s'identifie auprès du service avec son jeton GitHub, vérifié par GitHub et jamais conservé.
+
+Installation, une seule fois (compte Cloudflare gratuit) :
+
+```bash
+npx wrangler@4 login
+npx wrangler@4 d1 create kanaky-demandes        # copier database_id dans worker/wrangler.toml
+npx wrangler@4 d1 execute kanaky-demandes --remote --config worker/wrangler.toml --file worker/schema.sql
+npx wrangler@4 deploy --config worker/wrangler.toml
+npx wrangler@4 secret put IP_SALT --config worker/wrangler.toml   # une longue phrase au hasard
+```
+
+Puis mettre l'adresse affichée par `deploy` dans `.env.production` (`VITE_DEMANDES_URL`) et publier le site. Sans cette adresse, le bouton est masqué.
+
+Pour tout essayer en local : `npm run test-local` lance le service, le site (http://localhost:5190) et l'administration (http://127.0.0.1:5191) sur une copie de la base ; `npm run test-local -- --reset` repart de zéro. Il faut être connecté à GitHub (`gh auth login`) pour lire les demandes.
+
 ## Publication
 
 Chaque push sur `main` publie le site sur GitHub Pages (`.github/workflows/deploy.yml`). À activer une fois : Settings → Pages → Source « GitHub Actions ». Le dossier `dist/` peut aussi être déposé sur n'importe quel hébergement statique.
@@ -69,12 +89,14 @@ admin/online.js             connexion et publication par GitHub
 admin/server.mjs            serveur de l'administration locale
 public/images/              icônes du site
 assets-sources/             fichiers d'origine des logos
+worker/                     service des demandes de modification (Cloudflare)
 scripts/check-data.mjs      vérification de la base
 scripts/import-tribus.mjs   import de la liste officielle des tribus (DITTT)
 scripts/import-communes.mjs import des communes et de leur histoire (Wikipédia)
 src/App.vue                 chargement des données, sélection, navigation
 src/db/client.js            ouverture de la base dans le navigateur
 src/db/read.js, write.js    lecture et écriture des tables
+src/db/proposals.js         règles des demandes de modification
 src/db/api.js, checks.js    actions de l'administration et règles de validation
 src/components/MapView.vue       carte Leaflet et marqueurs
 src/components/TimelineBar.vue   frise chronologique
@@ -94,7 +116,7 @@ src/utils/dates.js          dates (format français)
 
 - **Obligatoires** : identifiant (a-z, 0-9, tirets), titre, date, lieu, catégorie, description.
 - **Dates** : `AAAA`, `AAAA-MM` ou `AAAA-MM-JJ` ; année négative avant notre ère.
-- **Coordonnées** : vides pour un événement hors de l'archipel.
+- **Lieu** : choisir une commune ou une tribu, le point se place seul. « Autre lieu » permet de cliquer sur la carte, ou de ne mettre aucun point (hors de l'archipel).
 - **Logo** : `urne.svg` pour un référendum, `urne_boycott.svg` s'il a été boycotté ; sans logo, l'icône de la catégorie est affichée.
 - **Placer sous les autres points de l'année** : utilisé pour les drapeaux de 1984.
 

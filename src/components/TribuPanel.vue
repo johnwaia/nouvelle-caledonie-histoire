@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import ProposeButton from './ProposeButton.vue'
 
 const props = defineProps({
   tribu: { type: Object, required: true },
@@ -54,8 +55,7 @@ const localisation = computed(() => {
       </section>
 
       <p v-if="!tribu.origines && !tribu.evenements?.length" class="tribu-todo">
-        L'histoire de cette tribu n'a pas encore été rédigée. Elle peut être ajoutée dans
-        l’administration du site (champs « origines », « evenements » et « sources »).
+        L'histoire de cette tribu n'a pas encore été rédigée.
       </p>
 
       <section v-if="tribu.sources?.length" class="sources">
@@ -67,6 +67,8 @@ const localisation = computed(() => {
           </li>
         </ul>
       </section>
+
+      <ProposeButton type="tribus" :item="tribu" />
     </dialog>
   </div>
 </template>

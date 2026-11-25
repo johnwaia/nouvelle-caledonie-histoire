@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import PhotoFigure from './PhotoFigure.vue'
+import ProposeButton from './ProposeButton.vue'
 
 const props = defineProps({
   commune: { type: Object, required: true },
@@ -81,6 +82,8 @@ const resume = computed(() => paragraphs(props.commune.resume))
           </li>
         </ul>
       </section>
+
+      <ProposeButton type="communes" :item="commune" />
     </dialog>
   </div>
 </template>

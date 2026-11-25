@@ -1,0 +1,89 @@
+// Onglet « Demande de modifications » : détail d'une demande, avec les différences mises en évidence.
+import { ACTION_LABELS, STATUS_LABELS, TYPE_LABELS, describeProposal } from '../src/db/proposals.js'
+import { el } from './dom.js'
+
+const MAX_WORDS = 1500 // au-delà, la comparaison mot à mot serait trop lente
+export const formatDate = (iso) => new Date(iso).toLocaleString('fr-FR', { dateStyle: 'medium', timeStyle: 'short' })
+export const demandeTitle = (d) => `${TYPE_LABELS[d.type]} : ${d.targetName}`
+export const demandeSummary = (d) => [formatDate(d.createdAt), ACTION_LABELS[d.action], STATUS_LABELS[d.status]].join(' · ')
+
+/* ---------- Comparaison mot à mot ---------- */
+// Longueur de la plus longue suite commune, à partir de chaque position
+function commonLengths(a, b) {
+  const table = Array.from({ length: a.length + 1 }, () => new Uint16Array(b.length + 1))
+  for (let i = a.length - 1; i >= 0; i--) {
+    for (let j = b.length - 1; j >= 0; j--) {
+      table[i][j] = a[i] === b[j] ? table[i + 1][j + 1] + 1 : Math.max(table[i + 1][j], table[i][j + 1])
+    }
+  }
+  return table
+}
+function diffWords(before, after) {
+  const a = before.split(/(\s+)/)
+  const b = after.split(/(\s+)/)
+  if (a.length > MAX_WORDS || b.length > MAX_WORDS) return [['del', before], ['ins', after]]
+  const table = commonLengths(a, b)
+  const parts = []
+  const push = (kind, text) => {
+    const last = parts.at(-1)
+    if (last?.[0] === kind) last[1] += text
+    else parts.push([kind, text])
+  }
+  let i = 0
+  let j = 0
+  while (i < a.length && j < b.length) {
+    if (a[i] === b[j]) {
+      push('same', a[i++])
+      j++
+    } else if (table[i + 1][j] >= table[i][j + 1]) push('del', a[i++])
+    else push('ins', b[j++])
+  }
+  if (i < a.length) push('del', a.slice(i).join(''))
+  if (j < b.length) push('ins', b.slice(j).join(''))
+  return parts
+}
+function diffNode({ before, after, added }) {
+  const box = el('p', { className: 'diff' })
+  if (added || !before) box.append(el('ins', { textContent: after }))
+  else {
+    for (const [kind, text] of diffWords(before, after)) {
+      box.append(kind === 'same' ? text : el(kind, { textContent: text }))
+    }
+  }
+  return box
+}
+
+/* ---------- Détail ---------- */
+function changeNode(row) {
+  const badge = row.added || !row.before ? 'Ajout' : 'Modifié'
+  return el(
+    'section',
+    { className: 'change' },
+    el('h3', {}, row.label, ' ', el('span', { className: `badge ${badge === 'Ajout' ? 'add' : 'edit'}`, textContent: badge })),
+    row.stale && el('p', { className: 'warning', textContent: 'Attention : ce champ a été modifié depuis l’envoi de la demande.' }),
+    diffNode(row),
+  )
+}
+const info = (label, value) => value && el('p', {}, el('strong', { textContent: `${label} : ` }), value)
+
+// item : fiche actuelle (absente si elle a été supprimée)
+export function demandeNode(d, item, { onPublish, onDelete }) {
+  const pending = d.status === 'en_attente'
+  const remove = el('button', { type: 'button', className: 'danger', textContent: 'Supprimer', onclick: onDelete })
+  const publish = el('button', { type: 'button', className: 'primary', textContent: 'Publier', onclick: onPublish })
+  return el(
+    'div',
+    { className: 'demande' },
+    el('h2', { textContent: demandeTitle(d) }),
+    info('Reçue le', formatDate(d.createdAt)),
+    info('Nature', ACTION_LABELS[d.action]),
+    info('Statut', STATUS_LABELS[d.status]),
+    info('Proposée par', d.author),
+    info('Message', d.comment),
+    !item && el('p', { className: 'warning', textContent: 'Cette fiche n’existe plus : la demande ne peut pas être publiée.' }),
+    item && pending && el('p', { className: 'hint', textContent: 'En vert : ce qui est ajouté. En rouge barré : ce qui est retiré.' }),
+    // Une demande publiée est comparée à ce que le visiteur avait vu, car la fiche contient déjà le changement.
+    ...(item ? describeProposal(pending ? item : { ...item, ...d.before, histoireManuelle: d.before?.histoire }, d).map(changeNode) : []),
+    el('div', { className: 'actions' }, pending && item && publish, remove),
+  )
+}

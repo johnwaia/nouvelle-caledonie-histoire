@@ -1,18 +1,23 @@
 /*
  * Version en ligne : la base du dépôt est ouverte dans le navigateur, puis republiée par un commit GitHub.
  * Le commit déclenche la publication du site (.github/workflows/deploy.yml).
- * Le jeton reste en mémoire : il n'est écrit nulle part.
+ * Le jeton reste en mémoire : il n'est écrit nulle part. Il est envoyé à GitHub, et au service des demandes qui le fait
+ * vérifier par GitHub.
  */
 import { openBrowserDb } from '../src/db/browser.js'
 import { handle } from '../src/db/api.js'
-import { attempt, isDirty, startAdmin, toast } from './ui.js'
+import L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
+import { $, attempt, attemptWithProgress, progress } from './dom.js'
+import { isDirty, startAdmin } from './ui.js'
 
 // Dépôt et branche d'où le site a été publié (voir vite.config.js)
 const REPO = __REPO__
 const BRANCH = __BRANCH__
 const DB_PATH = 'database/kanaky.sqlite'
 
-const $ = (id) => document.getElementById(id)
+const DEMANDES_URL = import.meta.env.VITE_DEMANDES_URL
+
 let token = ''
 for (const node of document.querySelectorAll('.repo-name')) node.textContent = REPO.split('/')[1]
 document.querySelector('.target').textContent = `${REPO} · ${BRANCH}`
@@ -25,15 +30,41 @@ const MESSAGES = {
   409: 'Le dépôt a changé entre-temps : réessayez.',
   422: 'Le dépôt a changé entre-temps : réessayez.',
 }
+const githubHeaders = (accept) => ({ Authorization: `Bearer ${token}`, Accept: accept, 'X-GitHub-Api-Version': '2022-11-28' })
+const githubUrl = (path) => `https://api.github.com/repos/${REPO}${path}`
+const githubError = (status) => new Error(MESSAGES[status] || `GitHub a répondu ${status}`)
+
 async function github(method, path, body, accept = 'application/vnd.github+json') {
-  const res = await fetch(`https://api.github.com/repos/${REPO}${path}`, {
+  const res = await fetch(githubUrl(path), { method, cache: 'no-store', headers: githubHeaders(accept), body: body && JSON.stringify(body) })
+  if (!res.ok) throw githubError(res.status)
+  return accept.endsWith('raw') ? res.arrayBuffer() : res.json()
+}
+// Envoi d'un fichier, avec son avancement (de 0 à 1)
+function githubUpload(path, body, onProgress) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest()
+    xhr.open('POST', githubUrl(path))
+    for (const [k, v] of Object.entries(githubHeaders('application/vnd.github+json'))) xhr.setRequestHeader(k, v)
+    xhr.responseType = 'json'
+    xhr.upload.onprogress = (e) => e.lengthComputable && onProgress(e.loaded / e.total)
+    xhr.onload = () => (xhr.status < 300 ? resolve(xhr.response) : reject(githubError(xhr.status)))
+    xhr.onerror = () => reject(new Error('Connexion à GitHub interrompue : réessayez.'))
+    xhr.send(JSON.stringify(body))
+  })
+}
+
+// Service des demandes de modification (worker/)
+async function demandes(method, path = '', body) {
+  if (!DEMANDES_URL) throw new Error("le service n'est pas configuré (VITE_DEMANDES_URL).")
+  const res = await fetch(`${DEMANDES_URL}/demandes${path}`, {
     method,
     cache: 'no-store',
-    headers: { Authorization: `Bearer ${token}`, Accept: accept, 'X-GitHub-Api-Version': '2022-11-28' },
+    headers: { Authorization: `Bearer ${token}`, ...(body && { 'Content-Type': 'application/json' }) },
     body: body && JSON.stringify(body),
   })
-  if (!res.ok) throw new Error(MESSAGES[res.status] || `GitHub a répondu ${res.status}`)
-  return accept.endsWith('raw') ? res.arrayBuffer() : res.json()
+  const data = await res.json()
+  if (!res.ok) throw new Error(data.error)
+  return data
 }
 
 // Dernier commit de la branche, et empreinte de la base qu'il contient
@@ -89,14 +120,19 @@ function showPending() {
   $('publish').textContent = publishing ? 'Publication…' : 'Publier'
 }
 
-async function publish() {
-  if (isDirty()) throw new Error("Enregistrez ou abandonnez d'abord la fiche ouverte.")
+async function commitDatabase() {
+  progress.step('Vérification de la version en ligne…', 5)
   const head = await readHead()
   if (head.blob !== loadedBlob) {
     throw new Error("La base a été modifiée ailleurs depuis votre connexion. Notez vos changements, rechargez la page et refaites-les.")
   }
   const published = changes
-  const blob = await github('POST', '/git/blobs', { content: await toBase64(db.export()), encoding: 'base64' })
+  progress.step('Préparation de la base…', 10)
+  const content = await toBase64(db.export())
+  const blob = await githubUpload('/git/blobs', { content, encoding: 'base64' }, (part) =>
+    progress.step(`Envoi de la base… ${Math.round(part * 100)} %`, 15 + part * 60),
+  )
+  progress.step('Enregistrement des changements…', 80)
   const tree = await github('POST', '/git/trees', {
     base_tree: head.tree,
     tree: [{ path: DB_PATH, mode: '100644', type: 'blob', sha: blob.sha }],
@@ -106,22 +142,47 @@ async function publish() {
     tree: tree.sha,
     parents: [head.commit],
   })
+  progress.step('Publication…', 92)
   await github('PATCH', `/git/refs/heads/${BRANCH}`, { sha: commit.sha, force: false })
   loadedBlob = blob.sha
   changes -= published
-  toast('Publié. Le site sera à jour dans une à deux minutes.')
+  return commit.sha
+}
+
+async function publish() {
+  if (isDirty()) throw new Error("Enregistrez ou abandonnez d'abord la fiche ouverte.")
+  if (!changes) return // déjà publié
+  publishing = true
+  showPending()
+  try {
+    watchDeployment(await commitDatabase())
+  } finally {
+    publishing = false
+    showPending()
+  }
+}
+
+// Prévient quand le site en ligne correspond à la dernière publication.
+const CHECK_EVERY = 10_000
+const MAX_CHECKS = 30
+let watched = ''
+function watchDeployment(commit) {
+  watched = commit
+  let checks = 0
+  const check = async () => {
+    if (watched !== commit) return // une publication plus récente a pris le relais
+    const online = await fetch(`data/version.json?${Date.now()}`, { cache: 'no-store' }).then((r) => r.json()).catch(() => null)
+    if (online?.commit === commit) progress.done('Le site en ligne est à jour')
+    else if (++checks < MAX_CHECKS) setTimeout(check, CHECK_EVERY)
+    else progress.info("Publié, mais le site n'est pas encore à jour : voir l'onglet Actions sur GitHub")
+  }
+  setTimeout(check, CHECK_EVERY)
 }
 
 $('publish').onclick = () =>
-  attempt(async () => {
-    publishing = true
-    showPending()
-    try {
-      await publish()
-    } finally {
-      publishing = false
-      showPending()
-    }
+  attemptWithProgress('Publication…', async () => {
+    await publish()
+    return 'Publié — le site sera à jour dans une à deux minutes'
   })
 
 /* ---------- Connexion ---------- */
@@ -142,6 +203,13 @@ $('login').onsubmit = (e) => {
       await startAdmin({
         call,
         imageUrl,
+        L,
+        publish,
+        demandes: {
+          list: () => demandes('GET'),
+          setStatus: (id, status) => demandes('PATCH', `/${id}`, { status }),
+          remove: (id) => demandes('DELETE', `/${id}`),
+        },
         pending: () => changes > 0,
         onChange() {
           changes++

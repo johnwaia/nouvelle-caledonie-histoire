@@ -1,0 +1,16 @@
+name = "kanaky-demandes"
+main = "src/index.mjs"
+compatibility_date = "2026-01-01"
+
+[vars]
+# Sites autorisés à envoyer des demandes
+ALLOWED_ORIGINS = "https://johnwaia.github.io,http://localhost:5173"
+# Seules les personnes pouvant écrire dans ce dépôt peuvent lire et traiter les demandes
+REPO = "johnwaia/nouvelle-caledonie-histoire"
+GITHUB_API = "https://api.github.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "kanaky-demandes"
+# Identifiant de la base D1 (ce n’est pas un secret)
+database_id = "4637631f-c610-4ab2-bebe-3f25cd96c064"

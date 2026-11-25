@@ -475,3 +475,25 @@ button { font: inherit; cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ---------- Proposition d'un visiteur ---------- */
+.propose { margin-top: 1.4rem; }
+.propose-btn { width: 100%; padding: 0.6rem 1rem; border: 1px solid var(--primary-2); border-radius: 10px; background: #fff; color: var(--primary); font-weight: 600; }
+.propose-btn:hover { background: var(--sand); }
+.propose-dialog { width: min(620px, calc(100vw - 24px)); max-height: calc(100vh - 24px); padding: 1.3rem; overflow: auto; border: 0; border-radius: 14px; color: var(--ink); box-shadow: 0 12px 50px rgba(0, 0, 0, 0.4); }
+.propose-dialog::backdrop { background: rgba(0, 0, 0, 0.55); }
+.propose-dialog h2 { margin: 0 0 0.8rem; font-size: 1.2rem; }
+.propose-dialog form { display: grid; gap: 0.8rem; }
+.propose-dialog label { display: block; font-weight: 600; font-size: 0.92rem; }
+.propose-dialog small { font-weight: 400; color: var(--muted); }
+.propose-dialog input:not([type='radio']), .propose-dialog textarea { display: block; width: 100%; margin-top: 0.25rem; padding: 0.5rem 0.6rem; border: 1px solid var(--line); border-radius: 8px; font: inherit; font-weight: 400; resize: vertical; }
+.propose-dialog fieldset { display: grid; gap: 0.5rem; margin: 0; padding: 0.7rem; border: 1px solid var(--line); border-radius: 10px; }
+.propose-dialog legend { font-weight: 600; font-size: 0.92rem; }
+.propose-choice label { font-weight: 400; }
+.propose-dialog .propose-trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.propose-note { margin: 0; color: var(--muted); font-size: 0.88rem; }
+.propose-error { margin: 0; color: #b91c1c; font-weight: 600; }
+.propose-actions { display: flex; justify-content: flex-end; gap: 0.6rem; }
+.propose-actions button { padding: 0.55rem 1rem; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+.propose-actions .propose-send { border-color: var(--primary); background: var(--primary); color: #fff; font-weight: 600; }
+.propose-actions .propose-send:disabled { opacity: 0.6; cursor: default; }

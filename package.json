@@ -8,6 +8,8 @@
     "build": "npm run check-data && vite build",
     "preview": "vite preview",
     "check-data": "node --disable-warning=ExperimentalWarning scripts/check-data.mjs",
+    "demandes": "npx wrangler@4 dev --config worker/wrangler.toml --port 8787",
+    "test-local": "node scripts/test-local.mjs",
     "admin": "node --disable-warning=ExperimentalWarning admin/server.mjs"
   },
   "dependencies": {

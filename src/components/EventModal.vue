@@ -1,6 +1,7 @@
 <script setup>
 import { computed, ref, onMounted } from 'vue'
 import CategoryIcon from './CategoryIcon.vue'
+import ProposeButton from './ProposeButton.vue'
 
 const props = defineProps({
   event: { type: Object, required: true },
@@ -61,6 +62,8 @@ const videos = computed(() => (props.event.videos || []).filter((v) => v?.url))
             </li>
           </ul>
         </section>
+
+        <ProposeButton type="events" :item="event" />
       </div>
     </dialog>
   </div>

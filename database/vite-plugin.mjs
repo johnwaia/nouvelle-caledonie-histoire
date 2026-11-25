@@ -33,6 +33,9 @@ export default function kanakyDatabase() {
     },
 
     generateBundle() {
+      // Commit publié : l'administration sait ainsi quand le site est à jour.
+      const version = JSON.stringify({ commit: process.env.GITHUB_SHA || null })
+      this.emitFile({ type: 'asset', fileName: 'data/version.json', source: version })
       this.emitFile({ type: 'asset', fileName: 'data/kanaky.sqlite', source: publicDatabase() })
       const db = openDb(DB_FILE, { readOnly: true })
       for (const { image_id, data } of db.prepare('SELECT image_id, data FROM image_data').all()) {

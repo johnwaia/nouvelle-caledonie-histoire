@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KANAKY · Administration</title>
     <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="/leaflet.css" />
     <link rel="stylesheet" href="/admin.css" />
   </head>
   <body>
@@ -22,7 +23,8 @@
       </section>
       <section id="editor" aria-live="polite"></section>
     </main>
+    <div id="progress" role="alert" hidden><span></span><progress max="100"></progress></div>
     <output id="toast" hidden></output>
-    <script type="module" src="/local.js"></script>
+    <script type="module" src="/admin/local.js"></script>
   </body>
 </html>
