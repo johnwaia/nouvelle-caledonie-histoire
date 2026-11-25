@@ -1,9 +1,10 @@
 <script setup>
-import { nextTick, onBeforeUnmount, reactive, ref } from 'vue'
+import { nextTick, onBeforeUnmount, reactive, ref, watch } from 'vue'
 import L from 'leaflet'
 import { placeField } from '../../admin/place.js'
 import { cleanProposal } from '../db/proposals'
 import { DEMANDES_URL as API, sendDemande } from '../utils/demandes'
+import { readDraft, removeDraft, writeDraft } from '../utils/storage'
 
 /*
  * Bouton « Ajouter un événement » de l'en-tête : même formulaire que l'administration.
@@ -25,11 +26,13 @@ const dialog = ref(null)
 const placeBox = ref(null)
 const isOpen = ref(false)
 const sending = ref(false)
-const sent = ref(false)
+const sent = ref('') // 'sent' ou 'queued'
+const restored = ref(false) // formulaire rempli avec un brouillon
 const error = ref('')
 const form = reactive({})
 let place = null // champ « Lieu », partagé avec l'administration
 
+const DRAFT = 'nouvel-evenement'
 const emptyLink = () => ({ label: '', url: '' })
 
 function reset() {
@@ -50,22 +53,53 @@ function reset() {
     },
     comment: '',
     author: '',
+    lieu: null, // lieu choisi : { place, coords }
     website: '',
   })
-  sent.value = false
+  sent.value = ''
   error.value = ''
 }
 function destroyPlace() {
   place?.destroy()
   place = null
 }
+function showPlace() {
+  destroyPlace()
+  place = placeField(form.lieu || {}, { L, state: { communes: props.communes, tribus: props.tribus }, isNew: !form.lieu })
+  placeBox.value.replaceChildren(place.node)
+}
+function keepPlace() {
+  try {
+    form.lieu = place.get()
+  } catch {
+    form.lieu = null // choix incomplet
+  }
+}
+// Le brouillon est enregistré à chaque modification, jusqu'à l'envoi.
+watch(
+  form,
+  ({ website, ...data }) => {
+    if (isOpen.value && !sent.value) writeDraft(DRAFT, data)
+  },
+  { deep: true },
+)
 async function open() {
   reset()
+  const draft = readDraft(DRAFT)
+  restored.value = !!draft
+  if (draft) Object.assign(form, draft)
+  await nextTick()
   isOpen.value = true
   await nextTick()
-  place = placeField({}, { L, state: { communes: props.communes, tribus: props.tribus }, isNew: true })
-  placeBox.value.append(place.node)
+  showPlace()
   dialog.value.showModal()
+}
+async function startOver() {
+  reset()
+  restored.value = false
+  await nextTick()
+  showPlace()
+  removeDraft(DRAFT)
 }
 function close() {
   destroyPlace()
@@ -78,12 +112,14 @@ async function submit() {
   sending.value = true
   try {
     const event = { ...form.event, ...place.get() }
-    await sendDemande(
+    const result = await sendDemande(
       cleanProposal({ type: 'events', action: 'creation', event, comment: form.comment, author: form.author }),
       form.website,
     )
     destroyPlace()
-    sent.value = true
+    sent.value = result
+    await nextTick()
+    removeDraft(DRAFT)
   } catch (e) {
     error.value = e.message
   } finally {
@@ -104,7 +140,11 @@ async function submit() {
     <dialog v-if="isOpen" ref="dialog" class="propose-dialog" aria-labelledby="propose-event-title" @close="close" @keydown.stop>
       <div v-if="sent">
         <h2 id="propose-event-title">Merci !</h2>
-        <p>
+        <p v-if="sent === 'queued'">
+          Le service est momentanément indisponible. Votre demande est gardée dans ce navigateur et sera envoyée
+          automatiquement lors de votre passage sur le site.
+        </p>
+        <p v-else>
           L'événement « {{ form.event.title }} » a été envoyé. Il sera relu par l'administration avant toute publication.
         </p>
         <div class="propose-actions"><button type="button" class="propose-send" autofocus @click="close">Fermer</button></div>
@@ -112,6 +152,9 @@ async function submit() {
 
       <form v-else @submit.prevent="submit">
         <h2 id="propose-event-title">Ajouter un événement</h2>
+        <p v-if="restored" class="propose-draft">
+          Votre brouillon a été retrouvé. <button type="button" @click="startOver">Repartir de zéro</button>
+        </p>
         <label>Titre <input v-model="form.event.title" name="title" maxlength="200" required autofocus /></label>
         <div class="propose-grid">
           <label>
@@ -134,7 +177,7 @@ async function submit() {
           <label class="check"><input v-model="form.event.auSud" type="checkbox" /> Placer sous les autres points de l’année</label>
         </div>
 
-        <div ref="placeBox"></div>
+        <div ref="placeBox" @input="keepPlace" @change="keepPlace"></div>
 
         <label>
           Description <small>(une ligne vide sépare les paragraphes)</small>

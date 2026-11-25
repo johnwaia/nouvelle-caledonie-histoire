@@ -164,16 +164,46 @@ async function publish() {
 
 // Prévient quand le site en ligne correspond à la dernière publication.
 const CHECK_EVERY = 10_000
-const MAX_CHECKS = 30
+const MAX_CHECKS = 120 // 20 minutes : le déploiement est essayé trois fois
+const RUN_EVERY = 6 // état du déploiement : une fois par minute (60 lectures par heure sans jeton)
+const FAILED = new Set(['failure', 'timed_out', 'startup_failure'])
 let watched = ''
+
+// Déploiement échoué d'un commit. Lecture publique, sans jeton : il peut ne pas avoir le droit « Actions ».
+async function failedRun(commit) {
+  try {
+    const res = await fetch(githubUrl(`/actions/runs?head_sha=${commit}&event=push`), { cache: 'no-store' })
+    const { workflow_runs: runs } = await res.json()
+    return runs.find((r) => FAILED.has(r.conclusion))
+  } catch {
+    return null // GitHub injoignable : on réessaie plus tard
+  }
+}
+function showFailure(run) {
+  progress.fail('Enregistré, mais la mise en ligne a échoué')
+  const link = Object.assign(document.createElement('a'), {
+    href: run.html_url,
+    target: '_blank',
+    rel: 'noopener noreferrer',
+    textContent: 'Relancer sur GitHub (« Re-run failed jobs »)',
+  })
+  $('pending').replaceChildren('Mise en ligne échouée, vos données sont enregistrées. ', link)
+}
 function watchDeployment(commit) {
   watched = commit
   let checks = 0
   const check = async () => {
     if (watched !== commit) return // une publication plus récente a pris le relais
     const online = await fetch(`data/version.json?${Date.now()}`, { cache: 'no-store' }).then((r) => r.json()).catch(() => null)
-    if (online?.commit === commit) progress.done('Le site en ligne est à jour')
-    else if (++checks < MAX_CHECKS) setTimeout(check, CHECK_EVERY)
+    const run = checks % RUN_EVERY === RUN_EVERY - 1 && online?.commit !== commit && (await failedRun(commit))
+    if (watched !== commit) return
+    if (online?.commit === commit) {
+      showPending()
+      progress.done('Le site en ligne est à jour')
+    } else if (run) {
+      showFailure(run)
+      if (++checks < MAX_CHECKS) setTimeout(check, CHECK_EVERY) // le déploiement peut être relancé
+    } else if (++checks < MAX_CHECKS) setTimeout(check, CHECK_EVERY)
     else progress.info("Publié, mais le site n'est pas encore à jour : voir l'onglet Actions sur GitHub")
   }
   setTimeout(check, CHECK_EVERY)

@@ -54,7 +54,7 @@ export function placeField(value, { L, state, isNew }) {
   const clear = el('button', { type: 'button', textContent: "Hors de l'archipel (aucun point)" })
 
   /* ---------- Carte ---------- */
-  const map = L.map(mapBox, { zoomSnap: 0.25, minZoom: 5, maxZoom: 14, attributionControl: false, scrollWheelZoom: false })
+  const map = L.map(mapBox, { zoomAnimation: false, zoomSnap: 0.25, minZoom: 5, maxZoom: 14, attributionControl: false, scrollWheelZoom: false })
   L.tileLayer(TILES, { maxZoom: 14 }).addTo(map)
   map.fitBounds(BOUNDS)
   const marker = L.marker([0, 0], { icon: L.divIcon({ className: 'place-marker', iconSize: [22, 22], iconAnchor: [11, 11] }), keyboard: false })

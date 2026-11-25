@@ -39,7 +39,20 @@ jobs:
       id-token: write # prouver l'identité du workflow auprès de Pages
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.essai2.outputs.page_url || steps.essai3.outputs.page_url }}
     steps:
+      # Trois essais : GitHub Pages peut être indisponible un court moment.
       - id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - if: steps.deployment.outcome == 'failure'
+        run: sleep 60
+      - id: essai2
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - if: steps.essai2.outcome == 'failure'
+        run: sleep 240
+      - id: essai3
+        if: steps.essai2.outcome == 'failure'
         uses: actions/deploy-pages@v4

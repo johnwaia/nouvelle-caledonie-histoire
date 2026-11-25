@@ -76,6 +76,12 @@ Les règles de `src/db/proposals.js` sont aussi utilisées par le service : apr�
 
 Pour tout essayer en local : `npm run test-local` lance le service, le site (http://localhost:5190) et l'administration (http://127.0.0.1:5191) sur une copie de la base ; `npm run test-local -- --reset` repart de zéro. Il faut être connecté à GitHub (`gh auth login`) pour lire les demandes.
 
+## Disponibilité
+
+- **Copie hors ligne** (`src/sw.js`) : après une première visite, le site s'ouvre même si l'hébergeur ou Internet est indisponible (textes, logos, images déjà vues ; pas le fond de carte). Elle ne fonctionne que sur le site publié.
+- **Demandes** : le brouillon est gardé 30 jours dans le navigateur. Si le service est indisponible, la demande est gardée puis renvoyée lors d'un passage sur le site, sans doublon.
+- **Publication** : le déploiement est essayé trois fois ; l'administration affiche un lien pour le relancer s'il échoue.
+
 ## Publication
 
 Chaque push sur `main` publie le site sur GitHub Pages (`.github/workflows/deploy.yml`). À activer une fois : Settings → Pages → Source « GitHub Actions ». Le dossier `dist/` peut aussi être déposé sur n'importe quel hébergement statique.
@@ -98,6 +104,7 @@ scripts/check-data.mjs      vérification de la base
 scripts/import-tribus.mjs   import de la liste officielle des tribus (DITTT)
 scripts/import-communes.mjs import des communes et de leur histoire (Wikipédia)
 src/App.vue                 chargement des données, sélection, navigation
+src/sw.js                   copie hors ligne du site
 src/db/client.js            ouverture de la base dans le navigateur
 src/db/read.js, write.js    lecture et écriture des tables
 src/db/proposals.js         règles des demandes de modification

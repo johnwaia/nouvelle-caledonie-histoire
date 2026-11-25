@@ -520,3 +520,10 @@ button { font: inherit; cursor: pointer; }
   .propose-link { grid-template-columns: 1fr auto; }
   .propose-link input[type='url'] { grid-row: 2; }
 }
+
+/* Messages de disponibilité et brouillons */
+.app-notices { position: absolute; right: 10px; bottom: 30px; z-index: 1000; display: grid; gap: 0.5rem; width: min(320px, calc(100% - 70px)); pointer-events: none; }
+.queue-notice { padding: 0.6rem 0.8rem; border-left: 4px solid var(--accent); border-radius: 10px; background: #fff; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2); font-size: 0.85rem; pointer-events: auto; }
+.queue-notice p { margin: 0 0 0.4rem; }
+.queue-notice button, .app-status button, .propose-draft button { padding: 0.25rem 0.6rem; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--primary); font-size: 0.85rem; }
+.propose-draft { margin: 0; padding: 0.5rem 0.7rem; border-radius: 8px; background: var(--sand); font-size: 0.9rem; }

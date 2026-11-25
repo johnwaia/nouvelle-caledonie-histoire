@@ -51,6 +51,7 @@ legend { padding: 0 0.4rem; font-weight: 600; }
 }
 [hidden] { display: none !important; }
 .publish { display: flex; gap: 0.6rem; align-items: center; margin-left: auto; }
+.publish a { color: #f6c453; }
 .publish button { background: #f6c453; border-color: #f6c453; font-weight: 600; }
 .publish button:disabled { opacity: 0.5; cursor: default; }
 #publish { color: #1f2a24; }

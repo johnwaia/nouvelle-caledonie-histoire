@@ -1,7 +1,8 @@
 <script setup>
-import { computed, nextTick, reactive, ref } from 'vue'
+import { computed, nextTick, reactive, ref, watch } from 'vue'
 import { PROPOSAL_FIELDS, TYPE_LABELS, cleanProposal, fieldValue } from '../db/proposals'
 import { DEMANDES_URL as API, sendDemande } from '../utils/demandes'
+import { readDraft, removeDraft, writeDraft } from '../utils/storage'
 
 /*
  * Bouton « Proposer une modification » d'une fiche, et son formulaire.
@@ -17,7 +18,8 @@ const name = computed(() => props.item.title || props.item.nom)
 const dialog = ref(null)
 const isOpen = ref(false)
 const sending = ref(false)
-const sent = ref(false)
+const sent = ref('') // 'sent' ou 'queued'
+const restored = ref(false) // formulaire rempli avec un brouillon
 const error = ref('')
 const form = reactive({})
 
@@ -33,11 +35,39 @@ function reset() {
     author: '',
     website: '',
   })
-  sent.value = false
+  sent.value = ''
   error.value = ''
+}
+/* Le brouillon est enregistré à chaque modification, jusqu'à l'envoi. */
+const draftId = computed(() => `${props.type}:${props.item.id}`)
+const itemContent = () => JSON.stringify({ values: form.values, sources: form.sources })
+let base = '' // contenu de la fiche à l'ouverture
+watch(
+  form,
+  ({ website, ...data }) => {
+    if (isOpen.value && !sent.value) writeDraft(draftId.value, { base, form: data })
+  },
+  { deep: true },
+)
+function restore() {
+  base = itemContent()
+  const draft = readDraft(draftId.value)
+  restored.value = !!draft
+  if (!draft) return
+  // Si la fiche a changé depuis, ses champs repartent de la version actuelle.
+  const { values, sources, ...rest } = draft.form
+  Object.assign(form, rest, draft.base === base && { values, sources })
+}
+async function startOver() {
+  reset()
+  restored.value = false
+  await nextTick()
+  removeDraft(draftId.value)
 }
 async function open() {
   reset()
+  restore()
+  await nextTick()
   isOpen.value = true
   await nextTick()
   dialog.value.showModal()
@@ -73,8 +103,10 @@ async function submit() {
   error.value = ''
   sending.value = true
   try {
-    await sendDemande(cleanProposal(buildProposal()), form.website)
-    sent.value = true
+    const result = await sendDemande(cleanProposal(buildProposal()), form.website)
+    sent.value = result
+    await nextTick()
+    removeDraft(draftId.value)
   } catch (e) {
     error.value = e.message
   } finally {
@@ -92,7 +124,11 @@ async function submit() {
       <dialog v-if="isOpen" ref="dialog" class="propose-dialog" aria-labelledby="propose-title" @close="close" @keydown.stop>
         <div v-if="sent">
           <h2 id="propose-title">Merci !</h2>
-          <p>
+          <p v-if="sent === 'queued'">
+            Le service est momentanément indisponible. Votre demande est gardée dans ce navigateur et sera envoyée
+            automatiquement lors de votre passage sur le site.
+          </p>
+          <p v-else>
             Votre demande concernant « {{ name }} » a été envoyée. Elle sera relue par l'administration avant toute
             publication.
           </p>
@@ -101,6 +137,9 @@ async function submit() {
 
         <form v-else @submit.prevent="submit">
           <h2 id="propose-title">{{ TYPE_LABELS[type] }} : {{ name }}</h2>
+          <p v-if="restored" class="propose-draft">
+            Votre brouillon a été retrouvé. <button type="button" @click="startOver">Repartir de zéro</button>
+          </p>
           <fieldset class="propose-choice">
             <legend>Que souhaitez-vous faire ?</legend>
             <label><input v-model="form.action" type="radio" value="ajout" /> Ajouter des informations</label>

@@ -9,6 +9,7 @@ import SearchBox from './components/SearchBox.vue'
 import AirePanel from './components/AirePanel.vue'
 import ProvincePanel from './components/ProvincePanel.vue'
 import ProposeEventButton from './components/ProposeEventButton.vue'
+import QueueNotice from './components/QueueNotice.vue'
 import { loadDatabase } from './db/client'
 import { parseDate, toDecimal, formatEventDate } from './utils/dates'
 
@@ -17,6 +18,8 @@ const resolveUrl = (u) => (/^https?:\/\//.test(u) ? u : import.meta.env.BASE_URL
 
 const loading = ref(true)
 const error = ref('')
+const offline = ref(false) // copie enregistrée affichée : site injoignable
+const reload = () => location.reload()
 const categories = ref({})
 const events = ref([])
 const logos = ref([]) // logos illustrés déjà utilisés, proposés pour un nouvel événement
@@ -67,6 +70,7 @@ function normalize(raw) {
 async function load() {
   try {
     const data = await loadDatabase()
+    offline.value = data.offline
     categories.value = data.categories
     logos.value = [...new Set(data.events.map((e) => e.logo).filter(Boolean))].sort()
     events.value = data.events.map(normalize).filter(Boolean).sort((a, b) => a.t - b.t)
@@ -404,7 +408,16 @@ onBeforeUnmount(() => {
         @clear="clearFocus"
       />
       <div v-if="loading" class="app-status">Chargement de la chronologie…</div>
-      <div v-else-if="error" class="app-status error">{{ error }}</div>
+      <div v-else-if="error" class="app-status error">
+        <span>{{ error }} <button type="button" @click="reload">Réessayer</button></span>
+      </div>
+      <div class="app-notices">
+        <div v-if="offline" class="queue-notice" role="status">
+          <p>Site injoignable : voici la version enregistrée lors de votre dernière visite.</p>
+          <button type="button" @click="reload">Réessayer</button>
+        </div>
+        <QueueNotice />
+      </div>
     </main>
 
     <TimelineBar

@@ -12,6 +12,7 @@ const MAX_BODY = 60_000
 const MAX_PER_HOUR = 5 // par visiteur
 const MAX_PENDING = 1000
 const HOUR = 3_600_000
+const UUID_RE = /^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/
 
 class HttpError extends Error {
   constructor(status, message) {
@@ -73,6 +74,10 @@ async function create(request, env) {
     throw new HttpError(422, e.message)
   }
 
+  // Identifiant choisi par le site : une demande renvoyée après une coupure n'est pas enregistrée deux fois.
+  const id = UUID_RE.test(body.id) ? body.id : crypto.randomUUID()
+  if (await env.DB.prepare('SELECT 1 AS n FROM demandes WHERE id = ?').bind(id).first('n')) return { ok: true }
+
   const now = Date.now()
   const iso = (t) => new Date(t).toISOString()
   const ip = await hashIp(request, env)
@@ -82,8 +87,8 @@ async function create(request, env) {
   const pending = await env.DB.prepare("SELECT count(*) AS n FROM demandes WHERE status = 'en_attente'").first('n')
   if (pending >= MAX_PENDING) throw new HttpError(503, 'Trop de demandes en attente : réessayez plus tard.')
 
-  await env.DB.prepare('INSERT INTO demandes (id, created_at, type, target_name, payload, ip_hash) VALUES (?, ?, ?, ?, ?, ?)')
-    .bind(crypto.randomUUID(), iso(now), proposal.type, proposal.targetName, JSON.stringify(proposal), ip)
+  await env.DB.prepare('INSERT OR IGNORE INTO demandes (id, created_at, type, target_name, payload, ip_hash) VALUES (?, ?, ?, ?, ?, ?)')
+    .bind(id, iso(now), proposal.type, proposal.targetName, JSON.stringify(proposal), ip)
     .run()
   return { ok: true }
 }
