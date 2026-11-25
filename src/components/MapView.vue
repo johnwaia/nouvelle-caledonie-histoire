@@ -192,6 +192,7 @@ const footOf = (e) => Object.entries(FEET).find(([name]) => e.logo?.includes(nam
 const pinSize = (e) => {
   if (e.logo?.includes('usine_nickel')) return 56 // la fumée occupe le haut de l'image
   if (e.logo?.includes('urne')) return 44 // la croix du boycott doit laisser voir l'urne
+  if (e.auSud && map.getSize().x <= 760) return 32 // mobile : peu de terre au sud
   if (footOf(e)) return 42
   return e.logo ? 34 : 28
 }
@@ -273,11 +274,11 @@ function layoutPins(list) {
     const size = pinSize(e)
     const [fx, fy] = footOf(e) || [0.5, 0.5]
     const center = ([dx, dy]) => ({ x: base.x + dx + size * (0.5 - fx), y: base.y + dy + size * (0.5 - fy), size })
-    const isFree = (spot) => {
+    const isFree = (spot, tightness = 1) => {
       const c = center(spot)
       if (e.auSud && c.y < southOf) return false
       return placed.every((q) => {
-        const min = (c.size + q.size) / 2 + PIN_GAP
+        const min = ((c.size + q.size) / 2 + PIN_GAP) * tightness
         return Math.abs(c.x - q.x) >= min || Math.abs(c.y - q.y) >= min
       })
     }
@@ -290,8 +291,10 @@ function layoutPins(list) {
     const spot =
       near.find((o) => isFree(o) && onLand(o)) ||
       near.find((o) => isFree(o) && footOnLand(o)) ||
-      near.find(isFree) ||
-      SPOTS.find(isFree) ||
+      // Pas assez de place : plutôt serrer les points « auSud » que d'en poser un dans l'eau.
+      (e.auSud && (near.find((o) => isFree(o, 0.8) && footOnLand(o)) || near.find((o) => isFree(o, 0.6) && footOnLand(o)))) ||
+      near.find((o) => isFree(o)) ||
+      SPOTS.find((o) => isFree(o)) ||
       SPOTS[0]
     const c = center(spot)
     placed.push(c)
