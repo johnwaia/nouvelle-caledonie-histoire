@@ -101,7 +101,8 @@ const CREDITS =
   'Fond de carte © <a href="https://www.esri.com" target="_blank" rel="noopener">Esri</a>, HERE, Garmin' +
   ' · © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">contributeurs OpenStreetMap</a>' +
   ' · Tribus : Gouvernement de la Nouvelle-Calédonie / D.I.T.T.T.' +
-  ' · <a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a>'
+  ' · <a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a>' +
+  ' · <a href="admin.html">Administration</a>'
 function addCreditsControl() {
   const Credits = L.Control.extend({
     options: { position: 'bottomleft' },
@@ -264,7 +265,7 @@ const FOOT_MARGIN = 7 // largeur de terre exigée autour du pied d'un logo plant
 
 // Décalage de chaque point (en pixels) : au plus près de son lieu, sans recouvrir un autre point
 // de la carte et, autant que possible, sur la terre ferme.
-// Les événements « auSud » (events.json) sont posés en dernier, plus bas que tous les autres.
+// Les événements « auSud » sont posés en dernier, plus bas que tous les autres.
 function layoutPins(list) {
   const placed = [] // centres et tailles des points déjà posés
   const spots = new Map()

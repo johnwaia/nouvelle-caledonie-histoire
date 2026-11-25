@@ -1,12 +1,12 @@
-// Construit public/data/tribus.json à partir de la liste officielle des tribus
+// Met à jour les tribus de database/kanaky.sqlite à partir de la liste officielle des tribus
 // (Gouvernement de la Nouvelle-Calédonie / DITTT — couche « Localités et zones bâties », type TRIBU),
 // en conservant les fiches déjà rédigées (champs origines, evenements, sources…).
 //
 //   node scripts/import-tribus.mjs
 
-import { readFileSync, writeFileSync } from 'node:fs'
+import { openDb, reader, saveTribu, transaction } from '../database/db.mjs'
+import { readAll } from '../src/db/read.js'
 
-const FILE = new URL('../public/data/tribus.json', import.meta.url)
 const SERVICE =
   'https://services1.arcgis.com/TZcrgU6CIbqWt9Qv/arcgis/rest/services/LOCALITES_ET_ZONES_BATIES/FeatureServer/0/query'
 
@@ -38,11 +38,12 @@ const MATCH = {
   hwadrilla: ['Hwaadrila', 'Ouvéa'],
 }
 
-const old = JSON.parse(readFileSync(FILE, 'utf8'))
+const db = openDb()
+const old = readAll(reader(db))
 const documented = new Map(
   (old.tribus || [])
     .filter((t) => t.origines || t.evenements?.length || t.ajoutManuel)
-    .map(({ apparition, apparitionSource, ...t }) => [t.id, t]),
+    .map((t) => [t.id, t]),
 )
 
 const url = SERVICE + '?' + new URLSearchParams({ where: "type='TRIBU'", outFields: '*', outSR: '4326', resultRecordCount: '2000', f: 'json' })
@@ -81,13 +82,10 @@ for (const f of features) {
 // Fiches rédigées sans point officiel correspondant (ex. Hnathalo) : conservées telles quelles.
 for (const doc of documented.values()) list.push(doc)
 
-list.sort((x, y) => x.commune.localeCompare(y.commune, 'fr') || x.nom.localeCompare(y.nom, 'fr'))
-const out = {
-  _info:
-    'Tribus de Nouvelle-Calédonie (affichées avec le bouton « Afficher les tribus »). ' +
-    'Localisation : Gouvernement de la Nouvelle-Calédonie / DITTT (Localités et zones bâties). ' +
-    'Régénérer avec : node scripts/import-tribus.mjs',
-  tribus: list,
-}
-writeFileSync(FILE, JSON.stringify(out, null, 1) + '\n')
+transaction(db, () => {
+  const kept = new Set(list.map((t) => t.id))
+  for (const t of old.tribus) if (!kept.has(t.id)) db.prepare('DELETE FROM tribus WHERE id = ?').run(t.id)
+  for (const t of list) saveTribu(db, t)
+})
+db.close()
 console.log(`${list.length} tribus écrites (${list.filter((t) => t.origines).length} avec fiche détaillée)`)

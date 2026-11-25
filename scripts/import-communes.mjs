@@ -1,13 +1,14 @@
-// Construit public/data/communes.json : les 33 communes de Nouvelle-Calédonie, avec position,
+// Met à jour dans database/kanaky.sqlite les 33 communes de Nouvelle-Calédonie, avec position,
 // province, aire coutumière, et un extrait de leur histoire tiré de Wikipédia (licence CC BY-SA 4.0,
 // source citée dans chaque fiche).
 //
 //   node scripts/import-communes.mjs
 //
-// Les champs ajoutés à la main dans communes.json (ex. "histoireManuelle", "sources") sont conservés.
-import { readFileSync, writeFileSync, existsSync } from 'node:fs'
+// Les autres champs (histoire manuelle, image, sources…) sont conservés.
+// « resume » et « histoire » sont rechargés : pour garder un texte retouché, remplir « Histoire manuelle » dans l'administration.
+import { openDb, reader, saveCommune, transaction } from '../database/db.mjs'
+import { readAll } from '../src/db/read.js'
 
-const FILE = new URL('../public/data/communes.json', import.meta.url)
 const UA = { 'User-Agent': 'nc-histoire-communes/1.0' }
 
 // [nom affiché, titre Wikipédia, province, aire coutumière]
@@ -103,8 +104,9 @@ function histoireSection(extract) {
   return out.join('\n').trim()
 }
 
-const old = existsSync(FILE) ? JSON.parse(readFileSync(FILE, 'utf8')) : { communes: [] }
-const previous = new Map((old.communes || []).map((c) => [c.id, c]))
+const db = openDb()
+const old = readAll(reader(db))
+const previous = new Map(old.communes.map((c) => [c.id, c]))
 
 const out = []
 for (const [nom, titre, province, aire] of COMMUNES) {
@@ -139,16 +141,6 @@ for (const [nom, titre, province, aire] of COMMUNES) {
   console.log(`${coords ? 'position ✓' : 'position ✗'} · histoire ${histoire ? histoire.length + ' car.' : '✗'}`)
 }
 
-writeFileSync(
-  FILE,
-  JSON.stringify(
-    {
-      _info:
-        "Communes de Nouvelle-Calédonie. Résumé et histoire : extraits de Wikipédia (CC BY-SA 4.0), lien dans le champ « wikipedia ». Régénérer avec : node scripts/import-communes.mjs",
-      communes: out,
-    },
-    null,
-    1,
-  ) + '\n',
-)
+transaction(db, () => out.forEach((c) => saveCommune(db, c)))
+db.close()
 console.log(`${out.length} communes écrites.`)

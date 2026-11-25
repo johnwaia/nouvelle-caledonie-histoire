@@ -8,24 +8,15 @@ import CommunePanel from './components/CommunePanel.vue'
 import SearchBox from './components/SearchBox.vue'
 import AirePanel from './components/AirePanel.vue'
 import ProvincePanel from './components/ProvincePanel.vue'
+import { loadDatabase } from './db/client'
 import { parseDate, toDecimal, formatEventDate } from './utils/dates'
 
-/*
- * Sources de données : par défaut le fichier public/data/events.json.
- * Pour ajouter d'autres flux (ex. un fichier d'actualités hébergé ailleurs, un export de CMS),
- * définir VITE_EVENTS_URLS="data/events.json,https://exemple.nc/actualites.json" dans .env.local.
- * Les fichiers sont fusionnés ; un événement portant le même "id" remplace le précédent.
- */
-const SOURCES = (import.meta.env.VITE_EVENTS_URLS || 'data/events.json')
-  .split(',')
-  .map((s) => s.trim())
-  .filter(Boolean)
+// Les images de la base sont publiées comme des fichiers du site (« images/evenements/… »).
 const resolveUrl = (u) => (/^https?:\/\//.test(u) ? u : import.meta.env.BASE_URL + u.replace(/^\//, ''))
 
 const loading = ref(true)
 const error = ref('')
 const categories = ref({})
-const periods = ref([])
 const events = ref([])
 
 const selectedYear = ref(null)
@@ -46,51 +37,6 @@ const provinces = ref(null) // GeoJSON des provinces
 const showProvinces = ref(false)
 const selectedProvinceId = ref(null)
 
-// Tribus (public/data/tribus.json) : facultatives, une erreur de chargement ne bloque pas le site.
-async function loadTribus() {
-  try {
-    const res = await fetch(resolveUrl('data/tribus.json'), { cache: 'no-cache' })
-    if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    tribus.value = ((await res.json()).tribus || [])
-      .filter((t) => t.id && Array.isArray(t.coords))
-  } catch (e) {
-    console.warn('Tribus non chargées :', e.message)
-  }
-}
-
-// Provinces (public/data/provinces.json, GeoJSON) : facultatives.
-async function loadProvinces() {
-  try {
-    const res = await fetch(resolveUrl('data/provinces.json'), { cache: 'no-cache' })
-    if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    provinces.value = await res.json()
-  } catch (e) {
-    console.warn('Provinces non chargées :', e.message)
-  }
-}
-
-// Aires coutumières (public/data/aires.json, GeoJSON) : facultatives.
-async function loadAires() {
-  try {
-    const res = await fetch(resolveUrl('data/aires.json'), { cache: 'no-cache' })
-    if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    aires.value = await res.json()
-  } catch (e) {
-    console.warn('Aires coutumières non chargées :', e.message)
-  }
-}
-
-// Communes (public/data/communes.json) : facultatives elles aussi.
-async function loadCommunes() {
-  try {
-    const res = await fetch(resolveUrl('data/communes.json'), { cache: 'no-cache' })
-    if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    communes.value = ((await res.json()).communes || []).filter((c) => c.id && Array.isArray(c.coords))
-  } catch (e) {
-    console.warn('Communes non chargées :', e.message)
-  }
-}
-
 function normalize(raw) {
   const start = parseDate(raw.date)
   const t = toDecimal(start)
@@ -108,32 +54,25 @@ function normalize(raw) {
     dateText: formatEventDate(raw),
     sources: (raw.sources || []).map((s) => (typeof s === 'string' ? { label: s } : s)),
     videos: (raw.videos || []).map((v) => (typeof v === 'string' ? { url: v } : v)),
-    // Image locale (« images/evenements/… ») ou distante (https://…)
+    // Image de la base (« images/evenements/… ») ou lien (https://…)
     image: raw.image?.url ? { ...raw.image, url: resolveUrl(raw.image.url) } : raw.image,
     // Logo illustré propre à l'événement (sinon, logo de sa catégorie)
     logo: raw.logo ? resolveUrl(raw.logo) : null,
   }
 }
 
+// Toutes les informations viennent de la base SQLite (database/kanaky.sqlite).
 async function load() {
   try {
-    const files = await Promise.all(
-      SOURCES.map(async (u) => {
-        const res = await fetch(resolveUrl(u), { cache: 'no-cache' })
-        if (!res.ok) throw new Error(`${u} : HTTP ${res.status}`)
-        return res.json()
-      }),
-    )
-    categories.value = Object.assign({}, ...files.map((f) => f.categories || {}))
-    periods.value = files.find((f) => f.periods?.length)?.periods || []
-    const byId = new Map()
-    for (const f of files) for (const raw of f.events || []) {
-      const ev = normalize(raw)
-      if (ev) byId.set(ev.id, ev)
-    }
-    events.value = [...byId.values()].sort((a, b) => a.t - b.t)
+    const data = await loadDatabase()
+    categories.value = data.categories
+    events.value = data.events.map(normalize).filter(Boolean).sort((a, b) => a.t - b.t)
+    tribus.value = data.tribus
+    communes.value = data.communes.map((c) => (c.image ? { ...c, image: { ...c.image, url: resolveUrl(c.image.url) } } : c))
+    aires.value = data.aires
+    provinces.value = data.provinces
   } catch (e) {
-    error.value = `Impossible de charger les événements (${e.message}).`
+    error.value = `Impossible de charger la base de données (${e.message}).`
   } finally {
     loading.value = false
   }
@@ -357,7 +296,7 @@ function onKey(e) {
 }
 
 onMounted(async () => {
-  await Promise.all([load(), loadTribus(), loadCommunes(), loadAires(), loadProvinces()])
+  await load()
   selectedYear.value = years.value[0]?.year ?? null
   readHash()
   window.addEventListener('hashchange', readHash)

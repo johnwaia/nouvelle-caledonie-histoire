@@ -55,7 +55,7 @@ const localisation = computed(() => {
 
       <p v-if="!tribu.origines && !tribu.evenements?.length" class="tribu-todo">
         L'histoire de cette tribu n'a pas encore été rédigée. Elle peut être ajoutée dans
-        <code>public/data/tribus.json</code> (champs « origines », « evenements » et « sources »).
+        l’administration du site (champs « origines », « evenements » et « sources »).
       </p>
 
       <section v-if="tribu.sources?.length" class="sources">
