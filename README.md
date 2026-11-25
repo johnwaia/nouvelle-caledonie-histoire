@@ -26,9 +26,8 @@ public/data/events.json     contenu (événements, catégories, périodes)
 public/data/tribus.json     tribus affichées sur la carte
 public/data/communes.json   communes (position, histoire, image)
 public/data/aires.json      contours des aires coutumières (GeoJSON)
-public/images/tribus/       photos des maisons communes (Province Nord)
 public/images/              images du site (cases, pirogue)
-public/images/evenements/   images des fiches d'événements
+public/images/evenements/   images des fiches d’événements, affichées via leur lien GitHub (raw.githubusercontent.com, branche main)
 scripts/check-data.mjs      validation du contenu
 scripts/import-tribus.mjs   import de la liste officielle des tribus (DITTT)
 scripts/import-communes.mjs import des communes et de leur histoire (Wikipédia)
@@ -46,4 +45,4 @@ src/utils/dates.js          dates (format français)
 
 ## Crédits
 
-Fond de carte © Esri, HERE, Garmin, contributeurs OpenStreetMap ; pour un site très fréquenté, vérifier les conditions d'Esri ou passer à un fournisseur dédié (MapTiler, Stadia Maps…) dans `src/components/MapView.vue`. Images : Wikimedia Commons (auteur et licence indiqués sous chaque image). Vidéos : archives de l'INA. Les textes sont des résumés à visée pédagogique : à relire et enrichir avec des sources de référence (Musée de Nouvelle-Calédonie, ADCK – centre culturel Tjibaou, Archives de la Nouvelle-Calédonie, travaux universitaires).
+Fond de carte © Esri, HERE, Garmin, contributeurs OpenStreetMap ; pour un site très fréquenté, vérifier les conditions d'Esri ou passer à un fournisseur dédié (MapTiler, Stadia Maps…) dans `src/components/MapView.vue`. Images : liens vers Wikimedia Commons, CNRS Images et ce dépôt GitHub (crédit et source indiqués sous l’image quand ils sont connus). Vidéos : archives de l'INA. Les textes sont des résumés à visée pédagogique : à relire et enrichir avec des sources de référence (Musée de Nouvelle-Calédonie, ADCK – centre culturel Tjibaou, Archives de la Nouvelle-Calédonie, travaux universitaires).

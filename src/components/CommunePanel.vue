@@ -4,9 +4,9 @@ import PhotoFigure from './PhotoFigure.vue'
 
 const props = defineProps({
   commune: { type: Object, required: true },
-  tribuCount: { type: Number, default: 0 },
+  tribus: { type: Array, default: () => [] },
 })
-const emit = defineEmits(['close'])
+const emit = defineEmits(['close', 'select-tribu'])
 
 const closeBtn = ref(null)
 onMounted(() => closeBtn.value?.focus())
@@ -41,12 +41,21 @@ const resume = computed(() => paragraphs(props.commune.resume))
       <dl class="meta">
         <div><dt>Province</dt><dd>{{ commune.province }}</dd></div>
         <div><dt>Aire coutumière</dt><dd>{{ commune.aire }}</dd></div>
-        <div v-if="tribuCount"><dt>Tribus</dt><dd>{{ tribuCount }}</dd></div>
+        <div v-if="tribus.length"><dt>Tribus</dt><dd>{{ tribus.length }}</dd></div>
       </dl>
 
       <section v-if="resume.length" class="tribu-section">
         <h3>Présentation</h3>
         <p v-for="(p, i) in resume" :key="i">{{ p.text }}</p>
+      </section>
+
+      <section v-if="tribus.length" class="tribu-section">
+        <h3>Tribus de la commune</h3>
+        <ul class="aire-communes">
+          <li v-for="t in tribus" :key="t.id">
+            <button type="button" @click="emit('select-tribu', t.id)">{{ t.nom }}</button>
+          </li>
+        </ul>
       </section>
 
       <section v-if="histoire.length" class="tribu-section">

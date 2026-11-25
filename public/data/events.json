@@ -145,7 +145,7 @@
       "coords": [-20.33, 164.47],
       "category": "contact",
       "description": "Mgr Guillaume Douarre et des pères maristes débarquent à Balade et y fondent la première mission catholique. Mal acceptée, la mission est attaquée et abandonnée en 1847, avant que les missionnaires ne reviennent quelques années plus tard.",
-      "image": {"url": "images/evenements/Guillaume_Douare.jpg", "alt": "Mgr Guillaume Douarre, fondateur de la mission de Balade"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/Guillaume_Douare.jpg", "alt": "Mgr Guillaume Douarre, fondateur de la mission de Balade"},
       "sources": [
         { "label": "Guillaume Douarre (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Guillaume+Douarre" }
       ]
@@ -173,7 +173,7 @@
       "coords": [-22.276, 166.452],
       "category": "colonisation",
       "description": "Le capitaine de vaisseau Louis Tardy de Montravel fonde Port-de-France sur la presqu'île de Nouméa, choisie pour la qualité de sa rade. La ville prend le nom de Nouméa en 1866.",
-      "image": {"url": "images/evenements/Louis_Tardy_de_Montravel.jpg", "alt": "Portrait de Louis Tardy de Montravel, fondateur de Port-de-France"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/Louis_Tardy_de_Montravel.jpg", "alt": "Portrait de Louis Tardy de Montravel, fondateur de Port-de-France"},
       "sources": [
         { "label": "Nouméa (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Noum%C3%A9a" }
       ]
@@ -215,7 +215,7 @@
       "coords": [-21.55, 165.6],
       "category": "colonisation",
       "description": "L'administration coloniale institue des réserves : les clans kanak sont cantonnés sur des terres délimitées, tandis que les terres jugées les meilleures sont attribuées à la colonisation pénale et libre. La question foncière devient centrale dans l'histoire du pays.",
-      "image": {"url": "images/evenements/reserve_kanak.png", "alt": "Réserve kanak"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/reserve_kanak.png", "alt": "Réserve kanak"},
       "sources": [
         { "label": "Histoire de la Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Histoire+de+la+Nouvelle-Cal%C3%A9donie" }
       ]
@@ -291,7 +291,7 @@
       "coords": [-22.276, 166.452],
       "category": "colonisation",
       "description": "Le régime de l'indigénat est appliqué aux Kanak : sanctions administratives sans jugement, travail obligatoire, impôt de capitation, interdiction de quitter les réserves sans autorisation. Il reste en vigueur jusqu'en 1946.",
-      "image": {"url": "images/evenements/code_indigenat.jpg", "alt": "Le code de l'indigénat"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/code_indigenat.jpg", "alt": "Le code de l'indigénat"},
       "sources": [
         { "label": "Code de l'indigénat (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Code+de+l%27indig%C3%A9nat" }
       ]
@@ -305,7 +305,7 @@
       "coords": [-21.61, 166.21],
       "category": "economie",
       "description": "Les premiers travailleurs japonais sous contrat arrivent pour les mines de Thio. Ils sont suivis par des engagés venus d'Indochine et de Java, qui contribuent à la diversité de la population calédonienne.",
-      "image": {"url": "images/evenements/arriver_japonnais.jpg", "alt": "Arrivée des travailleurs japonais"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/arriver_japonnais.jpg", "alt": "Arrivée des travailleurs japonais"},
       "sources": [
         { "label": "Japonais de Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Japonais+en+Nouvelle-Cal%C3%A9donie" }
       ]
@@ -334,7 +334,7 @@
       "coords": [-22.276, 166.452],
       "category": "conflit",
       "description": "Plus d'un millier de tirailleurs kanak et de nombreux Calédoniens d'origine européenne partent combattre en Europe, notamment au sein du Bataillon mixte du Pacifique. Plusieurs centaines d'entre eux n'en reviendront pas.",
-      "image": {"url": "images/evenements/caserne_de_noumea.jpg", "alt": "La caserne de Nouméa"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/caserne_de_noumea.jpg", "alt": "La caserne de Nouméa"},
       "sources": [
         { "label": "Bataillon mixte du Pacifique (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Bataillon+mixte+du+Pacifique" }
       ]
@@ -349,7 +349,7 @@
       "coords": [-20.95, 164.95],
       "category": "conflit",
       "description": "Dans le nord de la Grande Terre, une révolte éclate, en partie liée au recrutement pour la guerre. Menée notamment par le chef Noël de Tiamou, elle est durement réprimée.",
-      "image": {"url": "images/evenements/guerre_1917.jpg", "alt": "La guerre de 1917"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/guerre_1917.jpg", "alt": "La guerre de 1917"},
       "sources": [
         { "label": "Révolte kanak de 1917 (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=R%C3%A9volte+kanak+de+1917" }
       ]
@@ -362,7 +362,7 @@
       "coords": null,
       "category": "colonisation",
       "description": "Une centaine de Kanak sont exhibés à Paris, présentés comme des « cannibales » dans un véritable « zoo humain ». Cet épisode longtemps occulté a été popularisé par le roman de Didier Daeninckx « Cannibale » (1998).",
-      "image": {"url": "images/evenements/zoo_humain.webp", "alt": "Kanak exhibés à l'Exposition coloniale de 1931"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/zoo_humain.webp", "alt": "Kanak exhibés à l'Exposition coloniale de 1931"},
       "sources": [
         { "label": "Exposition coloniale internationale de 1931 (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Exposition+coloniale+internationale+de+1931" }
       ]
@@ -404,7 +404,7 @@
       "coords": [-22.276, 166.452],
       "category": "politique",
       "description": "La Nouvelle-Calédonie devient un territoire d'outre-mer. Le régime de l'indigénat est aboli : les Kanak obtiennent la liberté de circulation et accèdent progressivement au droit de vote, étendu jusqu'au suffrage universel en 1957.",
-      "image": {"url": "images/evenements/abolition_indigenat.jpg", "alt": "Abolition de l'indigénat"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/abolition_indigenat.jpg", "alt": "Abolition de l'indigénat"},
       "sources": [
         { "label": "Histoire de la Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Histoire+de+la+Nouvelle-Cal%C3%A9donie" }
       ]
@@ -418,7 +418,7 @@
       "coords": [-22.276, 166.452],
       "category": "politique",
       "description": "Maurice Lenormand fonde l'Union calédonienne (UC), premier grand parti multiethnique, avec la devise « Deux couleurs, un seul peuple ». L'UC domine la vie politique calédonienne pendant deux décennies.",
-      "image": {"url": "images/evenements/creation_uc.webp", "alt": "Création de l'Union calédonienne"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/creation_uc.webp", "alt": "Création de l'Union calédonienne"},
       "sources": [
         { "label": "Union calédonienne (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Union+cal%C3%A9donienne" }
       ]
@@ -447,13 +447,14 @@
       "coords": [-22.276, 166.452],
       "category": "culture",
       "description": "Sous l'impulsion de Jean-Marie Tjibaou, ce grand festival rassemble les cultures kanak et affirme leur vitalité. Il marque un moment fondateur du renouveau culturel, puis politique, kanak.",
-      "image": {"url": "images/evenements/melanesia_2000.jpg", "alt": "Le festival Mélanésia 2000"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/melanesia_2000.jpg", "alt": "Le festival Mélanésia 2000"},
       "sources": [
         { "label": "Mélanésia 2000 (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=M%C3%A9lan%C3%A9sia+2000" }
       ]
     },
     {
       "id": "flnks-1984",
+      "auSud": true,
       "logo": "images/logos/drapeau_kanaky.svg",
       "date": "1984-09-24",
       "title": "Création du FLNKS",
@@ -464,7 +465,7 @@
       "videos": [
         {"label": "Congrès du FLNKS — 1984 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/vdo11004484/congres-du-flnks"}
       ],
-      "image": {"url": "images/evenements/creation_flnks.jpg", "alt": "Création du FLNKS"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/creation_flnks.jpg", "alt": "Création du FLNKS"},
       "sources": [
         { "label": "Front de libération nationale kanak et socialiste (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Front+de+lib%C3%A9ration+nationale+kanak+et+socialiste" }
       ]
@@ -477,7 +478,7 @@
       "coords": [-21.52, 165.96],
       "category": "conflit",
       "description": "Lors du boycott actif des élections territoriales, Éloi Machoro brise une urne à coups de hache à Canala. L'image devient le symbole du début des « Événements », période de violences qui durera jusqu'en 1988.",
-      "image": {"url": "images/evenements/urne_brisee_1984.jpg", "alt": "L'urne brisée de Canala"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/urne_brisee_1984.jpg", "alt": "L'urne brisée de Canala"},
       "sources": [
         { "label": "Éloi Machoro (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=%C3%89loi+Machoro" }
       ]
@@ -491,7 +492,7 @@
       "coords": [-20.75, 164.87],
       "category": "conflit",
       "description": "Dix militants indépendantistes kanak, dont deux frères de Jean-Marie Tjibaou, sont tués dans une embuscade tendue par des habitants anti-indépendantistes, au retour d'une réunion. Les auteurs seront acquittés en 1987 au nom de la légitime défense.",
-      "image": {"url": "images/evenements/embuscade_tiendanite.jpg", "alt": "Embuscade de Tiendanite"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/embuscade_tiendanite.jpg", "alt": "Embuscade de Tiendanite"},
       "sources": [
         { "label": "Embuscade de Tiendanite (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Embuscade+de+Tiendanite" }
       ]
@@ -504,21 +505,23 @@
       "place": "Près de La Foa",
       "coords": [-21.68, 165.8],
       "category": "conflit",
-      "description": "Éloi Machoro, figure du FLNKS, et Marcel Nonnaro sont abattus par des tireurs d'élite du GIGN près de La Foa, alors qu'ils occupaient une propriété avec des militants indépendantistes.",
+      "description": "Éloi Machoro, figure du FLNKS, et Marcel Nonnaro sont abattus par des tireurs d'élite du GIGN près de La Foa, alors qu'ils occupaient une propriété avec des militants indépendantistes.\n\nAprès la mort de Machoro, Alphonse Dianou, qui se préparait à la prêtrise au séminaire régional du Pacifique, à Suva (Fidji), arrête ses études pour retourner en Kanaky. Il dirigera en 1988 la prise d'otages d'Ouvéa, où il trouvera la mort.",
       "image": {"url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Machoro.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled", "credit": "Tux-Man — CC0, via Wikimedia Commons", "alt": "Graffiti représentant Éloi Machoro à Thio", "source": "https://commons.wikimedia.org/wiki/File:Machoro.jpg"},
       "sources": [
-        { "label": "Éloi Machoro (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=%C3%89loi+Machoro" }
+        { "label": "Éloi Machoro (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=%C3%89loi+Machoro" },
+        { "label": "Formation d'Alphonse Dianou : N. Maclellan, « Thirty years on, a spirit of reconciliation in New Caledonia » (Inside Story)", "url": "https://insidestory.org.au/thirty-years-on-a-spirit-of-reconciliation-in-new-caledonia/" }
       ]
     },
     {
       "id": "referendum-1987",
+      "logo": "images/logos/urne_boycott.svg",
       "date": "1987-09-13",
       "title": "Référendum d'autodétermination boycotté",
       "place": "Nouvelle-Calédonie",
       "coords": [-22.276, 166.452],
       "category": "politique",
       "description": "Lors d'un référendum boycotté par le FLNKS, plus de 98 % des votants se prononcent pour le maintien dans la République française. Le scrutin ne règle rien et les tensions restent vives.",
-      "image": {"url": "images/evenements/boycotte_referendum_1987.avif", "alt": "Le référendum de 1987, boycotté par les indépendantistes"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/boycotte_referendum_1987.avif", "alt": "Le référendum de 1987, boycotté par les indépendantistes"},
       "sources": [
         { "label": "Référendum de 1987 en Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=R%C3%A9f%C3%A9rendum+de+1987+en+Nouvelle-Cal%C3%A9donie" }
       ]
@@ -536,7 +539,7 @@
       "videos": [
         {"label": "Opération militaire à Ouvéa pour la libération des otages — Antenne 2, 5 mai 1988 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/cab88017292/nouvelle-caledonie"}
       ],
-      "image": {"url": "images/evenements/prise_otage_ouvea.avif", "alt": "La prise d'otages d'Ouvéa"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/prise_otage_ouvea.avif", "alt": "La prise d'otages d'Ouvéa"},
       "sources": [
         { "label": "Prise d'otages d'Ouvéa (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Prise+d%27otages+d%27Ouv%C3%A9a" }
       ]
@@ -600,7 +603,7 @@
       "videos": [
         {"label": "Signature de l'accord de Nouméa — RFO, 5 mai 1998 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/vdo16009466/signature-des-accords-de-noumea"}
       ],
-      "image": {"url": "images/evenements/accord_de_noumea.jpg", "alt": "Signature de l'accord de Nouméa"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/accord_de_noumea.jpg", "alt": "Signature de l'accord de Nouméa"},
       "sources": [
         { "label": "Accord de Nouméa (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Accord+de+Noum%C3%A9a" }
       ]
@@ -627,7 +630,7 @@
       "coords": [-22.3, 166.95],
       "category": "economie",
       "description": "L'usine hydrométallurgique de Goro, exploitée par le groupe Vale, entre en production dans le Grand Sud, non sans contestation environnementale et coutumière. Elle est reprise en 2021 sous le nom de Prony Resources.",
-      "image": {"url": "images/evenements/mise_service_usine_sud.png", "alt": "L'usine du Sud"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/mise_service_usine_sud.png", "alt": "L'usine du Sud"},
       "sources": [
         { "label": "Usine du Sud (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Usine+du+Sud+Goro" }
       ]
@@ -654,13 +657,14 @@
       "coords": [-21.01, 164.72],
       "category": "economie",
       "description": "L'usine métallurgique de Koniambo, détenue majoritairement par la province Nord via la SMSP, en partenariat avec Glencore, produit ses premières tonnes de ferronickel. Elle incarne le « rééquilibrage » économique voulu par les accords.",
-      "image": {"url": "images/evenements/demarrage_usine_nord.avif", "alt": "L'usine du Nord (Koniambo)"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/demarrage_usine_nord.avif", "alt": "L'usine du Nord (Koniambo)"},
       "sources": [
         { "label": "Koniambo Nickel (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Koniambo+Nickel" }
       ]
     },
     {
       "id": "referendum-2018",
+      "logo": "images/logos/urne.svg",
       "date": "2018-11-04",
       "title": "Premier référendum sur l'indépendance",
       "place": "Nouvelle-Calédonie",
@@ -677,6 +681,7 @@
     },
     {
       "id": "referendum-2020",
+      "logo": "images/logos/urne.svg",
       "date": "2020-10-04",
       "title": "Deuxième référendum sur l'indépendance",
       "place": "Nouvelle-Calédonie",
@@ -693,6 +698,7 @@
     },
     {
       "id": "referendum-2021",
+      "logo": "images/logos/urne_boycott.svg",
       "date": "2021-12-12",
       "title": "Troisième référendum, boycotté par les indépendantistes",
       "place": "Nouvelle-Calédonie",
@@ -702,7 +708,7 @@
       "videos": [
         {"label": "Les enjeux du dernier référendum — décembre 2021 (INA)", "url": "https://www.ina.fr/ina-eclaire-actu/video/7695309_001_131/les-enjeux-du-dernier-referendum-en-nouvelle-caledonie"}
       ],
-      "image": {"url": "images/evenements/boycotte_referendum_2021.webp", "alt": "Le référendum de 2021, boycotté par les indépendantistes"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/boycotte_referendum_2021.webp", "alt": "Le référendum de 2021, boycotté par les indépendantistes"},
       "sources": [
         { "label": "Référendum de 2021 en Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=R%C3%A9f%C3%A9rendum+de+2021+sur+l%27ind%C3%A9pendance+de+la+Nouvelle-Cal%C3%A9donie" }
       ]
@@ -716,7 +722,7 @@
       "coords": [-21.01, 164.72],
       "category": "economie",
       "description": "Glencore annonce son retrait et l'usine du Nord est placée en sommeil ; ses salariés sont licenciés au cours de l'été 2024. Avec les difficultés de la SLN et de Prony Resources, toute la filière nickel traverse une crise profonde.",
-      "image": {"url": "images/evenements/usine_du_nord_sommeil.jpg", "alt": "L'usine du Nord mise en sommeil"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/usine_du_nord_sommeil.jpg", "alt": "L'usine du Nord mise en sommeil"},
       "sources": [
         { "label": "Koniambo Nickel (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Koniambo+Nickel" }
       ]
@@ -746,7 +752,7 @@
       "coords": null,
       "category": "politique",
       "description": "Au terme de dix jours de négociations, les délégations calédoniennes et l'État signent un projet d'accord prévoyant un « État de la Nouvelle-Calédonie » inscrit dans la Constitution, une nationalité calédonienne et un report des élections provinciales.",
-      "image": {"url": "images/evenements/accord_bougival.jpg", "alt": "Le projet d'accord de Bougival"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/accord_bougival.jpg", "alt": "Le projet d'accord de Bougival"},
       "sources": [
         { "label": "Accord de Bougival (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Accord+de+Bougival" }
       ]
@@ -759,7 +765,7 @@
       "coords": null,
       "category": "politique",
       "description": "Réuni en congrès, le FLNKS rejette le projet d'accord de Bougival, estimant qu'il ne répond pas à l'aspiration à la pleine souveraineté. L'avenir institutionnel du pays reste en discussion.",
-      "image": {"url": "images/evenements/non_bougival.jpg", "alt": "Le FLNKS rejette le projet de Bougival"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/non_bougival.jpg", "alt": "Le FLNKS rejette le projet de Bougival"},
       "sources": [
         { "label": "Accord de Bougival (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Accord+de+Bougival" }
       ]
@@ -786,7 +792,7 @@
       "coords": [-22.276,166.452],
       "category": "politique",
       "description": "De retour d'études en France, marqué par Mai 68, Nidoïsh Naisseline, fils du grand chef du Guahma (Maré), fonde les « Foulards rouges ». Tracts, graffitis, revues anticoloniales, réunions et manifestations pacifiques : le mouvement dénonce le racisme colonial et revendique la dignité et l'identité kanak.\n\nAprès une manifestation, son leader est emprisonné avec plusieurs camarades. C'est le point de départ du « réveil kanak » des années 1969-1976.",
-      "image": {"url": "images/evenements/foulard_rouge.jpg", "alt": "Les Foulards rouges"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/foulard_rouge.jpg", "alt": "Les Foulards rouges"},
       "sources": [
         {"label":"Nidoïsh Naisseline (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Nido%C3%AFsh+Naisseline"},
         {"label":"D. Chappell, « The Kanak Awakening » (UBC Press)","url":"https://ubcpress.ca/the-kanak-awakening"}
@@ -802,7 +808,7 @@
       "coords": [-21.12,164.86],
       "category": "politique",
       "description": "De jeunes Kanak de la Grande Terre, dont Élie Poigoune, fondent le « Groupe 1878 », en référence à la grande insurrection d'Ataï. Proche des Foulards rouges mais plus implanté sur la Grande Terre, il met au cœur de son action la revendication des terres spoliées par la colonisation.\n\nLes sources datent sa création de 1968 ou de 1971.",
-      "image": {"url": "images/evenements/groupe_1878.jpg", "alt": "Le Groupe 1878"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/groupe_1878.jpg", "alt": "Le Groupe 1878"},
       "sources": [
         {"label":"Nationalisme kanak (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Nationalisme+kanak"},
         {"label":"Enquête sur les débuts du Palika à Koné (Présence kanak)","url":"https://presencekanak.com/wp-content/uploads/2024/09/les-echos-du-passe.-enquete-sur-les-debuts-du-palika-a-kone-nouvelle-caledonie-annees-1970.pdf"}
@@ -817,7 +823,7 @@
       "coords": [-22.276,166.452],
       "category": "politique",
       "description": "Les Foulards rouges et le Groupe 1878 fusionnent pour former le Palika, premier parti à revendiquer ouvertement l'indépendance kanak et socialiste. Il est aujourd'hui l'une des deux grandes composantes historiques du mouvement indépendantiste.\n\nEn 1981, un désaccord sur la stratégie électorale entraîne le départ de Nidoïsh Naisseline, qui fonde la Libération kanak socialiste (LKS).",
-      "image": {"url": "images/evenements/creation_palika.png", "alt": "Le Parti de libération kanak (Palika)"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/creation_palika.png", "alt": "Le Parti de libération kanak (Palika)"},
       "sources": [
         {"label":"Parti de libération kanak (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Parti+de+lib%C3%A9ration+kanak"},
         {"label":"Libération kanak socialiste (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Lib%C3%A9ration+kanak+socialiste"}
@@ -832,7 +838,7 @@
       "coords": [-21.568,165.497],
       "category": "politique",
       "description": "Lors de son congrès de Bourail, l'Union calédonienne, jusque-là autonomiste, se prononce pour l'indépendance sous l'impulsion de dirigeants kanak, dont Jean-Marie Tjibaou. Le parti fondé par Maurice Lenormand devient le pilier du mouvement indépendantiste.",
-      "image": {"url": "images/evenements/Union-caledonienne.png", "alt": "L'Union calédonienne"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/Union-caledonienne.png", "alt": "L'Union calédonienne"},
       "sources": [
         {"label":"Union calédonienne (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Union+cal%C3%A9donienne"}
       ]
@@ -845,7 +851,7 @@
       "coords": [-22.276,166.452],
       "category": "politique",
       "description": "L'Union calédonienne, le Palika, le FULK (Front uni de libération kanak), l'UPM (Union progressiste mélanésienne) et une partie du PSC s'allient au sein du Front indépendantiste. Cette coalition est l'ancêtre du FLNKS, créé en 1984.\n\nCertaines sources datent sa création de 1981.",
-      "image": {"url": "images/evenements/naissance_front_independantiste.jpg", "alt": "Le Front indépendantiste"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/naissance_front_independantiste.jpg", "alt": "Le Front indépendantiste"},
       "sources": [
         {"label":"Front indépendantiste (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Front+ind%C3%A9pendantiste+Nouvelle-Cal%C3%A9donie"},
         {"label":"Union calédonienne (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Union+cal%C3%A9donienne"}
@@ -859,7 +865,7 @@
       "coords": [-22.24,166.52],
       "category": "conflit",
       "description": "Secrétaire général de l'Union calédonienne, Pierre Declercq est assassiné à son domicile. L'émotion est immense : barrages routiers et manifestations se multiplient, et le 24 septembre, jour de ses obsèques suivies par une foule considérable, les militants bloquent la circulation dans tout le territoire. Les auteurs du crime n'ont jamais été condamnés.",
-      "image": {"url": "images/evenements/pierre_declerq.jpg", "alt": "Pierre Declercq"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/pierre_declerq.jpg", "alt": "Pierre Declercq"},
       "sources": [
         {"label":"Pierre Declercq (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Pierre+Declercq"},
         {"label":"19-24 septembre 1981 (Encyclopædia Universalis)","url":"https://www.universalis.fr/evenement/19-24-septembre-1981-meurtre-de-l-independantiste-pierre-declercq-en-nouvelle-caledonie/"}
@@ -874,7 +880,7 @@
       "coords": [-22.276,166.452],
       "category": "politique",
       "description": "Louis Kotra Uregei, originaire de Tiga, fonde le premier syndicat indépendantiste, qui devient l'USTKE (Union syndicale des travailleurs kanak et des exploités). Sa devise, « Usines, tribus, même combat », lie la lutte sociale à la lutte pour l'indépendance. L'USTKE devient le deuxième syndicat du pays.",
-      "image": {"url": "images/evenements/drapeau_ustke.jpg", "alt": "Le drapeau de l'USTKE"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/drapeau_ustke.jpg", "alt": "Le drapeau de l'USTKE"},
       "sources": [
         {"label":"« L'USTKE, 30 ans de lutte » (Les Nouvelles Calédoniennes)","url":"https://www.lnc.nc/article/pays/social/l-ustke-30-ans-de-lutte"},
         {"label":"USTKE (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=USTKE"}
@@ -889,7 +895,7 @@
       "coords": null,
       "category": "politique",
       "description": "Réunis par le gouvernement français, indépendantistes, RPCR et FNSC discutent de l'avenir du territoire. La déclaration finale reconnaît pour la première fois le fait colonial et le droit à l'indépendance du peuple kanak, premier occupant, et envisage un référendum d'autodétermination. Le RPCR refuse de la signer.",
-      "image": {"url": "images/evenements/nainville_les_roches.jpg", "alt": "La table ronde de Nainville-les-Roches"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/nainville_les_roches.jpg", "alt": "La table ronde de Nainville-les-Roches"},
       "sources": [
         {"label":"Table ronde de Nainville-les-Roches (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Nainville-les-Roches+1983"},
         {"label":"40 ans de Nainville-les-Roches (gouvernement de la Nouvelle-Calédonie)","url":"https://gouv.nc/sites/default/files/atoms/files/2023.07.12_ip_conference_40_ans_nlroches.pdf"}
@@ -897,6 +903,7 @@
     },
     {
       "id": "gpk-1984",
+      "auSud": true,
       "logo": "images/logos/drapeau_kanaky.svg",
       "date": "1984-12-01",
       "title": "Proclamation du Gouvernement provisoire de Kanaky",
@@ -904,7 +911,7 @@
       "coords": [-22.276,166.452],
       "category": "politique",
       "description": "Après le boycott actif des élections territoriales du 18 novembre, le FLNKS proclame un « Gouvernement provisoire de Kanaky », présidé par Jean-Marie Tjibaou, et hisse le drapeau de Kanaky. Le pays entre dans la période des « Événements ».",
-      "image": {"url": "images/evenements/gouvernement_provisoire_kanaky.jpg", "alt": "Le Gouvernement provisoire de Kanaky"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/gouvernement_provisoire_kanaky.jpg", "alt": "Le Gouvernement provisoire de Kanaky"},
       "sources": [
         {"label":"18-30 novembre 1984 (Encyclopædia Universalis)","url":"https://www.universalis.fr/evenement/18-30-novembre-1984-revendications-independantistes-en-nouvelle-caledonie-apres-les-elections-territoriales/"},
         {"label":"FLNKS (Wikipédia)","url":"https://fr.wikipedia.org/w/index.php?search=Front+de+lib%C3%A9ration+nationale+kanak+et+socialiste"}
@@ -919,7 +926,7 @@
       "coords": [-20.564,164.283],
       "category": "politique",
       "description": "Lors de son 43e congrès, le FLNKS désigne comme président Christian Tein, leader de la Cellule de coordination des actions de terrain (CCAT) mise en place par l'Union calédonienne pour mobiliser contre le dégel du corps électoral. Il est alors en détention provisoire en métropole, mis en examen à la suite des émeutes de mai.\n\nLe Palika et l'UPM ne participent pas au congrès : cette désignation divise le camp indépendantiste.",
-      "image": {"url": "images/evenements/christian_tein.jpg", "alt": "Christian Tein"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/christian_tein.jpg", "alt": "Christian Tein"},
       "sources": [
         {"label":"« Christian Tein désigné président du FLNKS » (Les Nouvelles Calédoniennes)","url":"https://www.lnc.nc/article/nouvelle-caledonie/politique/christian-tein-leader-de-la-ccat-detenu-en-metropole-designe-president-du-flnks"}
       ]
@@ -932,7 +939,7 @@
       "coords": [-22.276, 166.452],
       "category": "sante",
       "description": "Le 18 mars 2020, deux premiers cas importés sont détectés après un vol en provenance de Sydney. Les vols sont suspendus dès le 19 mars et un confinement strict est imposé du 24 mars au 20 avril.\n\nGrâce au contrôle des frontières et à un protocole sanitaire très strict, le pays reste « covid free » : aucun décès en 2020 et moins de 40 cas sur l'année. Une nouvelle introduction du virus entraîne un second confinement du 8 mars au 4 avril 2021, toujours sans décès.",
-      "image": {"url": "images/evenements/covid_nc.jpg", "alt": "Covid-19 en Nouvelle-Calédonie : les premiers cas"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/covid_nc.jpg", "alt": "Covid-19 en Nouvelle-Calédonie : les premiers cas"},
       "sources": [
         {"label": "Pandémie de Covid-19 en Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Pand%C3%A9mie+de+Covid-19+en+Nouvelle-Cal%C3%A9donie"},
         {"label": "Rapport annuel 2020 de l'IEOM Nouvelle-Calédonie", "url": "https://www.ieom.fr/IMG/rapport_annuel_ieom_nouvelle-caledonie_2020/index-34.html"}
@@ -946,7 +953,7 @@
       "coords": [-22.276, 166.452],
       "category": "sante",
       "description": "Début septembre 2021, le variant Delta se propage dans le pays, jusque-là épargné. Un confinement général est décrété et le premier décès est annoncé le 10 septembre. L'épidémie est fulgurante : 142 morts au 2 octobre, 261 au 25 octobre, 281 à la fin de l'année. L'âge moyen des victimes est de 71 ans.\n\nAu 25 juin 2022, la Nouvelle-Calédonie compte 313 décès dus au Covid-19 et plus de 63 000 cas confirmés. La crise frappe durement les familles et les tribus, en pleine période de deuil coutumier, et pèse sur le troisième référendum de décembre 2021.",
-      "image": {"url": "images/evenements/covid_nc2.jpg", "alt": "Covid-19 en Nouvelle-Calédonie : la vague Delta"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/covid_nc2.jpg", "alt": "Covid-19 en Nouvelle-Calédonie : la vague Delta"},
       "sources": [
         {"label": "Pandémie de Covid-19 en Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/w/index.php?search=Pand%C3%A9mie+de+Covid-19+en+Nouvelle-Cal%C3%A9donie"},
         {"label": "Point presse de la DASS, 31 mars 2022 (gouvernement de la Nouvelle-Calédonie)", "url": "https://gouv.nc/sites/default/files/atoms/files/2022.03.31_pp_point_presse_dass.pdf"},
@@ -962,7 +969,7 @@
       "coords": [-22.276, 166.452],
       "category": "politique",
       "description": "Après le troisième référendum, l'État veut tourner la page de l'accord de Nouméa. Gérald Darmanin, ministre de l'Intérieur et des Outre-mer, estime qu'une révision de la Constitution sera nécessaire pour adapter le corps électoral des élections provinciales, « gelé » depuis 2007 aux électeurs installés avant 1998 et à leurs descendants.\n\nDu 28 novembre au 4 décembre 2022, il se rend dans l'archipel avec Jean-François Carenco pour lancer un nouveau cycle de discussions sur l'avenir institutionnel. Les indépendantistes du FLNKS restent réservés.",
-      "image": {"url": "images/evenements/negociation_degel.jpg", "alt": "Négociations sur le dégel du corps électoral"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/negociation_degel.jpg", "alt": "Négociations sur le dégel du corps électoral"},
       "sources": [
         {"label": "« Gérald Darmanin et Jean-François Carenco en Calédonie du 28 novembre au 4 décembre » (Les Nouvelles Calédoniennes)", "url": "https://www.lnc.nc/article-direct/nouvelle-caledonie/politique/gerald-darmanin-et-jean-francois-carenco-en-caledonie-du-28-novembre-au-4-decembre"},
         {"label": "Pourquoi l'élargissement du corps électoral est un sujet si sensible (Public Sénat)", "url": "https://www.publicsenat.fr/actualites/institutions/nouvelle-caledonie-pourquoi-lelargissement-du-corps-electoral-aux-elections-provinciales-est-il-un-sujet-aussi-sensible"}
@@ -976,7 +983,7 @@
       "coords": [-22.2735, 166.4425],
       "category": "politique",
       "description": "Devant plusieurs milliers de personnes, le président de la République appelle à avancer sur le dégel du corps électoral avant les élections provinciales de 2024 et annonce une révision de la Constitution pour le début de l'année 2024. Il présente ce dégel comme une première étape vers un nouveau statut, à négocier avec les indépendantistes et les loyalistes.",
-      "image": {"url": "images/evenements/discours_macron.webp", "alt": "Discours d'Emmanuel Macron place des Cocotiers"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/discours_macron.webp", "alt": "Discours d'Emmanuel Macron place des Cocotiers"},
       "sources": [
         {"label": "Discours de Nouméa, 26 juillet 2023 (Élysée)", "url": "https://www.elysee.fr/emmanuel-macron/2023/07/26/discours-de-noumea"},
         {"label": "Macron plans a new political statute for New Caledonia (PINA)", "url": "https://pina.com.fj/2023/07/31/macron-plans-a-new-political-statute-for-new-caledonia/"}
@@ -990,7 +997,7 @@
       "coords": null,
       "category": "politique",
       "description": "Fin novembre 2023, une nouvelle visite de Gérald Darmanin ne convainc pas l'Union calédonienne de participer à des discussions à trois ; le corps électoral reste le principal point de blocage. Le ministre annonce qu'à défaut d'accord, l'État avancera seul.\n\nLe 7 décembre, le Conseil d'État rend son avis : ouvrir le corps électoral provincial aux nouveaux arrivants suppose de réviser la Constitution.",
-      "image": {"url": "images/evenements/conseil_etat.jpg", "alt": "Le Conseil d'État"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/conseil_etat.jpg", "alt": "Le Conseil d'État"},
       "sources": [
         {"label": "« Dégel du corps électoral : le Conseil d'État recommande une révision constitutionnelle » (Les Nouvelles Calédoniennes)", "url": "https://www.lnc.nc/article/politique/nouvelle-caledonie/degel-du-corps-electoral-le-conseil-d-etat-recommande-une-revision-constitutionnelle"},
         {"label": "Commentaire de l'avis du Conseil d'État du 7 décembre 2023 (Université de la Nouvelle-Calédonie)", "url": "https://larje.unc.nc/wp-content/uploads/sites/2/2024/04/Commentaire-avis-CE-7-12-2023-public.pdf"}
@@ -1045,7 +1052,7 @@
       "coords": [-22.276, 166.452],
       "category": "politique",
       "description": "En pleine crise, le président de la République se rend à Nouméa pour rencontrer les responsables indépendantistes et loyalistes. Il promet le retour de l'ordre et des aides pour les entreprises touchées par les violences.",
-      "image": {"url": "images/evenements/visite_express_macron.webp", "alt": "Visite d'Emmanuel Macron à Nouméa en mai 2024"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/visite_express_macron.webp", "alt": "Visite d'Emmanuel Macron à Nouméa en mai 2024"},
       "sources": [
         {"label": "13-31 mai 2024 : émeutes en Nouvelle-Calédonie (Encyclopædia Universalis)", "url": "https://www.universalis.fr/evenement/13-31-mai-2024-emeutes-en-nouvelle-caledonie/"}
       ]
@@ -1071,7 +1078,7 @@
       "coords": null,
       "category": "politique",
       "description": "Faute d'accord global, une loi organique ouvre le corps électoral provincial aux personnes nées en Nouvelle-Calédonie qui n'y figuraient pas, soit environ 10 500 électeurs. Le Congrès de la Nouvelle-Calédonie avait rendu un avis favorable le 18 mai (25 voix contre 14) ; les non-indépendantistes rompent alors les négociations.\n\nLe Conseil constitutionnel valide la loi le 28 mai 2026, estimant que le corps électoral garde son caractère restreint. Elle s'applique aux élections provinciales du 28 juin 2026. En septembre 2025, il avait déjà jugé le gel du corps électoral conforme à la Constitution.",
-      "image": {"url": "images/evenements/degel_pour_natif.webp", "alt": "Dégel partiel du corps électoral pour les natifs"},
+      "image": {"url": "https://raw.githubusercontent.com/johnwaia/nouvelle-caledonie-histoire/main/public/images/evenements/degel_pour_natif.webp", "alt": "Dégel partiel du corps électoral pour les natifs"},
       "sources": [
         {"label": "« Le Conseil constitutionnel valide le dégel partiel du corps électoral » (Maire-info)", "url": "https://maire-info.com/le-conseil-constitutionnel-valide-le-degel-partiel-du-corps-electoral-en-nouvelle-caledonie-la-loi-publiee-article2-30830"},
         {"label": "Nouvelle-Calédonie : la loi élargissant le corps électoral est publiée (Banque des territoires)", "url": "https://www.banquedesterritoires.fr/nouvelle-caledonie-la-loi-elargissant-le-corps-electoral-est-publiee"}
@@ -1089,6 +1096,21 @@
       "description": "Les premiers départs de Wallis-et-Futuna ont lieu en 1947, avec 109 personnes, et le mouvement devient durable à partir de 1951 : l'archipel manque d'emplois et sa production de coprah a été ruinée par un insecte, l'oryctes.\n\nLe « boom du nickel » et l'essor économique de la Nouvelle-Calédonie amplifient cette migration : la communauté passe d'environ 2 500 personnes en 1963 à 6 200 en 1969, puis 9 571 en 1976, soit 7,2 % de la population. Installée surtout en province Sud, elle comptait 22 520 personnes en 2019.",
       "sources": [
         {"label": "Wallisiens et Futuniens de Nouvelle-Calédonie (Wikipédia)", "url": "https://fr.wikipedia.org/wiki/Wallisiens_et_Futuniens_de_Nouvelle-Cal%C3%A9donie"}
+      ]
+    },
+    {
+      "id": "epk-1985",
+      "date": "1985-02-09",
+      "title": "Création des écoles populaires kanak (EPK)",
+      "place": "Nakéty, Canala",
+      "coords": [-21.54223, 166.04631],
+      "category": "culture",
+      "description": "Réuni en congrès à Nakéty, le FLNKS appelle à boycotter l'école coloniale et à créer des écoles populaires kanak. Ouvertes dans les tribus, elles veulent un enseignement pensé par et pour les Kanak, de la langue d'enseignement aux horaires : on y apprend dans les langues kanak, à partir de la culture et de la vie de la tribu.\n\nLe mouvement compte jusqu'à plusieurs dizaines d'écoles, avant de décliner avec la démobilisation qui suit les accords de Matignon de 1988. En 1996, l'école de Gossanah, à Ouvéa, était toujours en activité.",
+      "image": {"url":"https://images.cnrs.fr/sites/default/files/textimage_store/cache/styles/full_image_copyright/e/e9/e928851b42df2eb6ab63e339091efdcf7c53a695e73d8eff787af1901a80d1dc.jpg","credit":"Isabelle Leblic / CNRS Images","alt":"Enfants des EPK de Canala, 1985","source":"https://images.cnrs.fr/en/node/28051"},
+      "sources": [
+        {"label": "D. Small, « The Rise and Fall of the Écoles Populaires Kanak in New Caledonia » (Université de Canterbury)", "url": "https://ir.canterbury.ac.nz/items/570d5fe0-e28c-474c-a3f7-279a59807ae9"},
+        {"label": "Enfants des EPK de Canala, 1985 (CNRS Images)", "url": "https://images.cnrs.fr/en/node/28051"},
+        {"label": "Savoirs kanak et transposition didactique (Présence kanak)", "url": "https://presencekanak.com/wp-content/uploads/2020/12/savoirs-kanaks-autochtones-transposition-didactique.pdf"}
       ]
     }
   ]

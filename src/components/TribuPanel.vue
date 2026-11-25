@@ -1,6 +1,5 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import PhotoFigure from './PhotoFigure.vue'
 
 const props = defineProps({
   tribu: { type: Object, required: true },
@@ -24,8 +23,6 @@ const localisation = computed(() => {
   <div class="tribu-backdrop" @click.self="emit('close')" @keydown.esc="emit('close')">
     <dialog open class="tribu-panel" aria-modal="true" aria-labelledby="tribu-title">
       <button ref="closeBtn" class="tribu-close" aria-label="Fermer" @click="emit('close')">×</button>
-
-      <PhotoFigure :image="tribu.image" :alt="`Tribu de ${tribu.nom}`" />
 
       <header class="tribu-head">
         <img :src="CASE_IMG" alt="" />

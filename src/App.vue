@@ -53,7 +53,6 @@ async function loadTribus() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
     tribus.value = ((await res.json()).tribus || [])
       .filter((t) => t.id && Array.isArray(t.coords))
-      .map((t) => (t.image?.url ? { ...t, image: { ...t.image, url: resolveUrl(t.image.url) } } : t))
   } catch (e) {
     console.warn('Tribus non chargées :', e.message)
   }
@@ -179,7 +178,8 @@ const visibleCommunes = computed(() => {
 const selectedTribu = computed(() => visibleTribus.value.find((t) => t.id === selectedTribuId.value) || null)
 const selectedCommune = computed(() => visibleCommunes.value.find((c) => c.id === selectedCommuneId.value) || null)
 const plainName = (s) => String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
-const tribuCountOf = (commune) => tribus.value.filter((t) => plainName(t.commune) === plainName(commune.nom)).length
+const byName = (a, b) => a.nom.localeCompare(b.nom, 'fr')
+const tribusOfCommune = (commune) => tribus.value.filter((t) => plainName(t.commune) === plainName(commune.nom)).sort(byName)
 const focusTarget = computed(() => {
   if (!focus.value) return null
   const list = focus.value.type === 'tribu' ? tribus.value : communes.value
@@ -217,10 +217,13 @@ function selectAire(id) {
   selectedAireId.value = id
 }
 // Aires et provinces se superposeraient : afficher l'une masque l'autre.
-function toggleAires() {
-  showAires.value = !showAires.value
-  if (showAires.value) showProvinces.value = false
+function toggleZone(zone) {
+  const next = !zone.value
+  for (const z of [showAires, showProvinces]) z.value = false
+  zone.value = next
 }
+const toggleAires = () => toggleZone(showAires)
+const toggleProvinces = () => toggleZone(showProvinces)
 
 /* ---------- Provinces ---------- */
 const provinceList = computed(() => (provinces.value?.features || []).map((f) => f.properties))
@@ -237,16 +240,17 @@ function selectProvince(id) {
   clearSelections()
   selectedProvinceId.value = id
 }
-function toggleProvinces() {
-  showProvinces.value = !showProvinces.value
-  if (showProvinces.value) showAires.value = false
-}
 watch(showAires, (v) => {
   if (!v) selectedAireId.value = null
 })
 watch(showProvinces, (v) => {
   if (!v) selectedProvinceId.value = null
 })
+
+// Depuis la fiche d'une commune : on montre la tribu choisie (comme une recherche).
+function openTribu(id) {
+  chooseFromSearch({ type: 'tribu', id })
+}
 
 // Depuis la fiche d'une aire ou d'une province : on montre la commune choisie (comme une recherche).
 function openCommuneFromZone(id) {
@@ -480,8 +484,9 @@ onBeforeUnmount(() => {
       v-if="selectedCommune"
       :key="selectedCommune.id"
       :commune="selectedCommune"
-      :tribu-count="tribuCountOf(selectedCommune)"
+      :tribus="tribusOfCommune(selectedCommune)"
       @close="selectedCommuneId = null"
+      @select-tribu="openTribu"
     />
 
     <AirePanel

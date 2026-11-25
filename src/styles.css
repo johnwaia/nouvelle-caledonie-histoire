@@ -124,6 +124,8 @@ button { font: inherit; cursor: pointer; }
 .pin.pin-logo { width: 34px; height: 34px; background: none; border: 0; box-shadow: none; }
 .pin.pin-logo img { width: 34px; height: 34px; display: block; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5)); }
 .pin.pin-logo::after { inset: -4px; }
+/* Urne des référendums */
+.pin.pin-urne, .pin.pin-urne img { width: var(--size); height: var(--size); }
 /* Drapeau, poing levé, usine : plantés par leur pied, sans halo rond */
 .pin.pin-flag, .pin.pin-flag img { width: var(--size); height: var(--size); }
 .pin.pin-flag { transform-origin: var(--foot); }
@@ -149,7 +151,7 @@ button { font: inherit; cursor: pointer; }
 /* Tribus : une case par tribu */
 .tribu-icon { background: none; border: 0; }
 .tribu {
-  display: block; width: 26px; height: 22px;
+  display: block; width: 18px; height: 15px;
   transform-origin: 50% 85%;
   transition: transform 0.2s, filter 0.2s;
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));

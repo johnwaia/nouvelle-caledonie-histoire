@@ -41,10 +41,9 @@ const MATCH = {
 const old = JSON.parse(readFileSync(FILE, 'utf8'))
 const documented = new Map(
   (old.tribus || [])
-    .filter((t) => t.origines || t.evenements?.length)
+    .filter((t) => t.origines || t.evenements?.length || t.ajoutManuel)
     .map(({ apparition, apparitionSource, ...t }) => [t.id, t]),
 )
-const previousImages = new Map((old.tribus || []).filter((t) => t.image).map((t) => [t.id, t.image]))
 
 const url = SERVICE + '?' + new URLSearchParams({ where: "type='TRIBU'", outFields: '*', outSR: '4326', resultRecordCount: '2000', f: 'json' })
 const res = await fetch(url)
@@ -76,8 +75,6 @@ for (const f of features) {
   const doc = documented.get(id)
   // Les champs rédigés à la main sont prioritaires (sauf la position officielle).
   const entry = doc ? { ...base, ...doc, nom: doc.nom, coords: base.coords } : base
-  // L'image (photo de maison commune, etc.) est conservée pour toutes les tribus.
-  if (!entry.image && previousImages.has(id)) entry.image = previousImages.get(id)
   list.push(entry)
   documented.delete(id)
 }

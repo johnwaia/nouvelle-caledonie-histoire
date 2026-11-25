@@ -89,8 +89,8 @@ const CASE_IMG = import.meta.env.BASE_URL + 'images/case_kanak_icone.png'
 const tribuIcon = L.divIcon({
   className: 'tribu-icon',
   html: `<span class="tribu"><img class="tribu-case" src="${CASE_IMG}" alt=""></span>`,
-  iconSize: [26, 22],
-  iconAnchor: [13, 19],
+  iconSize: [18, 15],
+  iconAnchor: [9, 13],
 })
 
 /*
@@ -191,6 +191,7 @@ const FEET = { drapeau_: [0.2, 0.93], foulard_rouge: [0.44, 1], usine_nickel: [0
 const footOf = (e) => Object.entries(FEET).find(([name]) => e.logo?.includes(name))?.[1]
 const pinSize = (e) => {
   if (e.logo?.includes('usine_nickel')) return 56 // la fumée occupe le haut de l'image
+  if (e.logo?.includes('urne')) return 44 // la croix du boycott doit laisser voir l'urne
   if (footOf(e)) return 42
   return e.logo ? 34 : 28
 }
@@ -257,32 +258,47 @@ for (let r = 5; r <= 150; r += 5) {
   }
 }
 const PIN_GAP = 3 // espace minimal entre deux points
+const SOUTH_REACH = 65 // éloignement maximal d'un point « auSud » (sinon il change d'île)
 const FOOT_MARGIN = 7 // largeur de terre exigée autour du pied d'un logo planté
 
 // Décalage de chaque point (en pixels) : au plus près de son lieu, sans recouvrir un autre point
 // de la carte et, autant que possible, sur la terre ferme.
+// Les événements « auSud » (events.json) sont posés en dernier, plus bas que tous les autres.
 function layoutPins(list) {
   const placed = [] // centres et tailles des points déjà posés
-  return list.map((e) => {
+  const spots = new Map()
+  let southOf = -Infinity // bas des points ordinaires
+  for (const e of [...list].sort((a, b) => !!a.auSud - !!b.auSud)) {
     const base = map.latLngToContainerPoint(e.coords)
     const size = pinSize(e)
     const [fx, fy] = footOf(e) || [0.5, 0.5]
     const center = ([dx, dy]) => ({ x: base.x + dx + size * (0.5 - fx), y: base.y + dy + size * (0.5 - fy), size })
     const isFree = (spot) => {
       const c = center(spot)
+      if (e.auSud && c.y < southOf) return false
       return placed.every((q) => {
         const min = (c.size + q.size) / 2 + PIN_GAP
         return Math.abs(c.x - q.x) >= min || Math.abs(c.y - q.y) >= min
       })
     }
     const m = footOf(e) ? FOOT_MARGIN : 0
+    const footOnLand = ([dx, dy]) => isOnLand(map.containerPointToLatLng(base.add([dx, dy])))
     const around = m ? [[0, 0], [m, 0], [-m, 0], [0, m], [0, -m]] : [[0, 0]]
     const onLand = ([dx, dy]) =>
       around.every(([mx, my]) => isOnLand(map.containerPointToLatLng(base.add([dx + mx, dy + my]))))
-    const spot = SPOTS.find((o) => isFree(o) && onLand(o)) || SPOTS.find(isFree) || SPOTS[0]
-    placed.push(center(spot))
-    return spot
-  })
+    const near = e.auSud ? SPOTS.filter(([dx, dy]) => Math.hypot(dx, dy) <= SOUTH_REACH) : SPOTS
+    const spot =
+      near.find((o) => isFree(o) && onLand(o)) ||
+      near.find((o) => isFree(o) && footOnLand(o)) ||
+      near.find(isFree) ||
+      SPOTS.find(isFree) ||
+      SPOTS[0]
+    const c = center(spot)
+    placed.push(c)
+    if (!e.auSud) southOf = Math.max(southOf, c.y + c.size / 2)
+    spots.set(e, spot)
+  }
+  return list.map((e) => spots.get(e))
 }
 
 function render() {
@@ -320,6 +336,7 @@ function render() {
     const cls = [
       'pin',
       it.e.logo && 'pin-logo',
+      it.e.logo?.includes('urne') && 'pin-urne',
       foot && 'pin-flag',
       selected && 'selected',
       fresh && (yearChanged ? 'entering' : 'fresh'),
@@ -444,7 +461,7 @@ function syncTribus() {
     const marker = L.marker(t.coords, { pane: 'tribus', icon: tribuIcon, keyboard: true, alt: `Tribu de ${t.nom}` })
     marker.bindTooltip(`<strong>Tribu de ${esc(t.nom)}</strong><br><span>${esc(t.commune)}${t.aire ? ' · aire ' + esc(t.aire) : ''}</span>`, {
       direction: 'top',
-      offset: [0, -16],
+      offset: [0, -11],
       className: 'pin-tooltip',
     })
     marker.on('click', () => emit('select-tribu', id))
