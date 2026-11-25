@@ -109,7 +109,7 @@ const old = readAll(reader(db))
 const previous = new Map(old.communes.map((c) => [c.id, c]))
 
 const out = []
-for (const [nom, titre, province, aire] of COMMUNES) {
+async function importCommune([nom, titre, province, aire]) {
   const id = slug(nom)
   process.stdout.write(`${nom}… `)
   const r = await wiki({
@@ -140,6 +140,9 @@ for (const [nom, titre, province, aire] of COMMUNES) {
   })
   console.log(`${coords ? 'position ✓' : 'position ✗'} · histoire ${histoire ? histoire.length + ' car.' : '✗'}`)
 }
+
+// Une commune après l'autre, pour ne pas surcharger Wikipédia.
+await COMMUNES.reduce((previousOnes, commune) => previousOnes.then(() => importCommune(commune)), Promise.resolve())
 
 transaction(db, () => out.forEach((c) => saveCommune(db, c)))
 db.close()

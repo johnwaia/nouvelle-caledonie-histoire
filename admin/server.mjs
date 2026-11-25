@@ -9,7 +9,7 @@ import { openDb } from '../database/db.mjs'
 import { handle, ApiError, MAX_UPLOAD } from '../src/db/api.js'
 
 const PORT = Number(process.env.PORT) || 5180
-const HOSTS = [`127.0.0.1:${PORT}`, `localhost:${PORT}`]
+const HOSTS = new Set([`127.0.0.1:${PORT}`, `localhost:${PORT}`])
 const db = openDb()
 
 const STATIC = {
@@ -27,7 +27,10 @@ function readBody(req) {
       size += c.length
       if (size <= MAX_UPLOAD) chunks.push(c)
     })
-    req.on('end', () => (size > MAX_UPLOAD ? reject(new ApiError(413, 'Fichier trop lourd (8 Mo au maximum)')) : resolve(Buffer.concat(chunks))))
+    req.on('end', () => {
+      if (size > MAX_UPLOAD) reject(new ApiError(413, 'Fichier trop lourd (8 Mo au maximum)'))
+      else resolve(Buffer.concat(chunks))
+    })
     req.on('error', reject)
   })
 }
@@ -38,11 +41,16 @@ const readJson = async (req) => {
     throw e.status ? e : new ApiError(400, 'Requête illisible')
   }
 }
+
+// Corps attendu : les octets d'une image envoyée, sinon une fiche en JSON.
+async function readPayload(req, path) {
+  if (req.method === 'POST' && path.startsWith('images/')) return readBody(req)
+  if (req.method === 'POST' || req.method === 'PUT') return readJson(req)
+  return undefined
+}
 async function api(req, url) {
   const path = url.pathname.slice('/api/'.length) + url.search
-  const isUpload = req.method === 'POST' && path.startsWith('images/')
-  const body = isUpload ? await readBody(req) : ['POST', 'PUT'].includes(req.method) ? await readJson(req) : undefined
-  return handle(db, req.method, path, body)
+  return handle(db, req.method, path, await readPayload(req, path))
 }
 
 function sendImage(res, id) {
@@ -60,7 +68,7 @@ createServer(async (req, res) => {
   }
   try {
     // Seule la page d'administration elle-même peut appeler l'API (pas un autre site ouvert dans le navigateur).
-    if (!HOSTS.includes(req.headers.host)) throw new ApiError(403, 'Accès refusé')
+    if (!HOSTS.has(req.headers.host)) throw new ApiError(403, 'Accès refusé')
     const url = new URL(req.url, `http://${req.headers.host}`)
     if (req.method !== 'GET' && req.headers.origin !== url.origin) throw new ApiError(403, 'Accès refusé')
     if (url.pathname.startsWith('/api/')) return json(200, await api(req, url))

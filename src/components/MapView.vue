@@ -215,25 +215,21 @@ function inPolygon(lon, lat, rings) {
 // Index calculé une seule fois : chaque polygone avec son rectangle englobant, pour n'examiner
 // en détail que les quelques polygones autour du point (plus de 2 000 îles et îlots au total).
 let landIndex = null
-function buildLandIndex(geojson) {
-  const index = []
-  for (const f of geojson?.features || []) {
-    const g = f.geometry
-    for (const rings of g.type === 'MultiPolygon' ? g.coordinates : [g.coordinates]) {
-      let minX = Infinity
-      let minY = Infinity
-      let maxX = -Infinity
-      let maxY = -Infinity
-      for (const [x, y] of rings[0]) {
-        if (x < minX) minX = x
-        if (x > maxX) maxX = x
-        if (y < minY) minY = y
-        if (y > maxY) maxY = y
-      }
-      index.push({ minX, minY, maxX, maxY, rings })
-    }
+// Polygone (liste d'anneaux) et son rectangle englobant
+function withBounds(rings) {
+  const box = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity, rings }
+  for (const [x, y] of rings[0]) {
+    box.minX = Math.min(box.minX, x)
+    box.maxX = Math.max(box.maxX, x)
+    box.minY = Math.min(box.minY, y)
+    box.maxY = Math.max(box.maxY, y)
   }
-  return index
+  return box
+}
+const polygonsOf = (g) => (g.type === 'MultiPolygon' ? g.coordinates : [g.coordinates])
+function buildLandIndex(geojson) {
+  const features = geojson?.features || []
+  return features.flatMap((f) => polygonsOf(f.geometry).map(withBounds))
 }
 const landCache = new Map() // résultats déjà calculés (point arrondi à ~10 m)
 function isOnLand(latlng) {

@@ -32,7 +32,7 @@ export async function openBrowserDb(bytes) {
       },
       all(...params) {
         const rows = []
-        query(sql, params, (r) => void rows.push(r))
+        query(sql, params, (r) => rows.push(r))
         return rows
       },
     }),

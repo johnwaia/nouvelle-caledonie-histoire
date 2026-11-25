@@ -81,8 +81,10 @@ async function call(method, path, body) {
   return result
 }
 
+const countLabel = (n) => (n > 1 ? `${n} modifications` : `${n} modification`)
+
 function showPending() {
-  $('pending').textContent = changes ? `${changes} modification${changes > 1 ? 's' : ''} à publier` : 'Tout est publié'
+  $('pending').textContent = changes ? `${countLabel(changes)} à publier` : 'Tout est publié'
   $('publish').disabled = !changes || publishing
   $('publish').textContent = publishing ? 'Publication…' : 'Publier'
 }
@@ -100,7 +102,7 @@ async function publish() {
     tree: [{ path: DB_PATH, mode: '100644', type: 'blob', sha: blob.sha }],
   })
   const commit = await github('POST', '/git/commits', {
-    message: `data: mise à jour depuis l'administration (${published} modification${published > 1 ? 's' : ''})`,
+    message: `data: mise à jour depuis l'administration (${countLabel(published)})`,
     tree: tree.sha,
     parents: [head.commit],
   })

@@ -8,9 +8,12 @@
 const LINKS = { kind: 'rows', cols: [['label', 'Libellé'], ['url', 'https://…']] }
 const names = (type, key = 'nom') => () => state[type].map((x) => [x[key], x[key]])
 
+const storageOf = (i) => (i.size ? `en base, ${Math.round(i.size / 1024)} Ko` : 'lien')
+const usageOf = (i) => (i.uses ? `utilisée ${i.uses} fois` : 'non utilisée')
+
 const TYPES = {
   events: {
-    label: 'Événements', title: (e) => e.title, sub: (e) => `${e.date} · ${e.place}`, sort: (a, b) => parseInt(a.date) - parseInt(b.date) || a.date.localeCompare(b.date),
+    label: 'Événements', title: (e) => e.title, sub: (e) => `${e.date} · ${e.place}`, sort: (a, b) => Number.parseInt(a.date, 10) - Number.parseInt(b.date, 10) || a.date.localeCompare(b.date),
     fields: [
       ['title', 'Titre'],
       ['date', 'Date', { half: true, hint: 'AAAA, AAAA-MM ou AAAA-MM-JJ' }],
@@ -84,7 +87,7 @@ const TYPES = {
   },
   images: {
     label: 'Images', title: (i) => i.id.split('/').pop().split('?')[0],
-    sub: (i) => `${i.size ? `en base, ${Math.round(i.size / 1024)} Ko` : 'lien'} · ${i.uses ? `utilisée ${i.uses} fois` : 'non utilisée'}`,
+    sub: (i) => [storageOf(i), usageOf(i)].join(' · '),
   },
 }
 
@@ -120,12 +123,9 @@ async function call(method, path, body) {
   if (method !== 'GET') backend.onChange?.()
   return data
 }
-export async function attempt(fn) {
-  try {
-    await fn()
-  } catch (e) {
-    toast(e.message, true)
-  }
+// Lance une action asynchrone ; en cas d'échec, affiche le message d'erreur.
+export function attempt(action) {
+  action().catch((e) => toast(e.message, true))
 }
 const refresh = async () => (state = await call('GET', 'state'))
 const mayLeave = () => !dirty || confirm('Abandonner les modifications non enregistrées ?')
