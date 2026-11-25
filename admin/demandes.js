@@ -45,6 +45,7 @@ function diffWords(before, after) {
 function diffNode({ before, after, added }) {
   const box = el('p', { className: 'diff' })
   if (added || !before) box.append(el('ins', { textContent: after }))
+  else if (!after) box.append(el('del', { textContent: before }))
   else {
     for (const [kind, text] of diffWords(before, after)) {
       box.append(kind === 'same' ? text : el(kind, { textContent: text }))
@@ -54,13 +55,18 @@ function diffNode({ before, after, added }) {
 }
 
 /* ---------- Détail ---------- */
+const BADGES = { add: 'Ajout', edit: 'Modifié', remove: 'Supprimé' }
+function changeKind(row) {
+  if (row.added || !row.before) return 'add'
+  return row.after ? 'edit' : 'remove'
+}
 function changeNode(row) {
-  const badge = row.added || !row.before ? 'Ajout' : 'Modifié'
+  const kind = changeKind(row)
   return el(
     'section',
     { className: 'change' },
-    el('h3', {}, row.label, ' ', el('span', { className: `badge ${badge === 'Ajout' ? 'add' : 'edit'}`, textContent: badge })),
-    row.stale && el('p', { className: 'warning', textContent: 'Attention : ce champ a été modifié depuis l’envoi de la demande.' }),
+    el('h3', {}, row.label, ' ', el('span', { className: `badge ${kind}`, textContent: BADGES[kind] })),
+    row.stale && el('p', { className: 'warning', textContent: 'Attention : ce contenu a été modifié ou supprimé depuis l’envoi de la demande.' }),
     diffNode(row),
   )
 }
@@ -83,7 +89,7 @@ export function demandeNode(d, item, { onPublish, onDelete }) {
     !item && el('p', { className: 'warning', textContent: 'Cette fiche n’existe plus : la demande ne peut pas être publiée.' }),
     item && pending && el('p', { className: 'hint', textContent: 'En vert : ce qui est ajouté. En rouge barré : ce qui est retiré.' }),
     // Une demande publiée est comparée à ce que le visiteur avait vu, car la fiche contient déjà le changement.
-    ...(item ? describeProposal(pending ? item : { ...item, ...d.before, histoireManuelle: d.before?.histoire }, d).map(changeNode) : []),
+    ...(item ? describeProposal(pending ? item : { ...item, ...d.before, histoireManuelle: d.before?.histoire, sources: d.sourceEdits?.map((s) => s.before) }, d).map(changeNode) : []),
     el('div', { className: 'actions' }, pending && item && publish, remove),
   )
 }

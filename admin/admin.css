@@ -80,3 +80,4 @@ legend { padding: 0 0.4rem; font-weight: 600; }
 .badge.add { background: #d3f2d9; color: #14532d; }
 .badge.edit { background: #fdeec8; color: #7c4a03; }
 .warning { color: #991b1b; font-weight: 600; }
+.badge.remove { background: #fbdada; color: #991b1b; }

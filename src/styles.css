@@ -497,3 +497,9 @@ button { font: inherit; cursor: pointer; }
 .propose-actions button { padding: 0.55rem 1rem; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
 .propose-actions .propose-send { border-color: var(--primary); background: var(--primary); color: #fff; font-weight: 600; }
 .propose-actions .propose-send:disabled { opacity: 0.6; cursor: default; }
+.propose-source { display: grid; grid-template-columns: 1fr auto; gap: 0.3rem 0.6rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); }
+.propose-source:last-child { padding-bottom: 0; border-bottom: 0; }
+.propose-source input[type='url'] { grid-row: 2; }
+.propose-source button { grid-column: 2; grid-row: 1 / 3; align-self: center; padding: 0.4rem 0.7rem; border: 1px solid #e3b4b4; border-radius: 8px; background: #fff; color: #b91c1c; }
+.propose-source.removed input { background: #fbeaea; color: #991b1b; text-decoration: line-through; }
+.propose-source.removed button { border-color: var(--line); color: var(--primary); }

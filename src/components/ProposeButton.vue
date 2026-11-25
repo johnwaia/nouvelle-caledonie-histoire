@@ -27,6 +27,7 @@ function reset() {
     values: Object.fromEntries(Object.keys(fields).map((f) => [f, fieldValue(props.type, props.item, f)])),
     text: '',
     date: '',
+    sources: (props.item.sources || []).map((s) => ({ before: { label: s.label, url: s.url }, label: s.label || '', url: s.url || '', removed: false })),
     source: { label: '', url: '' },
     comment: '',
     author: '',
@@ -44,6 +45,8 @@ async function open() {
 function close() {
   isOpen.value = false
 }
+
+const isSourceChanged = (s) => s.removed || s.label.trim() !== (s.before.label || '') || s.url.trim() !== (s.before.url || '')
 
 function buildProposal() {
   const p = {
@@ -63,6 +66,7 @@ function buildProposal() {
     ...p,
     changes: Object.fromEntries(changed.map((f) => [f, form.values[f]])),
     before: Object.fromEntries(changed.map((f) => [f, before(f)])),
+    sourceEdits: form.sources.filter(isSourceChanged).map((s) => (s.removed ? { before: s.before } : { before: s.before, after: { label: s.label, url: s.url } })),
   }
 }
 async function post(proposal) {
@@ -133,11 +137,22 @@ async function submit() {
               <textarea v-if="f.long" v-model="form.values[key]" rows="7" maxlength="8000" :required="f.required"></textarea>
               <input v-else v-model="form.values[key]" maxlength="300" :required="f.required" />
             </label>
+
+            <fieldset v-if="form.sources.length">
+              <legend>Sources actuelles</legend>
+              <div v-for="(s, i) in form.sources" :key="i" class="propose-source" :class="{ removed: s.removed }">
+                <input v-model="s.label" maxlength="400" required :disabled="s.removed" :aria-label="`Source ${i + 1} : titre`" />
+                <input v-model="s.url" type="url" maxlength="1000" placeholder="https://…" :disabled="s.removed" :aria-label="`Source ${i + 1} : lien`" />
+                <button type="button" :aria-label="`${s.removed ? 'Rétablir' : 'Supprimer'} la source ${i + 1}`" @click="s.removed = !s.removed">
+                  {{ s.removed ? 'Rétablir' : 'Supprimer' }}
+                </button>
+              </div>
+            </fieldset>
           </template>
 
           <fieldset>
-            <legend>Source <small>(recommandée)</small></legend>
-            <label>Titre ou nom <input v-model="form.source.label" maxlength="200" placeholder="livre, article, personne…" /></label>
+            <legend>{{ form.action === 'ajout' ? 'Source' : 'Nouvelle source' }} <small>(recommandée)</small></legend>
+            <label>Titre ou nom <input v-model="form.source.label" maxlength="400" placeholder="livre, article, personne…" /></label>
             <label>Lien <input v-model="form.source.url" type="url" maxlength="1000" placeholder="https://…" /></label>
           </fieldset>
           <label>Message à l'administration <small>(facultatif)</small><textarea v-model="form.comment" rows="2" maxlength="2000"></textarea></label>
