@@ -5,8 +5,13 @@
  * Demande : { type, action, targetId, targetName, changes, before, sourceEdits, text, date, source, comment, author }
  *  - action « modification » : changes = nouvelles valeurs des champs, before = valeurs vues par le visiteur
  *    sourceEdits = [{ before, after }] : sources corrigées, ou supprimées si after est absent
+ *  - action « creation » (événement seulement) : event = nouvelle fiche complète, sans identifiant ;
+ *    targetId = identifiant souhaité, tiré du titre
  *  - action « ajout » : text = informations à ajouter (date facultative pour une tribu)
  */
+import { checkEvent } from './checks.js'
+import { slug } from '../utils/text.js'
+
 export const PROPOSAL_FIELDS = {
   events: {
     title: { label: 'Titre', required: true },
@@ -26,9 +31,10 @@ export const PROPOSAL_FIELDS = {
   },
 }
 export const TYPE_LABELS = { events: 'Événement', tribus: 'Tribu', communes: 'Commune' }
-export const ACTION_LABELS = { ajout: 'Ajout d’informations', modification: 'Modification' }
+export const ACTION_LABELS = { ajout: 'Ajout d’informations', modification: 'Modification', creation: 'Nouvel événement' }
 export const STATUS_LABELS = { en_attente: 'En attente', publiee: 'Publiée' }
 const MAX_SOURCE_EDITS = 50
+const MAX_LINKS = 20
 const LIMITS = { name: 200, field: 8000, label: 400, url: 1000, date: 40, comment: 2000, author: 200 }
 
 // L'histoire d'une commune est affichée (et modifiée) dans sa version manuelle si elle existe.
@@ -70,11 +76,75 @@ function cleanSourceEdits(edits) {
   })
 }
 
+const EVENT_REQUIRED = { title: 'Titre', date: 'Date', category: 'Catégorie', place: 'Texte du lieu', description: 'Description' }
+const isHttp = (url) => /^https?:\/\//.test(url)
+const orUndefined = (v) => v || undefined
+
+// Image d'un nouvel événement : seulement un lien (un visiteur n'envoie pas de fichier).
+function cleanImage(image) {
+  const url = clean(image?.url, LIMITS.url)
+  if (!url) return undefined
+  const source = clean(image.source, LIMITS.url)
+  if (!isHttp(url)) throw new Error("Le lien de l'image doit commencer par https://")
+  if (source && !isHttp(source)) throw new Error("La page d'origine de l'image doit commencer par https://")
+  return { url, alt: orUndefined(clean(image.alt, LIMITS.label)), credit: orUndefined(clean(image.credit, LIMITS.label)), source: orUndefined(source) }
+}
+const cleanLinks = (list, cleanLink) => (Array.isArray(list) ? list.slice(0, MAX_LINKS).map(cleanLink).filter(Boolean) : [])
+function cleanVideo(video) {
+  const label = clean(video?.label, LIMITS.label)
+  const url = clean(video?.url, LIMITS.url)
+  if (!label && !url) return undefined
+  if (!isHttp(url)) throw new Error('Le lien de la vidéo doit commencer par https://')
+  return { url, ...(label && { label }) }
+}
+
+function cleanEvent(raw) {
+  const logo = clean(raw?.logo, LIMITS.name)
+  if (logo && !/^images\/logos\/[^/\\]+$/.test(logo)) throw new Error('Logo inconnu')
+  const event = {
+    title: clean(raw?.title, LIMITS.name),
+    date: clean(raw?.date, LIMITS.date),
+    endDate: orUndefined(clean(raw?.endDate, LIMITS.date)),
+    dateLabel: orUndefined(clean(raw?.dateLabel, LIMITS.name)),
+    category: clean(raw?.category, LIMITS.name),
+    approx: raw?.approx === true || undefined,
+    auSud: raw?.auSud === true || undefined,
+    place: clean(raw?.place, LIMITS.name),
+    coords: Array.isArray(raw?.coords) ? raw.coords : null,
+    description: clean(raw?.description, LIMITS.field),
+    logo: orUndefined(logo),
+    image: cleanImage(raw?.image),
+    sources: cleanLinks(raw?.sources, cleanSource),
+    videos: cleanLinks(raw?.videos, cleanVideo),
+  }
+  const missing = Object.keys(EVENT_REQUIRED).find((f) => !event[f])
+  if (missing) throw new Error(`Le champ « ${EVENT_REQUIRED[missing]} » est obligatoire.`)
+  return event
+}
+
+function cleanCreation(raw) {
+  if (raw.type !== 'events') throw new Error('Demande invalide')
+  const event = cleanEvent(raw.event)
+  const targetId = slug(event.title).slice(0, 80).replace(/-$/, '') || 'evenement'
+  const { errors } = checkEvent({ id: targetId, ...event })
+  if (errors.length) throw new Error(errors.join('\n'))
+  return {
+    type: raw.type,
+    action: raw.action,
+    targetId,
+    targetName: event.title,
+    event,
+    comment: clean(raw.comment, LIMITS.comment),
+    author: clean(raw.author, LIMITS.author),
+  }
+}
+
 // Ne garde que les champs connus, aux bonnes longueurs. Lève une erreur compréhensible si la demande est invalide.
 export function cleanProposal(raw) {
   const type = raw?.type
   const action = raw?.action
   if (!Object.hasOwn(PROPOSAL_FIELDS, type) || !Object.hasOwn(ACTION_LABELS, action)) throw new Error('Demande invalide')
+  if (action === 'creation') return cleanCreation(raw)
   const p = {
     type,
     action,
@@ -109,6 +179,14 @@ function applySourceEdits(sources, edits) {
     const i = list.findIndex((s) => sameSource(s, before))
     return i < 0 ? list : list.toSpliced(i, 1, ...(after ? [after] : []))
   }, sources || [])
+}
+
+// Nouvelle fiche d'une demande de création : si l'identifiant est déjà pris, un numéro lui est ajouté.
+export function createdEvent(p, events) {
+  const taken = new Set(events.map((e) => e.id))
+  let id = p.targetId
+  for (let n = 2; taken.has(id); n++) id = `${p.targetId}-${n}`
+  return { id, ...p.event }
 }
 
 // Fiche telle qu'elle serait après publication de la demande.
@@ -148,4 +226,25 @@ export function describeProposal(item, p) {
   }
   if (p.source) rows.push({ label: 'Source', before: '', after: sourceText(p.source), added: true })
   return rows
+}
+
+// Contenu d'une demande de création, dans l'ordre du formulaire
+export function describeCreation({ event }, categories) {
+  const rows = [
+    ['Titre', event.title],
+    ['Date', event.date],
+    ['Date de fin', event.endDate],
+    ['Texte affiché à la place de la date', event.dateLabel],
+    ['Catégorie', categories.find((c) => c.id === event.category)?.label || event.category],
+    ['Date approximative', event.approx && 'Oui'],
+    ['Placer sous les autres points de l’année', event.auSud && 'Oui'],
+    ['Lieu', event.place],
+    ['Point sur la carte', event.coords ? event.coords.join(', ') : 'Aucun (hors de l’archipel)'],
+    ['Description', event.description],
+    ['Logo sur la carte', event.logo?.split('/').pop()],
+    ['Image', event.image && [event.image.url, event.image.alt, event.image.credit, event.image.source].filter(Boolean).join('\n')],
+    ['Sources', event.sources.map(sourceText).join('\n')],
+    ['Vidéos', event.videos.map(sourceText).join('\n')],
+  ]
+  return rows.filter(([, after]) => after).map(([label, after]) => ({ label, before: '', after, added: true }))
 }

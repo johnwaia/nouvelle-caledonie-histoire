@@ -56,6 +56,8 @@ Git ne sait pas fusionner deux versions de la base : éviter de la modifier sur 
 
 Chaque fiche (événement, tribu, commune) a un bouton « Proposer un ajout ou une modification ». La demande n'est pas publiée : elle arrive dans l'onglet « Demande de modifications » de l'administration, où elle peut être publiée ou supprimée.
 
+Le bouton « Ajouter un événement » de l'en-tête ouvre le même formulaire que l'administration (image par lien seulement, sans envoi de fichier). Le nouvel événement arrive lui aussi dans cet onglet et n'est créé qu'au moment de sa publication.
+
 Les demandes sont reçues par un service Cloudflare (`worker/`) et gardées dans sa base D1, privée et séparée de la base du site. Le visiteur n'a pas besoin de compte (5 envois par heure au maximum). L'administration s'identifie auprès du service avec son jeton GitHub, vérifié par GitHub et jamais conservé.
 
 Installation, une seule fois (compte Cloudflare gratuit) :
@@ -69,6 +71,8 @@ npx wrangler@4 secret put IP_SALT --config worker/wrangler.toml   # une longue p
 ```
 
 Puis mettre l'adresse affichée par `deploy` dans `.env.production` (`VITE_DEMANDES_URL`) et publier le site. Sans cette adresse, le bouton est masqué.
+
+Les règles de `src/db/proposals.js` sont aussi utilisées par le service : après les avoir modifiées, le redéployer (`npx wrangler@4 deploy --config worker/wrangler.toml`).
 
 Pour tout essayer en local : `npm run test-local` lance le service, le site (http://localhost:5190) et l'administration (http://127.0.0.1:5191) sur une copie de la base ; `npm run test-local -- --reset` repart de zéro. Il faut être connecté à GitHub (`gh auth login`) pour lire les demandes.
 
@@ -101,6 +105,7 @@ src/db/api.js, checks.js    actions de l'administration et règles de validation
 src/components/MapView.vue       carte Leaflet et marqueurs
 src/components/TimelineBar.vue   frise chronologique
 src/components/SearchBox.vue     recherche (tribus / communes)
+src/components/ProposeEventButton.vue  ajout d’un événement par un visiteur (demande)
 src/components/EventModal.vue    fiche d'un événement
 src/components/TribuPanel.vue    fiche d'une tribu
 src/components/CommunePanel.vue  fiche d'une commune

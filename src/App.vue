@@ -8,6 +8,7 @@ import CommunePanel from './components/CommunePanel.vue'
 import SearchBox from './components/SearchBox.vue'
 import AirePanel from './components/AirePanel.vue'
 import ProvincePanel from './components/ProvincePanel.vue'
+import ProposeEventButton from './components/ProposeEventButton.vue'
 import { loadDatabase } from './db/client'
 import { parseDate, toDecimal, formatEventDate } from './utils/dates'
 
@@ -18,6 +19,7 @@ const loading = ref(true)
 const error = ref('')
 const categories = ref({})
 const events = ref([])
+const logos = ref([]) // logos illustrés déjà utilisés, proposés pour un nouvel événement
 
 const selectedYear = ref(null)
 const caseIcon = import.meta.env.BASE_URL + 'images/case_kanak_icone.png'
@@ -66,6 +68,7 @@ async function load() {
   try {
     const data = await loadDatabase()
     categories.value = data.categories
+    logos.value = [...new Set(data.events.map((e) => e.logo).filter(Boolean))].sort()
     events.value = data.events.map(normalize).filter(Boolean).sort((a, b) => a.t - b.t)
     tribus.value = data.tribus
     communes.value = data.communes.map((c) => (c.image ? { ...c, image: { ...c.image, url: resolveUrl(c.image.url) } } : c))
@@ -360,6 +363,13 @@ onBeforeUnmount(() => {
           <span class="long">{{ showProvinces ? 'Masquer les provinces' : 'Afficher les provinces' }}</span>
           <span class="short">Provinces</span>
         </button>
+        <ProposeEventButton
+          :categories="categories"
+          :communes="communes"
+          :tribus="tribus"
+          :logos="logos"
+          :disabled="loading || !!error"
+        />
       </div>
     </header>
 

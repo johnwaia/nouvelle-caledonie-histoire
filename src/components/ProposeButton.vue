@@ -1,6 +1,7 @@
 <script setup>
 import { computed, nextTick, reactive, ref } from 'vue'
 import { PROPOSAL_FIELDS, TYPE_LABELS, cleanProposal, fieldValue } from '../db/proposals'
+import { DEMANDES_URL as API, sendDemande } from '../utils/demandes'
 
 /*
  * Bouton « Proposer une modification » d'une fiche, et son formulaire.
@@ -10,7 +11,6 @@ const props = defineProps({
   type: { type: String, required: true }, // events | tribus | communes
   item: { type: Object, required: true },
 })
-const API = import.meta.env.VITE_DEMANDES_URL
 const fields = PROPOSAL_FIELDS[props.type]
 const name = computed(() => props.item.title || props.item.nom)
 
@@ -69,25 +69,11 @@ function buildProposal() {
     sourceEdits: form.sources.filter(isSourceChanged).map((s) => (s.removed ? { before: s.before } : { before: s.before, after: { label: s.label, url: s.url } })),
   }
 }
-async function post(proposal) {
-  let res
-  try {
-    res = await fetch(`${API}/demandes`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...proposal, website: form.website }),
-    })
-  } catch {
-    throw new Error('Le service est injoignable. Vérifiez votre connexion et réessayez.')
-  }
-  const data = await res.json().catch(() => ({}))
-  if (!res.ok) throw new Error(data.error || "La demande n'a pas pu être envoyée.")
-}
 async function submit() {
   error.value = ''
   sending.value = true
   try {
-    await post(cleanProposal(buildProposal()))
+    await sendDemande(cleanProposal(buildProposal()), form.website)
     sent.value = true
   } catch (e) {
     error.value = e.message

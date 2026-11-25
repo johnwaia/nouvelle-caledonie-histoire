@@ -8,7 +8,7 @@
 import { $, attempt, attemptWithProgress, el, norm, slug, toast } from './dom.js'
 import { demandeNode, demandeSummary, demandeTitle } from './demandes.js'
 import { placeField } from './place.js'
-import { applyProposal } from '../src/db/proposals.js'
+import { applyProposal, createdEvent } from '../src/db/proposals.js'
 
 /* ---------- Description des formulaires ---------- */
 const LINKS = { kind: 'rows', cols: [['label', 'Libellé'], ['url', 'https://…']] }
@@ -409,10 +409,17 @@ const targetOf = (d) => state[d.type].find((x) => x.id === d.targetId)
 function renderDemande(d) {
   $('editor').replaceChildren(
     demandeNode(d, targetOf(d), {
+      categories: state.categories,
+      duplicate: state.events.find((e) => norm(e.title) === norm(d.targetName)),
       onPublish: () => publishDemande(d),
       onDelete: () => deleteDemande(d),
     }),
   )
+}
+function applyDemande(d) {
+  if (d.action !== 'creation') return call('PUT', `${d.type}/${encodeURIComponent(d.targetId)}`, applyProposal(targetOf(d), d))
+  const event = createdEvent(d, state.events)
+  return call('POST', `events/${encodeURIComponent(event.id)}`, event)
 }
 function publishDemande(d) {
   const others = backend.pending?.() && !applied.has(d.id)
@@ -421,7 +428,7 @@ function publishDemande(d) {
   attemptWithProgress('Application de la demande…', async () => {
     // Si une publication a échoué après l'application, on ne l'applique pas une seconde fois.
     if (!applied.has(d.id)) {
-      await call('PUT', `${d.type}/${encodeURIComponent(d.targetId)}`, applyProposal(targetOf(d), d))
+      await applyDemande(d)
       applied.add(d.id)
       await refresh()
     }

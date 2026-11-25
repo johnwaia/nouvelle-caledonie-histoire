@@ -486,7 +486,7 @@ button { font: inherit; cursor: pointer; }
 .propose-dialog form { display: grid; gap: 0.8rem; }
 .propose-dialog label { display: block; font-weight: 600; font-size: 0.92rem; }
 .propose-dialog small { font-weight: 400; color: var(--muted); }
-.propose-dialog input:not([type='radio']), .propose-dialog textarea { display: block; width: 100%; margin-top: 0.25rem; padding: 0.5rem 0.6rem; border: 1px solid var(--line); border-radius: 8px; font: inherit; font-weight: 400; resize: vertical; }
+.propose-dialog input:not([type='radio'], [type='checkbox']), .propose-dialog textarea, .propose-dialog select { display: block; width: 100%; margin-top: 0.25rem; padding: 0.5rem 0.6rem; border: 1px solid var(--line); border-radius: 8px; font: inherit; font-weight: 400; resize: vertical; }
 .propose-dialog fieldset { display: grid; gap: 0.5rem; margin: 0; padding: 0.7rem; border: 1px solid var(--line); border-radius: 10px; }
 .propose-dialog legend { font-weight: 600; font-size: 0.92rem; }
 .propose-choice label { font-weight: 400; }
@@ -503,3 +503,20 @@ button { font: inherit; cursor: pointer; }
 .propose-source button { grid-column: 2; grid-row: 1 / 3; align-self: center; padding: 0.4rem 0.7rem; border: 1px solid #e3b4b4; border-radius: 8px; background: #fff; color: #b91c1c; }
 .propose-source.removed input { background: #fbeaea; color: #991b1b; text-decoration: line-through; }
 .propose-source.removed button { border-color: var(--line); color: var(--primary); }
+
+/* Ajouter un événement (bouton de l'en-tête) */
+.add-event { border-color: var(--accent); }
+.add-event .plus { font-size: 1.2rem; line-height: 1; }
+.propose-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.8rem; align-items: end; }
+.propose-dialog label.check { display: flex; align-items: center; gap: 0.5rem; font-weight: 400; }
+.propose-dialog .radios { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; }
+.propose-dialog .hint { margin: 0; color: var(--muted); font-size: 0.88rem; }
+.propose-dialog [hidden] { display: none; }
+.propose-dialog fieldset > button, .propose-link button { justify-self: start; padding: 0.4rem 0.7rem; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--primary); }
+.propose-link { display: grid; grid-template-columns: 1fr 1fr auto; gap: 0.5rem; align-items: end; }
+.place-map { height: 260px; border: 1px solid var(--line); border-radius: 8px; z-index: 0; }
+.place-marker { border: 4px solid #fff; border-radius: 50%; background: #c53030; box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6); }
+@media (max-width: 760px) {
+  .propose-link { grid-template-columns: 1fr auto; }
+  .propose-link input[type='url'] { grid-row: 2; }
+}

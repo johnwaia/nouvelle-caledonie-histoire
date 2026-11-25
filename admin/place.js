@@ -1,5 +1,5 @@
 /*
- * Champ « Lieu » d'un événement : on choisit une commune ou une tribu, et le point se place seul sur la carte.
+ * Champ « Lieu » d'un événement (administration, et formulaire du site) : on choisit une commune ou une tribu, et le point se place seul sur la carte.
  * « Autre lieu » couvre les points précis (clic sur la carte) et les événements hors de l'archipel.
  */
 import { el, norm } from './dom.js'
@@ -59,10 +59,11 @@ export function placeField(value, { L, state, isNew }) {
   map.fitBounds(BOUNDS)
   const marker = L.marker([0, 0], { icon: L.divIcon({ className: 'place-marker', iconSize: [22, 22], iconAnchor: [11, 11] }), keyboard: false })
   // La carte est créée avant d'être affichée : elle se recadre quand sa taille est connue.
-  new ResizeObserver(() => {
+  const observer = new ResizeObserver(() => {
     map.invalidateSize()
     focusMap()
-  }).observe(mapBox)
+  })
+  observer.observe(mapBox)
   map.on('click', (e) => {
     if (kind !== 'autre') return
     setCoords([round(e.latlng.lat), round(e.latlng.lng)])
@@ -133,6 +134,10 @@ export function placeField(value, { L, state, isNew }) {
     get() {
       if (kind !== 'autre' && !currentChoice()) throw new Error(`Choisissez une ${kind} dans la liste.`)
       return { place: place.value.trim() || undefined, coords }
+    },
+    destroy() {
+      observer.disconnect()
+      map.remove()
     },
   }
 }

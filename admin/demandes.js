@@ -1,10 +1,10 @@
 // Onglet « Demande de modifications » : détail d'une demande, avec les différences mises en évidence.
-import { ACTION_LABELS, STATUS_LABELS, TYPE_LABELS, describeProposal } from '../src/db/proposals.js'
+import { ACTION_LABELS, STATUS_LABELS, TYPE_LABELS, describeCreation, describeProposal } from '../src/db/proposals.js'
 import { el } from './dom.js'
 
 const MAX_WORDS = 1500 // au-delà, la comparaison mot à mot serait trop lente
 export const formatDate = (iso) => new Date(iso).toLocaleString('fr-FR', { dateStyle: 'medium', timeStyle: 'short' })
-export const demandeTitle = (d) => `${TYPE_LABELS[d.type]} : ${d.targetName}`
+export const demandeTitle = (d) => `${d.action === 'creation' ? ACTION_LABELS.creation : TYPE_LABELS[d.type]} : ${d.targetName}`
 export const demandeSummary = (d) => [formatDate(d.createdAt), ACTION_LABELS[d.action], STATUS_LABELS[d.status]].join(' · ')
 
 /* ---------- Comparaison mot à mot ---------- */
@@ -72,9 +72,19 @@ function changeNode(row) {
 }
 const info = (label, value) => value && el('p', {}, el('strong', { textContent: `${label} : ` }), value)
 
-// item : fiche actuelle (absente si elle a été supprimée)
-export function demandeNode(d, item, { onPublish, onDelete }) {
+// Contenu à afficher. Une demande publiée est comparée à ce que le visiteur avait vu, car la fiche contient déjà le changement.
+function demandeRows(d, item, categories) {
+  if (d.action === 'creation') return describeCreation(d, categories)
+  if (!item) return []
+  const seen = d.status === 'en_attente' ? item : { ...item, ...d.before, histoireManuelle: d.before?.histoire, sources: d.sourceEdits?.map((s) => s.before) }
+  return describeProposal(seen, d)
+}
+
+// item : fiche actuelle (absente si elle a été supprimée) ; duplicate : événement portant déjà le titre proposé
+export function demandeNode(d, item, { categories, duplicate, onPublish, onDelete }) {
   const pending = d.status === 'en_attente'
+  const creation = d.action === 'creation'
+  const publishable = pending && (creation || item)
   const remove = el('button', { type: 'button', className: 'danger', textContent: 'Supprimer', onclick: onDelete })
   const publish = el('button', { type: 'button', className: 'primary', textContent: 'Publier', onclick: onPublish })
   return el(
@@ -86,10 +96,10 @@ export function demandeNode(d, item, { onPublish, onDelete }) {
     info('Statut', STATUS_LABELS[d.status]),
     info('Proposée par', d.author),
     info('Message', d.comment),
-    !item && el('p', { className: 'warning', textContent: 'Cette fiche n’existe plus : la demande ne peut pas être publiée.' }),
-    item && pending && el('p', { className: 'hint', textContent: 'En vert : ce qui est ajouté. En rouge barré : ce qui est retiré.' }),
-    // Une demande publiée est comparée à ce que le visiteur avait vu, car la fiche contient déjà le changement.
-    ...(item ? describeProposal(pending ? item : { ...item, ...d.before, histoireManuelle: d.before?.histoire, sources: d.sourceEdits?.map((s) => s.before) }, d).map(changeNode) : []),
-    el('div', { className: 'actions' }, pending && item && publish, remove),
+    !creation && !item && el('p', { className: 'warning', textContent: 'Cette fiche n’existe plus : la demande ne peut pas être publiée.' }),
+    creation && pending && duplicate && el('p', { className: 'warning', textContent: `Attention : un événement du même nom existe déjà (${duplicate.date}).` }),
+    publishable && !creation && el('p', { className: 'hint', textContent: 'En vert : ce qui est ajouté. En rouge barré : ce qui est retiré.' }),
+    ...demandeRows(d, item, categories).map(changeNode),
+    el('div', { className: 'actions' }, publishable && publish, remove),
   )
 }

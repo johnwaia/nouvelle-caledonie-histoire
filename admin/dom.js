@@ -6,12 +6,7 @@ export function el(tag, props = {}, ...children) {
   node.append(...children.filter((c) => c !== null && c !== undefined && c !== false))
   return node
 }
-export const norm = (s) =>
-  String(s ?? '')
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .toLowerCase()
-export const slug = (s) => norm(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+export { norm, slug } from '../src/utils/text.js'
 
 let toastTimer
 export function toast(message, error = false) {

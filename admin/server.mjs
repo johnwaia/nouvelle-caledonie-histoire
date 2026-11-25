@@ -27,6 +27,8 @@ const STATIC = {
   '/leaflet.js': ['../node_modules/leaflet/dist/leaflet-src.esm.js', 'text/javascript'],
   '/leaflet.css': ['../node_modules/leaflet/dist/leaflet.css', 'text/css'],
   '/src/db/proposals.js': ['../src/db/proposals.js', 'text/javascript'],
+  '/src/db/checks.js': ['../src/db/checks.js', 'text/javascript'],
+  '/src/utils/text.js': ['../src/utils/text.js', 'text/javascript'],
 }
 for (const name of ['local', 'ui', 'dom', 'place', 'demandes']) STATIC[`/admin/${name}.js`] = [`${name}.js`, 'text/javascript']
 
