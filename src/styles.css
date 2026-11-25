@@ -124,13 +124,19 @@ button { font: inherit; cursor: pointer; }
 .pin.pin-logo { width: 34px; height: 34px; background: none; border: 0; box-shadow: none; }
 .pin.pin-logo img { width: 34px; height: 34px; display: block; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5)); }
 .pin.pin-logo::after { inset: -4px; }
-/* Urne des référendums */
-.pin.pin-urne, .pin.pin-urne img { width: var(--size); height: var(--size); }
+/* Urne des référendums, billet */
+.pin.pin-grand, .pin.pin-grand img { width: var(--size); height: var(--size); }
 /* Drapeau, poing levé, usine : plantés par leur pied, sans halo rond */
 .pin.pin-flag, .pin.pin-flag img { width: var(--size); height: var(--size); }
 .pin.pin-flag { transform-origin: var(--foot); }
 .pin.pin-flag img { filter: none; }
 .pin.pin-flag::after { display: none; }
+/* Groupe d'événements : leur nombre */
+.pin-count {
+  position: absolute; top: -8px; right: -9px; z-index: 1; min-width: 17px; padding: 0 4px; border-radius: 9px;
+  background: #fff; color: var(--ink); font: 700 11px/17px system-ui, sans-serif; text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
 .pin:hover { transform: scale(1.25); }
 .pin::after {
   content: ''; position: absolute; inset: -6px; border-radius: 50%;
@@ -522,8 +528,11 @@ button { font: inherit; cursor: pointer; }
 }
 
 /* Messages de disponibilité et brouillons */
-.app-notices { position: absolute; right: 10px; bottom: 30px; z-index: 1000; display: grid; gap: 0.5rem; width: min(320px, calc(100% - 70px)); pointer-events: none; }
+.app-notices { position: absolute; right: 10px; top: 10px; z-index: 1000; display: grid; gap: 0.5rem; width: min(320px, calc(100% - 70px)); pointer-events: none; }
 .queue-notice { padding: 0.6rem 0.8rem; border-left: 4px solid var(--accent); border-radius: 10px; background: #fff; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2); font-size: 0.85rem; pointer-events: auto; }
 .queue-notice p { margin: 0 0 0.4rem; }
 .queue-notice button, .app-status button, .propose-draft button { padding: 0.25rem 0.6rem; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--primary); font-size: 0.85rem; }
 .propose-draft { margin: 0; padding: 0.5rem 0.7rem; border-radius: 8px; background: var(--sand); font-size: 0.9rem; }
+@media (max-width: 760px) {
+  .app-notices { top: 125px; }
+}

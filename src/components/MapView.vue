@@ -167,6 +167,7 @@ onMounted(() => {
   layer = L.layerGroup().addTo(map)
   render()
   map.on('zoomend', replacePins)
+  map.on('click', () => setOpenGroup(null)) // clic à côté des points : le groupe se referme
 
   // Tant que l'utilisateur n'a pas manipulé la carte, on recadre l'archipel entier
   // à chaque redimensionnement (apparition de la frise, rotation d'écran…).
@@ -190,8 +191,10 @@ onBeforeUnmount(() => {
 // Logos plantés dans le sol (drapeau, poing levé) : position de leur pied dans l'image, en fraction de sa taille.
 const FEET = { drapeau_: [0.2, 0.93], foulard_rouge: [0.44, 1], usine_nickel: [0.5, 1] }
 const footOf = (e) => Object.entries(FEET).find(([name]) => e.logo?.includes(name))?.[1]
+const categoryName = (e) => props.categories[e.category]?.label || ''
 const pinSize = (e) => {
   if (e.logo?.includes('usine_nickel')) return 56 // la fumée occupe le haut de l'image
+  if (e.logo?.includes('billet')) return 48
   if (e.logo?.includes('urne')) return 44 // la croix du boycott doit laisser voir l'urne
   if (e.auSud && map.getSize().x <= 760) return 32 // mobile : peu de terre au sud
   if (footOf(e)) return 42
@@ -261,19 +264,21 @@ const FOOT_MARGIN = 7 // largeur de terre exigée autour du pied d'un logo plant
 
 // Décalage de chaque point (en pixels) : au plus près de son lieu, sans recouvrir un autre point
 // de la carte et, autant que possible, sur la terre ferme.
-// Les événements « auSud » sont posés en dernier, plus bas que tous les autres.
+// Les événements « auSud » sont posés après les autres, plus bas qu'eux s'il reste de la terre.
+// Les points d'un groupe ouvert viennent à la fin : les autres ne changent pas de place.
+const rank = (e) => (e.unfolded ? 2 : e.auSud ? 1 : 0)
 function layoutPins(list) {
   const placed = [] // centres et tailles des points déjà posés
   const spots = new Map()
   let southOf = -Infinity // bas des points ordinaires
-  for (const e of [...list].sort((a, b) => !!a.auSud - !!b.auSud)) {
+  for (const e of [...list].sort((a, b) => rank(a) - rank(b))) {
     const base = map.latLngToContainerPoint(e.coords)
     const size = pinSize(e)
     const [fx, fy] = footOf(e) || [0.5, 0.5]
     const center = ([dx, dy]) => ({ x: base.x + dx + size * (0.5 - fx), y: base.y + dy + size * (0.5 - fy), size })
-    const isFree = (spot, tightness = 1) => {
+    const isFree = (spot, tightness = 1, south = e.auSud) => {
       const c = center(spot)
-      if (e.auSud && c.y < southOf) return false
+      if (south && c.y < southOf) return false
       return placed.every((q) => {
         const min = ((c.size + q.size) / 2 + PIN_GAP) * tightness
         return Math.abs(c.x - q.x) >= min || Math.abs(c.y - q.y) >= min
@@ -287,9 +292,12 @@ function layoutPins(list) {
     const near = e.auSud ? SPOTS.filter(([dx, dy]) => Math.hypot(dx, dy) <= SOUTH_REACH) : SPOTS
     const spot =
       near.find((o) => isFree(o) && onLand(o)) ||
+      // Pas assez de terre au sud : plutôt poser un point « auSud » à côté des autres que dans l'eau.
+      (e.auSud &&
+        (near.find((o) => isFree(o, 1, false) && onLand(o)) ||
+          near.find((o) => isFree(o, 0.8, false) && onLand(o)) ||
+          near.find((o) => isFree(o, 0.7, false) && footOnLand(o)))) ||
       near.find((o) => isFree(o) && footOnLand(o)) ||
-      // Pas assez de place : plutôt serrer les points « auSud » que d'en poser un dans l'eau.
-      (e.auSud && (near.find((o) => isFree(o, 0.8) && footOnLand(o)) || near.find((o) => isFree(o, 0.6) && footOnLand(o)))) ||
       near.find((o) => isFree(o)) ||
       SPOTS.find((o) => isFree(o)) ||
       SPOTS[0]
@@ -301,10 +309,37 @@ function layoutPins(list) {
   return list.map((e) => spots.get(e))
 }
 
+/* ---------- Groupes : événements de même catégorie au même endroit ---------- */
+let openGroup = null // groupe dont les points sont affichés (un seul à la fois)
+const groupKey = (e) => `groupe:${e.category}@${e.coords}`
+
+// Un événement qui a son propre logo reste toujours visible.
+function groupEvents(list) {
+  const groups = new Map()
+  for (const e of list) {
+    const key = e.logo ? e.id : groupKey(e)
+    groups.set(key, [...(groups.get(key) || []), e])
+  }
+  return [...groups].flatMap(([key, events]) => {
+    if (events.length === 1) return events
+    if (key === openGroup) return events.map((e, i) => (i ? { ...e, unfolded: true } : e))
+    const { category, coords, place } = events[0]
+    return [{ id: key, events, category, coords, place, title: `${events.length} événements` }]
+  })
+}
+function setOpenGroup(key) {
+  if (key === openGroup) return
+  openGroup = key
+  render()
+}
+
 function render() {
   if (!map) return
-  const items = props.events.filter((e) => e.coords).map((e) => ({ e }))
   const selId = props.selectedEvent?.id
+  if (props.year !== lastYear) openGroup = null
+  // Fiche ouverte depuis la frise ou la recherche : son point est montré.
+  if (props.selectedEvent?.coords) openGroup = props.selectedEvent.logo ? null : groupKey(props.selectedEvent)
+  const items = groupEvents(props.events.filter((e) => e.coords)).map((e) => ({ e }))
   const signature = items.map((i) => i.e.id).join('|') + '#' + selId
   if (signature === lastSignature) return
   lastSignature = signature
@@ -336,7 +371,7 @@ function render() {
     const cls = [
       'pin',
       it.e.logo && 'pin-logo',
-      it.e.logo?.includes('urne') && 'pin-urne',
+      /urne|billet/.test(it.e.logo) && 'pin-grand',
       foot && 'pin-flag',
       selected && 'selected',
       fresh && (yearChanged ? 'entering' : 'fresh'),
@@ -354,21 +389,21 @@ function render() {
       // Logo de l'événement (selon sa catégorie) dans un rond de la couleur de la catégorie
       html: `<span class="${cls}" style="--c:${color};--size:${size}px;--foot:${fx * 100}% ${fy * 100}%">${
         it.e.logo ? `<img src="${esc(it.e.logo)}" alt="">` : iconFor(it.e.category)
-      }</span>`,
+      }${it.e.events ? `<b class="pin-count">${it.e.events.length}</b>` : ''}</span>`,
       iconSize: [size, size],
       iconAnchor: [ax - dx, ay - dy],
     })
     const marker = L.marker(it.e.coords, {
       icon,
       keyboard: true,
-      alt: it.e.title,
+      alt: it.e.events ? `${it.e.title}, ${categoryName(it.e)} : afficher` : it.e.title,
       zIndexOffset: selected ? 1000 : 0,
     })
     marker.bindTooltip(
-      `<strong>${esc(it.e.title)}</strong><br><span>${esc(it.e.dateText)} · ${esc(it.e.place)}</span>`,
+      `<strong>${esc(it.e.title)}</strong><br><span>${esc(it.e.events ? categoryName(it.e) : it.e.dateText)} · ${esc(it.e.place)}</span>`,
       { direction: 'top', offset: [dx, dy - (foot ? size * 0.85 : 14)], className: 'pin-tooltip' },
     )
-    marker.on('click', () => emit('select', it.e.id))
+    marker.on('click', () => (it.e.events ? setOpenGroup(it.e.id) : emit('select', it.e.id)))
     marker.addTo(layer)
     nextIds.add(it.e.id)
   })

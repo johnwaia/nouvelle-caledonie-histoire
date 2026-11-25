@@ -130,7 +130,8 @@ src/utils/dates.js          dates (format français)
 - **Dates** : `AAAA`, `AAAA-MM` ou `AAAA-MM-JJ` ; année négative avant notre ère.
 - **Lieu** : choisir une commune ou une tribu, le point se place seul. « Autre lieu » permet de cliquer sur la carte, ou de ne mettre aucun point (hors de l'archipel).
 - **Logo** : `urne.svg` pour un référendum, `urne_boycott.svg` s'il a été boycotté ; sans logo, l'icône de la catégorie est affichée.
-- **Placer sous les autres points de l'année** : utilisé pour les drapeaux de 1984.
+- **Placer sous les autres points de l'année** : utilisé pour les drapeaux de 1984 ; sans effet s'il ne reste pas assez de terre en dessous.
+- **Groupes** : les événements d'une même année, d'une même catégorie et exactement au même endroit sont réunis en un point (un clic les affiche), sauf ceux qui ont un logo.
 
 ## Mettre à jour les tribus et les communes
 
