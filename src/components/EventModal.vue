@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, onMounted } from 'vue'
+import { computed, ref, onMounted, watch } from 'vue'
 import CategoryIcon from './CategoryIcon.vue'
 import ProposeButton from './ProposeButton.vue'
 
@@ -14,6 +14,20 @@ onMounted(() => dialog.value?.focus())
 
 const paragraphs = computed(() => String(props.event.description || '').split(/\n\s*\n/).filter(Boolean))
 const videos = computed(() => (props.event.videos || []).filter((v) => v?.url))
+
+// Image principale puis images supplémentaires, en défilement horizontal.
+const gallery = computed(() => [props.event.image, ...(props.event.photos || [])].filter((i) => i?.url))
+const strip = ref(null)
+const current = ref(0)
+const onScroll = () => (current.value = Math.round(strip.value.scrollLeft / strip.value.clientWidth))
+const go = (step) => strip.value.scrollTo({ left: (current.value + step) * strip.value.clientWidth, behavior: 'smooth' })
+watch(
+  () => props.event.id,
+  () => {
+    current.value = 0
+    if (strip.value) strip.value.scrollLeft = 0
+  },
+)
 </script>
 
 <template>
@@ -22,13 +36,22 @@ const videos = computed(() => (props.event.videos || []).filter((v) => v?.url))
     <dialog open ref="dialog" class="modal" aria-modal="true" aria-labelledby="ev-title" tabindex="-1">
       <button class="modal-close" aria-label="Fermer" title="Fermer (Échap)" @click="emit('close')">×</button>
 
-      <figure v-if="event.image?.url" class="modal-figure">
-        <div class="modal-frame" :style="{ '--img': `url(&quot;${event.image.url}&quot;)` }">
-          <img :src="event.image.url" :alt="event.image.alt || event.title" />
+      <figure v-if="gallery.length" class="modal-figure">
+        <div class="modal-gallery">
+          <div ref="strip" class="modal-strip" @scroll.passive="onScroll">
+            <div v-for="(img, i) in gallery" :key="img.url" class="modal-frame" :style="{ '--img': `url(&quot;${img.url}&quot;)` }">
+              <img :src="img.url" :alt="img.alt || event.title" :loading="i ? 'lazy' : undefined" />
+            </div>
+          </div>
+          <template v-if="gallery.length > 1">
+            <button type="button" class="gallery-nav prev" aria-label="Image précédente" :disabled="current === 0" @click="go(-1)">‹</button>
+            <button type="button" class="gallery-nav next" aria-label="Image suivante" :disabled="current === gallery.length - 1" @click="go(1)">›</button>
+            <span class="gallery-count" aria-live="polite">{{ current + 1 }} / {{ gallery.length }}</span>
+          </template>
         </div>
-        <figcaption v-if="event.image.credit">
-          <a v-if="event.image.source" :href="event.image.source" target="_blank" rel="noopener noreferrer">{{ event.image.credit }}</a>
-          <template v-else>{{ event.image.credit }}</template>
+        <figcaption v-if="gallery[current]?.credit">
+          <a v-if="gallery[current].source" :href="gallery[current].source" target="_blank" rel="noopener noreferrer">{{ gallery[current].credit }}</a>
+          <template v-else>{{ gallery[current].credit }}</template>
         </figcaption>
       </figure>
 

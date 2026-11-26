@@ -37,7 +37,18 @@ function readPeriods(all) {
   }))
 }
 
+// Images supplémentaires (une base publiée avant leur ajout n'a pas la table).
+function readPhotos(all) {
+  if (!all("SELECT 1 FROM sqlite_master WHERE name = 'event_images'").length) return () => []
+  const rows = all(
+    `SELECT event_id, position, image_id AS url, alt, images.credit, images.source FROM event_images
+     JOIN images ON images.id = event_images.image_id ORDER BY event_id, position`,
+  )
+  return groupBy(rows, 'event_id')
+}
+
 function readEvents(all) {
+  const photos = readPhotos(all)
   const sources = groupBy(all('SELECT * FROM event_sources ORDER BY event_id, position'), 'event_id')
   const videos = groupBy(all('SELECT * FROM event_videos ORDER BY event_id, position'), 'event_id')
   const rows = all(
@@ -56,6 +67,7 @@ function readEvents(all) {
       description: r.description,
       logo: r.logo_id,
       image: imageOf(r),
+      photos: photos(r.id),
       auSud: r.au_sud ? true : null,
       videos: videos(r.id),
     }),

@@ -32,6 +32,7 @@ const TYPES = {
       ['description', 'Description', { kind: 'text', long: true, hint: 'une ligne vide sépare les paragraphes' }],
       ['logo', 'Logo sur la carte', { kind: 'select', empty: 'Icône de la catégorie', options: () => state.images.filter((i) => i.id.startsWith('images/logos/')).map((i) => [i.id, i.id.slice(13)]) }],
       ['image', 'Image', { kind: 'image', folder: 'evenements' }],
+      ['photos', 'Autres images (affichées à la suite, défilement horizontal)', { kind: 'rows', cols: [['url', 'Image de la base ou lien https://…', 'image'], ['alt', 'Description'], ['credit', 'Crédit'], ['source', 'Page d’origine']] }],
       ['sources', 'Sources', LINKS],
       ['videos', 'Vidéos', LINKS],
     ],
@@ -231,9 +232,11 @@ const FIELDS = {
   rows(value, label, o) {
     const box = el('div')
     const addRow = (row = {}) => {
-      const controls = o.cols.map(([key, name, style]) =>
-        el(style === 'area' ? 'textarea' : 'input', { value: row[key] ?? '', placeholder: name, ariaLabel: `${label} : ${name}`, className: style === 'short' ? 'short' : '' }),
-      )
+      const controls = o.cols.map(([key, name, style]) => {
+        const c = el(style === 'area' ? 'textarea' : 'input', { value: row[key] ?? '', placeholder: name, ariaLabel: `${label} : ${name}`, className: style === 'short' ? 'short' : '' })
+        if (style === 'image') c.setAttribute('list', 'image-ids') // images de la base proposées (liste du champ « Image »)
+        return c
+      })
       const remove = el('button', { type: 'button', textContent: '×', ariaLabel: 'Retirer' })
       const line = el('div', { className: 'row' }, ...controls, remove)
       line.controls = controls

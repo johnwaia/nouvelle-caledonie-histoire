@@ -2,12 +2,19 @@
 import { ref, computed, watch } from 'vue'
 
 /*
- * Moteur de recherche : on choisit de chercher parmi les tribus ou les communes,
- * puis on sélectionne un résultat. La carte n'affiche alors que l'élément choisi.
+ * Moteur de recherche : on choisit de chercher parmi les tribus, les communes ou les événements,
+ * puis on sélectionne un résultat. Pour une tribu ou une commune, la carte n'affiche alors que l'élément choisi ;
+ * un événement s'ouvre dans sa fiche.
  */
+const MODES = [
+  { v: 'tribu', l: 'Tribus' },
+  { v: 'commune', l: 'Communes' },
+  { v: 'evenement', l: 'Événements' },
+]
 const props = defineProps({
   tribus: { type: Array, default: () => [] },
   communes: { type: Array, default: () => [] },
+  events: { type: Array, default: () => [] },
   focus: { type: Object, default: null }, // { type: 'tribu' | 'commune', id }
 })
 const emit = defineEmits(['choose', 'clear'])
@@ -20,11 +27,20 @@ const input = ref(null)
 
 const norm = (s) => String(s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
 
-const items = computed(() =>
-  mode.value === 'tribu'
-    ? props.tribus.map((t) => ({ id: t.id, label: t.nom, sub: [t.nomLocal, t.commune].filter(Boolean).join(' · '), keys: norm(`${t.nom} ${t.nomLocal || ''}`) }))
-    : props.communes.map((c) => ({ id: c.id, label: c.nom, sub: `Province ${c.province === 'Îles Loyauté' ? 'des îles Loyauté' : c.province}`, keys: norm(c.nom) })),
-)
+const items = computed(() => {
+  if (mode.value === 'tribu')
+    return props.tribus.map((t) => ({ id: t.id, label: t.nom, sub: [t.nomLocal, t.commune].filter(Boolean).join(' · '), keys: norm(`${t.nom} ${t.nomLocal || ''}`) }))
+  if (mode.value === 'commune')
+    return props.communes.map((c) => ({ id: c.id, label: c.nom, sub: `Province ${c.province === 'Îles Loyauté' ? 'des îles Loyauté' : c.province}`, keys: norm(c.nom) }))
+  // Événements : titre, lieu ou année ; résultats dans l'ordre chronologique.
+  return props.events.map((e, i) => ({ id: e.id, label: e.title, sub: `${e.dateText} · ${e.place}`, keys: norm(`${e.title} ${e.place} ${e.year}`), order: i }))
+})
+const PLACEHOLDERS = {
+  tribu: () => `Rechercher une tribu (${props.tribus.length})…`,
+  commune: () => 'Rechercher une commune…',
+  evenement: () => `Rechercher un événement (${props.events.length})…`,
+}
+const LABELS = { tribu: 'Rechercher une tribu', commune: 'Rechercher une commune', evenement: 'Rechercher un événement' }
 
 // Les noms qui commencent par la recherche d'abord, puis ceux qui la contiennent.
 const results = computed(() => {
@@ -36,7 +52,7 @@ const results = computed(() => {
     if (it.keys.split(' ').some((w) => w.startsWith(q)) || it.keys.startsWith(q)) starts.push(it)
     else if (it.keys.includes(q)) contains.push(it)
   }
-  const byLabel = (a, b) => a.label.localeCompare(b.label, 'fr')
+  const byLabel = mode.value === 'evenement' ? (a, b) => a.order - b.order : (a, b) => a.label.localeCompare(b.label, 'fr')
   return [...starts.toSorted(byLabel), ...contains.toSorted(byLabel)].slice(0, 30)
 })
 
@@ -87,7 +103,7 @@ const onBlur = () => setTimeout(() => (open.value = false), 150)
     <!-- Choix du type de recherche : vrais boutons radio, présentés comme deux onglets -->
     <fieldset class="search-modes">
       <legend class="visually-hidden">Rechercher parmi</legend>
-      <label v-for="m in [{ v: 'tribu', l: 'Tribus' }, { v: 'commune', l: 'Communes' }]" :key="m.v" :class="{ on: mode === m.v }">
+      <label v-for="m in MODES" :key="m.v" :class="{ on: mode === m.v }">
         <input v-model="mode" type="radio" name="search-mode" :value="m.v" />
         {{ m.l }}
       </label>
@@ -99,8 +115,8 @@ const onBlur = () => setTimeout(() => (open.value = false), 150)
         ref="input"
         v-model="query"
         type="search"
-        :placeholder="mode === 'tribu' ? `Rechercher une tribu (${tribus.length})…` : 'Rechercher une commune…'"
-        :aria-label="mode === 'tribu' ? 'Rechercher une tribu' : 'Rechercher une commune'"
+        :placeholder="PLACEHOLDERS[mode]()"
+        :aria-label="LABELS[mode]"
         aria-controls="search-results"
         autocomplete="off"
         @focus="open = true"

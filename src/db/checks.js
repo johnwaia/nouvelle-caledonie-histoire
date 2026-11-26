@@ -51,6 +51,10 @@ export function checkEvent(e) {
   checkLinks(e.sources, 'source', {}, r)
   checkLinks(e.videos, 'vidéo', { labelRequired: false, urlRequired: true }, r)
   if (e.image && !e.image.credit) r.warn('image sans crédit')
+  for (const p of e.photos || []) {
+    if (!p.url) r.error('autre image : image obligatoire')
+    else if (!p.credit) r.warn(`image ${p.url} sans crédit`)
+  }
   return r
 }
 export function checkTribu(t) {

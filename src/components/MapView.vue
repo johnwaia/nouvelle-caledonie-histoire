@@ -166,8 +166,18 @@ onMounted(() => {
   map.fitBounds(NC_BOUNDS)
   layer = L.layerGroup().addTo(map)
   render()
-  map.on('zoomend', replacePins)
-  map.on('click', () => setOpenGroup(null)) // clic à côté des points : le groupe se referme
+  // Zoom arrière : les groupes ouverts se referment.
+  let zoomBefore = map.getZoom()
+  map.on('zoomstart', () => (zoomBefore = map.getZoom()))
+  map.on('zoomend', () => {
+    if (map.getZoom() < zoomBefore) openGroup = null
+    replacePins()
+  })
+  // Clic à côté des points : le groupe se referme (et la vue revient, s'il avait fallu zoomer).
+  map.on('click', () => {
+    if (openGroup && groupZoomed) resetView()
+    setOpenGroup(null)
+  })
 
   // Tant que l'utilisateur n'a pas manipulé la carte, on recadre l'archipel entier
   // à chaque redimensionnement (apparition de la frise, rotation d'écran…).
@@ -235,15 +245,17 @@ function buildLandIndex(geojson) {
   return features.flatMap((f) => polygonsOf(f.geometry).map(withBounds))
 }
 const landCache = new Map() // résultats déjà calculés (point arrondi à ~10 m)
-function isOnLand(latlng) {
+// Île (polygone) sous un point, ou null en mer.
+function landAt(latlng) {
   if (!props.land) return true // contours pas encore chargés : on ne bloque rien
   landIndex ??= buildLandIndex(props.land)
   const key = `${latlng.lat.toFixed(4)},${latlng.lng.toFixed(4)}`
   if (landCache.has(key)) return landCache.get(key)
   const { lat, lng } = latlng
-  const result = landIndex.some(
-    (p) => lng >= p.minX && lng <= p.maxX && lat >= p.minY && lat <= p.maxY && inPolygon(lng, lat, p.rings),
-  )
+  const result =
+    landIndex.find(
+      (p) => lng >= p.minX && lng <= p.maxX && lat >= p.minY && lat <= p.maxY && inPolygon(lng, lat, p.rings),
+    ) || null
   if (landCache.size > 20000) landCache.clear()
   landCache.set(key, result)
   return result
@@ -258,6 +270,7 @@ for (let r = 5; r <= 150; r += 5) {
     SPOTS.push([r * Math.cos(a), r * Math.sin(a)])
   }
 }
+const ORDER_GAP = 15 // écart vertical (px) entre deux lieux à partir duquel leur ordre nord-sud est gardé
 const PIN_GAP = 3 // espace minimal entre deux points
 const SOUTH_REACH = 65 // éloignement maximal d'un point « auSud » (sinon il change d'île)
 const FOOT_MARGIN = 7 // largeur de terre exigée autour du pied d'un logo planté
@@ -271,7 +284,8 @@ function layoutPins(list) {
   const placed = [] // centres et tailles des points déjà posés
   const spots = new Map()
   let southOf = -Infinity // bas des points ordinaires
-  for (const e of [...list].sort((a, b) => rank(a) - rank(b))) {
+  // Du nord au sud : un point du nord ne se fait pas repousser plus bas par un point du sud.
+  for (const e of [...list].sort((a, b) => rank(a) - rank(b) || b.coords[0] - a.coords[0])) {
     const base = map.latLngToContainerPoint(e.coords)
     const size = pinSize(e)
     const [fx, fy] = footOf(e) || [0.5, 0.5]
@@ -284,13 +298,22 @@ function layoutPins(list) {
         return Math.abs(c.x - q.x) >= min || Math.abs(c.y - q.y) >= min
       })
     }
+    // Un lieu nettement plus au nord qu'un autre garde son point au-dessus du sien (et inversement).
+    const inOrder = (spot) => {
+      const c = center(spot)
+      return placed.every((q) => Math.abs(base.y - q.baseY) < ORDER_GAP || base.y < q.baseY === c.y < q.y)
+    }
     const m = footOf(e) ? FOOT_MARGIN : 0
-    const footOnLand = ([dx, dy]) => isOnLand(map.containerPointToLatLng(base.add([dx, dy])))
+    // Le point reste sur l'île de son lieu (sinon, sur un petit écran, il peut sauter sur une autre île).
+    const landOf = ([dx, dy]) => landAt(map.containerPointToLatLng(base.add([dx, dy])))
+    const home = landOf([0, 0]) || SPOTS.slice(0, 200).map(landOf).find(Boolean)
+    const isHome = (spot) => (home ? landOf(spot) === home : !!landOf(spot))
+    const footOnLand = (spot) => isHome(spot)
     const around = m ? [[0, 0], [m, 0], [-m, 0], [0, m], [0, -m]] : [[0, 0]]
-    const onLand = ([dx, dy]) =>
-      around.every(([mx, my]) => isOnLand(map.containerPointToLatLng(base.add([dx + mx, dy + my]))))
+    const onLand = ([dx, dy]) => around.every(([mx, my]) => isHome([dx + mx, dy + my]))
     const near = e.auSud ? SPOTS.filter(([dx, dy]) => Math.hypot(dx, dy) <= SOUTH_REACH) : SPOTS
     const spot =
+      near.find((o) => isFree(o) && onLand(o) && inOrder(o)) ||
       near.find((o) => isFree(o) && onLand(o)) ||
       // Pas assez de terre au sud : plutôt poser un point « auSud » à côté des autres que dans l'eau.
       (e.auSud &&
@@ -302,7 +325,7 @@ function layoutPins(list) {
       SPOTS.find((o) => isFree(o)) ||
       SPOTS[0]
     const c = center(spot)
-    placed.push(c)
+    placed.push({ ...c, baseY: base.y })
     if (!e.auSud) southOf = Math.max(southOf, c.y + c.size / 2)
     spots.set(e, spot)
   }
@@ -310,11 +333,13 @@ function layoutPins(list) {
 }
 
 /* ---------- Groupes : événements de même catégorie au même endroit ---------- */
+const GROUP_ZOOM = 10 // à partir de ce zoom, les groupes sont ouverts (et zoom d'un groupe ouvert sur petit écran)
 let openGroup = null // groupe dont les points sont affichés (un seul à la fois)
 const groupKey = (e) => `groupe:${e.category}@${e.coords}`
 
 // Un événement qui a son propre logo reste toujours visible.
 function groupEvents(list) {
+  if (map.getZoom() >= GROUP_ZOOM) return list
   const groups = new Map()
   for (const e of list) {
     const key = e.logo ? e.id : groupKey(e)
@@ -327,8 +352,16 @@ function groupEvents(list) {
     return [{ id: key, events, category, coords, place, title: `${events.length} événements` }]
   })
 }
-function setOpenGroup(key) {
+let groupZoomed = false // la carte a zoomé pour ouvrir le groupe
+function setOpenGroup(key, coords) {
   if (key === openGroup) return
+  // Petit écran : on zoome sur le lieu, puis les points s'affichent autour de lui.
+  if (key && coords && map.getSize().x <= 760 && map.getZoom() < GROUP_ZOOM) {
+    groupZoomed = true
+    map.flyTo(coords, GROUP_ZOOM, { duration: 0.6 })
+    map.once('moveend', () => setOpenGroup(key))
+    return
+  }
   openGroup = key
   render()
 }
@@ -403,7 +436,7 @@ function render() {
       `<strong>${esc(it.e.title)}</strong><br><span>${esc(it.e.events ? categoryName(it.e) : it.e.dateText)} · ${esc(it.e.place)}</span>`,
       { direction: 'top', offset: [dx, dy - (foot ? size * 0.85 : 14)], className: 'pin-tooltip' },
     )
-    marker.on('click', () => (it.e.events ? setOpenGroup(it.e.id) : emit('select', it.e.id)))
+    marker.on('click', () => (it.e.events ? setOpenGroup(it.e.id, it.e.coords) : emit('select', it.e.id)))
     marker.addTo(layer)
     nextIds.add(it.e.id)
   })
@@ -562,14 +595,28 @@ watch(
   },
 )
 
-// Recentre la carte si l'événement choisi est hors champ.
+// Zoom sur l'événement choisi (sans dézoomer si la carte est déjà plus proche).
+// Fiche fermée ou autre année : retour à la vue de tout l'archipel.
+const EVENT_ZOOM = 10
+// Fiche fermée d'un événement groupé : la carte reste zoomée tant que les autres événements
+// du groupe n'ont pas été ouverts.
+const visited = new Set()
+const groupDone = (ev) =>
+  !!ev.logo || props.events.filter((e) => !e.logo && e.coords && groupKey(e) === groupKey(ev)).every((e) => visited.has(e.id))
+function resetView() {
+  groupZoomed = false
+  visited.clear()
+  map.flyToBounds(NC_BOUNDS, { duration: 0.8 })
+}
 watch(
-  () => props.selectedEvent,
-  (ev) => {
-    if (!map || !ev?.coords) return
-    if (!map.getBounds().pad(-0.15).contains(ev.coords)) {
-      map.flyTo(ev.coords, Math.max(map.getZoom(), 8.5), { duration: 0.8 })
-    }
+  () => [props.selectedEvent, props.year],
+  ([ev, year], [prevEv, prevYear]) => {
+    if (!map) return
+    if (ev?.coords) {
+      visited.add(ev.id)
+      map.flyTo(ev.coords, Math.max(map.getZoom(), EVENT_ZOOM), { duration: 0.8 })
+    } else if (year !== prevYear) resetView()
+    else if (!ev && prevEv && (!prevEv.coords || groupDone(prevEv))) resetView()
   },
 )
 </script>

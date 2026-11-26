@@ -54,6 +54,7 @@ function normalize(raw) {
     ...raw,
     t,
     year: start.y,
+    month: start.m || 0, // 0 : mois inconnu
     tEnd: Number.isNaN(tEnd) ? null : tEnd,
     coords: Array.isArray(raw.coords) && raw.coords.length === 2 ? raw.coords : null,
     dateText: formatEventDate(raw),
@@ -93,7 +94,33 @@ const years = computed(() => {
   for (const e of events.value) counts.set(e.year, (counts.get(e.year) || 0) + 1)
   return [...counts].map(([year, count]) => ({ year, count })).sort((a, b) => a.year - b.year)
 })
-const visibleEvents = computed(() => events.value.filter((e) => e.year === selectedYear.value))
+const yearEvents = computed(() => events.value.filter((e) => e.year === selectedYear.value))
+
+// Année chargée (au moins MONTHS_FROM événements, ou choisie dans MONTH_YEARS) : la carte montre un mois à la fois.
+const MONTHS_FROM = 10
+const MONTH_YEARS = [1981, 1984]
+const MONTH_NAMES = ['janv.', 'févr.', 'mars', 'avril', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.']
+const months = computed(() => {
+  if (yearEvents.value.length < MONTHS_FROM && !MONTH_YEARS.includes(selectedYear.value)) return []
+  return [...new Set(yearEvents.value.map((e) => e.month))]
+    .sort((a, b) => (a || 13) - (b || 13))
+    .map((month) => ({ month, label: month ? MONTH_NAMES[month - 1] : 'Mois inconnu' }))
+})
+// Mois choisi pour une année ; par défaut, le premier mois de l'année. null : pas de choix par mois.
+const monthChoice = ref({ year: null, month: null })
+const selectedMonth = computed(() => {
+  if (!months.value.length) return null
+  if (monthChoice.value.year === selectedYear.value) return monthChoice.value.month
+  return months.value[0].month
+})
+const chooseMonth = (month) => (monthChoice.value = { year: selectedYear.value, month })
+// Autre année : le choix est oublié (sauf s'il vient d'être fait pour l'événement ouvert).
+watch(selectedYear, (year) => {
+  if (monthChoice.value.year !== year) monthChoice.value = { year: null, month: null }
+})
+const visibleEvents = computed(() =>
+  selectedMonth.value === null ? yearEvents.value : yearEvents.value.filter((e) => e.month === selectedMonth.value),
+)
 
 // Si l'année choisie n'existe plus (données rechargées), on passe à la plus proche.
 watch(years, (list) => {
@@ -203,6 +230,7 @@ function openCommuneFromZone(id) {
   chooseFromSearch({ type: 'commune', id })
 }
 function chooseFromSearch(f) {
+  if (f.type === 'evenement') return select(f.id)
   focus.value = f
   if (f.type === 'tribu') selectTribu(f.id)
   else selectCommune(f.id)
@@ -231,7 +259,10 @@ const select = (id) => {
 }
 // L'année suit l'événement ouvert (lien partagé, Précédent/Suivant, encart hors archipel…).
 watch(selected, (ev) => {
-  if (ev) selectedYear.value = ev.year
+  if (!ev) return
+  selectedYear.value = ev.year
+  // L'événement ouvert reste visible sur la carte : on passe à son mois s'il est masqué.
+  if (selectedMonth.value !== null && selectedMonth.value !== ev.month) monthChoice.value = { year: ev.year, month: ev.month }
 })
 const close = () => (selectedId.value = null)
 function go(delta) {
@@ -377,7 +408,7 @@ onBeforeUnmount(() => {
       </div>
     </header>
 
-    <main class="app-map">
+    <main class="app-map" :class="{ 'has-months': months.length }">
       <MapView
         :events="visibleEvents"
         :categories="categories"
@@ -399,10 +430,24 @@ onBeforeUnmount(() => {
         @select-aire="selectAire"
         @select-province="selectProvince"
       />
+      <!-- Année chargée : un mois à la fois -->
+      <nav v-if="months.length" class="month-bar" aria-label="Mois de l'année">
+        <button
+          v-for="m in months"
+          :key="m.month"
+          type="button"
+          :class="{ on: selectedMonth === m.month }"
+          :aria-pressed="selectedMonth === m.month"
+          @click="chooseMonth(m.month)"
+        >
+          {{ m.label }}
+        </button>
+      </nav>
       <SearchBox
         v-if="!loading && !error"
         :tribus="tribus"
         :communes="communes"
+        :events="events"
         :focus="focus"
         @choose="chooseFromSearch"
         @clear="clearFocus"

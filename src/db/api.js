@@ -76,6 +76,7 @@ function state(db) {
       .prepare(
         `SELECT images.*, length(image_data.data) AS size,
           (SELECT count(*) FROM events WHERE logo_id = images.id OR image_id = images.id)
+          + (SELECT count(*) FROM event_images WHERE image_id = images.id)
           + (SELECT count(*) FROM communes WHERE image_id = images.id) AS uses
          FROM images LEFT JOIN image_data ON image_id = images.id ORDER BY images.id`,
       )

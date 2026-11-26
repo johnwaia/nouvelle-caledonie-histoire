@@ -8,9 +8,9 @@ Site interactif (Vue 3 + Leaflet + SQLite) qui retrace l'histoire de la Nouvelle
 - **Frise chronologique** en bas : seules les années qui comptent au moins un événement y figurent. On la fait défiler à la souris, au doigt ou avec ← → (Début/Fin pour les extrémités).
 - **Une année à la fois** : la carte n'affiche que les événements de l'année choisie, avec un fondu au changement d'année. Les événements hors de l'archipel (Paris, Bougival…) sont listés dans un encart.
 - **Logos sur la carte** : drapeaux, casse-tête, usine… ou, à défaut, l'icône de la catégorie. Les référendums ont une urne, barrée d'une croix rouge s'ils ont été boycottés (1987 et 2021).
-- **Fiche d'événement** au clic : image, date, lieu, description, vidéos, sources. Échap ou un clic à côté la ferme ; ← → passent à l'événement précédent ou suivant. Lien partageable : `#evenement=<id>`.
+- **Fiche d'événement** au clic : image (plusieurs images défilent horizontalement), date, lieu, description, vidéos, sources. Échap ou un clic à côté la ferme ; ← → passent à l'événement précédent ou suivant. Lien partageable : `#evenement=<id>`.
 - **Tribus, communes, aires coutumières et provinces** : boutons de l'en-tête et fiche au clic. La fiche d'une commune liste ses tribus. Aires et provinces ne s'affichent pas en même temps. Liens partageables : `#tribu=<id>`, `#commune=<id>`.
-- **Recherche** d'une tribu ou d'une commune : la carte n'affiche plus que le résultat choisi.
+- **Recherche** d'une tribu ou d'une commune (la carte n'affiche plus que le résultat choisi), ou d'un événement par titre, lieu ou année (sa fiche s'ouvre).
 
 ## Lancer le projet
 
@@ -31,6 +31,7 @@ Toutes les informations et les images du site sont dans un seul fichier : `datab
 
 - **Sur le site** : le navigateur télécharge une copie sans les images et la lit avec [sql.js](https://sql.js.org). À la publication, chaque image de la base devient un fichier (`images/…`), chargé seulement quand il est affiché.
 - **Images** : stockées dans la base (`image_data`) ou simples liens `https://…` (Wikimedia Commons, CNRS).
+- **Plusieurs images par événement** : l'image principale (`events.image_id`) puis les autres (`event_images`), réglées dans l'administration sous « Autres images ».
 
 ### Modifier les données en ligne
 
@@ -111,7 +112,7 @@ src/db/proposals.js         règles des demandes de modification
 src/db/api.js, checks.js    actions de l'administration et règles de validation
 src/components/MapView.vue       carte Leaflet et marqueurs
 src/components/TimelineBar.vue   frise chronologique
-src/components/SearchBox.vue     recherche (tribus / communes)
+src/components/SearchBox.vue     recherche (tribus / communes / événements)
 src/components/ProposeEventButton.vue  ajout d’un événement par un visiteur (demande)
 src/components/EventModal.vue    fiche d'un événement
 src/components/TribuPanel.vue    fiche d'une tribu

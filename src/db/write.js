@@ -99,6 +99,8 @@ export function saveEvent(db, e) {
     au_sud: e.auSud ? 1 : 0,
     position: positionOf(db, 'events', e.id),
   })
+  const photos = (e.photos || []).filter((p) => p?.url).map((p) => ({ image_id: useImage(db, p), alt: p.alt }))
+  replaceChildren(db, 'event_images', 'event_id', e.id, ['image_id', 'alt'], photos)
   replaceChildren(db, 'event_sources', 'event_id', e.id, ['label', 'url'], e.sources)
   replaceChildren(db, 'event_videos', 'event_id', e.id, ['label', 'url'], e.videos)
 }

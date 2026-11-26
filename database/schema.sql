@@ -58,6 +58,15 @@ CREATE TABLE event_sources (
   PRIMARY KEY (event_id, position)
 ) STRICT;
 
+-- Images supplémentaires d'un événement, après l'image principale (events.image_id)
+CREATE TABLE event_images (
+  event_id TEXT NOT NULL REFERENCES events(id) ON DELETE CASCADE,
+  position INTEGER NOT NULL,
+  image_id TEXT NOT NULL REFERENCES images(id),
+  alt      TEXT,
+  PRIMARY KEY (event_id, position)
+) STRICT;
+
 CREATE TABLE event_videos (
   event_id TEXT NOT NULL REFERENCES events(id) ON DELETE CASCADE,
   position INTEGER NOT NULL,
