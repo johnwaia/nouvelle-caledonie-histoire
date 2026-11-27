@@ -5,7 +5,8 @@ import { DEMANDES_URL as API, sendDemande } from '../utils/demandes'
 import { readDraft, removeDraft, writeDraft } from '../utils/storage'
 
 /*
- * Bouton « Proposer une modification » d'une fiche, et son formulaire.
+ * Boutons « Ajouter » et « Modifier » d'une fiche, et leur formulaire.
+ * « Ajouter » : des informations à la suite du texte ; « Modifier » : les champs et les sources de la fiche.
  * La demande est envoyée à l'administration ; rien n'est publié directement.
  */
 const props = defineProps({
@@ -64,9 +65,11 @@ async function startOver() {
   await nextTick()
   removeDraft(draftId.value)
 }
-async function open() {
+const ACTIONS = { ajout: 'Ajouter des informations', modification: 'Modifier la fiche' }
+async function open(action) {
   reset()
   restore()
+  form.action = action
   await nextTick()
   isOpen.value = true
   await nextTick()
@@ -117,7 +120,10 @@ async function submit() {
 
 <template>
   <div v-if="API" class="propose">
-    <button type="button" class="propose-btn" @click="open">Proposer un ajout ou une modification</button>
+    <div class="propose-btns">
+      <button type="button" class="propose-btn" @click="open('ajout')">Ajouter</button>
+      <button type="button" class="propose-btn" @click="open('modification')">Modifier</button>
+    </div>
 
     <Teleport to="body">
       <!-- Les touches (Échap, flèches) ne doivent pas agir sur la fiche située dessous -->
@@ -136,15 +142,11 @@ async function submit() {
         </div>
 
         <form v-else @submit.prevent="submit">
+          <p class="propose-kicker">{{ ACTIONS[form.action] }}</p>
           <h2 id="propose-title">{{ TYPE_LABELS[type] }} : {{ name }}</h2>
           <p v-if="restored" class="propose-draft">
             Votre brouillon a été retrouvé. <button type="button" @click="startOver">Repartir de zéro</button>
           </p>
-          <fieldset class="propose-choice">
-            <legend>Que souhaitez-vous faire ?</legend>
-            <label><input v-model="form.action" type="radio" value="ajout" /> Ajouter des informations</label>
-            <label><input v-model="form.action" type="radio" value="modification" /> Modifier la fiche</label>
-          </fieldset>
 
           <template v-if="form.action === 'ajout'">
             <label v-if="type === 'tribus'">

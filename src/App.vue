@@ -249,6 +249,9 @@ function toggleCommunes() {
   focus.value = null
   showCommunes.value = !showCommunes.value
 }
+// Tribus ou communes : un seul des deux affichages à la fois.
+watch(showTribus, (on) => on && (showCommunes.value = false))
+watch(showCommunes, (on) => on && (showTribus.value = false))
 
 /* ---------- Sélection & navigation ---------- */
 const selected = computed(() => events.value.find((e) => e.id === selectedId.value) || null)

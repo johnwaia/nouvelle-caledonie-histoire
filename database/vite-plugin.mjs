@@ -8,7 +8,7 @@ import { DB_FILE, openDb, publicDatabase } from './db.mjs'
 function serviceWorker(bundle, images) {
   const scripts = Object.keys(bundle).filter((f) => f.startsWith('assets/') && !f.startsWith('assets/admin-'))
   const logos = images.filter((id) => id.startsWith('images/logos/'))
-  const files = [...scripts, ...logos, 'images/case_kanak_icone.png']
+  const files = [...scripts, ...logos, 'images/case_kanak_icone.png', 'images/case_kanak_tribu.png']
   const source = readFileSync(new URL('../src/sw.js', import.meta.url), 'utf8')
   const version = createHash('sha256').update(source + files.sort().join()).digest('hex').slice(0, 12)
   return source.replace('__VERSION__', version).replace("['__FILES__']", () => JSON.stringify(files.map(encodeURI)))

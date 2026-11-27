@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, watch, onMounted, onBeforeUnmount, toRaw } from 'vue'
 import L from 'leaflet'
 import { iconFor } from '../utils/icons'
 
@@ -84,14 +84,19 @@ const GreenLandLayer = L.GridLayer.extend({
   },
 })
 
-/* Icône de tribu : une case. */
-const CASE_IMG = import.meta.env.BASE_URL + 'images/case_kanak_icone.png'
-const tribuIcon = L.divIcon({
-  className: 'tribu-icon',
-  html: `<span class="tribu"><img class="tribu-case" src="${CASE_IMG}" alt=""></span>`,
-  iconSize: [18, 15],
-  iconAnchor: [9, 13],
-})
+/* Icône de tribu : une case, petite image avec son ombre déjà dessinée (un filtre CSS sur
+ * chacune des 347 cases ralentissait beaucoup la carte sur mobile). */
+const CASE_IMG = import.meta.env.BASE_URL + 'images/case_kanak_tribu.png'
+const tribuIconOf = (animated) =>
+  L.divIcon({
+    className: 'tribu-icon',
+    html: `<span class="tribu${animated ? ' tribu-new' : ''}"><img class="tribu-case" src="${CASE_IMG}" alt=""></span>`,
+    iconSize: [21, 18],
+    iconAnchor: [10.5, 14.5],
+  })
+const tribuIcon = tribuIconOf(false)
+const tribuIconNew = tribuIconOf(true)
+const ANIMATE_UP_TO = 30 // au-delà (toutes les tribus d'un coup), les cases apparaissent sans animation
 
 /*
  * Crédits de la carte : un petit bouton « i » qui affiche les mentions obligatoires
@@ -212,17 +217,42 @@ const pinSize = (e) => {
 }
 
 // Point dans un polygone GeoJSON (anneaux [lon, lat]), par la méthode du rayon.
-function inRing(lon, lat, ring) {
+// Anneau préparé : coordonnées en tableaux typés et côtés rangés par bandes horizontales,
+// pour ne tester que les quelques côtés à la hauteur du point (le contour de la Grande Terre en compte des milliers).
+function prepareRing(ring) {
+  const n = ring.length
+  const xs = new Float64Array(n)
+  const ys = new Float64Array(n)
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity
+  for (let i = 0; i < n; i++) {
+    xs[i] = ring[i][0]
+    ys[i] = ring[i][1]
+    minX = Math.min(minX, xs[i]); maxX = Math.max(maxX, xs[i])
+    minY = Math.min(minY, ys[i]); maxY = Math.max(maxY, ys[i])
+  }
+  const count = Math.max(1, Math.min(1024, Math.ceil(n / 4)))
+  const step = (maxY - minY) / count || 1
+  const band = (y) => Math.min(count - 1, Math.max(0, Math.floor((y - minY) / step)))
+  const bands = Array.from({ length: count }, () => [])
+  for (let i = 0, j = n - 1; i < n; j = i++) {
+    for (let b = band(Math.min(ys[i], ys[j])), last = band(Math.max(ys[i], ys[j])); b <= last; b++) bands[b].push(i)
+  }
+  return { xs, ys, n, minX, minY, maxX, maxY, bands, band }
+}
+function inRing(lon, lat, r) {
+  if (lon < r.minX || lon > r.maxX || lat < r.minY || lat > r.maxY) return false
+  const { xs, ys, n } = r
   let inside = false
-  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-    const [xi, yi] = ring[i]
-    const [xj, yj] = ring[j]
-    if (yi > lat !== yj > lat && lon < ((xj - xi) * (lat - yi)) / (yj - yi) + xi) inside = !inside
+  for (const i of r.bands[r.band(lat)]) {
+    const j = i === 0 ? n - 1 : i - 1
+    if (ys[i] > lat !== ys[j] > lat && lon < ((xs[j] - xs[i]) * (lat - ys[i])) / (ys[j] - ys[i]) + xs[i]) inside = !inside
   }
   return inside
 }
 function inPolygon(lon, lat, rings) {
-  return inRing(lon, lat, rings[0]) && !rings.slice(1).some((hole) => inRing(lon, lat, hole))
+  if (!inRing(lon, lat, rings[0])) return false
+  for (let k = 1; k < rings.length; k++) if (inRing(lon, lat, rings[k])) return false
+  return true
 }
 // Terre ferme = intérieur des provinces (contours qui suivent le littoral).
 // Index calculé une seule fois : chaque polygone avec son rectangle englobant, pour n'examiner
@@ -230,18 +260,14 @@ function inPolygon(lon, lat, rings) {
 let landIndex = null
 // Polygone (liste d'anneaux) et son rectangle englobant
 function withBounds(rings) {
-  const box = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity, rings }
-  for (const [x, y] of rings[0]) {
-    box.minX = Math.min(box.minX, x)
-    box.maxX = Math.max(box.maxX, x)
-    box.minY = Math.min(box.minY, y)
-    box.maxY = Math.max(box.maxY, y)
-  }
-  return box
+  const prepared = rings.map(prepareRing)
+  const { minX, minY, maxX, maxY } = prepared[0]
+  return { minX, minY, maxX, maxY, rings: prepared }
 }
 const polygonsOf = (g) => (g.type === 'MultiPolygon' ? g.coordinates : [g.coordinates])
 function buildLandIndex(geojson) {
-  const features = geojson?.features || []
+  // Données brutes : lire les coordonnées à travers la réactivité de Vue serait bien plus lent.
+  const features = toRaw(geojson)?.features || []
   return features.flatMap((f) => polygonsOf(f.geometry).map(withBounds))
 }
 const landCache = new Map() // résultats déjà calculés (point arrondi à ~10 m)
@@ -524,9 +550,11 @@ function syncTribus() {
       tribuMarkers.delete(id)
     }
   }
+  const added = [...wanted.keys()].filter((id) => !tribuMarkers.has(id)).length
+  const icon = added <= ANIMATE_UP_TO ? tribuIconNew : tribuIcon
   for (const [id, t] of wanted) {
     if (tribuMarkers.has(id)) continue
-    const marker = L.marker(t.coords, { pane: 'tribus', icon: tribuIcon, keyboard: true, alt: `Tribu de ${t.nom}` })
+    const marker = L.marker(t.coords, { pane: 'tribus', icon, keyboard: true, alt: `Tribu de ${t.nom}` })
     marker.bindTooltip(`<strong>Tribu de ${esc(t.nom)}</strong><br><span>${esc(t.commune)}${t.aire ? ' · aire ' + esc(t.aire) : ''}</span>`, {
       direction: 'top',
       offset: [0, -11],

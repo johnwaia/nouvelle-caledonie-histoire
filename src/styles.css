@@ -157,12 +157,11 @@ button { font: inherit; cursor: pointer; }
 /* Tribus : une case par tribu */
 .tribu-icon { background: none; border: 0; }
 .tribu {
-  display: block; width: 18px; height: 15px;
-  transform-origin: 50% 85%;
-  transition: transform 0.2s, filter 0.2s;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
-  animation: tribu-in 0.6s ease-out backwards;
+  display: block; width: 21px; height: 18px;
+  transform-origin: 50% 80%;
+  transition: transform 0.2s;
 }
+.tribu-new { animation: tribu-in 0.6s ease-out backwards; }
 .tribu-case { display: block; width: 100%; height: auto; pointer-events: none; user-select: none; }
 .tribu-icon:hover .tribu,
 .tribu-icon:focus-visible .tribu,
@@ -506,7 +505,9 @@ button { font: inherit; cursor: pointer; }
 
 /* ---------- Proposition d'un visiteur ---------- */
 .propose { margin-top: 1.4rem; }
-.propose-btn { width: 100%; padding: 0.6rem 1rem; border: 1px solid var(--primary-2); border-radius: 10px; background: #fff; color: var(--primary); font-weight: 600; }
+.propose-btns { display: flex; gap: 0.6rem; }
+.propose-kicker { margin: 0 0 -0.6rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.propose-btn { flex: 1; padding: 0.6rem 1rem; border: 1px solid var(--primary-2); border-radius: 10px; background: #fff; color: var(--primary); font-weight: 600; }
 .propose-btn:hover { background: var(--sand); }
 .propose-dialog { width: min(620px, calc(100vw - 24px)); max-height: calc(100vh - 24px); padding: 1.3rem; overflow: auto; border: 0; border-radius: 14px; color: var(--ink); box-shadow: 0 12px 50px rgba(0, 0, 0, 0.4); }
 .propose-dialog::backdrop { background: rgba(0, 0, 0, 0.55); }
@@ -517,7 +518,6 @@ button { font: inherit; cursor: pointer; }
 .propose-dialog input:not([type='radio'], [type='checkbox']), .propose-dialog textarea, .propose-dialog select { display: block; width: 100%; margin-top: 0.25rem; padding: 0.5rem 0.6rem; border: 1px solid var(--line); border-radius: 8px; font: inherit; font-weight: 400; resize: vertical; }
 .propose-dialog fieldset { display: grid; gap: 0.5rem; margin: 0; padding: 0.7rem; border: 1px solid var(--line); border-radius: 10px; }
 .propose-dialog legend { font-weight: 600; font-size: 0.92rem; }
-.propose-choice label { font-weight: 400; }
 .propose-dialog .propose-trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .propose-note { margin: 0; color: var(--muted); font-size: 0.88rem; }
 .propose-error { margin: 0; color: #b91c1c; font-weight: 600; }

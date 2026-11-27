@@ -1,6 +1,8 @@
 # KANAKY · Une histoire en carte
 
-Site interactif (Vue 3 + Leaflet + SQLite) qui retrace l'histoire de la Nouvelle-Calédonie, de la culture Lapita à aujourd'hui : 75 événements, 347 tribus et 33 communes.
+Site interactif (Vue 3 + Leaflet + SQLite) qui retrace l'histoire de la Nouvelle-Calédonie, de la culture Lapita à aujourd'hui : plus de 200 événements, 347 tribus et 33 communes.
+
+La documentation détaillée de chaque fonctionnalité est dans [docs/](docs/README.md).
 
 ## Fonctionnalités
 
@@ -9,7 +11,8 @@ Site interactif (Vue 3 + Leaflet + SQLite) qui retrace l'histoire de la Nouvelle
 - **Une année à la fois** : la carte n'affiche que les événements de l'année choisie, avec un fondu au changement d'année. Les événements hors de l'archipel (Paris, Bougival…) sont listés dans un encart.
 - **Logos sur la carte** : drapeaux, casse-tête, usine… ou, à défaut, l'icône de la catégorie. Les référendums ont une urne, barrée d'une croix rouge s'ils ont été boycottés (1987 et 2021).
 - **Fiche d'événement** au clic : image (plusieurs images défilent horizontalement), date, lieu, description, vidéos, sources. Échap ou un clic à côté la ferme ; ← → passent à l'événement précédent ou suivant. Lien partageable : `#evenement=<id>`.
-- **Tribus, communes, aires coutumières et provinces** : boutons de l'en-tête et fiche au clic. La fiche d'une commune liste ses tribus. Aires et provinces ne s'affichent pas en même temps. Liens partageables : `#tribu=<id>`, `#commune=<id>`.
+- **Tribus, communes, aires coutumières et provinces** : boutons de l'en-tête et fiche au clic. La fiche d'une commune liste ses tribus. Tribus et communes ne s'affichent pas en même temps, aires et provinces non plus. Liens partageables : `#tribu=<id>`, `#commune=<id>`.
+- **Mois** : les années chargées (1981, 1984, 1985) montrent un mois à la fois, avec une barre de boutons de mois.
 - **Recherche** d'une tribu ou d'une commune (la carte n'affiche plus que le résultat choisi), ou d'un événement par titre, lieu ou année (sa fiche s'ouvre).
 
 ## Lancer le projet
@@ -55,7 +58,7 @@ Git ne sait pas fusionner deux versions de la base : éviter de la modifier sur 
 
 ## Demandes de modification
 
-Chaque fiche (événement, tribu, commune) a un bouton « Proposer un ajout ou une modification ». La demande n'est pas publiée : elle arrive dans l'onglet « Demande de modifications » de l'administration, où elle peut être publiée ou supprimée.
+Chaque fiche (événement, tribu, commune) a deux boutons : « Ajouter » (des informations à la suite du texte) et « Modifier » (les champs et les sources de la fiche). La demande n'est pas publiée : elle arrive dans l'onglet « Demande de modifications » de l'administration, où elle peut être publiée ou supprimée.
 
 Le bouton « Ajouter un événement » de l'en-tête ouvre le même formulaire que l'administration (image par lien seulement, sans envoi de fichier). Le nouvel événement arrive lui aussi dans cet onglet et n'est créé qu'au moment de sa publication.
 
@@ -99,6 +102,7 @@ admin/ui.js                 interface d'administration (en ligne et locale)
 admin/online.js             connexion et publication par GitHub
 admin/server.mjs            serveur de l'administration locale
 public/images/              icônes du site
+docs/                       documentation détaillée
 assets-sources/             fichiers d'origine des logos
 worker/                     service des demandes de modification (Cloudflare)
 scripts/check-data.mjs      vérification de la base
