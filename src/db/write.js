@@ -65,8 +65,20 @@ export function saveImage(db, { id, credit, source }) {
   if (!isLink(id) && !db.prepare('SELECT 1 FROM images WHERE id = ?').get(id)) throw new Error(`Image « ${id} » absente de la base`)
   upsert(db, 'images', { id, credit, source })
 }
+// Un SVG est une page qui peut contenir du code : publié avec le site, il s'exécuterait sur la même adresse
+// que l'administration. On refuse donc tout script, gestionnaire d'événement, contenu intégré ou lien externe.
+const SVG_DANGER =
+  /<script|<foreignObject|<iframe|<embed|<object|<!ENTITY|<\?xml-stylesheet|\son[a-z]+\s*=|javascript:|(?:xlink:)?href\s*=\s*["'](?!#|data:image\/(?:png|jpe?g|gif|webp);)/i
+export function unsafeSvg(data) {
+  const text = typeof data === 'string' ? data : new TextDecoder().decode(data)
+  return text.match(SVG_DANGER)?.[0] || null
+}
 export function saveImageData(db, id, data) {
   if (!IMAGE_PATH.test(id)) throw new Error(`Chemin d'image invalide : ${id}`)
+  if (/\.svg$/i.test(id)) {
+    const danger = unsafeSvg(data)
+    if (danger) throw new Error(`SVG refusé : il contient « ${danger.trim()} » (script, contenu intégré ou lien externe)`)
+  }
   db.prepare('INSERT INTO images (id) VALUES (?) ON CONFLICT DO NOTHING').run(id)
   db.prepare(
     'INSERT INTO image_data VALUES (?, ?, ?) ON CONFLICT (image_id) DO UPDATE SET mime = excluded.mime, data = excluded.data',

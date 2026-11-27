@@ -18,6 +18,13 @@ const DB_PATH = 'database/kanaky.sqlite'
 
 const DEMANDES_URL = import.meta.env.VITE_DEMANDES_URL
 
+// La page ne s'affiche pas dans le cadre d'une autre page : un site piégé pourrait sinon superposer
+// ses propres éléments pour faire saisir ou cliquer à l'insu de l'utilisateur.
+if (window.top !== window.self) {
+  document.documentElement.replaceChildren()
+  throw new Error('Administration ouverte dans un cadre : arrêt.')
+}
+
 let token = ''
 for (const node of document.querySelectorAll('.repo-name')) node.textContent = REPO.split('/')[1]
 document.querySelector('.target').textContent = `${REPO} · ${BRANCH}`

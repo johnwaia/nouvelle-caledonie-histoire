@@ -2,6 +2,7 @@
 import { computed, ref, onMounted, watch } from 'vue'
 import CategoryIcon from './CategoryIcon.vue'
 import ProposeButton from './ProposeButton.vue'
+import { cssUrl } from '../utils/text.js'
 
 const props = defineProps({
   event: { type: Object, required: true },
@@ -39,7 +40,7 @@ watch(
       <figure v-if="gallery.length" class="modal-figure">
         <div class="modal-gallery">
           <div ref="strip" class="modal-strip" @scroll.passive="onScroll">
-            <div v-for="(img, i) in gallery" :key="img.url" class="modal-frame" :style="{ '--img': `url(&quot;${img.url}&quot;)` }">
+            <div v-for="(img, i) in gallery" :key="img.url" class="modal-frame" :style="{ '--img': cssUrl(img.url) }">
               <img :src="img.url" :alt="img.alt || event.title" :loading="i ? 'lazy' : undefined" />
             </div>
           </div>

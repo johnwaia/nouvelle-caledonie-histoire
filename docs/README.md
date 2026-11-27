@@ -25,3 +25,4 @@ Chaque fichier ci-dessous décrit une fonctionnalité : ce que voit le visiteur,
 | [images-et-logos.md](images-et-logos.md) | Images d'événements, galeries, logos sur la carte, crédits |
 | [hors-ligne-et-publication.md](hors-ligne-et-publication.md) | La copie hors ligne, la mise en ligne sur GitHub Pages, le service des demandes |
 | [developpement.md](developpement.md) | Lancer le projet, structure du code, tests, performances |
+| [securite.md](securite.md) | Protections du site, de l'administration et du service des demandes |

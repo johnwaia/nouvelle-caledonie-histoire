@@ -53,6 +53,7 @@ async function requireAdmin(request, env) {
 }
 
 async function readJson(request) {
+  if (Number(request.headers.get('Content-Length')) > MAX_BODY) throw new HttpError(413, 'Demande trop longue')
   const text = await request.text()
   if (text.length > MAX_BODY) throw new HttpError(413, 'Demande trop longue')
   try {

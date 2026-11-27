@@ -1,4 +1,5 @@
 <script setup>
+import { cssUrl } from '../utils/text.js'
 // Image d'illustration d'un panneau (tribu, commune), avec son crédit.
 defineProps({
   image: { type: Object, default: null },
@@ -8,7 +9,7 @@ defineProps({
 
 <template>
   <figure v-if="image?.url" class="panel-figure">
-    <div class="modal-frame" :style="{ '--img': `url(&quot;${image.url}&quot;)` }">
+    <div class="modal-frame" :style="{ '--img': cssUrl(image.url) }">
       <img :src="image.url" :alt="image.alt || alt" loading="lazy" />
     </div>
     <figcaption v-if="image.credit">

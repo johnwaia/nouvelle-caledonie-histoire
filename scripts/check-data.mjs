@@ -1,5 +1,5 @@
 // Vérifie database/kanaky.sqlite avant publication : `npm run check-data`
-import { openDb, reader, DB_FILE } from '../database/db.mjs'
+import { openDb, reader, DB_FILE, unsafeSvg } from '../database/db.mjs'
 import { checkCategory, checkCommune, checkEvent, checkPeriod, checkTribu, checkZone } from '../src/db/checks.js'
 import { readAll } from '../src/db/read.js'
 
@@ -11,6 +11,11 @@ for (const row of db.prepare('PRAGMA integrity_check').all()) if (row.integrity_
 for (const row of db.prepare('PRAGMA foreign_key_check').all()) errors.push(`base : lien cassé dans ${row.table} vers ${row.parent}`)
 for (const { id } of db.prepare("SELECT id FROM images WHERE id NOT LIKE 'http%' AND id NOT IN (SELECT image_id FROM image_data)").all()) {
   errors.push(`image ${id} : contenu absent de la base`)
+}
+// Un SVG publié avec le site ne doit contenir ni script ni contenu externe (voir src/db/write.js).
+for (const { image_id, data } of db.prepare("SELECT image_id, data FROM image_data WHERE image_id LIKE '%.svg'").all()) {
+  const danger = unsafeSvg(data)
+  if (danger) errors.push(`image ${image_id} : SVG dangereux (« ${danger.trim()} »)`)
 }
 
 const data = readAll(reader(db))

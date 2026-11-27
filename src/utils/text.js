@@ -5,3 +5,6 @@ export const norm = (s) =>
     .replace(/[̀-ͯ]/g, '')
     .toLowerCase()
 export const slug = (s) => norm(s).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+
+// Adresse d'image pour une propriété CSS url("…") : guillemets, barres obliques inverses et retours à la ligne encodés.
+export const cssUrl = (url) => `url("${String(url).replace(/["\\\n\r]/g, encodeURIComponent)}")`

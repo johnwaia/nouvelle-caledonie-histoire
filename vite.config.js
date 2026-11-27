@@ -13,13 +13,26 @@ const adminPolicy = (demandesUrl) => [
   "base-uri 'none'",
   "form-action 'none'",
 ].join('; ')
-const adminCsp = (demandesUrl) => ({
-  name: 'admin-csp',
+// Site public : seuls ses propres scripts s'exécutent ; il n'envoie des données qu'au service des demandes.
+// Les images peuvent venir d'autres sites (Wikimedia, fond de carte…). Styles en ligne : marqueurs de Leaflet.
+const sitePolicy = (demandesUrl) => [
+  "default-src 'self'",
+  "script-src 'self' 'wasm-unsafe-eval'",
+  "style-src 'self' 'unsafe-inline'",
+  `connect-src 'self' ${demandesUrl ? new URL(demandesUrl).origin : ''}`.trim(),
+  "img-src 'self' https: blob: data:",
+  "object-src 'none'",
+  "frame-src 'none'",
+  "base-uri 'none'",
+  "form-action 'none'",
+].join('; ')
+const csp = (demandesUrl) => ({
+  name: 'csp',
   apply: 'build',
-  transformIndexHtml: (html, { path }) =>
-    path === '/admin.html'
-      ? [{ tag: 'meta', attrs: { 'http-equiv': 'Content-Security-Policy', content: adminPolicy(demandesUrl) }, injectTo: 'head-prepend' }]
-      : html,
+  transformIndexHtml: (html, { path }) => {
+    const policy = path === '/admin.html' ? adminPolicy(demandesUrl) : sitePolicy(demandesUrl)
+    return [{ tag: 'meta', attrs: { 'http-equiv': 'Content-Security-Policy', content: policy }, injectTo: 'head-prepend' }]
+  },
 })
 
 // L'administration en ligne modifie le dépôt et la branche qui publient le site (variables de GitHub Actions) :
@@ -33,6 +46,6 @@ const define = {
 export default defineConfig(({ mode }) => ({
   base: './',
   define,
-  plugins: [vue(), kanakyDatabase(), adminCsp(loadEnv(mode, process.cwd()).VITE_DEMANDES_URL)],
+  plugins: [vue(), kanakyDatabase(), csp(loadEnv(mode, process.cwd()).VITE_DEMANDES_URL)],
   build: { rollupOptions: { input: ['index.html', 'admin.html'] } },
 }))
