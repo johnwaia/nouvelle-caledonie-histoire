@@ -49,8 +49,11 @@ const documented = new Map(
 const url = SERVICE + '?' + new URLSearchParams({ where: "type='TRIBU'", outFields: '*', outSR: '4326', resultRecordCount: '2000', f: 'json' })
 const res = await fetch(url)
 if (!res.ok) throw new Error(`DITTT : HTTP ${res.status}`)
-const features = (await res.json()).features || []
-console.log(`${features.length} tribus officielles téléchargées`)
+const data = await res.json()
+const features = Array.isArray(data?.features) ? data.features : []
+// Seul un nombre calculé ici est écrit dans le journal, jamais une donnée reçue telle quelle.
+const downloaded = Number.parseInt(String(features.length), 10) || 0
+console.log('%d tribus officielles téléchargées', downloaded)
 
 const usedIds = new Set()
 const list = []

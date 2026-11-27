@@ -11,7 +11,7 @@ export function parseDate(str) {
 
 /** Convertit une date en année décimale (1878-07-01 → 1878.5) */
 export function toDecimal(p) {
-  if (!p) return NaN
+  if (!p) return Number.NaN
   let t = p.y
   if (p.m) t += (p.m - 1) / 12
   if (p.d) t += (p.d - 1) / 365
