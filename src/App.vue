@@ -73,7 +73,7 @@ async function load() {
     const data = await loadDatabase()
     offline.value = data.offline
     categories.value = data.categories
-    logos.value = [...new Set(data.events.map((e) => e.logo).filter(Boolean))].sort()
+    logos.value = [...new Set(data.events.map((e) => e.logo).filter(Boolean))].sort((a, b) => a.localeCompare(b))
     events.value = data.events.map(normalize).filter(Boolean).sort((a, b) => a.t - b.t)
     tribus.value = data.tribus
     communes.value = data.communes.map((c) => (c.image ? { ...c, image: { ...c.image, url: resolveUrl(c.image.url) } } : c))
@@ -98,10 +98,10 @@ const yearEvents = computed(() => events.value.filter((e) => e.year === selected
 
 // Année chargée (au moins MONTHS_FROM événements, ou choisie dans MONTH_YEARS) : la carte montre un mois à la fois.
 const MONTHS_FROM = 10
-const MONTH_YEARS = [1981, 1984]
+const MONTH_YEARS = new Set([1981, 1984])
 const MONTH_NAMES = ['janv.', 'févr.', 'mars', 'avril', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.']
 const months = computed(() => {
-  if (yearEvents.value.length < MONTHS_FROM && !MONTH_YEARS.includes(selectedYear.value)) return []
+  if (yearEvents.value.length < MONTHS_FROM && !MONTH_YEARS.has(selectedYear.value)) return []
   return [...new Set(yearEvents.value.map((e) => e.month))]
     .sort((a, b) => (a || 13) - (b || 13))
     .map((month) => ({ month, label: month ? MONTH_NAMES[month - 1] : 'Mois inconnu' }))
@@ -460,10 +460,10 @@ onBeforeUnmount(() => {
         <span>{{ error }} <button type="button" @click="reload">Réessayer</button></span>
       </div>
       <div class="app-notices">
-        <div v-if="offline" class="queue-notice" role="status">
-          <p>Site injoignable : voici la version enregistrée lors de votre dernière visite.</p>
+        <output v-if="offline" class="queue-notice">
+          <span class="notice-line">Site injoignable : voici la version enregistrée lors de votre dernière visite.</span>
           <button type="button" @click="reload">Réessayer</button>
-        </div>
+        </output>
         <QueueNotice />
       </div>
     </main>

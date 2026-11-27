@@ -54,7 +54,7 @@ function githubUpload(path, body, onProgress) {
 }
 
 // Service des demandes de modification (worker/)
-async function demandes(method, path = '', body) {
+async function demandes(method, path, body) {
   if (!DEMANDES_URL) throw new Error("le service n'est pas configuré (VITE_DEMANDES_URL).")
   const res = await fetch(`${DEMANDES_URL}/demandes${path}`, {
     method,
@@ -236,7 +236,7 @@ $('login').onsubmit = (e) => {
         L,
         publish,
         demandes: {
-          list: () => demandes('GET'),
+          list: () => demandes('GET', ''),
           setStatus: (id, status) => demandes('PATCH', `/${id}`, { status }),
           remove: (id) => demandes('DELETE', `/${id}`),
         },

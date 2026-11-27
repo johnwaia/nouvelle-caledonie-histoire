@@ -63,10 +63,20 @@ async function readPayload(req, path) {
 }
 
 // Demandes de modification : relayées au service, avec l'identité GitHub de cet ordinateur (commande « gh »).
+// « gh » n'est cherché que dans des dossiers d'installation fixes, non modifiables par un utilisateur ordinaire.
+// Installé ailleurs : définir GITHUB_TOKEN à la place.
+const SAFE_PATH =
+  process.platform === 'win32'
+    ? String.raw`C:\Program Files\GitHub CLI;C:\Windows\System32`
+    : '/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin'
+function safeEnv() {
+  const env = Object.fromEntries(Object.entries(process.env).filter(([k]) => k.toUpperCase() !== 'PATH'))
+  return { ...env, PATH: SAFE_PATH }
+}
 function githubToken() {
   if (process.env.GITHUB_TOKEN) return process.env.GITHUB_TOKEN
   try {
-    return execFileSync('gh', ['auth', 'token'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim()
+    return execFileSync('gh', ['auth', 'token'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], env: safeEnv() }).trim()
   } catch {
     throw new ApiError(401, 'connectez-vous à GitHub avec « gh auth login ».')
   }

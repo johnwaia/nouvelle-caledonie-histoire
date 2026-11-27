@@ -187,13 +187,14 @@ async function submit() {
             Votre nom ou contact <small>(facultatif, visible seulement par l'administration)</small>
             <input v-model="form.author" maxlength="200" />
           </label>
-          <input v-model="form.website" class="propose-trap" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <label :for="'propose-website'" class="propose-trap" aria-hidden="true">Ne pas remplir</label>
+          <input id="propose-website" v-model="form.website" class="propose-trap" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <p class="propose-note">Votre proposition sera relue avant d'être publiée.</p>
           <p v-if="error" class="propose-error" role="alert">{{ error }}</p>
           <div class="propose-actions">
             <button type="button" @click="close">Annuler</button>
-            <button class="propose-send" :disabled="sending">{{ sending ? 'Envoi…' : 'Envoyer la demande' }}</button>
+            <button type="submit" class="propose-send" :disabled="sending">{{ sending ? 'Envoi…' : 'Envoyer la demande' }}</button>
           </div>
         </form>
       </dialog>

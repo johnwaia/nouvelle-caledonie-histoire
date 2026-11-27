@@ -14,15 +14,15 @@ async function retry() {
 </script>
 
 <template>
-  <div v-if="queue.length" class="queue-notice" role="status">
-    <p v-if="waiting">
+  <output v-if="queue.length" class="queue-notice">
+    <span v-if="waiting" class="notice-line">
       {{ waiting > 1 ? `${waiting} demandes en attente : elles seront envoyées` : 'Une demande en attente : elle sera envoyée' }}
       automatiquement.
-    </p>
-    <p v-for="d in refused" :key="d.id">
+    </span>
+    <span v-for="d in refused" :key="d.id" class="notice-line">
       « {{ d.name }} » n'a pas été acceptée : {{ d.error }}
       <button type="button" @click="discard(d.id)">Retirer</button>
-    </p>
+    </span>
     <button type="button" :disabled="busy" @click="retry">{{ busy ? 'Envoi…' : 'Envoyer maintenant' }}</button>
-  </div>
+  </output>
 </template>

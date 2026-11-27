@@ -10,7 +10,7 @@ function serviceWorker(bundle, images) {
   const logos = images.filter((id) => id.startsWith('images/logos/'))
   const files = [...scripts, ...logos, 'images/case_kanak_icone.png', 'images/case_kanak_tribu.png']
   const source = readFileSync(new URL('../src/sw.js', import.meta.url), 'utf8')
-  const version = createHash('sha256').update(source + files.sort().join()).digest('hex').slice(0, 12)
+  const version = createHash('sha256').update(source + files.toSorted((a, b) => a.localeCompare(b)).join()).digest('hex').slice(0, 12)
   return source.replace('__VERSION__', version).replace("['__FILES__']", () => JSON.stringify(files.map(encodeURI)))
 }
 

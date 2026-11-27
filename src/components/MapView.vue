@@ -305,7 +305,10 @@ const FOOT_MARGIN = 7 // largeur de terre exigée autour du pied d'un logo plant
 // de la carte et, autant que possible, sur la terre ferme.
 // Les événements « auSud » sont posés après les autres, plus bas qu'eux s'il reste de la terre.
 // Les points d'un groupe ouvert viennent à la fin : les autres ne changent pas de place.
-const rank = (e) => (e.unfolded ? 2 : e.auSud ? 1 : 0)
+function rank(e) {
+  if (e.unfolded) return 2
+  return e.auSud ? 1 : 0
+}
 function layoutPins(list) {
   const placed = [] // centres et tailles des points déjà posés
   const spots = new Map()
@@ -443,12 +446,12 @@ function render() {
     const [fx, fy] = foot || [0.5, 0.5]
     const [ax, ay] = [size * fx, size * fy]
 
+    // Logo de l'événement (selon sa catégorie) dans un rond de la couleur de la catégorie
+    const logo = it.e.logo ? '<img src="' + esc(it.e.logo) + '" alt="">' : iconFor(it.e.category)
+    const count = it.e.events ? '<b class="pin-count">' + it.e.events.length + '</b>' : ''
     const icon = L.divIcon({
       className: 'pin-icon',
-      // Logo de l'événement (selon sa catégorie) dans un rond de la couleur de la catégorie
-      html: `<span class="${cls}" style="--c:${color};--size:${size}px;--foot:${fx * 100}% ${fy * 100}%">${
-        it.e.logo ? `<img src="${esc(it.e.logo)}" alt="">` : iconFor(it.e.category)
-      }${it.e.events ? `<b class="pin-count">${it.e.events.length}</b>` : ''}</span>`,
+      html: `<span class="${cls}" style="--c:${color};--size:${size}px;--foot:${fx * 100}% ${fy * 100}%">${logo}${count}</span>`,
       iconSize: [size, size],
       iconAnchor: [ax - dx, ay - dy],
     })

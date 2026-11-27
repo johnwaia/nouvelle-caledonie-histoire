@@ -67,7 +67,7 @@ L'onglet **« Demande de modifications »** liste les propositions envoyées dep
 - **Publier** applique la demande à la fiche (ou crée le nouvel événement) ; la demande passe alors au statut « Publiée ».
 - **Supprimer** l'efface.
 
-Les demandes sont gardées dans le service Cloudflare, pas dans la base du site. L'administration s'y identifie avec le jeton GitHub (en ligne) ou le compte `gh` (en local).
+Les demandes sont gardées dans le service Cloudflare, pas dans la base du site. L'administration s'y identifie avec le jeton GitHub (en ligne) ou le compte `gh` (en local). En local, la commande `gh` n'est cherchée que dans son dossier d'installation standard (`C:\Program Files\GitHub CLI` sous Windows, `/usr/local/bin`, `/opt/homebrew/bin` ou `/usr/bin` ailleurs) ; si elle est installée ailleurs, définir la variable d'environnement `GITHUB_TOKEN`.
 
 ## Vérifications à l'enregistrement
 

@@ -89,7 +89,7 @@ function cleanImage(image) {
   if (source && !isHttp(source)) throw new Error("La page d'origine de l'image doit commencer par https://")
   return { url, alt: orUndefined(clean(image.alt, LIMITS.label)), credit: orUndefined(clean(image.credit, LIMITS.label)), source: orUndefined(source) }
 }
-const cleanLinks = (list, cleanLink) => (Array.isArray(list) ? list.slice(0, MAX_LINKS).map(cleanLink).filter(Boolean) : [])
+const cleanLinks = (list, cleanLink) => (Array.isArray(list) ? list.slice(0, MAX_LINKS).map((link) => cleanLink(link)).filter(Boolean) : [])
 function cleanVideo(video) {
   const label = clean(video?.label, LIMITS.label)
   const url = clean(video?.url, LIMITS.url)
@@ -177,7 +177,9 @@ const append = (text, extra) => (text ? `${text}\n\n${extra}` : extra)
 function applySourceEdits(sources, edits) {
   return edits.reduce((list, { before, after }) => {
     const i = list.findIndex((s) => sameSource(s, before))
-    return i < 0 ? list : list.toSpliced(i, 1, ...(after ? [after] : []))
+    if (i < 0) return list
+    const replacement = after ? [after] : []
+    return list.toSpliced(i, 1, ...replacement)
   }, sources || [])
 }
 
@@ -185,7 +187,11 @@ function applySourceEdits(sources, edits) {
 export function createdEvent(p, events) {
   const taken = new Set(events.map((e) => e.id))
   let id = p.targetId
-  for (let n = 2; taken.has(id); n++) id = `${p.targetId}-${n}`
+  let n = 1
+  while (taken.has(id)) {
+    n++
+    id = `${p.targetId}-${n}`
+  }
   return { id, ...p.event }
 }
 

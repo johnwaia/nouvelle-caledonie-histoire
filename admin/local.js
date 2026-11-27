@@ -1,5 +1,5 @@
 // Version locale : les actions sont exécutées par admin/server.mjs.
-import * as L from '/leaflet.js'
+import * as L from '../leaflet.js'
 import { attempt } from './dom.js'
 import { startAdmin } from './ui.js'
 
