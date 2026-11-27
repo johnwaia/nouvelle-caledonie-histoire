@@ -5,7 +5,7 @@
  */
 import { createServer } from 'node:http'
 import { execFileSync } from 'node:child_process'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { openDb } from '../database/db.mjs'
 import { handle, ApiError, MAX_UPLOAD } from '../src/db/api.js'
 
@@ -63,20 +63,18 @@ async function readPayload(req, path) {
 }
 
 // Demandes de modification : relayées au service, avec l'identité GitHub de cet ordinateur (commande « gh »).
-// « gh » n'est cherché que dans des dossiers d'installation fixes, non modifiables par un utilisateur ordinaire.
-// Installé ailleurs : définir GITHUB_TOKEN à la place.
-const SAFE_PATH =
+// « gh » est lancé par son chemin complet, pris dans des dossiers d'installation fixes, non modifiables
+// par un utilisateur ordinaire (jamais à travers le PATH). Installé ailleurs : définir GITHUB_TOKEN à la place.
+const GH_PATHS =
   process.platform === 'win32'
-    ? String.raw`C:\Program Files\GitHub CLI;C:\Windows\System32`
-    : '/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin'
-function safeEnv() {
-  const env = Object.fromEntries(Object.entries(process.env).filter(([k]) => k.toUpperCase() !== 'PATH'))
-  return { ...env, PATH: SAFE_PATH }
-}
+    ? [String.raw`C:\Program Files\GitHub CLI\gh.exe`]
+    : ['/usr/local/bin/gh', '/opt/homebrew/bin/gh', '/usr/bin/gh']
 function githubToken() {
   if (process.env.GITHUB_TOKEN) return process.env.GITHUB_TOKEN
+  const gh = GH_PATHS.find((p) => existsSync(p))
   try {
-    return execFileSync('gh', ['auth', 'token'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], env: safeEnv() }).trim()
+    if (!gh) throw new Error('gh introuvable')
+    return execFileSync(gh, ['auth', 'token'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim()
   } catch {
     throw new ApiError(401, 'connectez-vous à GitHub avec « gh auth login ».')
   }

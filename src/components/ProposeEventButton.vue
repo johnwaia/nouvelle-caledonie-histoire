@@ -214,8 +214,11 @@ async function submit() {
           Votre nom ou contact <small>(facultatif, visible seulement par l'administration)</small>
           <input v-model="form.author" maxlength="200" />
         </label>
-        <label :for="'propose-event-website'" class="propose-trap" aria-hidden="true">Ne pas remplir</label>
-          <input id="propose-event-website" v-model="form.website" class="propose-trap" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <!-- Champ piège : invisible, seuls les robots le remplissent -->
+        <label for="propose-event-website" class="propose-trap" aria-hidden="true">
+          Ne pas remplir
+          <input id="propose-event-website" v-model="form.website" name="website" tabindex="-1" autocomplete="off" />
+        </label>
 
         <p class="propose-note">Votre événement sera relu avant d'être publié.</p>
         <p v-if="error" class="propose-error" role="alert">{{ error }}</p>

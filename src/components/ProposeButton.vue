@@ -187,8 +187,11 @@ async function submit() {
             Votre nom ou contact <small>(facultatif, visible seulement par l'administration)</small>
             <input v-model="form.author" maxlength="200" />
           </label>
-          <label :for="'propose-website'" class="propose-trap" aria-hidden="true">Ne pas remplir</label>
-          <input id="propose-website" v-model="form.website" class="propose-trap" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <!-- Champ piège : invisible, seuls les robots le remplissent -->
+          <label for="propose-website" class="propose-trap" aria-hidden="true">
+            Ne pas remplir
+            <input id="propose-website" v-model="form.website" name="website" tabindex="-1" autocomplete="off" />
+          </label>
 
           <p class="propose-note">Votre proposition sera relue avant d'être publiée.</p>
           <p v-if="error" class="propose-error" role="alert">{{ error }}</p>
